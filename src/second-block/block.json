@@ -1,9 +1,9 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
-	"name": "create-block/bergall-wp-blocks",
+	"name": "create-block/second-block",
 	"version": "0.1.0",
-	"title": "Bergall Wp Blocks",
+	"title": "Secon block",
 	"category": "widgets",
 	"icon": "smiley",
 	"description": "Example block scaffolded with Create Block tool.",
