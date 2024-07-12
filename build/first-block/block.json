@@ -9,7 +9,39 @@
   "description": "Example block scaffolded with Create Block tool.",
   "example": {},
   "supports": {
-    "html": false
+    "html": false,
+    "align": true,
+    "anchor": true,
+    "color": {
+      "background": true,
+      "text": true
+    },
+    "spacing": {
+      "margin": true,
+      "padding": true
+    }
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "source": "text",
+      "selector": "div"
+    },
+    "description": {
+      "type": "string",
+      "source": "rich-text",
+      "selector": "div"
+    },
+    "message": {
+      "type": "string",
+      "source": "html"
+    },
+    "size": {
+      "enum": [
+        "large",
+        "small"
+      ]
+    }
   },
   "textdomain": "bergall-wp-blocks",
   "editorScript": "file:./index.js",

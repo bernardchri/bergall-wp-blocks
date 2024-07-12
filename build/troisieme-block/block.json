@@ -1,0 +1,28 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "name": "montheme/monnouveaublock",
+  "title": "monNouveauBlock",
+  "description": "",
+  "category": "bergall",
+  "icon": "align-full-width",
+  "style": [
+    "file:./monNouveauBlock.css"
+  ],
+  "viewScriptModule": [
+    "file:./monNouveauBlock.js"
+  ],
+  "keywords": [
+    "monNouveauBlock"
+  ],
+  "acf": {
+    "mode": "preview",
+    "renderTemplate": "monNouveauBlock.php"
+  },
+  "supports": {
+    "anchor": false,
+    "align": [
+      "full",
+      "wide"
+    ]
+  }
+}

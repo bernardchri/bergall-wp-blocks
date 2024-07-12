@@ -11,7 +11,7 @@ import { __ } from '@wordpress/i18n';
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
-import { useBlockProps } from '@wordpress/block-editor';
+import { useBlockProps, RichText } from '@wordpress/block-editor';
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -29,13 +29,33 @@ import './editor.scss';
  *
  * @return {Element} Element to render.
  */
-export default function Edit() {
+export default function Edit({ attributes, setAttributes, isSelected }) {
+	const blockProps = useBlockProps();
+	// Simplify access to attributes
+	const { description, mySetting, title } = attributes;
+
+	// Toggle a setting when the user clicks the button
+	const toggleSetting = () => setAttributes({ mySetting: !mySetting });
+
 	return (
-		<p { ...useBlockProps() }>
-			{ __(
-				'Bergall Wp Blocks – hello from the editor!',
-				'bergall-wp-blocks'
-			) }
-		</p>
+		<div {...blockProps}>
+
+			<RichText
+				{...blockProps}
+				tagName="h2" // The tag here is the element output and editable in the admin
+				value={attributes.title} // Any existing content, either from the database or an attribute default
+				allowedFormats={['core/bold', 'core/italic']} // Allow the content to be made bold or italic, but do not allow other formatting options
+				onChange={(title) => setAttributes({ title })} // Store updated content as a block attribute
+				placeholder={__('Titre...')} // Display this text before any content has been added by the user
+			/>
+			<RichText
+				{...blockProps}
+				tagName="p"
+				value={attributes.description}
+				onChange={(description) => setAttributes({ description })}
+				placeholder={__('Ut sunt aliqua in aute excepteur irure laborum enim quis. Non veniam excepteur consectetur nostrud cupidatat. Duis enim aute aute do duis excepteur. Est anim deserunt sint minim tempor duis commodo ullamco. Proident eiusmod labore sint ex excepteur....')} // Display this text before any content has been added by the user
+			/>
+
+		</div>
 	);
 }

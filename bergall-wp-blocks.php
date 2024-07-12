@@ -30,7 +30,7 @@ function create_block_bergall_wp_blocks_block_init()
 
 	$blocks = array(
 		'first-block',
-		'second-block'
+		'second-block',
 	);
 
 	foreach ($blocks as $block) {
@@ -38,7 +38,6 @@ function create_block_bergall_wp_blocks_block_init()
 	}
 
 	add_action('admin_enqueue_scripts', 'demo_blocks_script');
-	
 }
 add_action('init', 'create_block_bergall_wp_blocks_block_init');
 
@@ -51,3 +50,20 @@ function demo_blocks_script()
 
 	wp_localize_script($handle, 'demoBlocksData', $data);
 }
+
+
+// BLOCKS ACF
+function MyACFProBlocks()
+{
+	$blocks = array(
+		'troisieme-block'
+	);
+
+	foreach ($blocks as $block) {
+		register_block_type(__DIR__ . "/src/{$block}");
+	}
+
+  register_block_type( get_template_directory() . "/patterns/monNouveauBlock");
+}
+
+add_action('acf/init', 'MyACFProBlocks');
