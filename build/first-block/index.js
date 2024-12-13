@@ -188,7 +188,11 @@ function save({
   console.log(attributes);
   return (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     ..._wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save()
-  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", null, attributes.title), attributes.description);
+  }, (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", null, attributes.title), (0,react__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
+    ...blockProps,
+    tagName: "p",
+    value: attributes.description
+  }));
 }
 
 /***/ }),
@@ -263,7 +267,7 @@ module.exports = window["wp"]["i18n"];
   \************************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/first-block","version":"0.1.0","title":"First Block","category":"widgets","icon":"smiley","description":"Example block scaffolded with Create Block tool.","example":{},"supports":{"html":false,"align":true,"anchor":true,"color":{"background":true,"text":true},"spacing":{"margin":true,"padding":true}},"attributes":{"title":{"type":"string","source":"text","selector":"div"},"description":{"type":"string","source":"rich-text","selector":"div"},"message":{"type":"string","source":"html"},"size":{"enum":["large","small"]}},"textdomain":"bergall-wp-blocks","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js"}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/first-block","version":"0.1.0","title":"First Native Block","category":"widgets","icon":"smiley","description":"Example block scaffolded with Create Block tool.","example":{},"supports":{"html":false,"align":true,"anchor":true,"color":{"background":true,"text":true},"spacing":{"margin":true,"padding":true}},"attributes":{"title":{"type":"string","source":"text","selector":"div"},"description":{"type":"string","source":"rich-text"},"message":{"type":"string","source":"html"},"size":{"enum":["large","small"]}},"textdomain":"bergall-wp-blocks","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js"}');
 
 /***/ })
 

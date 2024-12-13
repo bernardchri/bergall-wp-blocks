@@ -13,8 +13,9 @@ if (!empty($block['align'])) {
 
 // Votre code PHP ici
 ?>
-<div class="monNouveauBlock is-layout-constrained <?php echo esc_attr($class_name); ?>">
-    <div class="monNouveauBlock__wrapper alignwide">
-            Nouveau bloc : monNouveauBlock
+<div class="b-monNouveauBlock is-layout-constrained <?php echo esc_attr($class_name); ?>">
+    <div class="b-monNouveauBlock__wrapper alignwide">
+            <h2> <?php echo $title ?></h2>
+            <div><?php echo $intro ?></div>
     </div>
 </div>

@@ -16,6 +16,6 @@
 		"create": "node ./utils/create-acf-block.js"
 	},
 	"devDependencies": {
-		"@wordpress/scripts": "^27.9.0"
+		"@wordpress/scripts": "^30.7.0"
 	}
 }

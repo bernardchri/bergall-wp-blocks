@@ -2,7 +2,7 @@
 
 /**
  * Plugin Name:       Bergall Wp Blocks
- * Description:       Example block scaffolded with Create Block tool.
+ * Description:       Blocks étendus pour thèmes FSE
  * Requires at least: 6.1
  * Requires PHP:      7.0
  * Version:           0.1.0
@@ -30,7 +30,6 @@ function create_block_bergall_wp_blocks_block_init()
 
 	$blocks = array(
 		'first-block',
-		'second-block',
 	);
 
 	foreach ($blocks as $block) {
@@ -40,7 +39,6 @@ function create_block_bergall_wp_blocks_block_init()
 	add_action('admin_enqueue_scripts', 'demo_blocks_script');
 }
 add_action('init', 'create_block_bergall_wp_blocks_block_init');
-
 
 
 function demo_blocks_script()
@@ -53,17 +51,62 @@ function demo_blocks_script()
 
 
 // BLOCKS ACF
-function MyACFProBlocks()
-{
-	$blocks = array(
-		'troisieme-block'
-	);
+// function MyACFProBlocks()
+// {
+// 	$blocks = array(
+// 		'troisieme-block'
+// 	);
 
-	foreach ($blocks as $block) {
-		register_block_type(__DIR__ . "/src/{$block}");
-	}
+// 	foreach ($blocks as $block) {
+// 		register_block_type(__DIR__ . "/src/{$block}");
+// 	}
 
-  register_block_type( get_template_directory() . "/patterns/monNouveauBlock");
-}
+// 	register_block_type(get_template_directory() . "/patterns/monNouveauBlock");
+// }
 
-add_action('acf/init', 'MyACFProBlocks');
+// add_action('acf/init', 'MyACFProBlocks');
+
+
+
+
+/********************************/
+// Save and load plugin specific ACF field groups via the /acf-json folder.
+/********************************/
+
+// Save
+// function my_plugin_update_field_group($group)
+// {
+// 	// list of field groups that should be saved to my-plugin/acf-json
+
+// 	// ICI : ajouter les noms des champs dans du dossier acf-json
+// 	$groups = array('group_6671a2757c269');
+
+// 	if (in_array($group['key'], $groups)) {
+// 		add_filter('acf/settings/save_json', function () {
+// 			return dirname(__FILE__) . '/acf-json';
+// 		});
+// 	}
+// }
+// add_action('acf/update_field_group', 'my_plugin_update_field_group', 1, 1);
+
+// // Load - includes the /acf-json folder in this plugin to the places to look for ACF Local JSON files
+// add_filter('acf/settings/load_json', function ($paths) {
+// 	$paths[] = dirname(__FILE__) . '/acf-json';
+// 	return $paths;
+// });
+
+
+
+
+
+
+// ENregistrement d'un pattern 
+// register_block_pattern(
+//     'wpdocs-my-plugin/bergall-my-awesome-pattern',
+//     array(
+//         'title'       => __( 'Two buttons', 'wpdocs-my-plugin' ),
+//         'description' => _x( 'Two horizontal buttons, the left button is filled in, and the right button is outlined.', 'Block pattern description', 'wpdocs-my-plugin' ),
+// 		'categories' => 'bergall',
+//         'content'     => "<!-- wp:buttons {\"align\":\"center\"} -->\n<div class=\"wp-block-buttons aligncenter\"><!-- wp:button {\"backgroundColor\":\"very-dark-gray\",\"borderRadius\":0} -->\n<div class=\"wp-block-button\"><a class=\"wp-block-button__link has-background has-very-dark-gray-background-color no-border-radius\">" . esc_html__( 'Button One', 'wpdocs-my-plugin' ) . "</a></div>\n<!-- /wp:button -->\n\n<!-- wp:button {\"textColor\":\"very-dark-gray\",\"borderRadius\":0,\"className\":\"is-style-outline\"} -->\n<div class=\"wp-block-button is-style-outline\"><a class=\"wp-block-button__link has-text-color has-very-dark-gray-color no-border-radius\">" . esc_html__( 'Button Two', 'wpdocs-my-plugin' ) . "</a></div>\n<!-- /wp:button --></div>\n<!-- /wp:buttons -->",
+//     )
+// );
