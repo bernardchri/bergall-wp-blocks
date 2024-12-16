@@ -1,22 +1,22 @@
 {
   "$schema": "https://schemas.wp.org/trunk/block.json",
-  "name": "montheme/monnouveaublock",
-  "title": "b-monNouveauBlock",
+  "name": "bergall/slider",
+  "title": "Grand slider",
   "description": "",
   "category": "bergall",
   "icon": "align-full-width",
   "style": [
-    "file:./monNouveauBlock.css"
+    "file:./slider.css"
   ],
   "viewScriptModule": [
-    "file:./monNouveauBlock.js"
+    "file:./slider.js"
   ],
   "keywords": [
-    "monNouveauBlock"
+    "slider"
   ],
   "acf": {
     "mode": "preview",
-    "renderTemplate": "monNouveauBlock.php"
+    "renderTemplate": "slider.php"
   },
   "supports": {
     "anchor": false,

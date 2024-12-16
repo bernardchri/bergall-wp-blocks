@@ -36,35 +36,27 @@ function create_block_bergall_wp_blocks_block_init()
 		register_block_type(__DIR__ . "/build/{$block}");
 	}
 
-	add_action('admin_enqueue_scripts', 'demo_blocks_script');
 }
 add_action('init', 'create_block_bergall_wp_blocks_block_init');
 
 
-function demo_blocks_script()
-{
-	$handle = 'create-block-first-block-editor-script';
-	$data = array('hello');
-
-	wp_localize_script($handle, 'demoBlocksData', $data);
-}
 
 
 // BLOCKS ACF
-// function MyACFProBlocks()
-// {
-// 	$blocks = array(
-// 		'troisieme-block'
-// 	);
+function b_wp_blocks_MyACFProBlocks()
+{
+	$blocks = array(
+		'slider'
+	);
 
-// 	foreach ($blocks as $block) {
-// 		register_block_type(__DIR__ . "/src/{$block}");
-// 	}
+	foreach ($blocks as $block) {
+		register_block_type(__DIR__ . "/src/{$block}");
+	}
 
-// 	register_block_type(get_template_directory() . "/patterns/monNouveauBlock");
-// }
+	// register_block_type(get_template_directory() . "/patterns/monNouveauBlock");
+}
 
-// add_action('acf/init', 'MyACFProBlocks');
+add_action('acf/init', 'b_wp_blocks_MyACFProBlocks');
 
 
 
