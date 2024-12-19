@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Plugin Name:       Bergall Wp Blocks
+ * Plugin Name:       Bergall – Blocks
  * Description:       Blocks étendus pour thèmes FSE
  * Requires at least: 6.1
  * Requires PHP:      7.0
@@ -21,12 +21,12 @@ if (!defined('ABSPATH')) {
 }
 
 
-define( 'BERGALL_WP_BLCOKS_PATH', plugin_dir_path( __FILE__ ) );
+define( 'BERGALL_WP_BLOCKS_PATH', plugin_dir_path( __FILE__ ) );
 define( 'BERGALL_WP_BLCOKS_URL', plugin_dir_url( __FILE__ ) );
 
 
-require_once ( BERGALL_WP_BLCOKS_PATH . "/inc/acf-general-options.php");
-require_once ( BERGALL_WP_BLCOKS_PATH . "/inc/acf-blocks-gutemberg.php");
+require_once ( BERGALL_WP_BLOCKS_PATH . "/inc/acf-general-options.php");
+require_once ( BERGALL_WP_BLOCKS_PATH . "/inc/acf-blocks-gutemberg.php");
 
 
 
