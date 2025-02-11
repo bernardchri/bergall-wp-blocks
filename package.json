@@ -1,0 +1,12 @@
+{
+  "devDependencies": {
+    "@wordpress/scripts": "^30.10.0"
+  },
+  "scripts": {
+    "build": "wp-scripts build",
+    "start": "wp-scripts start"
+  },
+  "dependencies": {
+    "gsap": "^3.12.7"
+  }
+}

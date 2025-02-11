@@ -1,0 +1,1 @@
+// # Composants partagés entre les blocs
