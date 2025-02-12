@@ -30,7 +30,6 @@ define('BERGALL_WP_BLCOKS_URL', plugin_dir_url(__FILE__));
 
 
 
-
 function bergall_wp_blocks_register_scripts()
 {
     wp_enqueue_script(
@@ -60,12 +59,36 @@ add_action('enqueue_block_assets', 'bergall_wp_blocks_register_scripts');
 
 
 
+// AJOUT D'UNE CATEGORIE DE BLOCS
 
+function bergall_new_category_blocks( $cats ) {
+
+	// create a new array element with anything as its index
+	$new = array(
+		'literallyanything' => array(
+			'slug'  => 'bergall',
+			'title' => 'Blocks by Bergall'
+		)
+	);
+	// just decide here at what position your custom category should appear
+	$position = 2; // 2 – After Text and Media, so technically it is a 3rd position
+	$cats = array_slice( $cats, 0, $position, true ) + $new + array_slice( $cats, $position, null, true );
+	// reset array indexes
+	$cats = array_values( $cats );
+	return $cats;
+
+}
+add_filter( 'block_categories_all', 'bergall_new_category_blocks' );
+
+
+// ENREGISTREMENT DES BLOCS
 function register_custom_blocks() {
     register_block_type(__DIR__ . '/blocks/animated-paragraph');
     // Enregistrez d'autres blocs ici si nécessaire
 }
 add_action('init', 'register_custom_blocks');
+
+
 
 
 /********************************/
@@ -93,3 +116,19 @@ add_action('init', 'register_custom_blocks');
 //     $paths[] = dirname(__FILE__) . '/acf-json';
 //     return $paths;
 // });
+
+
+
+
+
+// Ajout d'une rubrique de composants
+function bergall_wp_blocks_register_blocks_collections() {
+    wp_enqueue_script(
+        'bergall-wp-blocks-categories',
+        plugins_url('src/utils/blocks-collection.js', __FILE__),
+        array('wp-blocks', 'wp-dom-ready', 'wp-edit-post'),
+        filemtime(plugin_dir_path(__FILE__) . 'src/utils/blocks-collection.js')
+    );
+}
+add_action('enqueue_block_editor_assets', 'bergall_wp_blocks_register_blocks_collections');
+
