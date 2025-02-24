@@ -2,8 +2,11 @@ import { registerBlockType } from '@wordpress/blocks';
 import { InnerBlocks, InspectorControls } from '@wordpress/block-editor';
 import { PanelBody, RangeControl, Button } from '@wordpress/components';
 import './style.css';
+import { customIcon } from '../../src/utils/icon';
+
 
 registerBlockType('custom/animated-paragraph', {
+    icon: customIcon,
     attributes: {
         duration: {
             type: 'number',

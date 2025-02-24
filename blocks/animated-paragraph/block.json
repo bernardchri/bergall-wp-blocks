@@ -1,9 +1,8 @@
 {
     "apiVersion": 2,
     "name": "custom/animated-paragraph",
-    "title": "Animated Paragraph",
+    "title": "Texte animé",
     "category": "bergall",
-    "icon": "editor-paragraph",
     "description": "A paragraph block with animated words.",
     "supports": {
         "html": false
