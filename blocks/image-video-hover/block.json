@@ -2,7 +2,7 @@
     "apiVersion": 2,
     "name": "bergallblocks/image-video-hover",
     "title": "Image Video Hover",
-    "category": "media",
+    "category": "bergall",
     "icon": "format-video",
     "attributes": {
         "imageUrl": {

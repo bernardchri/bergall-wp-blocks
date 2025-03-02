@@ -4,3 +4,7 @@
 import '../blocks/animated-paragraph/';
 import '../blocks/image-video-hover/';
 import '../blocks/slider-image';
+import '../blocks/button-block';
+import '../blocks/container-parallax';
+
+// import '../blocks/spans';

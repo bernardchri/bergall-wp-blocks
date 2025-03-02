@@ -39,9 +39,6 @@ registerBlockType(metadata.name, {
                 modules: [Navigation, Pagination],
                 autoplay: attributes.autoplay ? { delay: attributes.interval } : false,
                 grabCursor: true,
-                pagination: {
-                    el: '.swiper-pagination',
-                },
                 navigation: {
                     nextEl: '.button-next',
                     prevEl: '.button-prev',
@@ -61,7 +58,7 @@ registerBlockType(metadata.name, {
                             max={10}
                             step={0.25}
                         />
-                        <ToggleControl
+                        {/* <ToggleControl
                             label="Lecture automatique"
                             checked={attributes.autoplay}
                             onChange={(value) => setAttributes({ autoplay: value })}
@@ -75,7 +72,7 @@ registerBlockType(metadata.name, {
                                 max={10000}
                                 step={500}
                             />
-                        )}
+                        )} */}
                     </PanelBody>
                 </InspectorControls>
                 <div className="swiper-container">
@@ -143,24 +140,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const sliderswiper = new Swiper(slider.querySelector('.swiper-container'), {
             slidesPerView: numberofslides,
-            pagination: {
-                el: slider.querySelector('.swiper-pagination'),
-            },
             grabCursor: true,
+            modules: [Navigation],
             navigation: {
                 nextEl: slider.querySelector('.button-next'),
                 prevEl: slider.querySelector('.button-prev'),
             },
         });
-        slider.querySelectorAll('.button-next').forEach((button) => {
-            button.addEventListener('click', () => {
-                sliderswiper.slideNext();
-            });
-        });
-        slider.querySelectorAll('.button-prev').forEach((button) => {
-            button.addEventListener('click', () => {
-                sliderswiper.slidePrev();
-            });
-        });
+       
     });
 });

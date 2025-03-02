@@ -1,0 +1,9 @@
+.wp-block-bergallblocks-spans span {
+    display: inline-block;
+    margin: 0 5px;
+}
+
+.wp-block-bergallblocks-spans img {
+    max-width: 100%;
+    height: auto;
+}

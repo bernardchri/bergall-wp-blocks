@@ -1,10 +1,17 @@
+
 .image-video-hover:not(.image-video-hover--editor) {
     position: relative;
     display: block;
     line-height: 0;
 }
 
-.image-video-hover * {
+.wp-block-bergallblocks-image-video-hover {
+    display: block;
+    width: 100%;
+   
+}
+
+.wp-block-bergallblocks-image-video-hover * {
     width: 100%;
 }
 
@@ -16,7 +23,6 @@
     height: 100%;
     object-fit: cover;
     opacity: 0;
-
 }
 
 :not(.image-video-hover--editor) .image-video-hover__video.is-visible {

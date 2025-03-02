@@ -3,7 +3,7 @@
 }
 
 body :has(.wp-block-bergall-slider-image) {
-    overflow: hidden !important;
+    overflow-x: hidden !important;
 }
 
 .wp-block-bergall-slider-image .swiper-container {
@@ -16,14 +16,11 @@ body :has(.wp-block-bergall-slider-image) {
 
 }
 
-
 .wp-block-bergall-slider-image .swiper-slide img {
     width: 100%;
     height: auto;
 }
-.wp-block-bergall-slider-image .swiper-button-next {
-    outline: 2px solid red;
-}
+
 
 .wp-block-bergall-slider-image .navigation{
     display: flex;

@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', function () {
     // Définir l'opacité à 0 pour tous les éléments avec la classe 'animated-paragraph'
 
     if(document.querySelector('.animated-paragraph')){
-        gsap.set('.animated-paragraph', { opacity: 0 });
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
@@ -14,6 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     const paragraph = entry.target;
                     const animationType = paragraph.getAttribute('data-animation-type') || 'lines';
                     const splitResult = Splitting({ target: paragraph, by: animationType });
+                    
                     // Récupérer les attributs de données
                     const duration = parseFloat(paragraph.getAttribute('data-duration')) || 0.300;
                     const stagger = parseFloat(paragraph.getAttribute('data-stagger')) || 0.08;

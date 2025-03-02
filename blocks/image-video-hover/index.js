@@ -34,7 +34,8 @@ registerBlockType(datablock.name, {
                         Your browser does not support the video tag.
                     </video>
                 </div>
-                <InspectorControls>
+                <InspectorControls >
+                <PanelBody title="Animation Settings">
                 <MediaUploadCheck>
                     <MediaUpload
                         onSelect={onSelectImage}
@@ -59,12 +60,12 @@ registerBlockType(datablock.name, {
                         )}
                     />
                       <TextControl
-                        label="Video URL"
+                        label="Video URL desktop"
                         value={videoUrl}
                     />
-                </MediaUploadCheck>
-                  
-                        
+                    
+                </MediaUploadCheck> 
+                </PanelBody> 
                     <PanelBody title="Video Settings">
                         <ToggleControl
                             label="Auto Play Video"

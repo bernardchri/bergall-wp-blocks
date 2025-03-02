@@ -24,6 +24,7 @@
             "type": "string",
             "default": "lines"
         }
+        
     },
     "editorScript": "file:./index.js",
     "style": "file:./style.css",
