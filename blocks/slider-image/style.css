@@ -1,0 +1,35 @@
+.wp-block-bergall-slider-image {
+    margin: 4rem 0 ;
+}
+
+body :has(.wp-block-bergall-slider-image) {
+    overflow: hidden !important;
+}
+
+.wp-block-bergall-slider-image .swiper-container {
+    position: relative;
+
+}
+
+.wp-block-bergall-slider-image .swiper-wrapper {
+   gap: 1rem;
+
+}
+
+
+.wp-block-bergall-slider-image .swiper-slide img {
+    width: 100%;
+    height: auto;
+}
+.wp-block-bergall-slider-image .swiper-button-next {
+    outline: 2px solid red;
+}
+
+.wp-block-bergall-slider-image .navigation{
+    display: flex;
+    gap:  16px;
+    font-size: 1rem;
+    padding: 1rem 0 ;
+    justify-content: end;
+
+}

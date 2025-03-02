@@ -1,0 +1,15 @@
+{
+    "apiVersion": 2,
+    "name": "bergallblocks/span",
+    "title": "Span",
+    "category": "bergall",
+    "icon": "texte",
+    "description": "Un texte dans un span",
+    "supports": {
+        "html": false
+    },
+    "editorScript": "file:./index.js",
+    "editorStyle": "file:./editor.css",
+    "style": "file:./style.css",
+    "renderScript": "file:./render.js"
+}

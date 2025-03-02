@@ -7,6 +7,8 @@
     "start": "wp-scripts start"
   },
   "dependencies": {
-    "gsap": "^3.12.7"
+    "gsap": "^3.12.7",
+    "splitting": "^1.1.0",
+    "swiper": "^11.2.4"
   }
 }

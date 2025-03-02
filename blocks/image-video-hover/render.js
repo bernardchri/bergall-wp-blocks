@@ -1,7 +1,5 @@
-console.log("Image video hover!");
 document.addEventListener('DOMContentLoaded', function() {
     const videoElements = document.querySelectorAll('.image-video-hover__video');
-
     videoElements.forEach(video => {
         const observer = new IntersectionObserver(entries => {
             entries.forEach(entry => {

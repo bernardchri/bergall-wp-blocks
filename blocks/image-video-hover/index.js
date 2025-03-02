@@ -1,33 +1,14 @@
 import { registerBlockType } from '@wordpress/blocks';
-import { useState } from '@wordpress/element';
 import { useBlockProps, MediaUpload, MediaUploadCheck , InspectorControls} from '@wordpress/block-editor';
 import { ToggleControl, PanelBody, TextControl } from '@wordpress/components';
 import './style.css';
-// import './editor.css';
+import './editor.css';
+import datablock from './block.json';
+
 // import './render.js';
 
-registerBlockType('bergallblocks/image-video-hover', {
-    title: 'Image Video Hover',
-    icon: 'format-video',
-    category: 'media',
-    attributes: {
-        imageUrl: {
-            type: 'string',
-            source: 'attribute',
-            selector: 'img.image-video-hover__image',
-            attribute: 'src',
-        },
-        videoUrl: {
-            type: 'string',
-            source: 'attribute',
-            selector: 'video.image-video-hover__video source',
-            attribute: 'src',
-        },
-        autoPlayVideo: {
-            type: 'boolean',
-            default: false,
-        },
-    },
+registerBlockType(datablock.name, {
+    ...datablock,
     edit: ({ attributes, setAttributes }) => {
         const { imageUrl, videoUrl, autoPlayVideo } = attributes;
 

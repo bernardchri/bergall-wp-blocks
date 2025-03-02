@@ -4,7 +4,6 @@
     line-height: 0;
 }
 
-
 .image-video-hover * {
     width: 100%;
 }
@@ -17,6 +16,7 @@
     height: 100%;
     object-fit: cover;
     opacity: 0;
+
 }
 
 :not(.image-video-hover--editor) .image-video-hover__video.is-visible {
@@ -26,7 +26,9 @@
 
 @media (hover: hover) {
     :not(.image-video-hover--editor).image-video-hover:hover .image-video-hover__video {
-        opacity: 1
+        opacity: 1;
+        transition: all 0.3s ease;
+        
     }
 }
 

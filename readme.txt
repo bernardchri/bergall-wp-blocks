@@ -10,46 +10,41 @@ Example block scaffolded with Create Block tool.
 
 == Description ==
 
-This is the long description. No limit, and you can use Markdown (as well as in the following sections).
-
-For backwards compatibility, if this section is missing, the full length of the short description will be used, and
-Markdown parsed.
+Construction d'un addon avec des blocks complexes animés, pour sites modernes et stylés
 
 == Installation ==
 
-This section describes how to install the plugin and get it working.
+Cette section décrit comment installer le plugin et le faire fonctionner.
 
-e.g.
+par exemple
 
-1. Upload the plugin files to the `/wp-content/plugins/bergall-wp-blocks` directory, or install the plugin through the WordPress plugins screen directly.
-1. Activate the plugin through the 'Plugins' screen in WordPress
+1. Téléchargez les fichiers du plugin dans le répertoire `/wp-content/plugins/bergall-wp-blocks`, ou installez le plugin directement via l'écran des plugins de WordPress.
+2. Activez le plugin via l'écran 'Plugins' dans WordPress.
 
+== Questions Fréquemment Posées ==
 
-== Frequently Asked Questions ==
+= Une question que quelqu'un pourrait avoir =
 
-= A question that someone might have =
+Une réponse à cette question.
 
-An answer to that question.
+= Qu'en est-il de foo bar ? =
 
-= What about foo bar? =
+Réponse au dilemme foo bar.
 
-Answer to foo bar dilemma.
+== Captures d'écran ==
 
-== Screenshots ==
+1. Cette description de capture d'écran correspond à screenshot-1.(png|jpg|jpeg|gif). Notez que la capture d'écran est prise dans le répertoire /assets ou le répertoire contenant le fichier readme.txt stable (tags ou trunk). Les captures d'écran dans le répertoire /assets ont la priorité. Par exemple, `/assets/screenshot-1.png` l'emporterait sur `/tags/4.3/screenshot-1.png` (ou jpg, jpeg, gif).
+2. Ceci est la deuxième capture d'écran.
 
-1. This screen shot description corresponds to screenshot-1.(png|jpg|jpeg|gif). Note that the screenshot is taken from
-the /assets directory or the directory that contains the stable readme.txt (tags or trunk). Screenshots in the /assets
-directory take precedence. For example, `/assets/screenshot-1.png` would win over `/tags/4.3/screenshot-1.png`
-(or jpg, jpeg, gif).
-2. This is the second screen shot
-
-== Changelog ==
+== Journal des modifications ==
 
 = 0.1.0 =
-* Release
+* Version initiale
 
-== Arbitrary section ==
+== Section arbitraire ==
 
-You may provide arbitrary sections, in the same format as the ones above. This may be of use for extremely complicated
-plugins where more information needs to be conveyed that doesn't fit into the categories of "description" or
-"installation." Arbitrary sections will be shown below the built-in sections outlined above.
+Vous pouvez fournir des sections arbitraires, au même format que celles ci-dessus. Cela peut être utile pour des plugins extrêmement complexes où plus d'informations doivent être transmises et qui ne rentrent pas dans les catégories "description" ou "installation". Les sections arbitraires seront affichées en dessous des sections intégrées décrites ci-dessus.
+
+== TODO ==
+- [] revoir les chargements des css ( qui se font via les index.js, et via les chargements de wordpress), cela semble créer des conflits
+- [] Changer Splitext de GSAP par splitting.js 

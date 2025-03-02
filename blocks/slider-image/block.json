@@ -1,0 +1,25 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 2,
+    "name": "bergall/slider-image",
+    "title": "Slider Image",
+    "category": "widgets",
+    "icon": "images-alt",
+    "description": "Un slider d'images",
+    "supports": {
+        "html": false
+    },
+    "attributes": {
+        "slides": {
+            "type": "array",
+            "default": []
+        }, 
+        "numberofslides": {
+            "type": "number",
+            "default": 1
+        }
+       
+    },
+    "editorScript": "file:./index.js",
+    "style": "file:./style.css"
+  }
