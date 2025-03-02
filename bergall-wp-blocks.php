@@ -40,17 +40,17 @@ function bergall_wp_blocks_register_scripts()
     );
 
     wp_enqueue_style(
-        'my-custom-blocks-editor-css',
-        plugins_url('/src/editor.css', __FILE__),
+        'my-custom-blocks-index-css',
+        plugins_url('/build/index.css', __FILE__),
         array('wp-edit-blocks'),
-        filemtime(plugin_dir_path(__FILE__) . 'src/editor.css')
+        filemtime(plugin_dir_path(__FILE__) . 'build/index.css')
     );
 
     wp_enqueue_style(
         'my-custom-blocks-css',
-        plugins_url('/src/style.css', __FILE__),
+        plugins_url('/build/style-index.css', __FILE__),
         array(),
-        filemtime(plugin_dir_path(__FILE__) . 'src/style.css')
+        filemtime(plugin_dir_path(__FILE__) . 'build/style-index.css')
     );
 }
 add_action('enqueue_block_editor_assets', 'bergall_wp_blocks_register_scripts');
@@ -82,11 +82,14 @@ add_filter( 'block_categories_all', 'bergall_new_category_blocks' );
 
 
 // ENREGISTREMENT DES BLOCS
-function register_custom_blocks() {
+function bergallblocks_register_custom_blocks() {
     register_block_type(__DIR__ . '/blocks/animated-paragraph');
+    register_block_type(__DIR__ . '/blocks/image-video-hover');
     // Enregistrez d'autres blocs ici si nécessaire
+
+    
 }
-add_action('init', 'register_custom_blocks');
+add_action('init', 'bergallblocks_register_custom_blocks');
 
 
 

@@ -5,7 +5,7 @@ import './style.css';
 import { customIcon } from '../../src/utils/icon';
 
 
-registerBlockType('custom/animated-paragraph', {
+registerBlockType('bergallblocks/animated-paragraph', {
     icon: customIcon,
     attributes: {
         duration: {

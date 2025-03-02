@@ -1,6 +1,6 @@
 {
     "apiVersion": 2,
-    "name": "custom/animated-paragraph",
+    "name": "bergallblocks/animated-paragraph",
     "title": "Texte animé",
     "category": "bergall",
     "description": "A paragraph block with animated words.",
