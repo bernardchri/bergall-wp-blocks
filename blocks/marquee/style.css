@@ -1,0 +1,29 @@
+.marquee-container :not(.--view){
+    overflow: auto;
+}
+
+.marquee-wrapper {
+    overflow: clip;
+}
+
+.marquee-content, .marquee-content .block-editor-block-list__layout{
+    display: flex;
+    min-width: 100%;
+    width: max-content;
+    align-items:baseline
+    
+}
+
+.--view .marquee-content{
+    animation: marquee-scroll var(--speed, 10s) linear infinite var(--direction,
+    forwards);
+}
+
+/* Duplication via pseudo-élément */
+
+/* Animation */
+@keyframes marquee-scroll {
+    to {
+        transform: translateX(-50%);
+    }
+}

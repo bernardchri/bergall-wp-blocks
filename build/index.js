@@ -924,6 +924,143 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./blocks/marquee/index.js":
+/*!*********************************!*\
+  !*** ./blocks/marquee/index.js ***!
+  \*********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");
+/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./style.css */ "./blocks/marquee/style.css");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "react/jsx-runtime");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__);
+
+
+
+
+
+(0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__.registerBlockType)('bergallblocks/marquee', {
+  title: 'Marquee (Défilement)',
+  icon: 'slides',
+  category: 'design',
+  supports: {
+    color: {
+      background: true,
+      text: true
+    },
+    spacing: {
+      padding: true,
+      margin: true,
+      blockGap: true
+    },
+    "align": ["wide", "full"],
+    html: false,
+    typography: {
+      lineHeight: true
+    }
+  },
+  attributes: {
+    speed: {
+      type: 'number',
+      default: 10
+    },
+    link: {
+      type: 'string',
+      default: ''
+    }
+  },
+  edit: ({
+    attributes,
+    setAttributes
+  }) => {
+    const {
+      speed,
+      link
+    } = attributes;
+    const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps)({
+      className: 'marquee-container'
+    });
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+      ...blockProps,
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
+          title: "Param\xE8tres du Marquee",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.RangeControl, {
+            label: "Vitesse du d\xE9filement",
+            value: speed,
+            onChange: value => setAttributes({
+              speed: value
+            }),
+            min: 2,
+            max: 30
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.URLInput, {
+            label: "Lien (URL)",
+            value: link,
+            onChange: value => setAttributes({
+              link: value
+            }),
+            placeholder: "https://example.com"
+          })]
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+        className: "marquee-wrapper",
+        style: {
+          overflow: scroll
+        },
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+          className: "marquee-content",
+          style: {
+            animationDuration: `${speed}s`,
+            gap: 'var(--wp--style--block-gap, 1rem)'
+          },
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InnerBlocks, {
+            allowedBlocks: ['core/paragraph']
+          })
+        })
+      })]
+    });
+  },
+  save: ({
+    attributes
+  }) => {
+    const {
+      speed,
+      link
+    } = attributes;
+    const content = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+      ..._wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save({
+        className: 'marquee-container --view'
+      }),
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+        className: "marquee-wrapper",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+          className: "marquee-content",
+          style: {
+            '--speed': `${speed}s`,
+            gap: 'var(--wp--style--block-gap, 1rem)'
+          },
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InnerBlocks.Content, {})
+        })
+      })
+    });
+    return link ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("a", {
+      href: link,
+      target: "_blank",
+      rel: "noopener noreferrer",
+      children: content
+    }) : content;
+  }
+});
+
+/***/ }),
+
 /***/ "./blocks/slider-image/index.js":
 /*!**************************************!*\
   !*** ./blocks/slider-image/index.js ***!
@@ -1120,7 +1257,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _blocks_button_block__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../blocks/button-block */ "./blocks/button-block/index.js");
 /* harmony import */ var _blocks_container_parallax__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../blocks/container-parallax */ "./blocks/container-parallax/index.js");
 /* harmony import */ var _blocks_group_extended__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../blocks/group-extended */ "./blocks/group-extended/index.js");
+/* harmony import */ var _blocks_marquee__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../blocks/marquee */ "./blocks/marquee/index.js");
 //  # Point d'entrée pour le plugin (enregistrement des blocs)
+
 
 
 
@@ -10842,6 +10981,19 @@ __webpack_require__.r(__webpack_exports__);
 /*!********************************************!*\
   !*** ./blocks/image-video-hover/style.css ***!
   \********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
+/***/ "./blocks/marquee/style.css":
+/*!**********************************!*\
+  !*** ./blocks/marquee/style.css ***!
+  \**********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";

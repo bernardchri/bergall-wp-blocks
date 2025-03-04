@@ -86,11 +86,12 @@ function bergallblocks_register_custom_blocks() {
     register_block_type(__DIR__ . '/blocks/animated-paragraph');
     register_block_type(__DIR__ . '/blocks/image-video-hover');
     register_block_type(__DIR__ . '/blocks/slider-image');
-    register_block_type(__DIR__ . '/blocks/button-block');
     register_block_type(__DIR__ . '/blocks/container-parallax');
     register_block_type(__DIR__ . '/blocks/group-extended');
-
+    register_block_type(__DIR__ . '/blocks/marquee');
+    
     // EN cours
+    // register_block_type(__DIR__ . '/blocks/button-block');
     // register_block_type(__DIR__ . '/blocks/spans');
 
     
