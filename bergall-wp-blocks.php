@@ -88,6 +88,7 @@ function bergallblocks_register_custom_blocks() {
     register_block_type(__DIR__ . '/blocks/slider-image');
     register_block_type(__DIR__ . '/blocks/button-block');
     register_block_type(__DIR__ . '/blocks/container-parallax');
+    register_block_type(__DIR__ . '/blocks/group-extended');
 
     // EN cours
     // register_block_type(__DIR__ . '/blocks/spans');
