@@ -8,6 +8,21 @@ import './animation.js';
 
 registerBlockType(block.name, {
     icon: customIcon,
+    example: {
+        attributes : {
+            duration : 1,
+            stagger: 0.1,
+            delay : 0.1,
+            animationType : "chars"
+        }, 
+        innerBlocks : [
+            {
+                name : 'core/paragraph',
+                attributes: { content: 'Ceci est un aperçu du texte animé.' }
+            }
+        ]
+    },
+    
     edit({ attributes, setAttributes }) {
         const { duration, stagger, delay, animationType } = attributes;
 

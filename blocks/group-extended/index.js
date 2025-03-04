@@ -14,6 +14,19 @@ registerBlockType('bergallblocks/group-extended', {
         newTab: { type: 'boolean', default: false },
         animation: { type: 'string', default: 'none' }
     },
+    example: {
+        attributes: {
+            href: 'https://example.com',
+            newTab: true,
+            animation: 'fade-in-bottom',
+        },
+        innerBlocks: [
+            {
+                name: 'core/paragraph',
+                attributes: { content: 'Ceci est un aperçu du bloc Group Extended.' }
+            }
+        ]
+    },
     supports: {
         color: {
             background: true,
@@ -32,13 +45,13 @@ registerBlockType('bergallblocks/group-extended', {
         },
         "align": ["wide", "full"],
         "html": false,
-         
+
     },
     edit: ({ attributes, setAttributes }) => {
         const { href, newTab, animation } = attributes;
-        
+
         return (
-            <div {...useBlockProps()}>  
+            <div {...useBlockProps()}>
                 <InspectorControls>
                     <PanelBody title="Link Settings">
                         <URLInput
@@ -73,7 +86,7 @@ registerBlockType('bergallblocks/group-extended', {
     save: ({ attributes }) => {
         const { href, newTab, animation } = attributes;
         const blockProps = useBlockProps.save({ className: `animate-${animation} ${href ? 'has-link' : ''}` });
-        
+
         return href ? (
             <a href={href} target={newTab ? "_blank" : "_self"} rel={newTab ? "noopener noreferrer" : undefined} {...blockProps}>
                 <InnerBlocks.Content />
@@ -87,14 +100,14 @@ registerBlockType('bergallblocks/group-extended', {
 });
 
 document.addEventListener("DOMContentLoaded", function () {
-    if(!gsap) {
+    if (!gsap) {
         return;
     }
 
-    if(document.querySelector('.wp-block-bergallblocks-image-video-hover')){
+    if (document.querySelector('.wp-block-bergallblocks-image-video-hover')) {
         gsap.utils.toArray(".animate-fadeIn, .animate-fadeInUp").forEach(element => {
-            gsap.fromTo(element, 
-                { opacity: 0, y: element.classList.contains("animate-fadeInUp") ? 50 : 0 , display: "block" },
+            gsap.fromTo(element,
+                { opacity: 0, y: element.classList.contains("animate-fadeInUp") ? 50 : 0, display: "block" },
                 {
                     opacity: 1,
                     y: 0,
