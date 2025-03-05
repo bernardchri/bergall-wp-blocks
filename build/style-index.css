@@ -81,32 +81,59 @@
 /*!******************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[2].use[2]!./blocks/marquee/style.css ***!
   \******************************************************************************************************************************************************************************/
-.marquee-container :not(.--view){
-    overflow: auto;
+
+
+a.wp-block-bergallblocks-marquee{
+    display: block;
+    text-decoration: none;
 }
+
 
 .marquee-wrapper {
     overflow: clip;
+    width: 100%;
 }
 
-.marquee-content, .marquee-content .block-editor-block-list__layout{
-    display: flex;
-    min-width: 100%;
-    width: -moz-max-content;
-    width: max-content;
-    align-items:baseline
+.marquee-wrapper.fadeout-horizontal{
+    -webkit-mask-image:  linear-gradient(
+        to right,
+        transparent,
+        black 5rem,
+        black calc(100% - 5rem),
+        transparent
+    );
+            mask-image:  linear-gradient(
+        to right,
+        transparent,
+        black 5rem,
+        black calc(100% - 5rem),
+        transparent
+    );
     
 }
+.marquee-content,
+.marquee-content .block-editor-block-list__layout{
+    display: flex;
+    align-items:baseline;
+    line-height: 1rem;
+    padding-left: 1rem;
+    gap: 1rem;
+}
 
-.--view .marquee-content{
+.marquee-content{
+    width: -moz-max-content;
+    width: max-content;
     animation: marquee-scroll var(--speed, 10s) linear infinite var(--direction,
     forwards);
 }
 
-/* Duplication via pseudo-élément */
+
 
 /* Animation */
 @keyframes marquee-scroll {
+    from{
+        transform:  translateX(0%);
+    }
     to {
         transform: translateX(-50%);
     }

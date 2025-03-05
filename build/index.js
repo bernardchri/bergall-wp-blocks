@@ -957,14 +957,36 @@ __webpack_require__.r(__webpack_exports__);
     },
     spacing: {
       padding: true,
-      margin: true,
-      blockGap: true
+      margin: true
     },
     "align": ["wide", "full"],
     html: false,
     typography: {
       lineHeight: true
     }
+  },
+  example: {
+    attributes: {
+      speed: 10,
+      link: '',
+      direction: 'left'
+    },
+    innerBlocks: [{
+      name: 'core/paragraph',
+      attributes: {
+        content: 'hello'
+      }
+    }, {
+      name: 'core/paragraph',
+      attributes: {
+        content: 'dolly'
+      }
+    }, {
+      name: 'core/paragraph',
+      attributes: {
+        content: 'world'
+      }
+    }]
   },
   attributes: {
     speed: {
@@ -974,6 +996,18 @@ __webpack_require__.r(__webpack_exports__);
     link: {
       type: 'string',
       default: ''
+    },
+    direction: {
+      type: 'boolean',
+      default: false
+    },
+    gradianttransition: {
+      type: 'boolean',
+      default: false
+    },
+    rotation: {
+      type: 'number',
+      default: 0
     }
   },
   edit: ({
@@ -982,7 +1016,10 @@ __webpack_require__.r(__webpack_exports__);
   }) => {
     const {
       speed,
-      link
+      link,
+      gradianttransition,
+      direction,
+      rotation
     } = attributes;
     const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps)({
       className: 'marquee-container'
@@ -993,13 +1030,33 @@ __webpack_require__.r(__webpack_exports__);
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
           title: "Param\xE8tres du Marquee",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.RangeControl, {
-            label: "Vitesse du d\xE9filement",
+            label: "Dur\xE9e de la boucle en sec",
             value: speed,
             onChange: value => setAttributes({
               speed: value
             }),
-            min: 2,
-            max: 30
+            min: 0,
+            max: 60
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ToggleControl, {
+            label: "Direction",
+            checked: direction,
+            onChange: value => setAttributes({
+              direction: value
+            })
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ToggleControl, {
+            label: "Activer/D\xE9sactiver le d\xE9grad\xE9 des bords",
+            checked: gradianttransition,
+            onChange: value => setAttributes({
+              gradianttransition: value
+            })
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.RangeControl, {
+            label: "Rotation",
+            value: rotation,
+            onChange: value => setAttributes({
+              rotation: value
+            }),
+            min: -90,
+            max: 90
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.URLInput, {
             label: "Lien (URL)",
             value: link,
@@ -1010,18 +1067,19 @@ __webpack_require__.r(__webpack_exports__);
           })]
         })
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-        className: "marquee-wrapper",
+        className: `marquee-wrapper ${gradianttransition ? "fadeout-horizontal" : ''}`,
         style: {
-          overflow: scroll
+          overflow: 'scroll',
+          transform: `rotate(${rotation}deg)`
         },
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
           className: "marquee-content",
           style: {
-            animationDuration: `${speed}s`,
-            gap: 'var(--wp--style--block-gap, 1rem)'
+            '--speed': `${speed}s`,
+            "--direction": direction ? "forwards" : "reverse"
           },
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InnerBlocks, {
-            allowedBlocks: ['core/paragraph']
+            allowedBlocks: ['core/paragraph', 'core/group']
           })
         })
       })]
@@ -1032,19 +1090,25 @@ __webpack_require__.r(__webpack_exports__);
   }) => {
     const {
       speed,
-      link
+      link,
+      direction,
+      gradianttransition,
+      rotation
     } = attributes;
     const content = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
       ..._wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save({
-        className: 'marquee-container --view'
+        className: `marquee-container --view `
       }),
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-        className: "marquee-wrapper",
+        className: `marquee-wrapper ${gradianttransition ? "fadeout-horizontal" : ''}`,
+        style: {
+          transform: `rotate(${rotation}deg)`
+        },
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
           className: "marquee-content",
           style: {
             '--speed': `${speed}s`,
-            gap: 'var(--wp--style--block-gap, 1rem)'
+            '--direction': `${direction ? 'forwards' : 'reverse'}`
           },
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InnerBlocks.Content, {})
         })
@@ -1057,6 +1121,20 @@ __webpack_require__.r(__webpack_exports__);
       children: content
     }) : content;
   }
+});
+document.addEventListener('DOMContentLoaded', () => {
+  const marqueeContainer = document.querySelectorAll('.marquee-container');
+  marqueeContainer.forEach(container => {
+    const marqueeContent = container.querySelector('.marquee-content');
+    if (marqueeContent) {
+      const clonedContent = marqueeContent.cloneNode(true);
+      clonedContent.querySelectorAll('p').forEach(p => {
+        p.setAttribute('aria-hidden', 'true');
+      });
+      const clonedContentHTML = clonedContent.innerHTML;
+      marqueeContent.innerHTML += clonedContentHTML;
+    }
+  });
 });
 
 /***/ }),
