@@ -6,7 +6,7 @@ import "./style.css";
 registerBlockType('bergallblocks/marquee', {
     title: 'Marquee (Défilement)',
     icon: 'slides',
-    category: 'design',
+    category: 'bergall',
     supports: {
         color: { background: true, text: true },
         spacing: { padding: true, margin: true },

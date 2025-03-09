@@ -5,7 +5,6 @@ import './style.css';
 import './editor.css';
 import datablock from './block.json';
 
-// import './render.js';
 
 registerBlockType(datablock.name, {
     ...datablock,

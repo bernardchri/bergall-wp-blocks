@@ -1,10 +1,10 @@
 import { registerBlockType } from '@wordpress/blocks';
 import { useBlockProps, MediaUpload, MediaUploadCheck, InspectorControls } from '@wordpress/block-editor';
-import { PanelBody, RangeControl, ToggleControl } from '@wordpress/components';
+import { PanelBody, RangeControl } from '@wordpress/components';
 import { Button } from '@wordpress/components';
 import { useEffect } from '@wordpress/element';
 import Swiper from 'swiper';
-import { Navigation, Pagination } from "swiper/modules";    
+import { Navigation, Pagination } from "swiper/modules";
 import 'swiper/swiper-bundle.css';
 import metadata from './block.json';
 
@@ -58,24 +58,9 @@ registerBlockType(metadata.name, {
                             max={10}
                             step={0.25}
                         />
-                        {/* <ToggleControl
-                            label="Lecture automatique"
-                            checked={attributes.autoplay}
-                            onChange={(value) => setAttributes({ autoplay: value })}
-                        />
-                        {attributes.autoplay && (
-                            <RangeControl
-                                label="Intervalle de lecture automatique (ms)"
-                                value={attributes.interval}
-                                onChange={(value) => setAttributes({ interval: value })}
-                                min={1000}
-                                max={10000}
-                                step={500}
-                            />
-                        )} */}
                     </PanelBody>
                 </InspectorControls>
-                <div className="swiper-container">
+                <div className="bergall-swiper-container">
                     <div className="swiper-wrapper">
                         {attributes.slides.map((slide, index) => (
                             <div key={index} className="swiper-slide">
@@ -113,7 +98,7 @@ registerBlockType(metadata.name, {
         const blockProps = useBlockProps.save();
         return (
             <div {...blockProps} data-numberofslides={attributes.numberofslides} data-autoplay={attributes.autoplay} data-interval={attributes.interval}>
-                <div className="swiper-container">
+                <div className="bergall-swiper-container">
                     <div className="swiper-wrapper">
                         {attributes.slides.map((slide, index) => (
                             <div key={index} className="swiper-slide">
@@ -138,7 +123,7 @@ document.addEventListener('DOMContentLoaded', () => {
     sliders.forEach((slider) => {
         const numberofslides = slider.dataset.numberofslides;
 
-        const sliderswiper = new Swiper(slider.querySelector('.swiper-container'), {
+        const sliderswiper = new Swiper(slider.querySelector('.bergall-swiper-container'), {
             slidesPerView: numberofslides,
             grabCursor: true,
             modules: [Navigation],
@@ -147,6 +132,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 prevEl: slider.querySelector('.button-prev'),
             },
         });
-       
+
     });
 });

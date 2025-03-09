@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', function () {
     // Définir l'opacité à 0 pour tous les éléments avec la classe 'animated-paragraph'
 
     if(document.querySelector('.animated-paragraph')){
-
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {

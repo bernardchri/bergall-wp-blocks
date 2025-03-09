@@ -83,7 +83,7 @@ add_filter( 'block_categories_all', 'bergall_new_category_blocks' );
 
 // ENREGISTREMENT DES BLOCS
 function bergallblocks_register_custom_blocks() {
-    register_block_type(__DIR__ . '/blocks/animated-paragraph');
+    register_block_type(__DIR__ . '/blocks/animated-text');
     register_block_type(__DIR__ . '/blocks/image-video-hover');
     register_block_type(__DIR__ . '/blocks/slider-image');
     register_block_type(__DIR__ . '/blocks/container-parallax');
