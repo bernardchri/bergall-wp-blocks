@@ -104,7 +104,7 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
     }
 
-    if (document.querySelector('.wp-block-bergallblocks-image-video-hover')) {
+    if (document.querySelector('.wp-block-bergallblocks-group-extended')) {
         gsap.utils.toArray(".animate-fadeIn, .animate-fadeInUp").forEach(element => {
             gsap.fromTo(element,
                 { opacity: 0, y: element.classList.contains("animate-fadeInUp") ? 50 : 0, display: "block" },
