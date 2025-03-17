@@ -9,3 +9,5 @@ import '../blocks/button-block';
 import '../blocks/container-parallax';
 import '../blocks/group-extended';
 import '../blocks/marquee';
+import '../blocks/hero-3D-object';
+import '../blocks/scale-on-scroll';
