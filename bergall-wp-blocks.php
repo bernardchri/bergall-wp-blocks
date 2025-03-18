@@ -89,6 +89,7 @@ function bergallblocks_register_custom_blocks() {
     register_block_type(__DIR__ . '/blocks/slider-image');
     register_block_type(__DIR__ . '/blocks/marquee');
     register_block_type(__DIR__ . '/blocks/number-increment-animation');
+    register_block_type(__DIR__ . '/blocks/change-color-on-scroll');
     
     // groups étendus
     register_block_type(__DIR__ . '/blocks/container-parallax');

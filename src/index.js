@@ -6,6 +6,7 @@ import '../blocks/animated-text';
 import '../blocks/image-video-hover/';
 import '../blocks/slider-image';
 import '../blocks/marquee';
+import '../blocks/change-color-on-scroll';
 // Groups étendus
 import '../blocks/container-parallax';
 import '../blocks/group-extended';
