@@ -9,7 +9,7 @@ gsap.registerPlugin(ScrollTrigger);
 registerBlockType('bergallblocks/container-parallax', {
     title: 'Parallax Container',
     icon: 'images-alt2',
-    category: 'design',
+    category: 'bergall',
     attributes: {
         speed: { type: 'number', default: 50 },
         depth: { type: 'number', default: 0 },
