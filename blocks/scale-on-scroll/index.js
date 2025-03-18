@@ -32,6 +32,7 @@ const applyScrollAnimation = (initialScale, zIndex, start, end) => {
 
 registerBlockType('bergallblocks/scale-on-scroll', {
     title: 'Scale on Scroll',
+    description : 'composant qui crée une animation d’effet d’agrandissement au scroll dans la page',
     icon: 'editor-expand', // Utilisation de l'icône "expand" des Dashicons
     category: 'bergall',
     supports: {

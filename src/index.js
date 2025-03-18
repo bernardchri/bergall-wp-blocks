@@ -1,13 +1,16 @@
 //  # Point d'entrée pour le plugin (enregistrement des blocs)
 
-
+// Composants
 import '../blocks/number-increment-animation/';
 import '../blocks/animated-text';
 import '../blocks/image-video-hover/';
 import '../blocks/slider-image';
-import '../blocks/button-block';
+import '../blocks/marquee';
+// Groups étendus
 import '../blocks/container-parallax';
 import '../blocks/group-extended';
-import '../blocks/marquee';
-import '../blocks/hero-3D-object';
-import '../blocks/scale-on-scroll';
+import '../blocks/scale-on-scroll'; 
+
+// TODO
+// import '../blocks/button-block';
+// import '../blocks/hero-3D-object';

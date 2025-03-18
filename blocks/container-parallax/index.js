@@ -9,6 +9,7 @@ gsap.registerPlugin(ScrollTrigger);
 registerBlockType('bergallblocks/container-parallax', {
     title: 'Parallax Container',
     icon: 'images-alt2',
+    description: 'group avec effet parrallax',
     category: 'bergall',
     attributes: {
         speed: { type: 'number', default: 50 },
