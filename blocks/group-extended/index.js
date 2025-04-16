@@ -12,7 +12,12 @@ registerBlockType('bergallblocks/group-extended', {
     attributes: {
         href: { type: 'string', default: '' },
         newTab: { type: 'boolean', default: false },
-        animation: { type: 'string', default: 'none' }
+        animation: { type: 'string', default: 'none' },
+        positionAbsolute: { type: "boolean", default: false },
+        zIndex : {type :'number',default:0},
+        pos : {
+            type:"object", default : {x:0,y:0}
+        }
     },
     example: {
         attributes: {
@@ -48,7 +53,7 @@ registerBlockType('bergallblocks/group-extended', {
 
     },
     edit: ({ attributes, setAttributes }) => {
-        const { href, newTab, animation } = attributes;
+        const { href, newTab, animation, positionAbsolute } = attributes;
 
         return (
             <div {...useBlockProps()}>
@@ -66,6 +71,13 @@ registerBlockType('bergallblocks/group-extended', {
                             onChange={(value) => setAttributes({ newTab: value })}
                         />
                     </PanelBody>
+                    <PanelBody title='Positions'>
+                        <ToggleControl
+                            label="absolue"
+                            checked={positionAbsolute}
+                            onChange={(value) => setAttributes({ positionAbsolute: value })}
+                        />
+                    </PanelBody>
                     <PanelBody title="Animation Settings">
                         <SelectControl
                             label="Entrance Animation"
@@ -78,24 +90,28 @@ registerBlockType('bergallblocks/group-extended', {
                             onChange={(value) => setAttributes({ animation: value })}
                         />
                     </PanelBody>
+
                 </InspectorControls>
-                <InnerBlocks />
+                <div style={{ position: positionAbsolute ? "absolute" : "relative" }}>
+                    <InnerBlocks />
+                </div>
             </div>
         );
     },
     save: ({ attributes }) => {
-        const { href, newTab, animation } = attributes;
-        const blockProps = useBlockProps.save({ className: `animate-${animation} ${href ? 'has-link' : ''}` });
+        const { href, newTab, animation, positionAbsolute } = attributes;
 
-        return href ? (
-            <a href={href} target={newTab ? "_blank" : "_self"} rel={newTab ? "noopener noreferrer" : undefined} {...blockProps}>
+        const blockProps = useBlockProps.save({ className: `animate-${animation} ${href ? 'has-link' : ''} ` });
+
+        return <div {...blockProps}  style={{ position: positionAbsolute ? "absolute" : "relative" }}>
+            {href ? (
+                <a href={href} target={newTab ? "_blank" : "_self"} rel={newTab ? "noopener noreferrer" : undefined} {...blockProps}>
+                    <InnerBlocks.Content />
+                </a>
+            ) : (
                 <InnerBlocks.Content />
-            </a>
-        ) : (
-            <div {...blockProps}>
-                <InnerBlocks.Content />
-            </div>
-        );
+            )}
+        </div>
     }
 });
 

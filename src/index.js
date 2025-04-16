@@ -4,13 +4,19 @@
 import '../blocks/number-increment-animation/';
 import '../blocks/animated-text';
 import '../blocks/image-video-hover/';
-import '../blocks/slider-image';
+
+import '../blocks/slider-simple';
+import '../blocks/slider-simple-item';
+
 import '../blocks/marquee';
 import '../blocks/change-color-on-scroll';
 // Groups étendus
 import '../blocks/container-parallax';
 import '../blocks/group-extended';
-import '../blocks/scale-on-scroll'; 
+import '../blocks/scale-on-scroll';
+
+// headers
+import '../blocks/header-minimalist'; 
 
 // TODO
 // import '../blocks/button-block';

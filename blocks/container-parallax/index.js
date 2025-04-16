@@ -77,7 +77,7 @@ registerBlockType('bergallblocks/container-parallax', {
                 maxWidth: fullWidth ? '100%' : 'auto',
                 textAlign: alignment
             }}>
-                <div className="parallax-content" style={{
+                <div classNamÒe="parallax-content" style={{
                     willChange: 'transform',
                     transformStyle: 'preserve-3d',
                     transformPerspective: 1000

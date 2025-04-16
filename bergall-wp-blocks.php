@@ -86,7 +86,8 @@ function bergallblocks_register_custom_blocks() {
     // composants animations
     register_block_type(__DIR__ . '/blocks/animated-text');
     register_block_type(__DIR__ . '/blocks/image-video-hover');
-    register_block_type(__DIR__ . '/blocks/slider-image');
+    register_block_type(__DIR__ . '/blocks/slider-simple');
+    register_block_type(__DIR__ . '/blocks/slider-simpleitem');
     register_block_type(__DIR__ . '/blocks/marquee');
     register_block_type(__DIR__ . '/blocks/number-increment-animation');
     register_block_type(__DIR__ . '/blocks/change-color-on-scroll');
@@ -95,6 +96,9 @@ function bergallblocks_register_custom_blocks() {
     register_block_type(__DIR__ . '/blocks/container-parallax');
     register_block_type(__DIR__ . '/blocks/group-extended');
     register_block_type(__DIR__ . '/blocks/scale-on-scroll');
+    
+    // headers
+    register_block_type(__DIR__ . '/blocks/header-minimalist');
 
     // TODO en cours
     // register_block_type(__DIR__ . '/blocks/hero-3D-object');

@@ -7,6 +7,7 @@
     "start": "wp-scripts start"
   },
   "dependencies": {
+    "@wordpress/api-fetch": "^7.20.0",
     "gsap": "^3.12.7",
     "splitting": "^1.1.0",
     "swiper": "^11.2.4",
