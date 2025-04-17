@@ -125,7 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
 const sliderSimple = (sliders, attributes) => {
 
     // console.log('sliderSimple', sliders, attributes.numberofslides, attributes.numberofslidesMobile);
-    console.log(sliders.querySelector('.bergall-swiper-container'));
+    // console.log(sliders.querySelector('.bergall-swiper-container'));
 
 
     const sliderswiper = new Swiper(sliders.querySelector('.bergall-swiper-container'), {

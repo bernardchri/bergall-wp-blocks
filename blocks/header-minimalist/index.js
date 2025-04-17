@@ -1,13 +1,24 @@
 import { registerBlockType } from '@wordpress/blocks';
-import { InspectorControls, useBlockProps } from '@wordpress/block-editor';
-import { PanelBody, SelectControl } from '@wordpress/components';
+import { InnerBlocks, InspectorControls, useBlockProps } from '@wordpress/block-editor';
+import { Button, PanelBody, SelectControl, ToolbarButton } from '@wordpress/components';
 import apiFetch from '@wordpress/api-fetch';
-import { useEffect, useState } from '@wordpress/element';
+import { render, useEffect, useState } from '@wordpress/element';
 import { addQueryArgs } from '@wordpress/url';
 
 
-// header le logo, et lien dessus vers la home page
-//
+
+const findMenuToDisplay = (data, id) => {
+    let menu = data.find(menu => menu.id === parseFloat(id))
+    return menu?.content?.rendered || '';
+}
+
+/** HEADER MINIMALISTES */
+// 3 niveaux de menus
+// - un menu de navigation principal toujours visible
+// - un menu burger secondaire 
+// - un menu burger tertiaire pour les réseaux sociaux 
+// en version mobile, les trois menus sont superposés dans un menu burger avec une hierarchie de 3 niveaux
+// Menu en sticky 
 
 registerBlockType('bergalblocks/header-minimalist', {
     title: 'Header minimaliste',
@@ -24,30 +35,48 @@ registerBlockType('bergalblocks/header-minimalist', {
             padding: true,
             blockGap: true
         }
-
     },
-
     attributes: {
         sticky: {
             type: "boolean",
             default: false
         },
-        menu01: {
-            type: "string",
-            default: "principal"
+        menus: {
+            type: "array",
+            default: []
         },
-        menu_hidden: {
-            type: "string",
-            default: "secondary"
-        }
+        menuPrimaire: {
+            type: 'string',
+            default: '',
+        },
+        menuSecondaire: {
+            type: 'string',
+            default: '',
+        },
+        menuTertiaire: {
+            type: 'string',
+            default: '',
+        },
+        menuPrimaireHtml: {
+            type: 'string',
+            default: '',
+        },
+        menuSecondaireHtml: {
+            type: 'string',
+            default: '',
+        },
+        menuTertiaireHtml: {
+            type: 'string',
+            default: '',
+        },
     },
     edit: ({ attributes, setAttributes }) => {
         const { sticky } = attributes;
         const blocksProps = useBlockProps();
 
-        const [menus, setMenus] = useState([]);
-        const [selectedMenu, setSelectedMenu] = useState('');
-        const [menuToDisplay, setMenuToDisplay] = useState('');
+        const [allMenus, setAllMenus] = useState([]);
+        const [menuOptions, setMenuOptions] = useState([]);
+        const [openMenu, setOpenMenu] = useState(true);
 
         useEffect(() => {
             // Fetch menus from the REST API
@@ -55,29 +84,24 @@ registerBlockType('bergalblocks/header-minimalist', {
                 .then(response => response.json())
                 .then(data => {
                     // récupère les datas
-                    setMenus(data);
-                    console.log("-->", data.find(menu => menu.id === parseFloat(selectedMenu)))
-                    // si selectMenu pas défini on prend par défaut le premier
-                    !selectedMenu && setSelectedMenu(data[0].id)
-                    // 
-                    console.log(findMenuToDisplay(data, selectedMenu).content.rendered)
-                    setMenuToDisplay(findMenuToDisplay(data, selectedMenu))
-
+                    setAllMenus(data);
+                    // mappe les menus pour les options du select
+                    setMenuOptions(allMenus.map(menu => ({
+                        value: menu.id,
+                        label: menu.slug,
+                    })));
                 })
                 .catch(error => console.error('Error fetching menus:', error));
-                
+        }, [allMenus]);
 
-        }, [selectedMenu]);
-
-        const findMenuToDisplay = (data, id) => {
-            return data.find(menu => menu.id === parseFloat(id))
-        }
-
-        const menuOptions = menus.map(menu => ({
-            value: menu.id,
-            label: menu.slug,
-        }));
-
+        useEffect(() => {
+            setAttributes({
+              
+                menuPrimaireHtml: findMenuToDisplay(allMenus, attributes.menuPrimaire),
+                menuSecondaireHtml: findMenuToDisplay(allMenus, attributes.menuSecondaire),
+                menuTertiaireHtml: findMenuToDisplay(allMenus, attributes.menuTertiaire),
+            });
+        }, [attributes.menuPrimaire, attributes.menuSecondaire, attributes.menuTertiaire, allMenus]);
 
         return (
             <div {...blocksProps}>
@@ -85,37 +109,107 @@ registerBlockType('bergalblocks/header-minimalist', {
                     <PanelBody title="options">
                         <SelectControl
                             label="Menu visible"
-                            value={selectedMenu}
+                            value={attributes.menuPrimaire}
                             options={menuOptions}
-                            onChange={(newValue) => setSelectedMenu(newValue)}
+                            onChange={(newValue) => setAttributes({ menuPrimaire: newValue })}
                         />
+                        <SelectControl
+                            label="Menu secondaire burger"
+                            value={attributes.menuSecondaire}
+                            options={menuOptions}
+                            onChange={(newValue) => setAttributes({ menuSecondaire: newValue })}
+                        />
+                        <SelectControl
+                            label="Menu tertiaire burger"
+                            value={attributes.menuTertiaire}
+                            options={menuOptions}
+                            onChange={(newValue) => setAttributes({ menuTertiaire: newValue })}
+                        />
+                        {/* <SelectControl
+                            label="Sticky"
+                            value={sticky}
+                            options={[
+                                { label: 'Oui', value: true },
+                                { label: 'Non', value: false },
+                            ]}
+                            onChange={(newValue) => setAttributes({ sticky: newValue === 'true' })}
+                        /> */}
+
                     </PanelBody>
                 </InspectorControls>
                 <div className='wp-block-column'>
                     Header minimalist
+                    {attributes.menuPrimaire}
                     <div className="logo">logo</div>
-                    {menuToDisplay?.content?.rendered}
                     <div className='fast-links'>
-                        <ul>
-                            <li><a href='#'> lien 01</a></li>
-                            <li><a href='#'> lien 02</a></li>
-                        </ul>
+                        <ul dangerouslySetInnerHTML={{ __html: findMenuToDisplay(allMenus, attributes.menuPrimaire) }} />
                     </div>
-                    <div className='menu-button'>menu |||</div>
-                    <div className='menu'>menu deplie big</div>
-                    sticky : {sticky ? "sticky !" : "pas sticky"}
+
+                    <Button className='menu-button' onClick={() => setOpenMenu(!openMenu)}>
+                        {openMenu ? <div>menu X</div> : <div>menu |||</div>}
+                    </Button>
+
+                    {
+                        openMenu && <div className='menu'>
+                            <div>
+                                Second menu
+                                <ul dangerouslySetInnerHTML={{ __html: findMenuToDisplay(allMenus, attributes.menuSecondaire) }} />
+                            </div>
+
+                            <div>
+                                troisieme menu
+                                <ul dangerouslySetInnerHTML={{ __html: findMenuToDisplay(allMenus, attributes.menuTertiaire) }} />
+                            </div>
+                        </div>
+                    }
+                    {/* sticky : {sticky ? "sticky !" : "pas sticky"} */}
                 </div>
             </div>
         )
     },
     save: ({ attributes }) => {
         const blocksProps = useBlockProps.save();
-
+        console.log('blocksProps', blocksProps);
+        // const [openMenu, setOpenMenu] = useState(false);
+        console.log('attributes', attributes);
 
         return (
-            <div {...blocksProps}>
-                Header minimalist
-            </div>
+            <header {...blocksProps}>
+                <div className={`menu ${attributes.sticky ? 'sticky' : ''}`}>
+                </div>
+                <div className="logo">logo</div>
+                <div className='fast-links'>
+                    <ul className='menu-primaire' dangerouslySetInnerHTML={{ __html: attributes.menuPrimaireHtml }} />
+                </div>
+                <button className='menu-button' data-open="false">menu</button>
+
+                <div className='menu-big'>
+                    
+                    <ul className='menu-primaire' dangerouslySetInnerHTML={{ __html: attributes.menuPrimaireHtml }} />
+                    ---
+                    <ul dangerouslySetInnerHTML={{ __html: attributes.menuSecondaireHtml }} />
+                    ---
+                    <ul dangerouslySetInnerHTML={{ __html: attributes.menuTertiaireHtml }} />
+                </div>
+                <InnerBlocks.Content />
+            </header>
         )
     }
 });
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    const headerMinimalist = document.querySelectorAll('.wp-block-bergalblocks-header-minimalist');
+
+    headerMinimalist.forEach(header => {
+        const menuButton = header.querySelector('.menu-button');
+        const menu = header.querySelector('.menu');
+
+        menuButton.addEventListener('click', () => {
+            menu.classList.toggle('open');
+        });
+    })
+
+
+});
+

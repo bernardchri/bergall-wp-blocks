@@ -838,8 +838,18 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-// header le logo, et lien dessus vers la home page
-//
+const findMenuToDisplay = (data, id) => {
+  let menu = data.find(menu => menu.id === parseFloat(id));
+  return menu?.content?.rendered || '';
+};
+
+/** HEADER MINIMALISTES */
+// 3 niveaux de menus
+// - un menu de navigation principal toujours visible
+// - un menu burger secondaire 
+// - un menu burger tertiaire pour les réseaux sociaux 
+// en version mobile, les trois menus sont superposés dans un menu burger avec une hierarchie de 3 niveaux
+// Menu en sticky 
 
 (0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__.registerBlockType)('bergalblocks/header-minimalist', {
   title: 'Header minimaliste',
@@ -861,13 +871,33 @@ __webpack_require__.r(__webpack_exports__);
       type: "boolean",
       default: false
     },
-    menu01: {
-      type: "string",
-      default: "principal"
+    menus: {
+      type: "array",
+      default: []
     },
-    menu_hidden: {
-      type: "string",
-      default: "secondary"
+    menuPrimaire: {
+      type: 'string',
+      default: ''
+    },
+    menuSecondaire: {
+      type: 'string',
+      default: ''
+    },
+    menuTertiaire: {
+      type: 'string',
+      default: ''
+    },
+    menuPrimaireHtml: {
+      type: 'string',
+      default: ''
+    },
+    menuSecondaireHtml: {
+      type: 'string',
+      default: ''
+    },
+    menuTertiaireHtml: {
+      type: 'string',
+      default: ''
     }
   },
   edit: ({
@@ -878,68 +908,92 @@ __webpack_require__.r(__webpack_exports__);
       sticky
     } = attributes;
     const blocksProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps)();
-    const [menus, setMenus] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_4__.useState)([]);
-    const [selectedMenu, setSelectedMenu] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_4__.useState)('');
-    const [menuToDisplay, setMenuToDisplay] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_4__.useState)('');
+    const [allMenus, setAllMenus] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_4__.useState)([]);
+    const [menuOptions, setMenuOptions] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_4__.useState)([]);
+    const [openMenu, setOpenMenu] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_4__.useState)(true);
     (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_4__.useEffect)(() => {
       // Fetch menus from the REST API
       fetch('/wp-json/wp/v2/navigation/').then(response => response.json()).then(data => {
         // récupère les datas
-        setMenus(data);
-        console.log("-->", data.find(menu => menu.id === parseFloat(selectedMenu)));
-        // si selectMenu pas défini on prend par défaut le premier
-        !selectedMenu && setSelectedMenu(data[0].id);
-        // 
-        console.log(findMenuToDisplay(data, selectedMenu).content.rendered);
-        setMenuToDisplay(findMenuToDisplay(data, selectedMenu));
+        setAllMenus(data);
+        // mappe les menus pour les options du select
+        setMenuOptions(allMenus.map(menu => ({
+          value: menu.id,
+          label: menu.slug
+        })));
       }).catch(error => console.error('Error fetching menus:', error));
-    }, [selectedMenu]);
-    const findMenuToDisplay = (data, id) => {
-      return data.find(menu => menu.id === parseFloat(id));
-    };
-    const menuOptions = menus.map(menu => ({
-      value: menu.id,
-      label: menu.slug
-    }));
+    }, [allMenus]);
+    (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_4__.useEffect)(() => {
+      setAttributes({
+        menuPrimaireHtml: findMenuToDisplay(allMenus, attributes.menuPrimaire),
+        menuSecondaireHtml: findMenuToDisplay(allMenus, attributes.menuSecondaire),
+        menuTertiaireHtml: findMenuToDisplay(allMenus, attributes.menuTertiaire)
+      });
+    }, [attributes.menuPrimaire, attributes.menuSecondaire, attributes.menuTertiaire, allMenus]);
     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
       ...blocksProps,
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, {
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
           title: "options",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.SelectControl, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.SelectControl, {
             label: "Menu visible",
-            value: selectedMenu,
+            value: attributes.menuPrimaire,
             options: menuOptions,
-            onChange: newValue => setSelectedMenu(newValue)
-          })
+            onChange: newValue => setAttributes({
+              menuPrimaire: newValue
+            })
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.SelectControl, {
+            label: "Menu secondaire burger",
+            value: attributes.menuSecondaire,
+            options: menuOptions,
+            onChange: newValue => setAttributes({
+              menuSecondaire: newValue
+            })
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.SelectControl, {
+            label: "Menu tertiaire burger",
+            value: attributes.menuTertiaire,
+            options: menuOptions,
+            onChange: newValue => setAttributes({
+              menuTertiaire: newValue
+            })
+          })]
         })
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
         className: "wp-block-column",
-        children: ["Header minimalist", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+        children: ["Header minimalist", attributes.menuPrimaire, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
           className: "logo",
           children: "logo"
-        }), menuToDisplay?.content?.rendered, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
           className: "fast-links",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("ul", {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("li", {
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("a", {
-                href: "#",
-                children: " lien 01"
-              })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("li", {
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("a", {
-                href: "#",
-                children: " lien 02"
-              })
-            })]
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("ul", {
+            dangerouslySetInnerHTML: {
+              __html: findMenuToDisplay(allMenus, attributes.menuPrimaire)
+            }
           })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
           className: "menu-button",
-          children: "menu |||"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+          onClick: () => setOpenMenu(!openMenu),
+          children: openMenu ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+            children: "menu X"
+          }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+            children: "menu |||"
+          })
+        }), openMenu && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
           className: "menu",
-          children: "menu deplie big"
-        }), "sticky : ", sticky ? "sticky !" : "pas sticky"]
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+            children: ["Second menu", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("ul", {
+              dangerouslySetInnerHTML: {
+                __html: findMenuToDisplay(allMenus, attributes.menuSecondaire)
+              }
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+            children: ["troisieme menu", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("ul", {
+              dangerouslySetInnerHTML: {
+                __html: findMenuToDisplay(allMenus, attributes.menuTertiaire)
+              }
+            })]
+          })]
+        })]
       })]
     });
   },
@@ -947,11 +1001,57 @@ __webpack_require__.r(__webpack_exports__);
     attributes
   }) => {
     const blocksProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save();
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+    console.log('blocksProps', blocksProps);
+    // const [openMenu, setOpenMenu] = useState(false);
+    console.log('attributes', attributes);
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("header", {
       ...blocksProps,
-      children: "Header minimalist"
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+        className: `menu ${attributes.sticky ? 'sticky' : ''}`
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+        className: "logo",
+        children: "logo"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+        className: "fast-links",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("ul", {
+          className: "menu-primaire",
+          dangerouslySetInnerHTML: {
+            __html: attributes.menuPrimaireHtml
+          }
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("button", {
+        className: "menu-button",
+        "data-open": "false",
+        children: "menu"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+        className: "menu-big",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("ul", {
+          className: "menu-primaire",
+          dangerouslySetInnerHTML: {
+            __html: attributes.menuPrimaireHtml
+          }
+        }), "---", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("ul", {
+          dangerouslySetInnerHTML: {
+            __html: attributes.menuSecondaireHtml
+          }
+        }), "---", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("ul", {
+          dangerouslySetInnerHTML: {
+            __html: attributes.menuTertiaireHtml
+          }
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InnerBlocks.Content, {})]
     });
   }
+});
+document.addEventListener('DOMContentLoaded', () => {
+  const headerMinimalist = document.querySelectorAll('.wp-block-bergalblocks-header-minimalist');
+  headerMinimalist.forEach(header => {
+    const menuButton = header.querySelector('.menu-button');
+    const menu = header.querySelector('.menu');
+    menuButton.addEventListener('click', () => {
+      menu.classList.toggle('open');
+    });
+  });
 });
 
 /***/ }),
@@ -2205,7 +2305,8 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 const sliderSimple = (sliders, attributes) => {
   // console.log('sliderSimple', sliders, attributes.numberofslides, attributes.numberofslidesMobile);
-  console.log(sliders.querySelector('.bergall-swiper-container'));
+  // console.log(sliders.querySelector('.bergall-swiper-container'));
+
   const sliderswiper = new swiper__WEBPACK_IMPORTED_MODULE_3__["default"](sliders.querySelector('.bergall-swiper-container'), {
     slidesPerView: attributes.numberofslides,
     grabCursor: true,
