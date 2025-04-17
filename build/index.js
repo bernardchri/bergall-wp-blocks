@@ -1859,6 +1859,7 @@ const sliderImage = () => {
       spaceBetween: 10,
       loop: true,
       effect: "fade",
+      autoHeight: true,
       modules: [swiper_modules__WEBPACK_IMPORTED_MODULE_4__.Navigation, swiper_modules__WEBPACK_IMPORTED_MODULE_4__.Pagination, swiper_modules__WEBPACK_IMPORTED_MODULE_4__.EffectFade],
       fadeEffect: {
         crossFade: true

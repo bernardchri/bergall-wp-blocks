@@ -3,7 +3,7 @@ import { registerBlockType } from '@wordpress/blocks';
 import { InspectorControls, MediaPlaceholder, useBlockProps } from '@wordpress/block-editor';
 import Swiper from "swiper";
 import { PanelBody } from '@wordpress/components';
-import { Autoplay, Navigation, Pagination, EffectFade } from 'swiper/modules';
+import { Navigation, Pagination, EffectFade } from 'swiper/modules';
 import { SliderNavigation } from '../../src/components/navigation-swiper';
 import "./style.css";
 import "swiper/css";
@@ -19,6 +19,7 @@ const sliderImage = () => {
             spaceBetween: 10,
             loop: true,
             effect: "fade",
+            autoHeight: true,
             modules: [Navigation, Pagination, EffectFade],
             fadeEffect: {
                 crossFade: true
