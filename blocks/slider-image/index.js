@@ -11,10 +11,8 @@ import 'swiper/css/effect-fade';
 import { useEffect } from '@wordpress/element';
 
 
-
 const sliderImage = () => {
     const sliders = document.querySelectorAll('.bb-slider-image');
-
     sliders.forEach((slider) => {
         const swiper = new Swiper(slider, {
             slidesPerView: 1,
@@ -36,7 +34,6 @@ const sliderImage = () => {
         });
     });
 }
-
 
 registerBlockType("bergall/slider-image", {
     title: "Slider images",
