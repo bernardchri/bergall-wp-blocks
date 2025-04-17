@@ -1,10 +1,17 @@
-//  # Point d'entrée pour le plugin (enregistrement des blocs)
 
+// Import CSS Librairies générales 
+// import "swiper/css";
+
+
+//  # Point d'entrée pour le plugin (enregistrement des blocs)
 // Composants
 import '../blocks/number-increment-animation/';
 import '../blocks/animated-text';
 import '../blocks/image-video-hover/';
 
+// Slider
+import '../blocks/slider-image';
+// Slider dans la page
 import '../blocks/slider-simple';
 import '../blocks/slider-simple-item';
 

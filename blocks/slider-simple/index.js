@@ -1,11 +1,12 @@
 import { registerBlockType } from '@wordpress/blocks';
 import { useBlockProps, InspectorControls, InnerBlocks } from '@wordpress/block-editor';
 import { PanelBody, RangeControl } from '@wordpress/components';
-import { useEffect, useLayoutEffect } from '@wordpress/element';
 import Swiper from 'swiper';
 import { Navigation, Pagination } from "swiper/modules";
-import "./style.css";
+import { SliderNavigation } from '../../src/components/navigation-swiper';
+import { useEffect, useRef } from '@wordpress/element';
 import "swiper/css";
+import "./style.css";
 
 registerBlockType("bergall/slider-simple", {
     title: "Slider simple",
@@ -50,12 +51,17 @@ registerBlockType("bergall/slider-simple", {
         },
     },
     edit({ attributes, setAttributes }) {
-
+        const refContainer = useRef(null);
         const { slides, numberofslides, numberofslidesMobile } = attributes;
         const blockProps = useBlockProps();
 
+        useEffect(() => {
+            sliderSimple(refContainer.current, { numberofslides, numberofslidesMobile });
+
+        }, [slides, numberofslides, numberofslidesMobile]);
+
         return (
-            <div {...blockProps} autoplay={attributes.autoplay} interval={attributes.interval} numberofslides={numberofslides} style={{ outline: "1px dotted grey", padding: "0.5rem" }}>
+            <div {...blockProps} autoplay={attributes.autoplay} interval={attributes.interval} numberofslides={numberofslides} style={{ outline: "1px dotted grey", padding: "0.5rem" }} ref={refContainer}>
                 <InspectorControls>
                     <PanelBody title="Paramètres du slider">
                         <RangeControl
@@ -77,7 +83,7 @@ registerBlockType("bergall/slider-simple", {
                     </PanelBody>
                 </InspectorControls>
                 <div className="bergall-swiper-container" >
-                    <div className="swiper-wrapper"  >
+                    <div className="swiper-wrapper">
                         <InnerBlocks allowedBlocks={['bergall/slider-simple-item']} />
                     </div>
                     <SliderNavigation />
@@ -102,52 +108,50 @@ registerBlockType("bergall/slider-simple", {
 });
 
 
-
-function SliderNavigation(paginationDisplay, navigationDisplay) {
-    return (
-        // 
-        <div className="swiper-bottom">
-            {paginationDisplay && <div className="swiper-pagination"></div>}
-            {navigationDisplay && <div className="navigation">
-                <div className="button-prev">←</div>
-                <div className="button-next">→</div>
-            </div>}
-
-        </div>
-    );
-}
-
-
 document.addEventListener('DOMContentLoaded', () => {
+
     const sliders = document.querySelectorAll('.wp-block-bergall-slider-simple');
+
     sliders.forEach((slider) => {
-        const numberofslides = slider.dataset.numberofslides;
-        const numberofslidesMobile = slider.dataset.numberofslidesmobile;
-        const sliderswiper = new Swiper(slider.querySelector('.bergall-swiper-container'), {
-            slidesPerView: numberofslides,
-            grabCursor: true,
-            speed: 500,
-            modules: [Navigation, Pagination],
-            pagination: {
-                el: slider.querySelector('.swiper-pagination')
-            },
-            navigation: {
-                nextEl: slider.querySelector('.button-next'),
-                prevEl: slider.querySelector('.button-prev'),
-            },
-            breakpoints: {
-                0: {
-                    slidesPerView: numberofslidesMobile,
-
-
-                },
-                768: {
-                    slidesPerView: numberofslides,
-                },
-            },
-
+        sliderSimple(slider, {
+            numberofslides: slider.dataset.numberofslides,
+            numberofslidesMobile: slider.dataset.numberofslidesmobile
         });
+    })
+});
 
+
+
+const sliderSimple = (sliders, attributes) => {
+
+    // console.log('sliderSimple', sliders, attributes.numberofslides, attributes.numberofslidesMobile);
+    console.log(sliders.querySelector('.bergall-swiper-container'));
+
+
+    const sliderswiper = new Swiper(sliders.querySelector('.bergall-swiper-container'), {
+        slidesPerView: attributes.numberofslides,
+        grabCursor: true,
+        speed: 500,
+        modules: [Navigation, Pagination],
+        pagination: {
+            el: sliders.querySelector('.swiper-pagination')
+        },
+        navigation: {
+            nextEl: sliders.querySelector('.button-next'),
+            prevEl: sliders.querySelector('.button-prev'),
+        },
+        breakpoints: {
+            0: {
+                slidesPerView: attributes.numberofslidesMobile,
+
+
+            },
+            768: {
+                slidesPerView: attributes.numberofslides,
+            },
+        },
     });
 
-});
+
+}
+

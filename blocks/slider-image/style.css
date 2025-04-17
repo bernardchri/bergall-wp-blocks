@@ -1,0 +1,18 @@
+.wp-block-bergall-slider-image {
+    position: relative;
+}
+
+.bb-slider-image {
+    overflow: hidden;
+    width: auto;
+}
+
+.wp-block-bergall-slider-image .swiper-slide img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.wp-block-bergall-slider-image img {
+    line-height: 0;
+}

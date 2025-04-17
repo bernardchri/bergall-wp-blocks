@@ -1,12 +1,11 @@
 // new FSE wp-blocks
-
 import { registerBlockType } from '@wordpress/blocks';
 import { InnerBlocks, useBlockProps } from '@wordpress/block-editor';
 
 registerBlockType("bergall/slider-simple-item", {
     title: "Slider simple item",
     category: "bergall",
-    icon: "image",
+    icon: "images-alt2",
     description: "Un item de slide",
     supports: {
         align: true,
@@ -24,8 +23,8 @@ registerBlockType("bergall/slider-simple-item", {
     edit() {
         const blockProps = useBlockProps();
         return (
-            <div {...blockProps}  className="swiper-slide"  style={{ outline: "1px dotted grey" }}>
-                    <InnerBlocks />
+            <div {...blockProps} className="swiper-slide" style={{ outline: "1px dotted grey" }}>
+                <InnerBlocks />
             </div>
         );
     },
@@ -33,7 +32,7 @@ registerBlockType("bergall/slider-simple-item", {
         const blockProps = useBlockProps.save();
         return (
             <div {...blockProps} className="swiper-slide">
-                    <InnerBlocks.Content />
+                <InnerBlocks.Content />
             </div>
         );
     },

@@ -1,0 +1,67 @@
+.slidernav.slidernav-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/*  */
+.slidernav .navigation {
+    display: flex;
+    gap: 0.5rem;
+    font-size: 1rem;
+    justify-content: end;
+}
+
+.slidernav .navigation > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    height: 2rem;
+    width: 2rem;
+    border: 1px solid var(--wp--preset--color--contrast);
+    border-radius: 50%;
+    transition: all 0.125s ease-in-out;
+}
+
+.slidernav .navigation>div:hover {
+    background: var(--wp--preset--color--contrast);
+    color: #fff;
+}
+
+/* .slidernav .navigation>div:active {
+    background: var(--wp--preset--color--contrast);
+    color: #fff;
+}
+
+
+.slidernav .navigation>div:focus-visible {
+    background: var(--wp--preset--color--contrast);
+    color: #fff;
+} */
+
+
+
+/*  pagination */
+.slidernav .swiper-pagination {
+    display: inline-flex;
+    gap: 0.25rem;
+}
+
+.slidernav .swiper-pagination-bullet {
+    gap: 1rem;
+    display: inline-flex;
+    background: var(--wp--preset--color--contrast);
+    ;
+    opacity: 1;
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+}
+
+.slidernav .swiper-pagination-bullet-active {
+    background: #fff;
+    opacity: 1;
+    border-radius: 50%;
+}

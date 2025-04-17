@@ -86,6 +86,7 @@ function bergallblocks_register_custom_blocks() {
     // composants animations
     register_block_type(__DIR__ . '/blocks/animated-text');
     register_block_type(__DIR__ . '/blocks/image-video-hover');
+    register_block_type(__DIR__ . '/blocks/slider-image');
     register_block_type(__DIR__ . '/blocks/slider-simple');
     register_block_type(__DIR__ . '/blocks/slider-simpleitem');
     register_block_type(__DIR__ . '/blocks/marquee');
