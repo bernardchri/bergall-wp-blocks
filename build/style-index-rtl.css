@@ -242,3 +242,153 @@ a.wp-block-bergallblocks-marquee{
 .scale-on-scroll{
     width: 100%;
 }
+/*!****************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[2].use[2]!./blocks/header-minimalist/style.css ***!
+  \****************************************************************************************************************************************************************************************/
+.wp-block-bergalblocks-header-minimalist {
+    max-width: 100%;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 9999;
+}
+
+.wp-block-bergalblocks-header-minimalist a:hover {
+    cursor: pointer;
+}
+
+.wp-block-bergalblocks-header-minimalist a {
+
+    text-decoration: none;
+}
+
+body :has(.wp-block-bergalblocks-header-minimalist) {
+    padding-top: 5rem;
+}
+
+.wp-block-bergalblocks-header-minimalist .header-minimalist__barre {
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 1rem;
+    /* background-color: #f8f9fa; */
+}
+
+.wp-block-bergalblocks-header-minimalist .header-minimalist__barre .header-minimalist__logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #343a40;
+}
+
+
+.wp-block-bergalblocks-header-minimalist .header-minimalist__menuburger {
+    background-color: #ffffff;
+    transition: all 0.25s ease-in-out;
+    position: absolute;
+    width: 100%;
+    z-index: -1;
+    height: 100vh;
+    overflow: auto;
+    right: 0;
+    top: 0;
+    left: 0;
+    bottom: 0;
+}
+
+.header-minimalist__menuburgerwrapper {
+    /* outline: 1px solid #343a40; */
+    position: relative;
+    z-index: 9999;
+    margin: 6rem 2rem 2rem;
+    min-height: 80%;
+}
+
+.wp-block-bergalblocks-header-minimalist .header-minimalist__menuburger[data-open="false"] {
+    display: none;
+}
+
+.wp-block-bergalblocks-header-minimalist .header-minimalist__barre .header-minimalist__menu01 ul {
+    display: flex;
+    gap: 1rem;
+    font-size: 1rem;
+    margin: 0;
+}
+
+
+.wp-block-bergalblocks-header-minimalist .header-minimalist__menuburger .header-minimalist__menu01 ul {
+    font-size: 2rem;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.wp-block-bergalblocks-header-minimalist .header-minimalist__menu02 ul {
+    font-size: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.wp-block-bergalblocks-header-minimalist .header-minimalist__menu03 ul {
+    font-size: 1rem;
+
+    padding: 1rem 0;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+@media screen and (max-width: 976px) {
+    .wp-block-bergalblocks-header-minimalist .header-minimalist__barre .header-minimalist__menu01 {
+        display: none;
+    }
+
+    .wp-block-bergalblocks-header-minimalist .header-minimalist__menu03 ul {
+        border-top: 1px solid #c6c9cb;
+    }
+}
+
+@media screen and (min-width: 976px) {
+    .wp-block-bergalblocks-header-minimalist .header-minimalist__barre {
+        /* background-color: red !important; */
+    }
+
+    .wp-block-bergalblocks-header-minimalist .header-minimalist__menuburger .header-minimalist__menu01 {
+        display: none;
+    }
+
+    .wp-block-bergalblocks-header-minimalist .header-minimalist__menu02 ul {
+        font-size: 2rem;
+    }
+
+    .wp-block-bergalblocks-header-minimalist .header-minimalist__menuburgerwrapper {
+        display: flex;
+        /* outline: 1px solid #343a40; */
+        justify-content: space-between;
+        /* align-items: center; */
+    }
+
+    .wp-block-bergalblocks-header-minimalist .header-minimalist__menuburgerwrapper>div {
+        width: 100%;
+        align-items: center;
+
+    }
+
+    .header-minimalist__menuburgerwrapper .header-minimalist__menu02 {
+        display: flex;
+        justify-content: center;
+        /* border-right: 1px solid #343a40; */
+    }
+
+    .header-minimalist__menuburgerwrapper .header-minimalist__menu03 {
+        display: flex;
+        justify-content: center;
+        border-top: none;
+        align-content: center;
+        /* background-color: aqua; */
+    }
+
+}

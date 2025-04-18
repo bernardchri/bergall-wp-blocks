@@ -4,7 +4,7 @@ import { Button, PanelBody, SelectControl, ToolbarButton } from '@wordpress/comp
 import apiFetch from '@wordpress/api-fetch';
 import { render, useEffect, useState } from '@wordpress/element';
 import { addQueryArgs } from '@wordpress/url';
-
+import './style.css';
 
 
 const findMenuToDisplay = (data, id) => {
@@ -96,7 +96,7 @@ registerBlockType('bergalblocks/header-minimalist', {
 
         useEffect(() => {
             setAttributes({
-              
+
                 menuPrimaireHtml: findMenuToDisplay(allMenus, attributes.menuPrimaire),
                 menuSecondaireHtml: findMenuToDisplay(allMenus, attributes.menuSecondaire),
                 menuTertiaireHtml: findMenuToDisplay(allMenus, attributes.menuTertiaire),
@@ -175,39 +175,52 @@ registerBlockType('bergalblocks/header-minimalist', {
 
         return (
             <header {...blocksProps}>
-                <div className={`menu ${attributes.sticky ? 'sticky' : ''}`}>
-                </div>
-                <div className="logo">logo</div>
-                <div className='fast-links'>
-                    <ul className='menu-primaire' dangerouslySetInnerHTML={{ __html: attributes.menuPrimaireHtml }} />
-                </div>
-                <button className='menu-button' data-open="false">menu</button>
+                {/* <div className={`menu ${attributes.sticky ? 'sticky' : ''}`}>
+                </div> */}
 
-                <div className='menu-big'>
-                    
-                    <ul className='menu-primaire' dangerouslySetInnerHTML={{ __html: attributes.menuPrimaireHtml }} />
-                    ---
-                    <ul dangerouslySetInnerHTML={{ __html: attributes.menuSecondaireHtml }} />
-                    ---
-                    <ul dangerouslySetInnerHTML={{ __html: attributes.menuTertiaireHtml }} />
+                <div className="header-minimalist__barre">
+                    <div className="header-minimalist__logo">logo</div>
+                    <div className="header-minimalist__menu01" data-display="true">
+                        <ul className='menu' dangerouslySetInnerHTML={{ __html: attributes.menuPrimaireHtml }} />
+                    </div>
+                    <button className='header-minimalist__button' aria-haspopup="false" aria-controls="menu">menu</button>
                 </div>
-                <InnerBlocks.Content />
+
+                <div className='header-minimalist__menuburger' data-open="false" role="menu" >
+                    <div className="header-minimalist__menuburgerwrapper">
+                        <div className="header-minimalist__menu01">
+                            <ul dangerouslySetInnerHTML={{ __html: attributes.menuPrimaireHtml }} />
+                        </div>
+                        <div className="header-minimalist__menu02">
+                            <ul dangerouslySetInnerHTML={{ __html: attributes.menuSecondaireHtml }} />
+                        </div>
+                        <div className="header-minimalist__menu03">
+                            <ul dangerouslySetInnerHTML={{ __html: attributes.menuTertiaireHtml }} />
+                        </div>
+                    </div>
+                </div>
             </header>
         )
     }
 });
 
 
+
 document.addEventListener('DOMContentLoaded', () => {
     const headerMinimalist = document.querySelectorAll('.wp-block-bergalblocks-header-minimalist');
 
     headerMinimalist.forEach(header => {
-        const menuButton = header.querySelector('.menu-button');
-        const menu = header.querySelector('.menu');
 
-        menuButton.addEventListener('click', () => {
-            menu.classList.toggle('open');
+        // open menu
+        const menuButton = header.querySelector('.header-minimalist__button');
+        const menu = header.querySelector('.header-minimalist__menuburger');
+
+        menuButton?.addEventListener('click', () => {
+            menu.dataset.open = menu.dataset.open === 'true' ? 'false' : 'true';
+            // this.aria.haspopup = menu.dataset.open === 'true' ? 'true' : 'false';
         });
+
+        // close menu
     })
 
 
