@@ -1,11 +1,8 @@
 import { registerBlockType } from '@wordpress/blocks';
-import { InnerBlocks, InspectorControls, useBlockProps } from '@wordpress/block-editor';
-import { Button, PanelBody, SelectControl, ToolbarButton } from '@wordpress/components';
-import apiFetch from '@wordpress/api-fetch';
-import { render, useEffect, useState } from '@wordpress/element';
-import { addQueryArgs } from '@wordpress/url';
+import { InspectorControls, useBlockProps, MediaUpload } from '@wordpress/block-editor';
+import { Button, PanelBody, SelectControl } from '@wordpress/components';
+import { useEffect, useState } from '@wordpress/element';
 import './style.css';
-
 
 const findMenuToDisplay = (data, id) => {
     let menu = data.find(menu => menu.id === parseFloat(id))
@@ -17,10 +14,10 @@ const findMenuToDisplay = (data, id) => {
 // - un menu de navigation principal toujours visible
 // - un menu burger secondaire 
 // - un menu burger tertiaire pour les réseaux sociaux 
-// en version mobile, les trois menus sont superposés dans un menu burger avec une hierarchie de 3 niveaux
+// En version mobile, les trois menus sont superposés dans un menu burger avec une hierarchie de 3 niveaux
 // Menu en sticky 
 
-registerBlockType('bergalblocks/header-minimalist', {
+registerBlockType('bergallblocks/header-minimalist', {
     title: 'Header minimaliste',
     category: 'bergall',
     description: "un header minimaliste pour portfolio",
@@ -37,10 +34,6 @@ registerBlockType('bergalblocks/header-minimalist', {
         }
     },
     attributes: {
-        sticky: {
-            type: "boolean",
-            default: false
-        },
         menus: {
             type: "array",
             default: []
@@ -69,124 +62,140 @@ registerBlockType('bergalblocks/header-minimalist', {
             type: 'string',
             default: '',
         },
+        logo: {
+            type: "array",
+            default: []
+        }
+
     },
     edit: ({ attributes, setAttributes }) => {
-        const { sticky } = attributes;
         const blocksProps = useBlockProps();
-
         const [allMenus, setAllMenus] = useState([]);
         const [menuOptions, setMenuOptions] = useState([]);
         const [openMenu, setOpenMenu] = useState(true);
 
         useEffect(() => {
+
+            // fetch('/wp-json/wp/v2').then(response => response.json()).then(data => console.log(data)).catch(err => console.error(err))
+
             // Fetch menus from the REST API
-            fetch('/wp-json/wp/v2/navigation/')
-                .then(response => response.json())
-                .then(data => {
-                    // récupère les datas
-                    setAllMenus(data);
-                    // mappe les menus pour les options du select
-                    setMenuOptions(allMenus.map(menu => ({
-                        value: menu.id,
-                        label: menu.slug,
-                    })));
-                })
-                .catch(error => console.error('Error fetching menus:', error));
-        }, [allMenus]);
+            if (menuOptions.length === 0) {
+                fetch('/wp-json/wp/v2/navigation/')
+                    .then(response => response.json())
+                    .then(data => {
+                        // récupère les datas
+                        setAllMenus(data);
+                        // mappe les menus pour les options du select
+                        setMenuOptions(allMenus.map(menu => ({
+                            value: menu.id,
+                            label: menu.title.rendered,
+                        })));
+                    })
+                    .catch(error => console.error('Error fetching menus:', error));
+            }
+
+            return
+
+        }, [allMenus, menuOptions]);
 
         useEffect(() => {
             setAttributes({
-
                 menuPrimaireHtml: findMenuToDisplay(allMenus, attributes.menuPrimaire),
                 menuSecondaireHtml: findMenuToDisplay(allMenus, attributes.menuSecondaire),
                 menuTertiaireHtml: findMenuToDisplay(allMenus, attributes.menuTertiaire),
             });
+
         }, [attributes.menuPrimaire, attributes.menuSecondaire, attributes.menuTertiaire, allMenus]);
 
         return (
             <div {...blocksProps}>
                 <InspectorControls>
                     <PanelBody title="options">
+                        {/* <MediaUpload value={logo} onChange={(newValue) => setAttributes({ logo: newValue })} /> */}
+                        <MediaUpload
+                            onSelect={(media) => setAttributes({ logo: media })}
+                            allowedTypes={['image']}
+                            value={attributes.logo?.id}
+                            render={({ open }) => (
+                                <Button onClick={open} isSecondary>
+                                    {attributes.logo?.url ? (
+                                        <img src={attributes.logo.url} alt="Logo" style={{ maxWidth: '100%', height: 'auto' }} />
+                                    ) : (
+                                        'Upload Logo'
+                                    )}
+                                </Button>
+                            )}
+                        />
                         <SelectControl
-                            label="Menu visible"
+                            label="Menu rapide"
                             value={attributes.menuPrimaire}
                             options={menuOptions}
                             onChange={(newValue) => setAttributes({ menuPrimaire: newValue })}
                         />
                         <SelectControl
-                            label="Menu secondaire burger"
+                            label="Menu secondaire"
                             value={attributes.menuSecondaire}
                             options={menuOptions}
                             onChange={(newValue) => setAttributes({ menuSecondaire: newValue })}
                         />
                         <SelectControl
-                            label="Menu tertiaire burger"
+                            label="Menu tertiaire"
                             value={attributes.menuTertiaire}
                             options={menuOptions}
                             onChange={(newValue) => setAttributes({ menuTertiaire: newValue })}
                         />
-                        {/* <SelectControl
-                            label="Sticky"
-                            value={sticky}
-                            options={[
-                                { label: 'Oui', value: true },
-                                { label: 'Non', value: false },
-                            ]}
-                            onChange={(newValue) => setAttributes({ sticky: newValue === 'true' })}
-                        /> */}
-
                     </PanelBody>
                 </InspectorControls>
-                <div className='wp-block-column'>
-                    Header minimalist
-                    {attributes.menuPrimaire}
-                    <div className="logo">logo</div>
-                    <div className='fast-links'>
-                        <ul dangerouslySetInnerHTML={{ __html: findMenuToDisplay(allMenus, attributes.menuPrimaire) }} />
+                <header>
+                    <div className='header-minimalist__barre'>
+                        <div className="header-minimalist__logo">
+                            {/* { JSON.parse(attributes.logo)} */}
+                        </div>
+
+                        <div className='header-minimalist__menu01'>
+                            <ul dangerouslySetInnerHTML={{ __html: findMenuToDisplay(allMenus, attributes.menuPrimaire) }} />
+                        </div>
+                        <Button className='menu-button' onClick={() => setOpenMenu(!openMenu)}>
+                            {openMenu ? <div>menu X</div> : <div>menu |||</div>}
+                        </Button>
                     </div>
-
-                    <Button className='menu-button' onClick={() => setOpenMenu(!openMenu)}>
-                        {openMenu ? <div>menu X</div> : <div>menu |||</div>}
-                    </Button>
-
                     {
-                        openMenu && <div className='menu'>
-                            <div>
-                                Second menu
-                                <ul dangerouslySetInnerHTML={{ __html: findMenuToDisplay(allMenus, attributes.menuSecondaire) }} />
-                            </div>
+                        openMenu && <div >
+                            <div >
+                                <div className="header-minimalist__menu02">
+                                    <ul dangerouslySetInnerHTML={{ __html: findMenuToDisplay(allMenus, attributes.menuSecondaire) }} />
+                                </div>
 
-                            <div>
-                                troisieme menu
-                                <ul dangerouslySetInnerHTML={{ __html: findMenuToDisplay(allMenus, attributes.menuTertiaire) }} />
+                                <div className="header-minimalist__menu03">
+                                    <ul dangerouslySetInnerHTML={{ __html: findMenuToDisplay(allMenus, attributes.menuTertiaire) }} />
+                                </div>
                             </div>
                         </div>
                     }
-                    {/* sticky : {sticky ? "sticky !" : "pas sticky"} */}
-                </div>
+                </header>
             </div>
         )
     },
     save: ({ attributes }) => {
         const blocksProps = useBlockProps.save();
-        console.log('blocksProps', blocksProps);
-        // const [openMenu, setOpenMenu] = useState(false);
-        console.log('attributes', attributes);
-
         return (
             <header {...blocksProps}>
-                {/* <div className={`menu ${attributes.sticky ? 'sticky' : ''}`}>
-                </div> */}
-
                 <div className="header-minimalist__barre">
                     <div className="header-minimalist__logo">logo</div>
                     <div className="header-minimalist__menu01" data-display="true">
                         <ul className='menu' dangerouslySetInnerHTML={{ __html: attributes.menuPrimaireHtml }} />
                     </div>
-                    <button className='header-minimalist__button' aria-haspopup="false" aria-controls="menu">menu</button>
+                    <button className='header-minimalist__button ButtonMenu' data-open="false" aria-haspopup="false" aria-controls="menu">
+                        <span>menu</span>
+                        <div className='ButtonMenu__icon'>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </button>
                 </div>
 
-                <div className='header-minimalist__menuburger' data-open="false" role="menu" >
+                <div className='header-minimalist__menuburger' data-open="false" role="menu"  >
                     <div className="header-minimalist__menuburgerwrapper">
                         <div className="header-minimalist__menu01">
                             <ul dangerouslySetInnerHTML={{ __html: attributes.menuPrimaireHtml }} />
@@ -207,7 +216,7 @@ registerBlockType('bergalblocks/header-minimalist', {
 
 
 document.addEventListener('DOMContentLoaded', () => {
-    const headerMinimalist = document.querySelectorAll('.wp-block-bergalblocks-header-minimalist');
+    const headerMinimalist = document.querySelectorAll('.wp-block-bergallblocks-header-minimalist');
 
     headerMinimalist.forEach(header => {
 
@@ -217,7 +226,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         menuButton?.addEventListener('click', () => {
             menu.dataset.open = menu.dataset.open === 'true' ? 'false' : 'true';
-            // this.aria.haspopup = menu.dataset.open === 'true' ? 'true' : 'false';
+            menuButton.dataset.open = menuButton.dataset.open === 'true' ? 'false' : 'true';
+
         });
 
         // close menu
