@@ -114,17 +114,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     utils.$('.wp-block-bergallblocks-group-extended').forEach(element => {
-
         if (!element.classList.contains("animate-fadeIn") && !element.classList.contains("animate-fadeInUp")) return;
-
         const isFadeUp = element.classList.contains("animate-fadeInUp");
-
         animate(element, {
             opacity: [0, 1],
-            translateY: isFadeUp ? -100 : 0,
+            translateY: [isFadeUp ? 75 : 0, 0],
             display: "block",
             duration: 750,
-            delay: 175,
+            delay: 300,
             alternate: true,
             // loop: true,
             easing: 'easeOutQuad',

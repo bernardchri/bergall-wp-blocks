@@ -5,46 +5,46 @@ import { customIcon } from '../../src/utils/icon';
 
 
 registerBlockType('bergallblocks/animated-text', {
-    title : "Texte animé",
+    title: "Texte animé",
     category: 'bergall',
-    description : "animation de texte titre ou paragraphe",
+    description: "animation de texte titre ou paragraphe",
     icon: customIcon,
-    attributes : {
-        duration : {
-            type : "number",
-            default : 0.5
+    attributes: {
+        duration: {
+            type: "number",
+            default: 0.5
         },
-        stagger : {
-            type : "number",
-            default : 0.1
+        stagger: {
+            type: "number",
+            default: 0.1
         },
         delay: {
-            type : "number",
-            default : 0.5
-        }, 
-        animationType : {
-            type : 'string',
-            default : "lines"
+            type: "number",
+            default: 0.5
+        },
+        animationType: {
+            type: 'string',
+            default: "lines"
         }
     },
-    supports : {
-        html : false
+    supports: {
+        html: false
     },
     example: {
-        attributes : {
-            duration : 1,
+        attributes: {
+            duration: 1,
             stagger: 0.1,
-            delay : 0.1,
-            animationType : "chars"
-        }, 
-        innerBlocks : [
+            delay: 0.1,
+            animationType: "chars"
+        },
+        innerBlocks: [
             {
-                name : 'core/paragraph',
+                name: 'core/paragraph',
                 attributes: { content: 'Ceci est un aperçu du texte animé.' }
             }
         ]
     },
-    
+
     edit({ attributes, setAttributes }) {
         const { duration, stagger, delay, animationType } = attributes;
 
@@ -56,7 +56,7 @@ registerBlockType('bergallblocks/animated-text', {
             <>
                 <InspectorControls>
                     <PanelBody title="Animation Settings">
-                        <div style={{ paddingBottom: '30px'}}>
+                        <div style={{ paddingBottom: '30px' }}>
                             <RangeControl
                                 label="Duration"
                                 value={duration}
@@ -65,11 +65,11 @@ registerBlockType('bergallblocks/animated-text', {
                                 max={5}
                                 step={0.075}
                             />
-                            <Button isSecondary onClick={resetDuration} style={{ width: '100%', display:'flex', justifyContent:'center' }}>
+                            <Button isSecondary onClick={resetDuration} style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
                                 Reset
                             </Button>
                         </div>
-                        <div style={{ paddingBottom: '30px'}}>
+                        <div style={{ paddingBottom: '30px' }}>
                             <RangeControl
                                 label="Stagger"
                                 value={stagger}
@@ -78,11 +78,11 @@ registerBlockType('bergallblocks/animated-text', {
                                 max={1}
                                 step={0.01}
                             />
-                            <Button isSecondary onClick={resetStagger}  style={{ width: '100%', display:'flex', justifyContent:'center' }}>
+                            <Button isSecondary onClick={resetStagger} style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
                                 Reset
                             </Button>
                         </div>
-                        <div style={{ paddingBottom: '30px'}}>
+                        <div style={{ paddingBottom: '30px' }}>
                             <RangeControl
                                 label="Delay"
                                 value={delay}
@@ -91,11 +91,11 @@ registerBlockType('bergallblocks/animated-text', {
                                 max={2}
                                 step={0.01}
                             />
-                            <Button isSecondary onClick={resetDelay}  style={{ width: '100%', display:'flex', justifyContent:'center' }}>
+                            <Button isSecondary onClick={resetDelay} style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
                                 Reset
                             </Button>
                         </div>
-                        <div style={{ paddingBottom: '30px'}}>
+                        <div style={{ paddingBottom: '30px' }}>
                             <SelectControl
                                 label="Animation Type"
                                 value={animationType}
@@ -132,39 +132,97 @@ registerBlockType('bergallblocks/animated-text', {
 });
 
 
-
-import gsap from 'gsap';
+import { animate, onScroll, utils } from "animejs"
 import Splitting from 'splitting';
 import 'splitting/dist/splitting.css';
 
 document.addEventListener('DOMContentLoaded', function () {
     // Définir l'opacité à 0 pour tous les éléments avec la classe 'animated-paragraph'
-    if(document.querySelector('.animated-paragraph')){
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    const paragraph = entry.target;
-                    const animationType = paragraph.getAttribute('data-animation-type') || 'lines';
-                    const splitResult = Splitting({ target: paragraph, by: animationType });
-                    
-                    // Récupérer les attributs de données
-                    const duration = parseFloat(paragraph.getAttribute('data-duration')) || 0.300;
-                    const stagger = parseFloat(paragraph.getAttribute('data-stagger')) || 0.08;
-                    const delay = parseFloat(paragraph.getAttribute('data-delay')) || 0.500;
-                    gsap.to('.animated-paragraph', { opacity: 1, duration: 1, delay: 0 });
+    // if (document.querySelector('.animated-paragraph')) {
+    //     const observer = new IntersectionObserver((entries) => {
+    //         entries.forEach((entry) => {
+    //             if (entry.isIntersecting) {
+    //                 const paragraph = entry.target;
+    //                 const animationType = paragraph.getAttribute('data-animation-type') || 'lines';
+    //                 const splitResult = Splitting({ target: paragraph, by: animationType });
 
-                    // Animation par ligne, mot ou caractère avec GSAP
-                    splitResult[0][animationType].forEach((element, index) => {
-                        gsap.from(element, { opacity: 0, y: 20, duration: duration, delay: delay + index * stagger, ease: "back" });
-                    });
+    //                 // Récupérer les attributs de données
+    //                 const duration = parseFloat(paragraph.getAttribute('data-duration')) || 0.300;
+    //                 const stagger = parseFloat(paragraph.getAttribute('data-stagger')) || 0.08;
+    //                 const delay = parseFloat(paragraph.getAttribute('data-delay')) || 0.500;
+    //                 // animate
 
-                    observer.unobserve(paragraph);
-                }
+    //                 animate('.animated-paragraph', {
+    //                     opacity : [0,1],
+    //                     duration: 1,
+    //                     delay : 125
+    //                 })
+
+    //                 // Animation par ligne, mot ou caractère avec GSAP
+    //                 splitResult[0][animationType].forEach((element, index) => {
+    //                     animate(element, {
+    //                         opacity: [0, 1],
+    //                         y: [0, 30],
+    //                         duration: duration * 1000,
+    //                         delay: delay + (stagger * 1000) * index,
+    //                         ease: "outBack"
+    //                     })
+    //                 });
+
+    //                 observer.unobserve(paragraph);
+    //             }
+    //         });
+    //     });
+
+    //     document.querySelectorAll('.animated-paragraph').forEach((paragraph) => {
+    //         observer.observe(paragraph);
+    //     });
+    // }
+
+    if (utils.$('.animated-paragraph')) {
+        utils.$('.animated-paragraph').forEach((paragraph) => {
+            const animationType = paragraph.getAttribute('data-animation-type') || 'lines';
+            const splitResult = Splitting({ target: paragraph, by: animationType });
+
+            // Récupérer les attributs de données
+            const duration = parseFloat(paragraph.getAttribute('data-duration')) || 0.300;
+            const stagger = parseFloat(paragraph.getAttribute('data-stagger')) || 0.08;
+            const delay = parseFloat(paragraph.getAttribute('data-delay')) || 0.500;
+
+            // Appliquer l'animation de base de l'élément
+            // animate(paragraph, {
+            //     opacity: [0, 1],
+            //     duration: 1,
+            //     delay: 125,
+            //     autoplay: onScroll({
+            //         target: paragraph,
+            //         axis: 'y',
+            //         enter: 'top 80%', // point de début du scroll
+            //         leave: 'top 20%', // point de fin du scroll
+            //         sync: true
+            //     })
+            // });
+
+            // Animation par ligne, mot ou caractère
+            splitResult[0][animationType].forEach((element, index) => {
+               
+                console.log(element)
+                animate(element, {
+                    opacity: [0, 1],
+                    translateY: [30, 0],
+                    duration: duration * 1000,
+                    delay: delay + (stagger * 1000) * index ,
+                    easing: 'easeOutBack',
+                    autoplay: onScroll({
+                        target: element,
+                        debug: false,
+                        axis: 'y',
+                        enter: 'bottom 10%',
+                        // leave: 'top 20%',
+                    //     // sync: true
+                    })
+                });
             });
-        });
-
-        document.querySelectorAll('.animated-paragraph').forEach((paragraph) => {
-            observer.observe(paragraph);
         });
     }
 

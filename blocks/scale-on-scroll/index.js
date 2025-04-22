@@ -2,31 +2,27 @@ import { registerBlockType } from '@wordpress/blocks';
 import { InnerBlocks, InspectorControls } from '@wordpress/block-editor';
 import { useEffect } from '@wordpress/element';
 import { PanelBody, RangeControl, TextControl, SelectControl } from '@wordpress/components';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import "./style.css";
 
-gsap.registerPlugin(ScrollTrigger);
+import { onScroll, animate, utils } from 'animejs';
 
 const applyScrollAnimation = (initialScale, zIndex, start, end) => {
-    gsap.utils.toArray('.scale-on-scroll').forEach((section) => {
-        gsap.fromTo(
-            section,
-            {
-                scale: initialScale,
-                zIndex: 1,
-            },
-            {
-                scale: 1,
-                zIndex: zIndex,
-                scrollTrigger: {
-                    trigger: section,
-                    start: start,
-                    end: end,
-                    scrub: true,
-                },
-            }
-        );
+    
+    utils.$('.scale-on-scroll').forEach(section => {
+
+        console.log(section)
+        animate(section, {
+            scale: [initialScale, 1],
+            zIndex: zIndex,
+            autoplay: onScroll({
+                target: section,
+                axis: 'y',
+                sync: true,
+                debug: false,
+                enter: "bottom top+=20%",
+                leave: "center center"
+            }),
+        });
     });
 };
 
