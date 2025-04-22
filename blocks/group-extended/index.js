@@ -1,8 +1,8 @@
 import { registerBlockType } from '@wordpress/blocks';
 import { useBlockProps, InnerBlocks, InspectorControls, URLInput } from '@wordpress/block-editor';
 import { PanelBody, ToggleControl, SelectControl } from '@wordpress/components';
-import gsap from 'gsap';
-import './style.css'; // Assurez-vous d'importer le fichier CSS
+import { onScroll, animate, utils } from 'animejs';
+import './style.css';
 
 registerBlockType('bergallblocks/group-extended', {
     title: 'Group Extended',
@@ -14,16 +14,14 @@ registerBlockType('bergallblocks/group-extended', {
         newTab: { type: 'boolean', default: false },
         animation: { type: 'string', default: 'none' },
         positionAbsolute: { type: "boolean", default: false },
-        zIndex : {type :'number',default:0},
-        pos : {
-            type:"object", default : {x:0,y:0}
-        }
+        zIndex: { type: 'number', default: 0 },
+        pos: { type: "object", default: { x: 0, y: 0 } }
     },
     example: {
         attributes: {
             href: 'https://example.com',
             newTab: true,
-            animation: 'fade-in-bottom',
+            animation: 'fadeInUp',
         },
         innerBlocks: [
             {
@@ -33,24 +31,12 @@ registerBlockType('bergallblocks/group-extended', {
         ]
     },
     supports: {
-        color: {
-            background: true,
-            text: true
-        },
+        color: { background: true, text: true },
         anchor: true,
-        spacing: {
-            margin: true,
-            padding: true
-        },
-        border: {
-            radius: true,
-            color: true,
-            style: true,
-            width: true
-        },
-        "align": ["wide", "full"],
-        "html": false,
-
+        spacing: { margin: true, padding: true },
+        border: { radius: true, color: true, style: true, width: true },
+        align: ["wide", "full"],
+        html: false,
     },
     edit: ({ attributes, setAttributes }) => {
         const { href, newTab, animation, positionAbsolute } = attributes;
@@ -90,7 +76,6 @@ registerBlockType('bergallblocks/group-extended', {
                             onChange={(value) => setAttributes({ animation: value })}
                         />
                     </PanelBody>
-
                 </InspectorControls>
                 <div style={{ position: positionAbsolute ? "absolute" : "relative" }}>
                     <InnerBlocks />
@@ -101,43 +86,57 @@ registerBlockType('bergallblocks/group-extended', {
     save: ({ attributes }) => {
         const { href, newTab, animation, positionAbsolute } = attributes;
 
-        const blockProps = useBlockProps.save({ className: `animate-${animation} ${href ? 'has-link' : ''} ` });
+        const blockProps = useBlockProps.save({
+            className: `animate-${animation} ${href ? 'has-link' : ''}`
+        });
 
-        return <div {...blockProps}  style={{ position: positionAbsolute ? "absolute" : "relative" }}>
-            {href ? (
-                <a href={href} target={newTab ? "_blank" : "_self"} rel={newTab ? "noopener noreferrer" : undefined} {...blockProps}>
-                    <InnerBlocks.Content />
-                </a>
-            ) : (
-                <InnerBlocks.Content />
-            )}
-        </div>
+        const wrapperStyle = { position: positionAbsolute ? "absolute" : "relative" };
+
+        const content = <InnerBlocks.Content />;
+
+        return (
+            <div {...blockProps} style={wrapperStyle}>
+                {href ? (
+                    <a
+                        href={href}
+                        target={newTab ? "_blank" : "_self"}
+                        rel={newTab ? "noopener noreferrer" : undefined}
+                    >
+                        {content}
+                    </a>
+                ) : content}
+            </div>
+        );
     }
 });
 
 document.addEventListener("DOMContentLoaded", function () {
-    if (!gsap) {
-        return;
-    }
 
-    if (document.querySelector('.wp-block-bergallblocks-group-extended')) {
-        gsap.utils.toArray(".animate-fadeIn, .animate-fadeInUp").forEach(element => {
-            gsap.fromTo(element,
-                { opacity: 0, y: element.classList.contains("animate-fadeInUp") ? 50 : 0, display: "block" },
-                {
-                    opacity: 1,
-                    y: 0,
-                    duration: 0.75,
-                    delay: 0.175,
-                    ease: "power2.out",
-                    scrollTrigger: {
-                        trigger: element,
-                        start: "top 80%",
-                        toggleActions: "play none none none"
-                    }
-                }
-            );
+
+    utils.$('.wp-block-bergallblocks-group-extended').forEach(element => {
+
+        if (!element.classList.contains("animate-fadeIn") && !element.classList.contains("animate-fadeInUp")) return;
+
+        const isFadeUp = element.classList.contains("animate-fadeInUp");
+
+        animate(element, {
+            opacity: [0, 1],
+            translateY: isFadeUp ? -100 : 0,
+            display: "block",
+            duration: 750,
+            delay: 175,
+            alternate: true,
+            // loop: true,
+            easing: 'easeOutQuad',
+            autoplay: onScroll({
+                target: element,
+                container: document.window,
+                axis: 'y',
+                // sync: true,
+                debug: false,
+                enter: 'bottom 0%',
+                leave: 'top 90%',
+            })
         });
-
-    }
+    });
 });

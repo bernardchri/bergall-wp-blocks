@@ -72,12 +72,9 @@ registerBlockType('bergallblocks/header-minimalist', {
         const blocksProps = useBlockProps();
         const [allMenus, setAllMenus] = useState([]);
         const [menuOptions, setMenuOptions] = useState([]);
-        const [openMenu, setOpenMenu] = useState(true);
+        const [openMenu, setOpenMenu] = useState(false);
 
         useEffect(() => {
-
-            // fetch('/wp-json/wp/v2').then(response => response.json()).then(data => console.log(data)).catch(err => console.error(err))
-
             // Fetch menus from the REST API
             if (menuOptions.length === 0) {
                 fetch('/wp-json/wp/v2/navigation/')
@@ -112,20 +109,26 @@ registerBlockType('bergallblocks/header-minimalist', {
                 <InspectorControls>
                     <PanelBody title="options">
                         {/* <MediaUpload value={logo} onChange={(newValue) => setAttributes({ logo: newValue })} /> */}
-                        <MediaUpload
+                        {/* <MediaUpload
                             onSelect={(media) => setAttributes({ logo: media })}
                             allowedTypes={['image']}
                             value={attributes.logo?.id}
-                            render={({ open }) => (
-                                <Button onClick={open} isSecondary>
-                                    {attributes.logo?.url ? (
-                                        <img src={attributes.logo.url} alt="Logo" style={{ maxWidth: '100%', height: 'auto' }} />
-                                    ) : (
-                                        'Upload Logo'
-                                    )}
-                                </Button>
-                            )}
-                        />
+                            // render={({ open }) => (
+                            //     <Placeholder
+                            //         icon="images-alt"
+                            //         label={__('Photo', 'capitainewp-gut-bases')}
+                            //         instructions={__('Select a picture', 'capitainewp-gut-bases')}
+                            //     >
+                            //         <Button
+                            //             isSecondary
+                            //             isLarge
+                            //             onClick={open}
+                            //             icon="upload"
+                            //         >
+                            //             {__('Import', 'capitainewp-gut-bases')}
+                            //         </Button>
+                            //     </Placeholder>
+                            // )} */}
                         <SelectControl
                             label="Menu rapide"
                             value={attributes.menuPrimaire}
@@ -149,7 +152,7 @@ registerBlockType('bergallblocks/header-minimalist', {
                 <header>
                     <div className='header-minimalist__barre'>
                         <div className="header-minimalist__logo">
-                            {/* { JSON.parse(attributes.logo)} */}
+                            {attributes.logo?.url && <img src={attributes.logo.url} alt="Site Logo" />}
                         </div>
 
                         <div className='header-minimalist__menu01'>
@@ -181,7 +184,9 @@ registerBlockType('bergallblocks/header-minimalist', {
         return (
             <header {...blocksProps}>
                 <div className="header-minimalist__barre">
-                    <div className="header-minimalist__logo">logo</div>
+                    <div className="header-minimalist__logo">
+                        {attributes.logo?.url && <img src={attributes.logo.url} alt="Site Logo" />}
+                    </div>
                     <div className="header-minimalist__menu01" data-display="true">
                         <ul className='menu' dangerouslySetInnerHTML={{ __html: attributes.menuPrimaireHtml }} />
                     </div>

@@ -1,10 +1,13 @@
 import { registerBlockType } from '@wordpress/blocks';
 import { useBlockProps, InnerBlocks, InspectorControls, BlockControls, AlignmentToolbar } from '@wordpress/block-editor';
 import { PanelBody, RangeControl, ToggleControl } from '@wordpress/components';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+// import gsap from 'gsap';
+// import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-gsap.registerPlugin(ScrollTrigger);
+// Parallax effect script for frontend
+import { onScroll, animate } from 'animejs';
+
+
 
 registerBlockType('bergallblocks/container-parallax', {
     title: 'Parallax Container',
@@ -40,7 +43,7 @@ registerBlockType('bergallblocks/container-parallax', {
                             label="Parallax Speed"
                             value={speed}
                             onChange={(value) => setAttributes({ speed: value })}
-                            min={10}
+                            min={0}
                             max={100}
                         />
                         <RangeControl
@@ -77,7 +80,7 @@ registerBlockType('bergallblocks/container-parallax', {
                 maxWidth: fullWidth ? '100%' : 'auto',
                 textAlign: alignment
             }}>
-                <div classNamÒe="parallax-content" style={{
+                <div className="parallax-content" style={{
                     willChange: 'transform',
                     transformStyle: 'preserve-3d',
                     transformPerspective: 1000
@@ -89,26 +92,37 @@ registerBlockType('bergallblocks/container-parallax', {
     }
 });
 
-// Parallax effect script for frontend
+
+
 document.addEventListener("DOMContentLoaded", function () {
-    gsap.utils.toArray(".parallax-container").forEach(container => {
+    
+    document.querySelectorAll(".parallax-container").forEach(container => {
         const speed = (container.getAttribute("data-speed") || 50) * 10;
         const depth = container.getAttribute("data-depth") || 0;
+        const content = container.querySelector(".parallax-content");
+
         container.style.zIndex = depth;
-        gsap.fromTo(
-            container.querySelector(".parallax-content"),
-            { y: speed },
-            {
-                ease: "none",
-                y: -speed,
-                scrollTrigger: {
-                    trigger: container,
-                    start: "top bottom",
-                    end: "bottom top",
-                    scrub: true,
-                },
-            }
-        );
+
+
+        console.log(container, content);
+
+
+        animate(content, {
+            translateY: [
+                speed,   // Position initiale
+                -speed   // Position finale
+            ],
+            autoplay: onScroll({
+                target: content,
+                container: document.window,
+                axis: 'y',
+                sync: true, // synchronisation avec le scroll
+                debug: false,
+                onUpdate: (value) => {
+                    // optionnel : value est une valeur entre 0 et 1 représentant la progression
+                    // console.log(value);
+                }
+            })
+        });
     });
-    ScrollTrigger.refresh(); // Force recalculation of positions
 });
