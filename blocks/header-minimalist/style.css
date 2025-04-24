@@ -1,3 +1,8 @@
+
+
+.admin-bar .wp-block-bergallblocks-header-minimalist {
+    top:32px;
+}
 .wp-block-bergallblocks-header-minimalist {
     max-width: 100%;
     position: fixed;
@@ -8,9 +13,10 @@
 }
 
 
-body:not(.wp-admin) :has(.wp-block-bergallblocks-header-minimalist) {
+body:not(.block-editor-iframe__body) :has(.wp-block-bergallblocks-header-minimalist) {
     padding-top: 4rem;
 }
+
 
 .wp-block-bergallblocks-header-minimalist .header-minimalist__barre {
     display: flex;
@@ -47,19 +53,20 @@ body:not(.wp-admin) :has(.wp-block-bergallblocks-header-minimalist) {
     cursor: pointer;
 }
 
-
-.wp-block-bergallblocks-header-minimalist .header-minimalist__menuburger {
-    transition: all 0.25s ease-in-out;
-    position: absolute;
+.wp-block-bergallblocks-header-minimalist .header-minimalist__menuburger{
     width: 100%;
     z-index: -1;
     height: 100vh;
     overflow: auto;
+    background-color: inherit;
+}
+body:not(.block-editor-iframe__body)  .wp-block-bergallblocks-header-minimalist .header-minimalist__menuburger {
+    position: absolute;
     left: 0;
     top: 0;
     right: 0;
-    background-color: inherit;
     bottom: 0;
+    transition: all 250ms ease-in-out;
 }
 
 .header-minimalist__menuburgerwrapper {
@@ -67,12 +74,18 @@ body:not(.wp-admin) :has(.wp-block-bergallblocks-header-minimalist) {
     z-index: 9999;
     margin: 6rem 2rem 2rem;
     min-height: 80%;
+
 }
 
 .wp-block-bergallblocks-header-minimalist .header-minimalist__menuburger[data-open="false"] {
     /* display: none; */
     opacity: 0;
     transform: translate(0, -100%);
+}
+
+.wp-block-bergallblocks-header-minimalist .header-minimalist__menuburger.admin[data-open="false"]{
+    opacity: 1;
+    transform: translate(0, 0);
 }
 
 .wp-block-bergallblocks-header-minimalist .header-minimalist__menuburger a {
@@ -123,6 +136,12 @@ body:not(.wp-admin) :has(.wp-block-bergallblocks-header-minimalist) {
 
 
 @media screen and (min-width: 976px) {
+    .wp-block-bergallblocks-header-minimalist .header-minimalist__menuburgerwrapper {
+        display: flex;
+        justify-content: space-between;
+    }
+
+
     .wp-block-bergallblocks-header-minimalist .header-minimalist__menuburger .header-minimalist__menu01 {
         display: none;
     }
@@ -131,10 +150,7 @@ body:not(.wp-admin) :has(.wp-block-bergallblocks-header-minimalist) {
         font-size: 2rem;
     }
 
-    .wp-block-bergallblocks-header-minimalist .header-minimalist__menuburgerwrapper {
-        display: flex;
-        justify-content: space-between;
-    }
+ 
 
     .wp-block-bergallblocks-header-minimalist .header-minimalist__menuburgerwrapper>div {
         width: 100%;

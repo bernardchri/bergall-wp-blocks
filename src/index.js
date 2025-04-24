@@ -16,7 +16,7 @@ import '../blocks/slider-simple';
 import '../blocks/slider-simple-item';
 
 import '../blocks/marquee';
-import '../blocks/change-color-on-scroll';
+// import '../blocks/change-color-on-scroll'; //gsap a changer en animejs
 // Groups étendus
 import '../blocks/container-parallax';
 import '../blocks/group-extended';
