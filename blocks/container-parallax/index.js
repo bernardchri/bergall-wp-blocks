@@ -102,9 +102,6 @@ document.addEventListener("DOMContentLoaded", function () {
         container.style.zIndex = depth;
 
 
-        console.log(container, content);
-
-
         animate(content, {
             translateY: [
                 speed,   // Position initiale

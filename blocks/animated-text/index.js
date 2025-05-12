@@ -137,6 +137,10 @@ import Splitting from 'splitting';
 import 'splitting/dist/splitting.css';
 
 document.addEventListener('DOMContentLoaded', function () {
+<<<<<<< HEAD
+=======
+  
+>>>>>>> f7eb55dec51038831f6661ccaf0ddb8c981001e8
 
     if (utils.$('.animated-paragraph')) {
         utils.$('.animated-paragraph').forEach((paragraph) => {
@@ -148,8 +152,11 @@ document.addEventListener('DOMContentLoaded', function () {
             const stagger = parseFloat(paragraph.getAttribute('data-stagger')) || 0.08;
             const delay = parseFloat(paragraph.getAttribute('data-delay')) || 0.500;
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> f7eb55dec51038831f6661ccaf0ddb8c981001e8
             // Animation par ligne, mot ou caractère
             splitResult[0][animationType].forEach((element, index) => {
                

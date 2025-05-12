@@ -11,9 +11,9 @@ const findMenuToDisplay = (data, id) => {
 
 /** HEADER MINIMALISTES */
 // 3 niveaux de menus
-// - un menu de navigation principal toujours visible
-// - un menu burger secondaire 
-// - un menu burger tertiaire pour les réseaux sociaux 
+// - un menu de navigation principal toujours visible sur desktop
+// - un menu burger secondaire plus complet
+// - un menu burger tertiaire pour les réseaux sociaux  par exemple
 // En version mobile, les trois menus sont superposés dans un menu burger avec une hierarchie de 3 niveaux
 // Menu en sticky 
 
@@ -24,8 +24,11 @@ registerBlockType('bergallblocks/header-minimalist', {
     apiVersion: 3,
     supports:
     {
+
         color: {
-            background: true
+            background: true,
+            text: true,
+            link: true,
         },
         spacing: {
             margin: true,
@@ -63,30 +66,39 @@ registerBlockType('bergallblocks/header-minimalist', {
             default: '',
         },
         logo: {
-            type: "array",
-            default: []
+            type: "object",
+            default: [{
+                url: "",
+                alt: "",
+                height: "",
+                width: ""
+            }]
         }
 
     },
     edit: ({ attributes, setAttributes }) => {
         const blocksProps = useBlockProps();
         const [allMenus, setAllMenus] = useState([]);
-        const [menuOptions, setMenuOptions] = useState([]);
+        const [menuOptions, setMenuOptions] = useState([{ value: '', label: "aucun" }]);
         const [openMenu, setOpenMenu] = useState(false);
 
         useEffect(() => {
             // Fetch menus from the REST API
-            if (menuOptions.length === 0) {
+            if (menuOptions.length == 1) {
                 fetch('/wp-json/wp/v2/navigation/')
                     .then(response => response.json())
                     .then(data => {
                         // récupère les datas
                         setAllMenus(data);
                         // mappe les menus pour les options du select
-                        setMenuOptions(allMenus.map(menu => ({
+                        let newDatasForMenu = data.map(menu => ({
                             value: menu.id,
                             label: menu.title.rendered,
-                        })));
+                        }));
+                        // fusionner deux tableaux
+                        newDatasForMenu.push(...menuOptions)
+
+                        setMenuOptions(newDatasForMenu);
                     })
                     .catch(error => console.error('Error fetching menus:', error));
             }
@@ -108,29 +120,28 @@ registerBlockType('bergallblocks/header-minimalist', {
             <div {...blocksProps}>
                 <InspectorControls>
                     <PanelBody title="options">
-                        {/* <MediaUpload value={logo} onChange={(newValue) => setAttributes({ logo: newValue })} /> */}
-                        {/* <MediaUpload
-                            onSelect={(media) => setAttributes({ logo: media })}
+                        <MediaUpload
+                            onSelect={(media) => setAttributes({ logo: { ...attributes.logo, url: media.url } })}
                             allowedTypes={['image']}
-                            value={attributes.logo?.id}
-                            // render={({ open }) => (
-                            //     <Placeholder
-                            //         icon="images-alt"
-                            //         label={__('Photo', 'capitainewp-gut-bases')}
-                            //         instructions={__('Select a picture', 'capitainewp-gut-bases')}
-                            //     >
-                            //         <Button
-                            //             isSecondary
-                            //             isLarge
-                            //             onClick={open}
-                            //             icon="upload"
-                            //         >
-                            //             {__('Import', 'capitainewp-gut-bases')}
-                            //         </Button>
-                            //     </Placeholder>
-                            // )} */}
+                            render={({ open }) => (
+                                <Button onClick={open} variant="primary">
+                                    {attributes.logo?.url ? 'Modifier le logo' : 'Ajouter un logo'}
+                                </Button>
+                            )}
+                        />
+                        {attributes.logo?.url && (
+                            <div>
+                                <img src={attributes.logo.url} alt="Logo Preview" style={{ maxWidth: '100%' }} />
+                                <Button
+                                    onClick={() => setAttributes({ logo: { ...attributes.logo, url: '' } })}
+                                    variant="secondary"
+                                >
+                                    Supprimer le logo
+                                </Button>
+                            </div>
+                        )}
                         <SelectControl
-                            label="Menu rapide"
+                            label="Menu rapide (desktop) "
                             value={attributes.menuPrimaire}
                             options={menuOptions}
                             onChange={(newValue) => setAttributes({ menuPrimaire: newValue })}
@@ -158,22 +169,32 @@ registerBlockType('bergallblocks/header-minimalist', {
                         <div className='header-minimalist__menu01'>
                             <ul dangerouslySetInnerHTML={{ __html: findMenuToDisplay(allMenus, attributes.menuPrimaire) }} />
                         </div>
-                        <Button className='menu-button' onClick={() => setOpenMenu(!openMenu)}>
-                            {openMenu ? <div>menu X</div> : <div>menu |||</div>}
+
+                        <Button className='header-minimalist__button ButtonMenu' data-open={openMenu} aria-haspopup="false" aria-controls="menu" onClick={() => setOpenMenu(!openMenu)}>
+                            <span>menu</span>
+                            <div className='ButtonMenu__icon'>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
                         </Button>
                     </div>
                     {
-                        openMenu && <div >
-                            <div >
+                        openMenu && <div className='header-minimalist__menuburger admin' role="menu"  >
+                            <div className="header-minimalist__menuburgerwrapper">
+                                <div className="header-minimalist__menu01">
+                                    <ul dangerouslySetInnerHTML={{ __html: findMenuToDisplay(allMenus, attributes.menuPrimaire) }} />
+                                </div>
                                 <div className="header-minimalist__menu02">
                                     <ul dangerouslySetInnerHTML={{ __html: findMenuToDisplay(allMenus, attributes.menuSecondaire) }} />
                                 </div>
-
                                 <div className="header-minimalist__menu03">
                                     <ul dangerouslySetInnerHTML={{ __html: findMenuToDisplay(allMenus, attributes.menuTertiaire) }} />
                                 </div>
                             </div>
                         </div>
+
+
                     }
                 </header>
             </div>
@@ -185,7 +206,9 @@ registerBlockType('bergallblocks/header-minimalist', {
             <header {...blocksProps}>
                 <div className="header-minimalist__barre">
                     <div className="header-minimalist__logo">
-                        {attributes.logo?.url && <img src={attributes.logo.url} alt="Site Logo" />}
+                        <a href='/'>
+                            {attributes.logo?.url && <img src={attributes.logo.url} alt="Site Logo" />}
+                        </a>
                     </div>
                     <div className="header-minimalist__menu01" data-display="true">
                         <ul className='menu' dangerouslySetInnerHTML={{ __html: attributes.menuPrimaireHtml }} />
@@ -219,24 +242,49 @@ registerBlockType('bergallblocks/header-minimalist', {
 });
 
 
+import { animate, createTimeline, utils, stagger } from "animejs"
 
 document.addEventListener('DOMContentLoaded', () => {
     const headerMinimalist = document.querySelectorAll('.wp-block-bergallblocks-header-minimalist');
 
-    headerMinimalist.forEach(header => {
 
+    headerMinimalist.forEach(header => {
         // open menu
         const menuButton = header.querySelector('.header-minimalist__button');
         const menu = header.querySelector('.header-minimalist__menuburger');
 
         menuButton?.addEventListener('click', () => {
+
             menu.dataset.open = menu.dataset.open === 'true' ? 'false' : 'true';
             menuButton.dataset.open = menuButton.dataset.open === 'true' ? 'false' : 'true';
+
+            // animation items menu
+            const tl = createTimeline({ autoplay: false })
+            tl.set('.wp-block-bergallblocks-header-minimalist .header-minimalist__menuburger  ul li a', { overflow: 'hidden' }).set('.wp-block-bergallblocks-header-minimalist .header-minimalist__menuburger  ul li a span', { opacity: 0 })
+
+            if (menuButton.dataset.open) {
+
+                tl.add('.wp-block-bergallblocks-header-minimalist .header-minimalist__menuburger  ul li a span', {
+                    opacity: [0, 1],
+                    y: [40, 0],
+                    delay: stagger(50, { start: 150 }),
+                    duration: 400
+                })
+
+                tl.play()
+
+
+            } else {
+                tl.restart().pause()
+            }
+
 
         });
 
         // close menu
     })
+
+
 
 
 });

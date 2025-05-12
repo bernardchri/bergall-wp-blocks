@@ -1,6 +1,6 @@
 import { registerBlockType } from '@wordpress/blocks';
 import { useBlockProps, InspectorControls, ColorPalette } from '@wordpress/block-editor';
-import { PanelBody, TextControl, ToggleControl } from '@wordpress/components';
+import { PanelBody,  ToggleControl } from '@wordpress/components';
 import { useEffect, useRef, useState } from '@wordpress/element';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
