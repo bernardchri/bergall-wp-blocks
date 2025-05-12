@@ -4,7 +4,9 @@
   },
   "scripts": {
     "build": "wp-scripts build",
-    "start": "wp-scripts start"
+    "start": "wp-scripts start",
+      "zip": "npm run build && cd .. && zip -r bergall-wp-blocks.zip bergall-wp-blocks -x \"bergall-wp-blocks/node_modules/*\" \"bergall-wp-blocks/src/*\" \"bergall-wp-blocks/*.git*\" \"bergall-wp-blocks/*.zip\" \"bergall-wp-blocks/package.json\" \"bergall-wp-blocks/package-lock.json\" \"bergall-wp-blocks/blocks/*\" \"bergall-wp-blocks/webpack.config.js\" \"bergall-wp-blocks/.babelrc\" \"bergall-wp-blocks/.gitignore\" \"bergall-wp-blocks/.editorconfig\" \"bergall-wp-blocks/.eslintrc.json\" \"bergall-wp-blocks/.stylelintignore\" \"bergall-wp-blocks/.stylelintrc.json\" \"bergall-wp-blocks/README.md\""
+   
   },
   "dependencies": {
     "@wordpress/api-fetch": "^7.20.0",

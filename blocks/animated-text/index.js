@@ -137,47 +137,6 @@ import Splitting from 'splitting';
 import 'splitting/dist/splitting.css';
 
 document.addEventListener('DOMContentLoaded', function () {
-    // Définir l'opacité à 0 pour tous les éléments avec la classe 'animated-paragraph'
-    // if (document.querySelector('.animated-paragraph')) {
-    //     const observer = new IntersectionObserver((entries) => {
-    //         entries.forEach((entry) => {
-    //             if (entry.isIntersecting) {
-    //                 const paragraph = entry.target;
-    //                 const animationType = paragraph.getAttribute('data-animation-type') || 'lines';
-    //                 const splitResult = Splitting({ target: paragraph, by: animationType });
-
-    //                 // Récupérer les attributs de données
-    //                 const duration = parseFloat(paragraph.getAttribute('data-duration')) || 0.300;
-    //                 const stagger = parseFloat(paragraph.getAttribute('data-stagger')) || 0.08;
-    //                 const delay = parseFloat(paragraph.getAttribute('data-delay')) || 0.500;
-    //                 // animate
-
-    //                 animate('.animated-paragraph', {
-    //                     opacity : [0,1],
-    //                     duration: 1,
-    //                     delay : 125
-    //                 })
-
-    //                 // Animation par ligne, mot ou caractère avec GSAP
-    //                 splitResult[0][animationType].forEach((element, index) => {
-    //                     animate(element, {
-    //                         opacity: [0, 1],
-    //                         y: [0, 30],
-    //                         duration: duration * 1000,
-    //                         delay: delay + (stagger * 1000) * index,
-    //                         ease: "outBack"
-    //                     })
-    //                 });
-
-    //                 observer.unobserve(paragraph);
-    //             }
-    //         });
-    //     });
-
-    //     document.querySelectorAll('.animated-paragraph').forEach((paragraph) => {
-    //         observer.observe(paragraph);
-    //     });
-    // }
 
     if (utils.$('.animated-paragraph')) {
         utils.$('.animated-paragraph').forEach((paragraph) => {
@@ -189,19 +148,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const stagger = parseFloat(paragraph.getAttribute('data-stagger')) || 0.08;
             const delay = parseFloat(paragraph.getAttribute('data-delay')) || 0.500;
 
-            // Appliquer l'animation de base de l'élément
-            // animate(paragraph, {
-            //     opacity: [0, 1],
-            //     duration: 1,
-            //     delay: 125,
-            //     autoplay: onScroll({
-            //         target: paragraph,
-            //         axis: 'y',
-            //         enter: 'top 80%', // point de début du scroll
-            //         leave: 'top 20%', // point de fin du scroll
-            //         sync: true
-            //     })
-            // });
+
 
             // Animation par ligne, mot ou caractère
             splitResult[0][animationType].forEach((element, index) => {
