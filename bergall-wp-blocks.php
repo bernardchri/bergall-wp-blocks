@@ -29,7 +29,6 @@ define('BERGALL_WP_BLCOKS_URL', plugin_dir_url(__FILE__));
 // require_once ( BERGALL_WP_BLOCKS_PATH . "/inc/acf-blocks-gutemberg.php");
 
 
-
 function bergall_wp_blocks_register_scripts()
 {
     wp_enqueue_script(
@@ -38,13 +37,12 @@ function bergall_wp_blocks_register_scripts()
         array('wp-blocks', 'wp-element', 'wp-editor'),
         filemtime(plugin_dir_path(__FILE__) . 'build/index.js')
     );
+}
+add_action('enqueue_block_assets', 'bergall_wp_blocks_register_scripts');
 
-    wp_enqueue_style(
-        'my-custom-blocks-index-css',
-        plugins_url('/build/index.css', __FILE__),
-        array('wp-edit-blocks'),
-        filemtime(plugin_dir_path(__FILE__) . 'build/index.css')
-    );
+function bergall_wp_blocks_enqueue_style()
+{
+
 
     wp_enqueue_style(
         'my-custom-blocks-css',
@@ -52,51 +50,58 @@ function bergall_wp_blocks_register_scripts()
         array(),
         filemtime(plugin_dir_path(__FILE__) . 'build/style-index.css')
     );
+
+    //     wp_enqueue_style(
+    //     'my-custom-blocks-index-css',
+    //     plugins_url('/build/index.css', __FILE__),
+    //     array('wp-edit-blocks'),
+    //     filemtime(plugin_dir_path(__FILE__) . 'build/index.css')
+    // );
+
 }
-add_action('enqueue_block_editor_assets', 'bergall_wp_blocks_register_scripts');
-add_action('enqueue_block_assets', 'bergall_wp_blocks_register_scripts');
 
-
+add_action('wp_enqueue_scripts', 'bergall_wp_blocks_enqueue_style');
 
 
 // AJOUT D'UNE CATEGORIE DE BLOCS
 
-function bergall_new_category_blocks( $cats ) {
+function bergall_new_category_blocks($cats)
+{
 
-	// create a new array element with anything as its index
-	$new = array(
-		'literallyanything' => array(
-			'slug'  => 'bergall',
-			'title' => 'Blocks by Bergall'
-		)
-	);
-	// just decide here at what position your custom category should appear
-	$position = 2; // 2 – After Text and Media, so technically it is a 3rd position
-	$cats = array_slice( $cats, 0, $position, true ) + $new + array_slice( $cats, $position, null, true );
-	// reset array indexes
-	$cats = array_values( $cats );
-	return $cats;
-
+    // create a new array element with anything as its index
+    $new = array(
+        'literallyanything' => array(
+            'slug'  => 'bergall',
+            'title' => 'Blocks by Bergall'
+        )
+    );
+    // just decide here at what position your custom category should appear
+    $position = 2; // 2 – After Text and Media, so technically it is a 3rd position
+    $cats = array_slice($cats, 0, $position, true) + $new + array_slice($cats, $position, null, true);
+    // reset array indexes
+    $cats = array_values($cats);
+    return $cats;
 }
-add_filter( 'block_categories_all', 'bergall_new_category_blocks' );
+add_filter('block_categories_all', 'bergall_new_category_blocks');
 
 
 // ENREGISTREMENT DES BLOCS
-function bergallblocks_register_custom_blocks() {
+function bergallblocks_register_custom_blocks()
+{
     // composants animations
     register_block_type(__DIR__ . '/blocks/animated-text');
     register_block_type(__DIR__ . '/blocks/image-video-hover');
     register_block_type(__DIR__ . '/blocks/slider-image');
     register_block_type(__DIR__ . '/blocks/slider-simple');
-    register_block_type(__DIR__ . '/blocks/slider-simpleitem');
+    register_block_type(__DIR__ . '/blocks/slider-simple-item');
     register_block_type(__DIR__ . '/blocks/marquee');
     register_block_type(__DIR__ . '/blocks/number-increment-animation');
 
-    // groups étendus
+    // // groups étendus
     register_block_type(__DIR__ . '/blocks/container-parallax');
     register_block_type(__DIR__ . '/blocks/group-extended');
     register_block_type(__DIR__ . '/blocks/scale-on-scroll');
-    
+
     // headers
     register_block_type(__DIR__ . '/blocks/header-minimalist');
 
@@ -105,9 +110,7 @@ function bergallblocks_register_custom_blocks() {
     // register_block_type(__DIR__ . '/blocks/button-block');
     // register_block_type(__DIR__ . '/blocks/spans');
     // register_block_type(__DIR__ . '/blocks/change-color-on-scroll'); 
-    
 
-    
 }
 add_action('init', 'bergallblocks_register_custom_blocks');
 
@@ -142,10 +145,9 @@ add_action('init', 'bergallblocks_register_custom_blocks');
 
 
 
-
-
 // Ajout d'une rubrique de composants
-function bergall_wp_blocks_register_blocks_collections() {
+function bergall_wp_blocks_register_blocks_collections()
+{
     wp_enqueue_script(
         'bergall-wp-blocks-categories',
         plugins_url('src/utils/blocks-collection.js', __FILE__),
@@ -154,4 +156,3 @@ function bergall_wp_blocks_register_blocks_collections() {
     );
 }
 add_action('enqueue_block_editor_assets', 'bergall_wp_blocks_register_blocks_collections');
-

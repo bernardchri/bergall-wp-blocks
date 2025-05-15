@@ -9,7 +9,6 @@ import { onScroll, animate, utils } from 'animejs';
 const applyScrollAnimation = (initialScale, zIndex, start, end) => {
     
     utils.$('.scale-on-scroll').forEach(section => {
-
         console.log(section)
         animate(section, {
             scale: [initialScale, 1],

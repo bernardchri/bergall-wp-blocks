@@ -31,18 +31,6 @@
     color: #fff;
 }
 
-/* .slidernav .navigation>div:active {
-    background: var(--wp--preset--color--contrast);
-    color: #fff;
-}
-
-
-.slidernav .navigation>div:focus-visible {
-    background: var(--wp--preset--color--contrast);
-    color: #fff;
-} */
-
-
 
 /*  pagination */
 .slidernav .swiper-pagination {
