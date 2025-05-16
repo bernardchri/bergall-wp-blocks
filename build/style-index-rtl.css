@@ -120,9 +120,7 @@
 /*!******************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[2].use[2]!./blocks/marquee/style.css ***!
   \******************************************************************************************************************************************************************************/
-
-
-a.wp-block-bergallblocks-marquee{
+a.wp-block-bergallblocks-marquee {
     display: block;
     text-decoration: none;
 }
@@ -133,46 +131,49 @@ a.wp-block-bergallblocks-marquee{
     width: 100%;
 }
 
-.marquee-wrapper.fadeout-horizontal{
-    -webkit-mask-image:  linear-gradient(
-        to right,
-        transparent,
-        black 5rem,
-        black calc(100% - 5rem),
-        transparent
-    );
-            mask-image:  linear-gradient(
-        to right,
-        transparent,
-        black 5rem,
-        black calc(100% - 5rem),
-        transparent
-    );
-    
+.marquee-wrapper.fadeout-horizontal {
+    -webkit-mask-image: linear-gradient(to right,
+            transparent,
+            black 5rem,
+            black calc(100% - 5rem),
+            transparent);
+            mask-image: linear-gradient(to right,
+            transparent,
+            black 5rem,
+            black calc(100% - 5rem),
+            transparent);
+
 }
+
 .marquee-content,
-.marquee-content .block-editor-block-list__layout{
+.marquee-content .block-editor-block-list__layout {
     display: flex;
-    align-items:baseline;
+    align-items: baseline;
     line-height: 1rem;
     padding-right: 1rem;
     gap: 1rem;
 }
 
-.marquee-content{
+
+.marquee-content p{
+    color: green;
+}
+
+.marquee-content {
     width: -moz-max-content;
     width: max-content;
     animation: marquee-scroll var(--speed, 10s) linear infinite var(--direction,
-    forwards);
+            forwards);
 }
 
 
 
 /* Animation */
 @keyframes marquee-scroll {
-    from{
-        transform:  translateX(0%);
+    from {
+        transform: translateX(0%);
     }
+
     to {
         transform: translateX(50%);
     }
