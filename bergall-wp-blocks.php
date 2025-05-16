@@ -51,12 +51,12 @@ function bergall_wp_blocks_enqueue_style()
         filemtime(plugin_dir_path(__FILE__) . 'build/style-index.css')
     );
 
-    //     wp_enqueue_style(
-    //     'my-custom-blocks-index-css',
-    //     plugins_url('/build/index.css', __FILE__),
-    //     array('wp-edit-blocks'),
-    //     filemtime(plugin_dir_path(__FILE__) . 'build/index.css')
-    // );
+        wp_enqueue_style(
+        'my-custom-blocks-index-css',
+        plugins_url('/build/index.css', __FILE__),
+        array('wp-edit-blocks'),
+        filemtime(plugin_dir_path(__FILE__) . 'build/index.css')
+    );
 
 }
 

@@ -14,11 +14,11 @@ import '../blocks/marquee';
 import '../blocks/container-parallax'; // Groups étendus
 import '../blocks/group-extended';// Groups étendus
 import '../blocks/scale-on-scroll';// Groups étendus
+import '../blocks/slider-image'; // Slider
+
 
 
 // import '../blocks/header-minimalist';  // headers
-
 // TODO
 // import '../blocks/button-block';
 // import '../blocks/hero-3D-object';
-// import '../blocks/slider-image'; // Slider
