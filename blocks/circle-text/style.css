@@ -1,0 +1,31 @@
+
+
+.circle-text-wrapper {
+    overflow: hidden;
+}
+
+.circle-text-wrapper svg {
+    width: 100%; /* Ajustez la largeur selon vos besoins */
+    height: auto; /* Conserve les proportions */
+    width: 200px; /* Limite la largeur maximale si nécessaire */
+    margin: 0 auto; /* Centre le SVG */
+}
+
+
+.marquee-content{
+    width: max-content;
+    animation: marquee-scroll var(--speed, 10s) linear infinite var(--direction,
+    forwards);
+}
+
+
+
+/* Animation */
+@keyframes marquee-scroll {
+    from{
+        transform:  translateX(0%);
+    }
+    to {
+        transform: translateX(-50%);
+    }
+}

@@ -111,6 +111,7 @@ registerBlockType('bergallblocks/marquee', {
 });
 
 
+
 document.addEventListener('DOMContentLoaded', () => {
     const marqueeContainer = document.querySelectorAll('.marquee-container');
     marqueeContainer.forEach(container => {

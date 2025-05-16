@@ -11,6 +11,7 @@ import '../blocks/image-video-hover/'; // Composants
 import '../blocks/slider-simple'; // Slider dans la page
 import '../blocks/slider-simple-item'; // Slider dans la page
 import '../blocks/marquee';
+import '../blocks/circle-text';
 import '../blocks/container-parallax'; // Groups étendus
 import '../blocks/group-extended';// Groups étendus
 import '../blocks/scale-on-scroll';// Groups étendus

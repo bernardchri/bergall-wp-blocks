@@ -95,6 +95,7 @@ function bergallblocks_register_custom_blocks()
     register_block_type(__DIR__ . '/blocks/slider-simple');
     register_block_type(__DIR__ . '/blocks/slider-simple-item');
     register_block_type(__DIR__ . '/blocks/marquee');
+    register_block_type(__DIR__ . '/blocks/circle-text');
     register_block_type(__DIR__ . '/blocks/number-increment-animation');
 
     // // groups étendus

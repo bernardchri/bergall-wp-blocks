@@ -256,6 +256,280 @@ document.addEventListener('DOMContentLoaded', function () {
 
 /***/ }),
 
+/***/ "./blocks/circle-text/index.js":
+/*!*************************************!*\
+  !*** ./blocks/circle-text/index.js ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");
+/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./style.css */ "./blocks/circle-text/style.css");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "react/jsx-runtime");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__);
+
+
+
+
+
+
+(0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__.registerBlockType)('bergallblocks/circle-text', {
+  title: 'Circle Text',
+  icon: 'slides',
+  category: 'bergall',
+  supports: {
+    color: {
+      background: true,
+      text: true
+    },
+    spacing: {
+      padding: true,
+      margin: true
+    },
+    "align": ["wide", "full"],
+    html: false,
+    typography: {
+      lineHeight: true
+    }
+  },
+  example: {
+    attributes: {
+      speed: 10,
+      link: '',
+      direction: 'left'
+    },
+    innerBlocks: [{
+      name: 'core/paragraph',
+      attributes: {
+        content: 'hello'
+      }
+    }, {
+      name: 'core/paragraph',
+      attributes: {
+        content: 'dolly'
+      }
+    }, {
+      name: 'core/paragraph',
+      attributes: {
+        content: 'world'
+      }
+    }]
+  },
+  attributes: {
+    speed: {
+      type: 'number',
+      default: 10
+    },
+    link: {
+      type: 'string',
+      default: ''
+    },
+    direction: {
+      type: 'boolean',
+      default: false
+    },
+    gradianttransition: {
+      type: 'boolean',
+      default: false
+    },
+    rotation: {
+      type: 'number',
+      default: 0
+    },
+    texte: {
+      type: 'string',
+      default: 'YOUR TEXT HERE'
+    } // Assurez-vous que "texte" est défini
+  },
+  edit: ({
+    attributes,
+    setAttributes
+  }) => {
+    // const { speed, link, gradianttransition, direction, rotation } = attributes;
+    // const [text, setText] = useState('YOUR TEXT HERE'); // État local pour le texte
+
+    // const blockProps = useBlockProps({
+    //     className: 'circle-text-container',
+    // });
+
+    const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)({
+      className: `circle-text-container`
+    });
+    const {
+      speed,
+      direction,
+      gradianttransition,
+      rotation,
+      texte
+    } = attributes;
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+      ...blockProps,
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelBody, {
+          title: "Param\xE8tres du Marquee",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.TextControl, {
+            label: "Texte du Cercle",
+            value: texte,
+            onChange: value => setAttributes({
+              texte: value
+            })
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.RangeControl, {
+            label: "Vitesse",
+            value: speed,
+            onChange: value => setAttributes({
+              speed: value
+            }),
+            min: 1,
+            max: 20
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.ToggleControl, {
+            label: "Direction",
+            checked: direction,
+            onChange: value => setAttributes({
+              direction: value
+            })
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.ToggleControl, {
+            label: "Transition de Gradient",
+            checked: gradianttransition,
+            onChange: value => setAttributes({
+              gradianttransition: value
+            })
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.RangeControl, {
+            label: "Rotation",
+            value: rotation,
+            onChange: value => setAttributes({
+              rotation: value
+            }),
+            min: 0,
+            max: 360
+          })]
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+        ...blockProps,
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+          className: `circle-text-wrapper ${gradianttransition ? "fadeout-horizontal" : ''}`,
+          style: {
+            transform: `rotate(${rotation}deg)`
+          },
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("svg", {
+            viewBox: "0 0 100 100",
+            xmlns: "http://www.w3.org/2000/svg",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("path", {
+              id: "SunCatcherStudio",
+              fill: "none",
+              stroke: "#000000",
+              d: "M 10, 50 A 40,40 0 1,1 90,50 A 40,40 0 1,1 10,50 Z"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("text", {
+              fontSize: "10",
+              fill: "#000000",
+              letterSpacing: "2",
+              fontFamily: "sans-serif",
+              fontWeight: "bold",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("textPath", {
+                href: "#SunCatcherStudio",
+                side: "left",
+                startOffset: "5",
+                children: texte
+              })
+            })]
+          })
+        })
+      })]
+    });
+  },
+  save: ({
+    attributes
+  }) => {
+    const {
+      speed,
+      direction,
+      gradianttransition,
+      rotation,
+      texte
+    } = attributes;
+    const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps.save({
+      className: `circle-text-container --view`
+    });
+    const content = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+      ..._wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps.save({
+        className: `circle-text-container --view`
+      }),
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+        className: `circle-text-wrapper ${gradianttransition ? "fadeout-horizontal" : ''}`,
+        style: {
+          transform: `rotate(${rotation}deg)`
+        },
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+          className: "circle-text-content",
+          style: {
+            '--speed': `${speed}s`,
+            '--direction': `${direction ? 'forwards' : 'reverse'}`
+          },
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("svg", {
+            viewBox: "0 0 100 100",
+            xmlns: "http://www.w3.org/2000/svg",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("path", {
+              id: "SunCatcherStudio",
+              fill: "none",
+              stroke: "#000000",
+              d: "M 10, 50 A 40,40 0 1,1 90,50 A 40,40 0 1,1 10,50 Z"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("text", {
+              fontSize: "10",
+              fill: "#000000",
+              letterSpacing: "1",
+              fontFamily: "sans-serif",
+              fontWeight: "bold",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("textPath", {
+                href: "#SunCatcherStudio",
+                side: "left",
+                startOffset: "5",
+                children: texte
+              })
+            })]
+          })
+        })
+      })
+    });
+    return content;
+  }
+});
+document.addEventListener('DOMContentLoaded', () => {
+  const marqueeContainer = document.querySelectorAll('.circle-text-container');
+  marqueeContainer.forEach(container => {
+    const marqueeContent = container.querySelector('.marquee-content');
+    if (marqueeContent) {
+      const clonedContent = marqueeContent.cloneNode(true);
+      clonedContent.querySelectorAll('p').forEach(p => {
+        p.setAttribute('aria-hidden', 'true');
+      });
+      const clonedContentHTML = clonedContent.innerHTML;
+      marqueeContent.innerHTML += clonedContentHTML;
+    }
+  });
+});
+
+/***/ }),
+
+/***/ "./blocks/circle-text/style.css":
+/*!**************************************!*\
+  !*** ./blocks/circle-text/style.css ***!
+  \**************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
 /***/ "./blocks/container-parallax/index.js":
 /*!********************************************!*\
   !*** ./blocks/container-parallax/index.js ***!
@@ -20896,10 +21170,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _blocks_slider_simple__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../blocks/slider-simple */ "./blocks/slider-simple/index.js");
 /* harmony import */ var _blocks_slider_simple_item__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../blocks/slider-simple-item */ "./blocks/slider-simple-item/index.js");
 /* harmony import */ var _blocks_marquee__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../blocks/marquee */ "./blocks/marquee/index.js");
-/* harmony import */ var _blocks_container_parallax__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../blocks/container-parallax */ "./blocks/container-parallax/index.js");
-/* harmony import */ var _blocks_group_extended__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../blocks/group-extended */ "./blocks/group-extended/index.js");
-/* harmony import */ var _blocks_scale_on_scroll__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../blocks/scale-on-scroll */ "./blocks/scale-on-scroll/index.js");
-/* harmony import */ var _blocks_slider_image__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../blocks/slider-image */ "./blocks/slider-image/index.js");
+/* harmony import */ var _blocks_circle_text__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../blocks/circle-text */ "./blocks/circle-text/index.js");
+/* harmony import */ var _blocks_container_parallax__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../blocks/container-parallax */ "./blocks/container-parallax/index.js");
+/* harmony import */ var _blocks_group_extended__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../blocks/group-extended */ "./blocks/group-extended/index.js");
+/* harmony import */ var _blocks_scale_on_scroll__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../blocks/scale-on-scroll */ "./blocks/scale-on-scroll/index.js");
+/* harmony import */ var _blocks_slider_image__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../blocks/slider-image */ "./blocks/slider-image/index.js");
 // Import CSS Librairies générales 
 // import "swiper/css";
 
@@ -20910,6 +21185,7 @@ __webpack_require__.r(__webpack_exports__);
  // Composants
  // Slider dans la page
  // Slider dans la page
+
 
  // Groups étendus
  // Groups étendus
