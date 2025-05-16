@@ -757,6 +757,30 @@ __webpack_require__.r(__webpack_exports__);
         x: 0,
         y: 0
       }
+    },
+    top: {
+      type: 'string',
+      default: ''
+    },
+    left: {
+      type: 'string',
+      default: ''
+    },
+    right: {
+      type: 'string',
+      default: ''
+    },
+    bottom: {
+      type: 'string',
+      default: ''
+    },
+    height: {
+      type: 'string',
+      default: ''
+    },
+    width: {
+      type: 'string',
+      default: ''
     }
   },
   example: {
@@ -799,10 +823,16 @@ __webpack_require__.r(__webpack_exports__);
       href,
       newTab,
       animation,
-      positionAbsolute
+      positionAbsolute,
+      top,
+      left,
+      right,
+      bottom,
+      height,
+      width,
+      zIndex
     } = attributes;
     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-      ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps)(),
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, {
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
           title: "Link Settings",
@@ -820,15 +850,122 @@ __webpack_require__.r(__webpack_exports__);
               newTab: value
             })
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
           title: "Positions",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ToggleControl, {
-            label: "absolue",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ToggleControl, {
+            label: "absolute",
             checked: positionAbsolute,
             onChange: value => setAttributes({
               positionAbsolute: value
             })
-          })
+          }), positionAbsolute && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+            styles: {
+              display: 'flex',
+              flexDirection: 'column'
+            },
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+              style: {
+                marginTop: '1em'
+              },
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
+                children: "Top"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
+                type: "text",
+                value: top,
+                placeholder: "ex: 10px ou 5%",
+                onChange: e => setAttributes({
+                  top: e.target.value
+                }),
+                style: {
+                  width: '100%'
+                }
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
+                children: "Left"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
+                type: "text",
+                value: left,
+                placeholder: "ex: 10px ou 5%",
+                onChange: e => setAttributes({
+                  left: e.target.value
+                }),
+                style: {
+                  width: '100%'
+                }
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
+                children: "Right"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
+                type: "text",
+                value: right,
+                placeholder: "ex: 10px ou 5%",
+                onChange: e => setAttributes({
+                  right: e.target.value
+                }),
+                style: {
+                  width: '100%'
+                }
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
+                children: "Bottom"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
+                type: "text",
+                value: bottom,
+                placeholder: "ex: 10px ou 5%",
+                onChange: e => setAttributes({
+                  bottom: e.target.value
+                }),
+                style: {
+                  width: '100%'
+                }
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
+                children: "zIndex"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
+                type: "text",
+                value: zIndex,
+                placeholder: "-999 \xE0 999",
+                onChange: e => setAttributes({
+                  zIndex: e.target.value
+                }),
+                style: {
+                  width: '100%'
+                }
+              })]
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
+              children: "height"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
+              type: "text",
+              value: height,
+              placeholder: "ex: 10px ou 5%",
+              onChange: e => setAttributes({
+                height: e.target.value
+              }),
+              style: {
+                width: '40%'
+              }
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
+              children: "width"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
+              type: "text",
+              value: width,
+              placeholder: "ex: 10px ou 5%",
+              onChange: e => setAttributes({
+                width: e.target.value
+              }),
+              style: {
+                width: '40%'
+              }
+            })]
+          })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
           title: "Animation Settings",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.SelectControl, {
@@ -850,9 +987,19 @@ __webpack_require__.r(__webpack_exports__);
           })
         })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-        style: {
-          position: positionAbsolute ? "absolute" : "relative"
-        },
+        ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps)({
+          style: {
+            position: positionAbsolute ? "absolute" : "relative",
+            overflow: positionAbsolute ? "hidden" : "",
+            width: width ? width : "",
+            height: height ? height : "",
+            zIndex: positionAbsolute && zIndex ? zIndex : undefined,
+            top: positionAbsolute && top ? top : undefined,
+            left: positionAbsolute && left ? left : undefined,
+            right: positionAbsolute && right ? right : undefined,
+            bottom: positionAbsolute && bottom ? bottom : undefined
+          }
+        }),
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InnerBlocks, {})
       })]
     });
@@ -864,13 +1011,28 @@ __webpack_require__.r(__webpack_exports__);
       href,
       newTab,
       animation,
-      positionAbsolute
+      positionAbsolute,
+      top,
+      left,
+      right,
+      bottom,
+      width,
+      height,
+      zIndex
     } = attributes;
     const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save({
       className: `animate-${animation} ${href ? 'has-link' : ''}`
     });
     const wrapperStyle = {
-      position: positionAbsolute ? "absolute" : "relative"
+      position: positionAbsolute ? "absolute" : "relative",
+      overflow: positionAbsolute ? "hidden" : "",
+      top: positionAbsolute && top ? top : undefined,
+      left: positionAbsolute && left ? left : undefined,
+      right: positionAbsolute && right ? right : undefined,
+      bottom: positionAbsolute && bottom ? bottom : undefined,
+      width: width ? width : undefined,
+      height: height ? height : undefined,
+      zIndex: positionAbsolute && zIndex ? zIndex : undefined
     };
     const content = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InnerBlocks.Content, {});
     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {

@@ -15,7 +15,13 @@ registerBlockType('bergallblocks/group-extended', {
         animation: { type: 'string', default: 'none' },
         positionAbsolute: { type: "boolean", default: false },
         zIndex: { type: 'number', default: 0 },
-        pos: { type: "object", default: { x: 0, y: 0 } }
+        pos: { type: "object", default: { x: 0, y: 0 } },
+        top: { type: 'string', default: '' },
+        left: { type: 'string', default: '' },
+        right: { type: 'string', default: '' },
+        bottom: { type: 'string', default: '' },
+        height: { type: 'string', default: '' },
+        width: { type: 'string', default: '' },
     },
     example: {
         attributes: {
@@ -39,10 +45,10 @@ registerBlockType('bergallblocks/group-extended', {
         html: false,
     },
     edit: ({ attributes, setAttributes }) => {
-        const { href, newTab, animation, positionAbsolute } = attributes;
+        const { href, newTab, animation, positionAbsolute, top, left, right, bottom, height, width, zIndex } = attributes;
 
         return (
-            <div {...useBlockProps()}>
+            <div >
                 <InspectorControls>
                     <PanelBody title="Link Settings">
                         <URLInput
@@ -59,10 +65,85 @@ registerBlockType('bergallblocks/group-extended', {
                     </PanelBody>
                     <PanelBody title='Positions'>
                         <ToggleControl
-                            label="absolue"
+                            label="absolute"
                             checked={positionAbsolute}
                             onChange={(value) => setAttributes({ positionAbsolute: value })}
                         />
+                        {positionAbsolute && (
+                            <div styles={{ display: 'flex', flexDirection: 'column' }}>
+                                <div style={{ marginTop: '1em' }}>
+                                    <label>Top</label>
+                                    <input
+                                        type="text"
+                                        value={top}
+                                        placeholder="ex: 10px ou 5%"
+                                        onChange={e => setAttributes({ top: e.target.value })}
+                                        style={{ width: '100%' }}
+                                    />
+                                </div>
+                                <div>
+                                    <label>Left</label>
+                                    <input
+                                        type="text"
+                                        value={left}
+                                        placeholder="ex: 10px ou 5%"
+                                        onChange={e => setAttributes({ left: e.target.value })}
+                                        style={{ width: '100%' }}
+                                    />
+                                </div>
+                                <div>
+                                    <label>Right</label>
+                                    <input
+                                        type="text"
+                                        value={right}
+                                        placeholder="ex: 10px ou 5%"
+                                        onChange={e => setAttributes({ right: e.target.value })}
+                                        style={{ width: '100%' }}
+                                    />
+                                </div>
+                                <div>
+                                    <label>Bottom</label>
+                                    <input
+                                        type="text"
+                                        value={bottom}
+                                        placeholder="ex: 10px ou 5%"
+                                        onChange={e => setAttributes({ bottom: e.target.value })}
+                                        style={{ width: '100%' }}
+                                    />
+                                </div>
+                                <div>
+                                    <label>zIndex</label>
+                                    <input
+                                        type="text"
+                                        value={zIndex}
+                                        placeholder="-999 à 999"
+                                        onChange={e => setAttributes({ zIndex: e.target.value })}
+                                        style={{ width: '100%' }}
+                                    />
+                                </div>
+                                
+                            </div>
+                        )}
+                        <div>
+                                    <label>height</label>
+                                    <input
+                                        type="text"
+                                        value={height}
+                                        placeholder="ex: 10px ou 5%"
+                                        onChange={e => setAttributes({ height: e.target.value })}
+                                        style={{ width: '40%' }}
+                                    />
+                                </div>
+                                <div>
+                                    <label>width</label>
+                                    <input
+                                        type="text"
+                                        value={width}
+                                        placeholder="ex: 10px ou 5%"
+                                        onChange={e => setAttributes({ width: e.target.value })}
+                                        style={{ width: '40%' }}
+                                    />
+                                </div>
                     </PanelBody>
                     <PanelBody title="Animation Settings">
                         <SelectControl
@@ -77,20 +158,43 @@ registerBlockType('bergallblocks/group-extended', {
                         />
                     </PanelBody>
                 </InspectorControls>
-                <div style={{ position: positionAbsolute ? "absolute" : "relative" }}>
+                <div
+                    {...useBlockProps({
+                        style: {
+                            position: positionAbsolute ? "absolute" : "relative",
+                            overflow: positionAbsolute ? "hidden" : "",
+                            width:  width ? width : "",
+                            height:  height ? height : "",
+                            zIndex: positionAbsolute && zIndex ? zIndex : undefined,
+                            top: positionAbsolute && top ? top : undefined,
+                            left: positionAbsolute && left ? left : undefined,
+                            right: positionAbsolute && right ? right : undefined,
+                            bottom: positionAbsolute && bottom ? bottom : undefined
+                        }
+                    })}>
                     <InnerBlocks />
                 </div>
             </div>
         );
     },
     save: ({ attributes }) => {
-        const { href, newTab, animation, positionAbsolute } = attributes;
+        const { href, newTab, animation, positionAbsolute, top, left, right, bottom, width, height, zIndex } = attributes;
 
         const blockProps = useBlockProps.save({
             className: `animate-${animation} ${href ? 'has-link' : ''}`
         });
 
-        const wrapperStyle = { position: positionAbsolute ? "absolute" : "relative" };
+        const wrapperStyle = {
+            position: positionAbsolute ? "absolute" : "relative",
+            overflow: positionAbsolute ? "hidden" : "",
+            top: positionAbsolute && top ? top : undefined,
+            left: positionAbsolute && left ? left : undefined,
+            right: positionAbsolute && right ? right : undefined,
+            bottom: positionAbsolute && bottom ? bottom : undefined,
+            width:  width ? width : undefined,
+            height: height ? height : undefined,
+            zIndex: positionAbsolute && zIndex ? zIndex : undefined
+        };
 
         const content = <InnerBlocks.Content />;
 
