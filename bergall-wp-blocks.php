@@ -40,26 +40,29 @@ function bergall_wp_blocks_register_scripts()
 }
 add_action('enqueue_block_assets', 'bergall_wp_blocks_register_scripts');
 
-function bergall_wp_blocks_enqueue_style()
-{
 
-
+//css en mode backend
+add_action('wp_enqueue_scripts', 'bergall_enqueue_front_styles');
+function bergall_enqueue_front_styles() {
     wp_enqueue_style(
         'my-custom-blocks-css',
         plugins_url('/build/style-index.css', __FILE__),
         array(),
         filemtime(plugin_dir_path(__FILE__) . 'build/style-index.css')
     );
+}
 
+// css en mode front
+add_action('enqueue_block_editor_assets', 'bergall_enqueue_editor_styles');
+function bergall_enqueue_editor_styles() {
     wp_enqueue_style(
         'my-custom-blocks-index-css',
         plugins_url('/build/index.css', __FILE__),
         array('wp-edit-blocks'),
-        filemtime(plugin_dir_path(__FILE__) . 'build/index.css'),
+        filemtime(plugin_dir_path(__FILE__) . 'build/index.css')
     );
 }
 
-add_action('wp_enqueue_scripts', 'bergall_wp_blocks_enqueue_style');
 
 
 // AJOUT D'UNE CATEGORIE DE BLOCS

@@ -1,7 +1,11 @@
 
 // Import CSS Librairies générales 
-import "swiper/css";
+// import "swiper/css";
 import 'swiper/css/effect-fade';
+import './style.css'; // CSS général
+
+
+
 
 //  # Point d'entrée pour le plugin (enregistrement des blocs)
 
@@ -23,3 +27,4 @@ import '../blocks/slider-image'; // Slider
 // TODO
 // import '../blocks/button-block';
 // import '../blocks/hero-3D-object';
+

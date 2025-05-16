@@ -173,4 +173,4 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-}, { passive: true });
+}, { passive: true }); 
