@@ -5,8 +5,7 @@ import Swiper from 'swiper';
 import { Navigation, Pagination } from "swiper/modules";
 import { SliderNavigation } from '../../src/components/navigation-swiper';
 import { useEffect, useRef } from '@wordpress/element';
-import "swiper/css";
-import "./style.css";
+
 
 registerBlockType("bergall/slider-simple", {
     title: "Slider simple",

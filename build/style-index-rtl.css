@@ -117,27 +117,6 @@
     opacity: 1;
     border-radius: 50%;
 }
-/*!************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[2].use[2]!./blocks/slider-simple/style.css ***!
-  \************************************************************************************************************************************************************************************/
-
-body :has(.wp-block-bergall-slider-simple) {
-    overflow-x: hidden !important;
-}
-
-.wp-block-bergall-slider-simple .swiper-container {
-    position: relative;
-}
-
-.wp-block-bergall-slider-simple .swiper-wrapper {
-    gap: 1rem;
-}
-
-.wp-block-bergall-slider-simple .swiper-slide img {
-    width: 100%;
-    height: auto;
-}
-
 /*!******************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[2].use[2]!./blocks/marquee/style.css ***!
   \******************************************************************************************************************************************************************************/

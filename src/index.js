@@ -1,7 +1,7 @@
 
 // Import CSS Librairies générales 
-// import "swiper/css";
-
+import "swiper/css";
+import 'swiper/css/effect-fade';
 
 //  # Point d'entrée pour le plugin (enregistrement des blocs)
 

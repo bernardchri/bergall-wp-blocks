@@ -6,8 +6,6 @@ import { PanelBody } from '@wordpress/components';
 import { Navigation, Pagination, EffectFade } from 'swiper/modules';
 import { SliderNavigation } from '../../src/components/navigation-swiper';
 import "./style.css";
-import "swiper/css";
-import 'swiper/css/effect-fade';
 import { useEffect } from '@wordpress/element';
 
 

@@ -1876,15 +1876,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var swiper_modules__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! swiper/modules */ "./node_modules/swiper/modules/index.mjs");
 /* harmony import */ var _src_components_navigation_swiper__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../src/components/navigation-swiper */ "./src/components/navigation-swiper/index.js");
 /* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./style.css */ "./blocks/slider-image/style.css");
-/* harmony import */ var swiper_css__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! swiper/css */ "./node_modules/swiper/swiper.css");
-/* harmony import */ var swiper_css_effect_fade__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! swiper/css/effect-fade */ "./node_modules/swiper/modules/effect-fade.css");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
-/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_9__);
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! react/jsx-runtime */ "react/jsx-runtime");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react/jsx-runtime */ "react/jsx-runtime");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__);
 // blocks FSE
-
-
 
 
 
@@ -1952,15 +1948,15 @@ const sliderImage = () => {
         slides: updatedSlides
       });
     };
-    (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_9__.useEffect)(() => {
+    (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_7__.useEffect)(() => {
       sliderImage();
     }, [slides]);
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
       ...blockProps,
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, {
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
           title: "Param\xE8tres du slider",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.MediaPlaceholder, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.MediaPlaceholder, {
             onSelect: onSelectImages,
             allowedTypes: ['image'],
             multiple: true,
@@ -1971,20 +1967,20 @@ const sliderImage = () => {
             }
           })
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
         className: "bb-slider-image",
-        children: [slides.length > 0 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
+        children: [slides.length > 0 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
           className: "swiper-wrapper",
-          children: slides.map(slide => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
+          children: slides.map(slide => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
             className: "swiper-slide",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("img", {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("img", {
               src: slide.url,
               alt: slide.alt
             })
           }, slide.id))
-        }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("p", {
+        }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
           children: "Aucune image s\xE9lectionn\xE9e."
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_src_components_navigation_swiper__WEBPACK_IMPORTED_MODULE_5__.SliderNavigation, {})]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_src_components_navigation_swiper__WEBPACK_IMPORTED_MODULE_5__.SliderNavigation, {})]
       })]
     });
   },
@@ -1995,21 +1991,21 @@ const sliderImage = () => {
       slides
     } = attributes;
     const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save();
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
       ...blockProps,
-      children: slides.length > 0 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsxs)("div", {
+      children: slides.length > 0 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
         className: "bb-slider-image",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
           className: "swiper-wrapper",
-          children: slides.map(slide => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("div", {
+          children: slides.map(slide => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
             className: "swiper-slide",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("img", {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("img", {
               src: slide.url,
               alt: slide.alt
             })
           }, slide.id))
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)(_src_components_navigation_swiper__WEBPACK_IMPORTED_MODULE_5__.SliderNavigation, {})]
-      }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_10__.jsx)("p", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)(_src_components_navigation_swiper__WEBPACK_IMPORTED_MODULE_5__.SliderNavigation, {})]
+      }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("p", {
         children: "Aucune image s\xE9lectionn\xE9e."
       })
     });
@@ -2115,12 +2111,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _src_components_navigation_swiper__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../src/components/navigation-swiper */ "./src/components/navigation-swiper/index.js");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var swiper_css__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! swiper/css */ "./node_modules/swiper/swiper.css");
-/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./style.css */ "./blocks/slider-simple/style.css");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react/jsx-runtime */ "react/jsx-runtime");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__);
-
-
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react/jsx-runtime */ "react/jsx-runtime");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__);
 
 
 
@@ -2186,7 +2178,7 @@ __webpack_require__.r(__webpack_exports__);
         numberofslidesMobile
       });
     }, [slides, numberofslides, numberofslidesMobile]);
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
       ...blockProps,
       autoplay: attributes.autoplay,
       interval: attributes.interval,
@@ -2196,10 +2188,10 @@ __webpack_require__.r(__webpack_exports__);
         padding: "0.5rem"
       },
       ref: refContainer,
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, {
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
           title: "Param\xE8tres du slider",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.RangeControl, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.RangeControl, {
             label: "Nombre de slides visibles",
             value: numberofslides,
             onChange: value => setAttributes({
@@ -2208,7 +2200,7 @@ __webpack_require__.r(__webpack_exports__);
             min: 1,
             max: 10,
             step: 0.25
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.RangeControl, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.RangeControl, {
             label: "Nombre de slides visibles sur mobile",
             value: numberofslidesMobile,
             onChange: value => setAttributes({
@@ -2219,14 +2211,14 @@ __webpack_require__.r(__webpack_exports__);
             step: 0.25
           })]
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
         className: "bergall-swiper-container",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
           className: "swiper-wrapper",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InnerBlocks, {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InnerBlocks, {
             allowedBlocks: ['bergall/slider-simple-item']
           })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_src_components_navigation_swiper__WEBPACK_IMPORTED_MODULE_5__.SliderNavigation, {})]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_src_components_navigation_swiper__WEBPACK_IMPORTED_MODULE_5__.SliderNavigation, {})]
       })]
     });
   },
@@ -2234,18 +2226,18 @@ __webpack_require__.r(__webpack_exports__);
     attributes
   }) {
     const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save();
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
       ...blockProps,
       "data-numberofslides": attributes.numberofslides,
       "data-numberofslidesMobile": attributes.numberofslidesMobile,
       "data-autoplay": attributes.autoplay,
       "data-interval": attributes.interval,
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsxs)("div", {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
         className: "bergall-swiper-container",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)("div", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
           className: "swiper-wrapper",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InnerBlocks.Content, {})
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(_src_components_navigation_swiper__WEBPACK_IMPORTED_MODULE_5__.SliderNavigation, {})]
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InnerBlocks.Content, {})
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_src_components_navigation_swiper__WEBPACK_IMPORTED_MODULE_5__.SliderNavigation, {})]
       })
     });
   }
@@ -2288,19 +2280,6 @@ const sliderSimple = (sliders, attributes) => {
 
 /***/ }),
 
-/***/ "./blocks/slider-simple/style.css":
-/*!****************************************!*\
-  !*** ./blocks/slider-simple/style.css ***!
-  \****************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-// extracted by mini-css-extract-plugin
-
-
-/***/ }),
-
 /***/ "./node_modules/animejs/lib/anime.esm.js":
 /*!***********************************************!*\
   !*** ./node_modules/animejs/lib/anime.esm.js ***!
@@ -2337,7 +2316,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /**
  * anime.js - ESM
- * @version v4.0.1
+ * @version v4.0.2
  * @author Julian Garnier
  * @license MIT
  * @copyright (c) 2025 Julian Garnier
@@ -2346,18 +2325,18 @@ __webpack_require__.r(__webpack_exports__);
 
 /**
  * @typedef {Object} DefaultsParams
- * @property {number|string} [id]
+ * @property {Number|String} [id]
  * @property {PercentageKeyframes|DurationKeyframes} [keyframes]
  * @property {EasingParam} [playbackEase]
- * @property {number} [playbackRate]
- * @property {number} [frameRate]
- * @property {number|boolean} [loop]
- * @property {boolean} [reversed]
- * @property {boolean} [alternate]
- * @property {boolean|ScrollObserver} [autoplay]
- * @property {number|FunctionValue} [duration]
- * @property {number|FunctionValue} [delay]
- * @property {number} [loopDelay]
+ * @property {Number} [playbackRate]
+ * @property {Number} [frameRate]
+ * @property {Number|Boolean} [loop]
+ * @property {Boolean} [reversed]
+ * @property {Boolean} [alternate]
+ * @property {Boolean|ScrollObserver} [autoplay]
+ * @property {Number|FunctionValue} [duration]
+ * @property {Number|FunctionValue} [delay]
+ * @property {Number} [loopDelay]
  * @property {EasingParam} [ease]
  * @property {'none'|'replace'|'blend'|compositionTypes} [composition]
  * @property {(v: any) => any} [modifier]
@@ -2374,6 +2353,60 @@ __webpack_require__.r(__webpack_exports__);
 /** @typedef {Timer|Renderable} Tickable */
 /** @typedef {Timer&JSAnimation&Timeline} CallbackArgument */
 /** @typedef {Animatable|Tickable|Draggable|ScrollObserver|Scope} Revertible */
+
+/**
+ * @typedef {Object} DraggableAxisParam
+ * @property {String} [mapTo]
+ * @property {TweenModifier} [modifier]
+ * @property {TweenComposition} [composition]
+ * @property {Number|Array<Number>|((draggable: Draggable) => Number|Array<Number>)} [snap]
+ */
+
+/**
+ * @typedef {Object} DraggableCursorParams
+ * @property {String} [onHover]
+ * @property {String} [onGrab]
+ */
+
+/**
+ * @typedef {Object} DraggableParams
+ * @property {DOMTargetSelector} [trigger]
+ * @property {DOMTargetSelector|Array<Number>|((draggable: Draggable) => DOMTargetSelector|Array<Number>)} [container]
+ * @property {Boolean|DraggableAxisParam} [x]
+ * @property {Boolean|DraggableAxisParam} [y]
+ * @property {TweenModifier} [modifier]
+ * @property {Number|Array<Number>|((draggable: Draggable) => Number|Array<Number>)} [snap]
+ * @property {Number|Array<Number>|((draggable: Draggable) => Number|Array<Number>)} [containerPadding]
+ * @property {Number|((draggable: Draggable) => Number)} [containerFriction]
+ * @property {Number|((draggable: Draggable) => Number)} [releaseContainerFriction]
+ * @property {Number|((draggable: Draggable) => Number)} [dragSpeed]
+ * @property {Number|((draggable: Draggable) => Number)} [scrollSpeed]
+ * @property {Number|((draggable: Draggable) => Number)} [scrollThreshold]
+ * @property {Number|((draggable: Draggable) => Number)} [minVelocity]
+ * @property {Number|((draggable: Draggable) => Number)} [maxVelocity]
+ * @property {Number|((draggable: Draggable) => Number)} [velocityMultiplier]
+ * @property {Number} [releaseMass]
+ * @property {Number} [releaseStiffness]
+ * @property {Number} [releaseDamping]
+ * @property {Boolean} [releaseDamping]
+ * @property {EasingParam} [releaseEase]
+ * @property {Boolean|DraggableCursorParams|((draggable: Draggable) => Boolean|DraggableCursorParams)} [cursor]
+ * @property {Callback<Draggable>} [onGrab]
+ * @property {Callback<Draggable>} [onDrag]
+ * @property {Callback<Draggable>} [onRelease]
+ * @property {Callback<Draggable>} [onUpdate]
+ * @property {Callback<Draggable>} [onSettle]
+ * @property {Callback<Draggable>} [onSnap]
+ * @property {Callback<Draggable>} [onResize]
+ * @property {Callback<Draggable>} [onAfterResize]
+ */
+
+/**
+ * @typedef {SVGGeometryElement & {
+ *   setAttribute(name: 'draw', value: `${number} ${number}`): void;
+ *   draw: `${number} ${number}`;
+ * }} DrawableSVGGeometry
+ */
 
 /**
  * @callback EasingFunction
@@ -2787,7 +2820,7 @@ const globals = {
   tickThreshold: 200,
 };
 
-const globalVersions = { version: '4.0.1', engine: null };
+const globalVersions = { version: '4.0.2', engine: null };
 
 if (isBrowser) {
   if (!win.AnimeJS) win.AnimeJS = [];
@@ -2868,7 +2901,6 @@ const atan2 = Math.atan2;
 const PI = Math.PI;
 const _round = Math.round;
 
-
 /**
  * @param  {Number} v
  * @param  {Number} min
@@ -2917,7 +2949,7 @@ const clampInfinity = v => v === Infinity ? maxValue : v === -Infinity ? -1e12 :
  * @param  {Number} v
  * @return {Number}
  */
-const clampZero = v => v < minValue ? minValue : v;
+const normalizeTime = v => v <= minValue ? minValue : clampInfinity(round(v, 11));
 
 // Arrays
 
@@ -3841,43 +3873,61 @@ const morphTo = (path2, precision = .33) => ($path1) => {
 };
 
 /**
- * @param {SVGGeometryElement} $el
- * @param {Number} start
- * @param {Number} end
- * @return {Proxy}
+ * @param {SVGGeometryElement} [$el]
+ * @return {Number}
  */
-function createDrawableProxy($el, start, end) {
-  const strokeLineCap = getComputedStyle($el).strokeLinecap;
+const getScaleFactor = $el => {
+  let scaleFactor = 1;
+  if ($el && $el.getCTM) {
+    const ctm = $el.getCTM();
+    if (ctm) {
+      const scaleX = sqrt(ctm.a * ctm.a + ctm.b * ctm.b);
+      const scaleY = sqrt(ctm.c * ctm.c + ctm.d * ctm.d);
+      scaleFactor = (scaleX + scaleY) / 2;
+    }
+  }
+  return scaleFactor;
+};
+
+/**
+ * Creates a proxy that wraps an SVGGeometryElement and adds drawing functionality.
+ * @param {SVGGeometryElement} $el - The SVG element to transform into a drawable
+ * @param {number} start - Starting position (0-1)
+ * @param {number} end - Ending position (0-1)
+ * @return {DrawableSVGGeometry} - Returns a proxy that preserves the original element's type with additional 'draw' attribute functionality
+ */
+const createDrawableProxy = ($el, start, end) => {
   const pathLength = K;
+  const computedStyles = getComputedStyle($el);
+  const strokeLineCap = computedStyles.strokeLinecap;
+  // @ts-ignore
+  const $scalled = computedStyles.vectorEffect === 'non-scaling-stroke' ? $el : null;
   let currentCap = strokeLineCap;
+
   const proxy = new Proxy($el, {
     get(target, property) {
       const value = target[property];
       if (property === proxyTargetSymbol) return target;
       if (property === 'setAttribute') {
-        /** @param {any[]} args */
         return (...args) => {
           if (args[0] === 'draw') {
             const value = args[1];
             const values = value.split(' ');
             const v1 = +values[0];
             const v2 = +values[1];
-
             // TOTO: Benchmark if performing two slices is more performant than one split
-
             // const spaceIndex = value.indexOf(' ');
             // const v1 = round(+value.slice(0, spaceIndex), precision);
             // const v2 = round(+value.slice(spaceIndex + 1), precision);
-
-            const os = v1 * -1e3;
-            const d1 = (v2 * pathLength) + os;
-            // Prevents linecap to smear by offsetting the dasharray length by 0.01% when v2 is not at max
-            const d2 = (pathLength + ((v1 === 0 && v2 === 1) || (v1 === 1 && v2 === 0) ? 0 : 10) - d1);
-            // Handle cases where the cap is still visible when the line is completly hidden
+            const scaleFactor = getScaleFactor($scalled);
+            const os = v1 * -1e3 * scaleFactor;
+            const d1 = (v2 * pathLength * scaleFactor) + os;
+            const d2 = (pathLength * scaleFactor +
+                      ((v1 === 0 && v2 === 1) || (v1 === 1 && v2 === 0) ? 0 : 10 * scaleFactor) - d1);
             if (strokeLineCap !== 'butt') {
               const newCap = v1 === v2 ? 'butt' : strokeLineCap;
               if (currentCap !== newCap) {
-                target.setAttribute('stroke-linecap', `${newCap}`);
+                target.style.strokeLinecap = `${newCap}`;
                 currentCap = newCap;
               }
             }
@@ -3887,31 +3937,37 @@ function createDrawableProxy($el, start, end) {
           return Reflect.apply(value, target, args);
         };
       }
+
       if (isFnc(value)) {
-        /** @param {any[]} args */
         return (...args) => Reflect.apply(value, target, args);
       } else {
         return value;
       }
     }
   });
+
   if ($el.getAttribute('pathLength') !== `${pathLength}`) {
     $el.setAttribute('pathLength', `${pathLength}`);
     proxy.setAttribute('draw', `${start} ${end}`);
   }
-  return /** @type {typeof Proxy} */(/** @type {unknown} */(proxy));
-}
+
+  return /** @type {DrawableSVGGeometry} */(proxy);
+};
 
 /**
- * @param {TargetsParam} selector
- * @param {Number} [start=0]
- * @param {Number} [end=0]
- * @return {Array.<Proxy>}
+ * Creates drawable proxies for multiple SVG elements.
+ * @param {TargetsParam} selector - CSS selector, SVG element, or array of elements and selectors
+ * @param {number} [start=0] - Starting position (0-1)
+ * @param {number} [end=0] - Ending position (0-1)
+ * @return {Array<DrawableSVGGeometry>} - Array of proxied elements with drawing functionality
  */
 const createDrawable = (selector, start = 0, end = 0) => {
-  const els = /** @type {Array.<Proxy>} */((/** @type {unknown} */(parseTargets(selector))));
-  els.forEach(($el, i) => els[i] = createDrawableProxy(/** @type {SVGGeometryElement} */(/** @type {unknown} */($el)), start, end));
-  return els;
+  const els = parseTargets(selector);
+  return els.map($el => createDrawableProxy(
+    /** @type {SVGGeometryElement} */($el),
+    start,
+    end
+  ));
 };
 
 // Motion path animation
@@ -4926,11 +4982,12 @@ class Timer extends Clock {
    */
   stretch(newDuration) {
     const currentDuration = this.duration;
-    if (currentDuration === clampZero(newDuration)) return this;
+    const normlizedDuration = normalizeTime(newDuration);
+    if (currentDuration === normlizedDuration) return this;
     const timeScale = newDuration / currentDuration;
     const isSetter = newDuration <= minValue;
-    this.duration = isSetter ? minValue : clampZero(clampInfinity(round(currentDuration * timeScale, 12)));
-    this.iterationDuration = isSetter ? minValue : clampZero(clampInfinity(round(this.iterationDuration * timeScale, 12)));
+    this.duration = isSetter ? minValue : normlizedDuration;
+    this.iterationDuration = isSetter ? minValue : normalizeTime(this.iterationDuration * timeScale);
     this._offset *= timeScale;
     this._delay *= timeScale;
     this._loopDelay *= timeScale;
@@ -5974,13 +6031,13 @@ class JSAnimation extends Timer {
    */
   stretch(newDuration) {
     const currentDuration = this.duration;
-    if (currentDuration === clampZero(newDuration)) return this;
+    if (currentDuration === normalizeTime(newDuration)) return this;
     const timeScale = newDuration / currentDuration;
     // NOTE: Find a better way to handle the stretch of an animation after stretch = 0
     forEachChildren(this, (/** @type {Tween} */tween) => {
       // Rounding is necessary here to minimize floating point errors
-      tween._updateDuration = clampZero(round(tween._updateDuration * timeScale, 12));
-      tween._changeDuration = clampZero(round(tween._changeDuration * timeScale, 12));
+      tween._updateDuration = normalizeTime(tween._updateDuration * timeScale);
+      tween._changeDuration = normalizeTime(tween._changeDuration * timeScale);
       tween._currentTime *= timeScale;
       tween._startTime *= timeScale;
       tween._absoluteStartTime *= timeScale;
@@ -6082,13 +6139,14 @@ const parseWAAPIEasing = (ease) => {
       const parsed = parseEaseString(ease, WAAPIeases, WAAPIEasesLookups);
       if (isFnc(parsed)) parsedEase = parsed === none ? 'linear' : easingToLinear(parsed);
     }
+    WAAPIEasesLookups[ease] = parsedEase;
   } else if (isFnc(ease)) {
     const easing = easingToLinear(ease);
     if (easing) parsedEase = easing;
   } else if (/** @type {Spring} */(ease).ease) {
     parsedEase = easingToLinear(/** @type {Spring} */(ease).ease);
   }
-  return WAAPIEasesLookups[ease] = parsedEase;
+  return parsedEase;
 };
 
 /**
@@ -6162,6 +6220,7 @@ const validIndividualTransforms = [...transformsShorthands, ...validTransforms.f
 let transformsPropertiesRegistered = isBrowser && (isUnd(CSS) || !Object.hasOwnProperty.call(CSS, 'registerProperty'));
 
 const registerTransformsProperties = () => {
+  if (transformsPropertiesRegistered) return;
   validTransforms.forEach(t => {
     const isSkew = stringStartsWith(t, 'skew');
     const isScale = stringStartsWith(t, 'scale');
@@ -6169,13 +6228,14 @@ const registerTransformsProperties = () => {
     const isTranslate = stringStartsWith(t, 'translate');
     const isAngle = isRotate || isSkew;
     const syntax = isAngle ? '<angle>' : isScale ? "<number>" : isTranslate ? "<length-percentage>" : "*";
-    CSS.registerProperty({
-      name: '--' + t,
-      syntax,
-      inherits: false,
-      initialValue: isTranslate ? '0px' : isAngle ? '0deg' : isScale ? '1' : '0',
-    });
-  });
+    try {
+      CSS.registerProperty({
+        name: '--' + t,
+        syntax,
+        inherits: false,
+        initialValue: isTranslate ? '0px' : isAngle ? '0deg' : isScale ? '1' : '0',
+      });
+    } catch {}  });
   transformsPropertiesRegistered = true;
 };
 
@@ -6290,7 +6350,7 @@ class WAAPIAnimation {
 
     if (globals.scope) globals.scope.revertibles.push(this);
 
-    if (!transformsPropertiesRegistered) registerTransformsProperties();
+    registerTransformsProperties();
 
     const parsedTargets = registerTargets(targets);
     const targetsLength = parsedTargets.length;
@@ -6457,7 +6517,13 @@ class WAAPIAnimation {
   /** @param {Number} time */
   set currentTime(time) {
     const t = time * (globals.timeScale === 1 ? 1 : K);
-    this.forEach(anim => anim.currentTime = t);
+    this.forEach(anim => {
+      // Make sure the animation playState is not 'paused' in order to properly trigger an onfinish callback.
+      // The "paused" play state supersedes the "finished" play state; if the animation is both paused and finished, the "paused" state is the one that will be reported.
+      // https://developer.mozilla.org/en-US/docs/Web/API/Animation/finish_event
+      if (t >= this.duration) anim.play();
+      anim.currentTime = t;
+    });
   }
 
   get progress() {
@@ -7244,15 +7310,11 @@ class Timeline extends Timer {
    */
   stretch(newDuration) {
     const currentDuration = this.duration;
-    if (currentDuration === clampZero(newDuration)) return this;
+    if (currentDuration === normalizeTime(newDuration)) return this;
     const timeScale = newDuration / currentDuration;
     const labels = this.labels;
-    forEachChildren(this, (/** @type {JSAnimation} */child) => {
-      child.stretch(child.duration * timeScale);
-    });
-    for (let labelName in labels) {
-      labels[labelName] *= timeScale;
-    }
+    forEachChildren(this, (/** @type {JSAnimation} */child) => child.stretch(child.duration * timeScale));
+    for (let labelName in labels) labels[labelName] *= timeScale;
     return super.stretch(newDuration);
   }
 
@@ -7619,12 +7681,6 @@ class Transforms {
 }
 
 /**
- * @typedef {Object} DraggableCursorParams
- * @property {String} [onHover]
- * @property {String} [onGrab]
- */
-
-/**
  * @template {Array<Number>|DOMTargetSelector|String|Number|Boolean|Function|DraggableCursorParams} T
  * @param {T | ((draggable: Draggable) => T)} value
  * @param {Draggable} draggable
@@ -7633,47 +7689,6 @@ class Transforms {
 const parseDraggableFunctionParameter = (value, draggable) => value && isFnc(value) ? /** @type {Function} */(value)(draggable) : value;
 
 let zIndex = 0;
-
-/**
- * @typedef {Object} DraggableAxisParam
- * @property {String} [mapTo]
- * @property {TweenModifier} [modifier]
- * @property {TweenComposition} [composition]
- * @property {Number|Array<Number>|((draggable: Draggable) => Number|Array<Number>)} [snap]
- */
-
-/**
- * @typedef {Object} DraggableParams
- * @property {DOMTargetSelector} [trigger]
- * @property {DOMTargetSelector|Array<Number>|((draggable: Draggable) => DOMTargetSelector|Array<Number>)} [container]
- * @property {Boolean|DraggableAxisParam} [x]
- * @property {Boolean|DraggableAxisParam} [y]
- * @property {TweenModifier} [modifier]
- * @property {Number|Array<Number>|((draggable: Draggable) => Number|Array<Number>)} [snap]
- * @property {Number|Array<Number>|((draggable: Draggable) => Number|Array<Number>)} [containerPadding]
- * @property {Number|((draggable: Draggable) => Number)} [containerFriction]
- * @property {Number|((draggable: Draggable) => Number)} [releaseContainerFriction]
- * @property {Number|((draggable: Draggable) => Number)} [dragSpeed]
- * @property {Number|((draggable: Draggable) => Number)} [scrollSpeed]
- * @property {Number|((draggable: Draggable) => Number)} [scrollThreshold]
- * @property {Number|((draggable: Draggable) => Number)} [minVelocity]
- * @property {Number|((draggable: Draggable) => Number)} [maxVelocity]
- * @property {Number|((draggable: Draggable) => Number)} [velocityMultiplier]
- * @property {Number} [releaseMass]
- * @property {Number} [releaseStiffness]
- * @property {Number} [releaseDamping]
- * @property {Boolean} [releaseDamping]
- * @property {EasingParam} [releaseEase]
- * @property {Boolean|DraggableCursorParams|((draggable: Draggable) => Boolean|DraggableCursorParams)} [cursor]
- * @property {Callback<Draggable>} [onGrab]
- * @property {Callback<Draggable>} [onDrag]
- * @property {Callback<Draggable>} [onRelease]
- * @property {Callback<Draggable>} [onUpdate]
- * @property {Callback<Draggable>} [onSettle]
- * @property {Callback<Draggable>} [onSnap]
- * @property {Callback<Draggable>} [onResize]
- * @property {Callback<Draggable>} [onAfterResize]
- */
 
 class Draggable {
   /**
@@ -7873,7 +7888,7 @@ class Draggable {
     this.canScroll = false;
     this.enabled = false;
     this.initialized = false;
-    this.activeProp = this.disabled[0] ? yProp : xProp;
+    this.activeProp = this.disabled[1] ? xProp : yProp;
     this.animate.animations[this.activeProp].onRender = () => {
       const hasUpdated = this.updated;
       const hasMoved = this.grabbed && hasUpdated;
@@ -8693,6 +8708,7 @@ class Draggable {
     this.overshootXTicker.revert();
     this.overshootYTicker.revert();
     this.resizeTicker.revert();
+    this.animate.revert();
     return this;
   }
 
@@ -21164,19 +21180,22 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _blocks_number_increment_animation___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../blocks/number-increment-animation/ */ "./blocks/number-increment-animation/index.js");
-/* harmony import */ var _blocks_animated_text__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../blocks/animated-text */ "./blocks/animated-text/index.js");
-/* harmony import */ var _blocks_image_video_hover___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../blocks/image-video-hover/ */ "./blocks/image-video-hover/index.js");
-/* harmony import */ var _blocks_slider_simple__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../blocks/slider-simple */ "./blocks/slider-simple/index.js");
-/* harmony import */ var _blocks_slider_simple_item__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../blocks/slider-simple-item */ "./blocks/slider-simple-item/index.js");
-/* harmony import */ var _blocks_marquee__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../blocks/marquee */ "./blocks/marquee/index.js");
-/* harmony import */ var _blocks_circle_text__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../blocks/circle-text */ "./blocks/circle-text/index.js");
-/* harmony import */ var _blocks_container_parallax__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../blocks/container-parallax */ "./blocks/container-parallax/index.js");
-/* harmony import */ var _blocks_group_extended__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../blocks/group-extended */ "./blocks/group-extended/index.js");
-/* harmony import */ var _blocks_scale_on_scroll__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../blocks/scale-on-scroll */ "./blocks/scale-on-scroll/index.js");
-/* harmony import */ var _blocks_slider_image__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../blocks/slider-image */ "./blocks/slider-image/index.js");
+/* harmony import */ var swiper_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! swiper/css */ "./node_modules/swiper/swiper.css");
+/* harmony import */ var swiper_css_effect_fade__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! swiper/css/effect-fade */ "./node_modules/swiper/modules/effect-fade.css");
+/* harmony import */ var _blocks_number_increment_animation___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../blocks/number-increment-animation/ */ "./blocks/number-increment-animation/index.js");
+/* harmony import */ var _blocks_animated_text__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../blocks/animated-text */ "./blocks/animated-text/index.js");
+/* harmony import */ var _blocks_image_video_hover___WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../blocks/image-video-hover/ */ "./blocks/image-video-hover/index.js");
+/* harmony import */ var _blocks_slider_simple__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../blocks/slider-simple */ "./blocks/slider-simple/index.js");
+/* harmony import */ var _blocks_slider_simple_item__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../blocks/slider-simple-item */ "./blocks/slider-simple-item/index.js");
+/* harmony import */ var _blocks_marquee__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../blocks/marquee */ "./blocks/marquee/index.js");
+/* harmony import */ var _blocks_circle_text__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../blocks/circle-text */ "./blocks/circle-text/index.js");
+/* harmony import */ var _blocks_container_parallax__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../blocks/container-parallax */ "./blocks/container-parallax/index.js");
+/* harmony import */ var _blocks_group_extended__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../blocks/group-extended */ "./blocks/group-extended/index.js");
+/* harmony import */ var _blocks_scale_on_scroll__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../blocks/scale-on-scroll */ "./blocks/scale-on-scroll/index.js");
+/* harmony import */ var _blocks_slider_image__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../blocks/slider-image */ "./blocks/slider-image/index.js");
 // Import CSS Librairies générales 
-// import "swiper/css";
+
+
 
 //  # Point d'entrée pour le plugin (enregistrement des blocs)
 
