@@ -2,7 +2,9 @@ import { registerBlockType } from '@wordpress/blocks';
 import { InspectorControls, useBlockProps, MediaUpload } from '@wordpress/block-editor';
 import { Button, PanelBody, SelectControl } from '@wordpress/components';
 import { useEffect, useState } from '@wordpress/element';
+import { createTimeline, stagger } from "animejs"
 import './style.css';
+import './editor.css'; // <-- Ajout de la CSS pour l'éditeur
 
 const findMenuToDisplay = (data, id) => {
     let menu = data.find(menu => menu.id === parseFloat(id))
@@ -37,6 +39,10 @@ registerBlockType('bergallblocks/header-minimalist', {
         }
     },
     attributes: {
+        fixed: {
+            type: 'boolean',
+            default: true,
+        },
         menus: {
             type: "array",
             default: []
@@ -141,6 +147,15 @@ registerBlockType('bergallblocks/header-minimalist', {
                             </div>
                         )}
                         <SelectControl
+                            label="Menu burger fixe"
+                            value={attributes.fixed}
+                            options={[
+                                { value: false, label: 'non' },
+                                { value: true, label: 'oui' },
+                            ]}
+                            onChange={(newValue) => setAttributes({ fixed: newValue })}
+                        />
+                        <SelectControl
                             label="Menu rapide (desktop) "
                             value={attributes.menuPrimaire}
                             options={menuOptions}
@@ -171,7 +186,7 @@ registerBlockType('bergallblocks/header-minimalist', {
                         </div>
 
                         <Button className='header-minimalist__button ButtonMenu' data-open={openMenu} aria-haspopup="false" aria-controls="menu" onClick={() => setOpenMenu(!openMenu)}>
-                            <span>menu</span>
+                            <p>menu</p>
                             <div className='ButtonMenu__icon'>
                                 <span></span>
                                 <span></span>
@@ -193,8 +208,6 @@ registerBlockType('bergallblocks/header-minimalist', {
                                 </div>
                             </div>
                         </div>
-
-
                     }
                 </header>
             </div>
@@ -203,7 +216,7 @@ registerBlockType('bergallblocks/header-minimalist', {
     save: ({ attributes }) => {
         const blocksProps = useBlockProps.save();
         return (
-            <header {...blocksProps}>
+            <header {...useBlockProps.save({ style: { position: attributes.fixed ? 'fixed' : undefined }, zIndex: 1000 })}>
                 <div className="header-minimalist__barre">
                     <div className="header-minimalist__logo">
                         <a href='/'>
@@ -213,16 +226,15 @@ registerBlockType('bergallblocks/header-minimalist', {
                     <div className="header-minimalist__menu01" data-display="true">
                         <ul className='menu' dangerouslySetInnerHTML={{ __html: attributes.menuPrimaireHtml }} />
                     </div>
-                    <button className='header-minimalist__button ButtonMenu' data-open="false" aria-haspopup="false" aria-controls="menu">
-                        <span>menu</span>
+                    <div className='header-minimalist__button ButtonMenu' data-open="false" aria-haspopup="false" aria-controls="menu">
+                        <span className='entry-content'>menu</span>
                         <div className='ButtonMenu__icon'>
                             <span></span>
                             <span></span>
                             <span></span>
                         </div>
-                    </button>
+                    </div>
                 </div>
-
                 <div className='header-minimalist__menuburger' data-open="false" role="menu"  >
                     <div className="header-minimalist__menuburgerwrapper">
                         <div className="header-minimalist__menu01">
@@ -241,8 +253,6 @@ registerBlockType('bergallblocks/header-minimalist', {
     }
 });
 
-
-import { animate, createTimeline, utils, stagger } from "animejs"
 
 document.addEventListener('DOMContentLoaded', () => {
     const headerMinimalist = document.querySelectorAll('.wp-block-bergallblocks-header-minimalist');
