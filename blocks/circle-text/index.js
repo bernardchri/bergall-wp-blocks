@@ -1,5 +1,5 @@
 import { registerBlockType } from '@wordpress/blocks';
-import { ToolbarGroup, ToolbarButton, PanelBody, TextControl, RangeControl, ToggleControl, } from '@wordpress/components';
+import { ToolbarGroup, ToolbarButton, PanelBody, PanelRow, TextControl,SelectControl, RangeControl, RadioControl, ToggleControl, } from '@wordpress/components';
 import { useBlockProps, InnerBlocks, InspectorControls, URLInput } from '@wordpress/block-editor';
 import { useState } from '@wordpress/element';
 import "./style.css";
@@ -39,6 +39,13 @@ registerBlockType('bergallblocks/circle-text', {
 
 
     attributes: {
+        top: { type: 'number', default: 200 },
+        left: { type: 'number', default: 200 },
+        topUnit:{ type: 'string', default: 'px' },
+        leftUnit: { type: 'string', default: 'px' },
+        position: { type: 'string', default: 'static' },
+        width: { type: 'number', default: 200 },
+        height: { type: 'number', default: 200 },
         speed: { type: 'number', default: 10 },
         link: { type: 'string', default: '' },
         direction: { type: 'boolean', default: false },
@@ -59,18 +66,18 @@ registerBlockType('bergallblocks/circle-text', {
         const blockProps = useBlockProps({
             className: `circle-text-container`,
         });
-        
 
-        const { speed,  direction, gradianttransition, rotation, texte } = attributes;
+
+        const { position, top, left,topUnit, leftUnit, width, height, speed, direction, gradianttransition, rotation, texte } = attributes;
 
         return (
             <div {...blockProps}>
                 <InspectorControls>
-                    <PanelBody title="Paramètres du Marquee">
+                    <PanelBody title="Paramètres du Circle Text">
                         <TextControl
                             label="Texte du Cercle"
                             value={texte}
-                            onChange={(value) => setAttributes( {texte: value})}
+                            onChange={(value) => setAttributes({ texte: value })}
                         />
                         <RangeControl
                             label="Vitesse"
@@ -96,7 +103,73 @@ registerBlockType('bergallblocks/circle-text', {
                             min={0}
                             max={360}
                         />
+
                     </PanelBody>
+
+
+                    <PanelBody title="Positionnement">
+                        <RadioControl
+                            label="Alignement"
+                            selected={position}
+
+                            options={[
+                                { label: 'Normal', value: 'static', default: 'static' },
+                                { label: 'Absolu en coordonnées', value: 'absolute' },
+                                { label: 'Fixé sur l\'écran en coordonnées', value: 'fixed' },
+                            ]}
+                            onChange={(value) => setAttributes({ position: value })}
+                        />
+
+                        {(position === 'absolute' || position === 'fixed') && (
+                            <>
+                                <div style={{ display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
+                                    <TextControl
+                                        label="Top"
+                                        type="number"
+                                        value={top}
+                                        onChange={(value) => setAttributes({ top: value })}
+                                        style={{ flex: 1 }}
+                                    />
+                                    <SelectControl
+                                        label="Unité"
+                                        value={topUnit}
+                                        options={[
+                                            { label: 'px', value: 'px' },
+                                            { label: '%', value: '%' },
+                                            { label: 'em', value: 'em' },
+                                        ]}
+                                        onChange={(value) => setAttributes({ topUnit: value })}
+                                        style={{ width: '80px' }}
+                                    />
+                                </div>
+
+                                <div style={{ display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
+                                    <TextControl
+                                        label="Top"
+                                        type="number"
+                                        value={left}
+                                        onChange={(value) => setAttributes({ left: value })}
+                                        style={{ flex: 1 }}
+                                    />
+                                    <SelectControl
+                                        label="Unité"
+                                        value={leftUnit}
+                                        options={[
+                                            { label: 'px', value: 'px' },
+                                            { label: '%', value: '%' },
+                                            { label: 'em', value: 'em' },
+                                        ]}
+                                        onChange={(value) => setAttributes({ leftUnit: value })}
+                                        style={{ width: '80px' }}
+                                    />
+                                </div>
+                            </>
+                        )}
+
+                    </PanelBody>
+
+
+
                 </InspectorControls>
 
                 <div {...blockProps}>
@@ -114,11 +187,11 @@ registerBlockType('bergallblocks/circle-text', {
 
 
 
-            </div>
+            </div >
         );
     },
     save: ({ attributes }) => {
-        const { speed, direction, gradianttransition, rotation, texte } = attributes;
+        const { width, height, speed, direction, gradianttransition, rotation, texte } = attributes;
 
         const blockProps = useBlockProps.save({
             className: `circle-text-container --view`,

@@ -2,6 +2,8 @@
 
 .circle-text-wrapper {
     overflow: hidden;
+
+    border: 5px solid goldenrod;
 }
 
 .circle-text-wrapper svg {
