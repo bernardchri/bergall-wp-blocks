@@ -420,36 +420,42 @@ a.wp-block-bergallblocks-marquee {
   \**********************************************************************************************************************************************************************************/
 
 
+.wp-block-bergallblocks-circle-text {
+    width: -moz-fit-content;
+    width: fit-content;
+}
+
+
+
+
+
 .circle-text-wrapper {
     overflow: hidden;
+    width: -moz-fit-content;
+    width: fit-content;
 
-    border: 5px solid goldenrod;
+    /* border: 5px solid goldenrod; */
 }
 
 .circle-text-wrapper svg {
-    width: 100%; /* Ajustez la largeur selon vos besoins */
-    height: auto; /* Conserve les proportions */
-    width: 200px; /* Limite la largeur maximale si nécessaire */
-    margin: 0 auto; /* Centre le SVG */
+    height: auto;
 }
 
 
-.marquee-content{
+.circle-text-wrapper svg {
     width: -moz-max-content;
     width: max-content;
-    animation: marquee-scroll var(--speed, 10s) linear infinite var(--direction,
-    forwards);
+    animation: circle-text-keyframe var(--speed, 20s) linear infinite var(--direction, forwards);
+
 }
 
-
-
-/* Animation */
-@keyframes marquee-scroll {
-    from{
-        transform:  translateX(0%);
+@keyframes circle-text-keyframe {
+    from {
+        transform: rotate(0);
     }
+
     to {
-        transform: translateX(-50%);
+        transform: rotate(360deg);
     }
 }
 /*!*************************************************************************************************************************************************************************************!*\

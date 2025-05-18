@@ -256,6 +256,19 @@ document.addEventListener('DOMContentLoaded', function () {
 
 /***/ }),
 
+/***/ "./blocks/circle-text/editor.css":
+/*!***************************************!*\
+  !*** ./blocks/circle-text/editor.css ***!
+  \***************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
 /***/ "./blocks/circle-text/index.js":
 /*!*************************************!*\
   !*** ./blocks/circle-text/index.js ***!
@@ -273,18 +286,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./style.css */ "./blocks/circle-text/style.css");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "react/jsx-runtime");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _editor_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./editor.css */ "./blocks/circle-text/editor.css");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "react/jsx-runtime");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__);
 
 
 
 
 
+ // <-- Ajout de la CSS pour l'éditeur
 
 (0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__.registerBlockType)('bergallblocks/circle-text', {
   title: 'Circle Text',
   icon: 'slides',
   category: 'bergall',
+  apiVersion: 2,
+  $schema: "https://schemas.wp.org/trunk/block.json",
   supports: {
     color: {
       background: true,
@@ -294,35 +311,34 @@ __webpack_require__.r(__webpack_exports__);
       padding: true,
       margin: true
     },
-    "align": ["wide", "full"],
+    align: ["wide", "full", "center"],
     html: false,
     typography: {
       lineHeight: true
     }
   },
-  example: {
-    attributes: {
-      speed: 10,
-      link: '',
-      direction: 'left'
-    },
-    innerBlocks: [{
-      name: 'core/paragraph',
-      attributes: {
-        content: 'hello'
-      }
-    }, {
-      name: 'core/paragraph',
-      attributes: {
-        content: 'dolly'
-      }
-    }, {
-      name: 'core/paragraph',
-      attributes: {
-        content: 'world'
-      }
-    }]
-  },
+  // example: {
+  //     attributes: {
+  //         speed: 10,
+  //         link: '',
+  //         direction: 'left',
+  //     },
+  //     innerBlocks: [
+  //         {
+  //             name: 'core/paragraph',
+  //             attributes: { content: 'hello' }
+  //         },
+  //         {
+  //             name: 'core/paragraph',
+  //             attributes: { content: 'dolly' }
+  //         },
+  //         {
+  //             name: 'core/paragraph',
+  //             attributes: { content: 'world' }
+  //         }
+  //     ]
+  // },
+
   attributes: {
     top: {
       type: 'number',
@@ -348,10 +364,6 @@ __webpack_require__.r(__webpack_exports__);
       type: 'number',
       default: 200
     },
-    height: {
-      type: 'number',
-      default: 200
-    },
     speed: {
       type: 'number',
       default: 10
@@ -364,10 +376,6 @@ __webpack_require__.r(__webpack_exports__);
       type: 'boolean',
       default: false
     },
-    gradianttransition: {
-      type: 'boolean',
-      default: false
-    },
     rotation: {
       type: 'number',
       default: 0
@@ -375,7 +383,7 @@ __webpack_require__.r(__webpack_exports__);
     texte: {
       type: 'string',
       default: 'YOUR TEXT HERE'
-    } // Assurez-vous que "texte" est défini
+    }
   },
   edit: ({
     attributes,
@@ -388,9 +396,10 @@ __webpack_require__.r(__webpack_exports__);
     //     className: 'circle-text-container',
     // });
 
-    const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)({
-      className: `circle-text-container`
-    });
+    // const blockProps = useBlockProps({
+    //     className: `circle-text-container`,
+    // });
+
     const {
       position,
       top,
@@ -398,25 +407,31 @@ __webpack_require__.r(__webpack_exports__);
       topUnit,
       leftUnit,
       width,
-      height,
       speed,
       direction,
-      gradianttransition,
       rotation,
       texte
     } = attributes;
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+    const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)();
+    // const blockProps = useBlockProps({
+    //     className: 'circle-text-container',
+    //     style: {
+    //         backgroundColor: attributes.backgroundColor, // Assurez-vous que cela est défini dans vos attributs
+    //     },
+    // });
+
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
       ...blockProps,
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelBody, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelBody, {
           title: "Param\xE8tres du Circle Text",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.TextControl, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.TextControl, {
             label: "Texte du Cercle",
             value: texte,
             onChange: value => setAttributes({
               texte: value
             })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.RangeControl, {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.RangeControl, {
             label: "Vitesse",
             value: speed,
             onChange: value => setAttributes({
@@ -424,54 +439,57 @@ __webpack_require__.r(__webpack_exports__);
             }),
             min: 1,
             max: 20
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.ToggleControl, {
-            label: "Direction",
-            checked: direction,
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.RangeControl, {
+            label: "Largeur",
+            value: width,
             onChange: value => setAttributes({
-              direction: value
-            })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.ToggleControl, {
-            label: "Transition de Gradient",
-            checked: gradianttransition,
-            onChange: value => setAttributes({
-              gradianttransition: value
-            })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.RangeControl, {
+              width: value
+            }),
+            min: 0,
+            max: 500
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.RangeControl, {
             label: "Rotation",
             value: rotation,
             onChange: value => setAttributes({
               rotation: value
             }),
             min: 0,
-            max: 360
+            max: 360,
+            default: 5
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.ToggleControl, {
+            label: "Direction",
+            checked: direction,
+            onChange: value => setAttributes({
+              direction: value
+            })
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelBody, {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelBody, {
           title: "Positionnement",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.RadioControl, {
-            label: "Alignement",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.RadioControl, {
+            label: "Type de position",
             selected: position,
             options: [{
-              label: 'Normal',
+              label: 'Normale',
               value: 'static',
               default: 'static'
             }, {
-              label: 'Absolu en coordonnées',
+              label: 'Absolue en coordonnées',
               value: 'absolute'
             }, {
-              label: 'Fixé sur l\'écran en coordonnées',
+              label: 'Fixée sur l\'écran en coordonnées',
               value: 'fixed'
             }],
             onChange: value => setAttributes({
               position: value
             })
-          }), (position === 'absolute' || position === 'fixed') && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.Fragment, {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+          }), (position === 'absolute' || position === 'fixed') && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.Fragment, {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
               style: {
                 display: 'flex',
                 alignItems: 'flex-start',
                 gap: '10px'
               },
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.TextControl, {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.TextControl, {
                 label: "Top",
                 type: "number",
                 value: top,
@@ -481,7 +499,7 @@ __webpack_require__.r(__webpack_exports__);
                 style: {
                   flex: 1
                 }
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.SelectControl, {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.SelectControl, {
                 label: "Unit\xE9",
                 value: topUnit,
                 options: [{
@@ -501,13 +519,13 @@ __webpack_require__.r(__webpack_exports__);
                   width: '80px'
                 }
               })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
               style: {
                 display: 'flex',
                 alignItems: 'flex-start',
                 gap: '10px'
               },
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.TextControl, {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.TextControl, {
                 label: "Top",
                 type: "number",
                 value: left,
@@ -517,7 +535,7 @@ __webpack_require__.r(__webpack_exports__);
                 style: {
                   flex: 1
                 }
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.SelectControl, {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.SelectControl, {
                 label: "Unit\xE9",
                 value: leftUnit,
                 options: [{
@@ -540,35 +558,36 @@ __webpack_require__.r(__webpack_exports__);
             })]
           })]
         })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-        ...blockProps,
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-          className: `circle-text-wrapper ${gradianttransition ? "fadeout-horizontal" : ''}`,
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+        className: `circle-text-wrapper`,
+        style: {},
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("svg", {
+          viewBox: "0 0 100 100",
+          xmlns: "http://www.w3.org/2000/svg",
           style: {
-            transform: `rotate(${rotation}deg)`
+            width: width + 'px',
+            transform: `rotate(${rotation}deg)`,
+            '--speed': 50 / speed + 's',
+            '--direction': direction ? 'forwards' : 'reverse'
           },
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("svg", {
-            viewBox: "0 0 100 100",
-            xmlns: "http://www.w3.org/2000/svg",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("path", {
-              id: "SunCatcherStudio",
-              fill: "none",
-              stroke: "#000000",
-              d: "M 10, 50 A 40,40 0 1,1 90,50 A 40,40 0 1,1 10,50 Z"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("text", {
-              fontSize: "10",
-              fill: "#000000",
-              letterSpacing: "2",
-              fontFamily: "sans-serif",
-              fontWeight: "bold",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("textPath", {
-                href: "#SunCatcherStudio",
-                side: "left",
-                startOffset: "5",
-                children: texte
-              })
-            })]
-          })
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("path", {
+            id: "SunCatcherStudio",
+            fill: "none",
+            stroke: "#000000",
+            d: "M 10, 50 A 40,40 0 1,1 90,50 A 40,40 0 1,1 10,50 Z"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("text", {
+            fontSize: "10",
+            fill: "#000000",
+            letterSpacing: "2",
+            fontFamily: "sans-serif",
+            fontWeight: "bold",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("textPath", {
+              href: "#SunCatcherStudio",
+              side: "left",
+              startOffset: "5",
+              children: texte
+            })
+          })]
         })
       })]
     });
@@ -578,73 +597,70 @@ __webpack_require__.r(__webpack_exports__);
   }) => {
     const {
       width,
-      height,
       speed,
       direction,
-      gradianttransition,
       rotation,
       texte
     } = attributes;
     const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps.save({
       className: `circle-text-container --view`
     });
-    const content = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+    const content = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
       ..._wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps.save({
         className: `circle-text-container --view`
       }),
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-        className: `circle-text-wrapper ${gradianttransition ? "fadeout-horizontal" : ''}`,
-        style: {
-          transform: `rotate(${rotation}deg)`
-        },
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-          className: "circle-text-content",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+        className: `circle-text-wrapper`,
+        style: {},
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("svg", {
+          viewBox: "0 0 100 100",
+          xmlns: "http://www.w3.org/2000/svg",
           style: {
-            '--speed': `${speed}s`,
-            '--direction': `${direction ? 'forwards' : 'reverse'}`
+            width: width + 'px',
+            transform: `rotate(${rotation}deg)`,
+            '--speed': 50 / speed + 's',
+            '--direction': direction ? 'forwards' : 'reverse'
           },
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("svg", {
-            viewBox: "0 0 100 100",
-            xmlns: "http://www.w3.org/2000/svg",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("path", {
-              id: "SunCatcherStudio",
-              fill: "none",
-              stroke: "#000000",
-              d: "M 10, 50 A 40,40 0 1,1 90,50 A 40,40 0 1,1 10,50 Z"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("text", {
-              fontSize: "10",
-              fill: "#000000",
-              letterSpacing: "1",
-              fontFamily: "sans-serif",
-              fontWeight: "bold",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("textPath", {
-                href: "#SunCatcherStudio",
-                side: "left",
-                startOffset: "5",
-                children: texte
-              })
-            })]
-          })
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("path", {
+            id: "SunCatcherStudio",
+            fill: "none",
+            stroke: "#000000",
+            d: "M 10, 50 A 40,40 0 1,1 90,50 A 40,40 0 1,1 10,50 Z"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("text", {
+            fontSize: "10",
+            fill: "#000000",
+            letterSpacing: "1",
+            fontFamily: "sans-serif",
+            fontWeight: "bold",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("textPath", {
+              href: "#SunCatcherStudio",
+              side: "left",
+              startOffset: "5",
+              children: texte
+            })
+          })]
         })
       })
     });
     return content;
   }
 });
-document.addEventListener('DOMContentLoaded', () => {
-  const marqueeContainer = document.querySelectorAll('.circle-text-container');
-  marqueeContainer.forEach(container => {
-    const marqueeContent = container.querySelector('.marquee-content');
-    if (marqueeContent) {
-      const clonedContent = marqueeContent.cloneNode(true);
-      clonedContent.querySelectorAll('p').forEach(p => {
-        p.setAttribute('aria-hidden', 'true');
-      });
-      const clonedContentHTML = clonedContent.innerHTML;
-      marqueeContent.innerHTML += clonedContentHTML;
-    }
-  });
-});
+
+// document.addEventListener('DOMContentLoaded', () => {
+//     const marqueeContainer = document.querySelectorAll('.circle-text-container');
+//     marqueeContainer.forEach(container => {
+//         const marqueeContent = container.querySelector('.marquee-content');
+
+//         if (marqueeContent) {
+//             const clonedContent = marqueeContent.cloneNode(true);
+//             clonedContent.querySelectorAll('p').forEach(p => {
+//                 p.setAttribute('aria-hidden', 'true');
+//             });
+//             const clonedContentHTML = clonedContent.innerHTML;
+//             marqueeContent.innerHTML += clonedContentHTML;
+//         }
+//     });
+// })
 
 /***/ }),
 
