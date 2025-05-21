@@ -1,14 +1,19 @@
 import { registerBlockType } from '@wordpress/blocks';
 import { ToolbarGroup, ToolbarButton, PanelBody, PanelRow, TextControl, SelectControl, RangeControl, RadioControl, ToggleControl, } from '@wordpress/components';
 import { useBlockProps, InnerBlocks, InspectorControls, URLInput } from '@wordpress/block-editor';
-import { useState } from '@wordpress/element';
+import { useState,useEffect } from '@wordpress/element';
 import './style.css';
 import './editor.css'; // <-- Ajout de la CSS pour l'éditeur
+
+import $ from 'jquery';
+import 'jquery-ui-dist/jquery-ui'; // Importer jQuery UI
 
 registerBlockType('animablocks/circle-text', {
     title: 'Circle Text',
     icon: 'slides',
     category: 'anima',
+    apiVersion: 2,
+    $schema: "https://schemas.wp.org/trunk/block.json",
     supports: {
         color: { background: true, text: true },
         spacing: { padding: true, margin: true },
@@ -75,6 +80,18 @@ registerBlockType('animablocks/circle-text', {
         //         backgroundColor: attributes.backgroundColor, // Assurez-vous que cela est défini dans vos attributs
         //     },
         // });
+
+
+        useEffect(() => {
+            if (position === 'absolute' || position === 'fixed') {
+                console.log( $('.circle-text-wrapper'));
+                $('.circle-text-wrapper').draggable({
+                    stop: function(event, ui) {
+                        setAttributes({ top: ui.position.top, left: ui.position.left });
+                    }
+                });
+            }
+        }, [position]);
 
 
         return (
@@ -178,8 +195,9 @@ registerBlockType('animablocks/circle-text', {
                     </PanelBody>
                 </InspectorControls>
 
-                <div className={`circle-text-wrapper`} style={{}}>
-                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style={{ width: width + 'px', transform: `rotate(${rotation}deg)`, '--speed': (50 / speed) + 's', '--direction': direction ? 'forwards' : 'reverse', }}>
+  <div className={`circle-text-wrapper`} style={{ position: position, top: `${top}${topUnit}`, left: `${left}${leftUnit}` }}>
+                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style={{ width: width + 'px', transform: `rotate(${rotation}deg)`, '--speed': (50 / speed) + 's', '--direction': direction ? 'forwards' : 'reverse' }}>
+                       
                         <path id="SunCatcherStudio" fill="none" stroke="#000000"
                             d="M 10, 50 A 40,40 0 1,1 90,50 A 40,40 0 1,1 10,50 Z" />
                         <text fontSize="10" fill="#000000" letterSpacing="2" fontFamily="sans-serif" fontWeight="bold">

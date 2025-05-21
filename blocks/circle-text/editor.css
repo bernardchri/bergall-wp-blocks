@@ -1,15 +1,16 @@
 
 
 .circle-text-container ,
-.wp-block-bergallblocks-circle-text {
+.wp-block-animablocks-circle-text {
     width: fit-content;
 }
 
 
 
 .circle-text-wrapper {
-    overflow: hidden;
+    /* overflow: hidden; */
     width: fit-content;
+    cursor: move;
 
     /* border: 5px solid goldenrod; */
 }
