@@ -21,7 +21,7 @@ const animateBackgroundColor = (element, backgroundColor, addClass, blockRef) =>
     if (element) {
         const defaultColor = getComputedStyle(element).backgroundColor;
         
-        gsap.utils.toArray('.wp-block-bergalblocks-change-color-on-scroll').forEach((section) => {
+        gsap.utils.toArray('.wp-block-animablocks-change-color-on-scroll').forEach((section) => {
 
 
             let lastColor =  defaultColor;
@@ -58,10 +58,10 @@ const animateBackgroundColor = (element, backgroundColor, addClass, blockRef) =>
     }
 };
 
-registerBlockType('bergalblocks/change-color-on-scroll', {
+registerBlockType('animablocks/change-color-on-scroll', {
     title: 'Change Color on Scroll',
     icon: 'shield',
-    category: 'bergall',
+    category: 'anima',
     attributes: {
         targetElement: {
             type: 'string',
@@ -136,7 +136,7 @@ registerBlockType('bergalblocks/change-color-on-scroll', {
 
 
 document.addEventListener('DOMContentLoaded', () => {
-    const changeColorOnScroll = document.querySelectorAll('.wp-block-bergalblocks-change-color-on-scroll');
+    const changeColorOnScroll = document.querySelectorAll('.wp-block-animablocks-change-color-on-scroll');
     const element = document.querySelector("body");
     changeColorOnScroll.forEach((comp) => {
 

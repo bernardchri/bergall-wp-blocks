@@ -6,7 +6,7 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { useEffect } from '@wordpress/element';
 
 // Définir le chemin par défaut pour le fichier GLB
-const defaultModelUrl = '/wp-content/plugins/bergall-wp-blocks/blocks/hero-3D-object/bague.glb';
+const defaultModelUrl = '/bague.glb';
 
 
 const threeDisplay = () => {
@@ -84,10 +84,10 @@ const threeDisplay = () => {
 
 
 
-registerBlockType('bergallblocks/hero-3d', {
+registerBlockType('animablocks/hero-3d', {
     title: 'Hero 3D',
     icon: 'universal-access-alt',
-    category: 'bergall',
+    category: 'anima',
     attributes: {
         modelUrl: { type: 'string', default: defaultModelUrl },
         cameraSpeed: { type: 'number', default: 0.1 },

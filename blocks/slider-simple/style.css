@@ -1,17 +1,17 @@
 
-body :has(.wp-block-bergall-slider-simple) {
+body :has(.wp-block-anima-slider-simple) {
     overflow-x: hidden !important;
 }
 
-.wp-block-bergall-slider-simple .swiper-container {
+.wp-block-anima-slider-simple .swiper-container {
     position: relative;
 }
 
-.wp-block-bergall-slider-simple .swiper-wrapper {
+.wp-block-anima-slider-simple .swiper-wrapper {
     gap: 1rem;
 }
 
-.wp-block-bergall-slider-simple .swiper-slide img {
+.wp-block-anima-slider-simple .swiper-slide img {
     width: 100%;
     height: auto;
 }

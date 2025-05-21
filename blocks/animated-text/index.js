@@ -4,9 +4,9 @@ import { PanelBody, RangeControl, Button, SelectControl } from '@wordpress/compo
 import { customIcon } from '../../src/utils/icon';
 
 
-registerBlockType('bergallblocks/animated-text', {
+registerBlockType('animablocks/animated-text', {
     title: "Texte animé",
-    category: 'bergall',
+    category: 'anima',
     description: "animation de texte titre ou paragraphe",
     icon: customIcon,
     attributes: {

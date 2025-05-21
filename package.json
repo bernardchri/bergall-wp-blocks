@@ -5,7 +5,7 @@
   "scripts": {
     "build": "wp-scripts build",
     "start": "wp-scripts start",
-      "zip": "npm run build && cd .. && zip -r bergall-wp-blocks.zip bergall-wp-blocks -x \"bergall-wp-blocks/node_modules/*\" \"bergall-wp-blocks/src/*\" \"bergall-wp-blocks/*.git*\" \"bergall-wp-blocks/*.zip\" \"bergall-wp-blocks/package.json\" \"bergall-wp-blocks/package-lock.json\" \"bergall-wp-blocks/blocks/*\" \"bergall-wp-blocks/webpack.config.js\" \"bergall-wp-blocks/.babelrc\" \"bergall-wp-blocks/.gitignore\" \"bergall-wp-blocks/.editorconfig\" \"bergall-wp-blocks/.eslintrc.json\" \"bergall-wp-blocks/.stylelintignore\" \"bergall-wp-blocks/.stylelintrc.json\" \"bergall-wp-blocks/README.md\""
+      "zip": "npm run build && cd .. && zip -r anima-wp-blocks.zip anima-wp-blocks -x \"anima-wp-blocks/node_modules/*\" \"anima-wp-blocks/src/*\" \"anima-wp-blocks/*.git*\" \"anima-wp-blocks/*.zip\" \"anima-wp-blocks/package.json\" \"anima-wp-blocks/package-lock.json\" \"anima-wp-blocks/blocks/*\" \"anima-wp-blocks/webpack.config.js\" \"anima-wp-blocks/.babelrc\" \"anima-wp-blocks/.gitignore\" \"anima-wp-blocks/.editorconfig\" \"anima-wp-blocks/.eslintrc.json\" \"anima-wp-blocks/.stylelintignore\" \"anima-wp-blocks/.stylelintrc.json\" \"anima-wp-blocks/README.md\""
    
   },
   "dependencies": {

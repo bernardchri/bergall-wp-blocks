@@ -19,9 +19,9 @@ const findMenuToDisplay = (data, id) => {
 // En version mobile, les trois menus sont superposés dans un menu burger avec une hierarchie de 3 niveaux
 // Menu en sticky 
 
-registerBlockType('bergallblocks/header-minimalist', {
+registerBlockType('animablocks/header-minimalist', {
     title: 'Header minimaliste',
-    category: 'bergall',
+    category: 'anima',
     description: "un header minimaliste pour portfolio",
     apiVersion: 3,
     supports:
@@ -255,7 +255,7 @@ registerBlockType('bergallblocks/header-minimalist', {
 
 
 document.addEventListener('DOMContentLoaded', () => {
-    const headerMinimalist = document.querySelectorAll('.wp-block-bergallblocks-header-minimalist');
+    const headerMinimalist = document.querySelectorAll('.wp-block-animablocks-header-minimalist');
 
 
     headerMinimalist.forEach(header => {
@@ -270,11 +270,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // animation items menu
             const tl = createTimeline({ autoplay: false })
-            tl.set('.wp-block-bergallblocks-header-minimalist .header-minimalist__menuburger  ul li a', { overflow: 'hidden' }).set('.wp-block-bergallblocks-header-minimalist .header-minimalist__menuburger  ul li a span', { opacity: 0 })
+            tl.set('.wp-block-animablocks-header-minimalist .header-minimalist__menuburger  ul li a', { overflow: 'hidden' }).set('.wp-block-animablocks-header-minimalist .header-minimalist__menuburger  ul li a span', { opacity: 0 })
 
             if (menuButton.dataset.open) {
 
-                tl.add('.wp-block-bergallblocks-header-minimalist .header-minimalist__menuburger  ul li a span', {
+                tl.add('.wp-block-animablocks-header-minimalist .header-minimalist__menuburger  ul li a span', {
                     opacity: [0, 1],
                     y: [40, 0],
                     delay: stagger(50, { start: 150 }),

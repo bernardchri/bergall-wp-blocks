@@ -10,10 +10,10 @@ import "./style.css"
 /**
  * Register the block
  */
-registerBlockType('bergallblocks/number-increment-animation', {
+registerBlockType('animablocks/number-increment-animation', {
     title: 'Number Increment Animation',
     icon: 'chart-line',
-    category: 'bergall',
+    category: 'anima',
     "apiVersion": 2,
     "$schema": "https://schemas.wp.org/trunk/block.json",
     supports: {
@@ -136,7 +136,7 @@ registerBlockType('bergallblocks/number-increment-animation', {
  * Frontend script for the number animation
  */
 document.addEventListener('DOMContentLoaded', function () {
-    const blocks = document.querySelectorAll('.wp-block-bergallblocks-number-increment-animation > .number-animation-block');
+    const blocks = document.querySelectorAll('.wp-block-animablocks-number-increment-animation > .number-animation-block');
 
     const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Plugin Name:       Bergall – Blocks
+ * Plugin Name:       anima – Blocks
  * Description:       Blocks étendus pour thèmes FSE
  * Requires at least: 6.1
  * Requires PHP:      7.0
@@ -9,7 +9,7 @@
  * Author:            The WordPress Contributors
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain:       bergall-wp-blocks
+ * Text Domain:       anima-wp-blocks
  */
 
 
@@ -21,15 +21,15 @@ if (!defined('ABSPATH')) {
 }
 
 
-define('BERGALL_WP_BLOCKS_PATH', plugin_dir_path(__FILE__));
-define('BERGALL_WP_BLCOKS_URL', plugin_dir_url(__FILE__));
+define('anima_WP_BLOCKS_PATH', plugin_dir_path(__FILE__));
+define('anima_WP_BLCOKS_URL', plugin_dir_url(__FILE__));
 
 
-// require_once ( BERGALL_WP_BLOCKS_PATH . "/inc/acf-general-options.php");
-// require_once ( BERGALL_WP_BLOCKS_PATH . "/inc/acf-blocks-gutemberg.php");
+// require_once ( anima_WP_BLOCKS_PATH . "/inc/acf-general-options.php");
+// require_once ( anima_WP_BLOCKS_PATH . "/inc/acf-blocks-gutemberg.php");
 
 
-function bergall_wp_blocks_register_scripts()
+function anima_wp_blocks_register_scripts()
 {
     wp_enqueue_script(
         'my-custom-blocks-js',
@@ -38,12 +38,12 @@ function bergall_wp_blocks_register_scripts()
         filemtime(plugin_dir_path(__FILE__) . 'build/index.js')
     );
 }
-add_action('enqueue_block_assets', 'bergall_wp_blocks_register_scripts');
+add_action('enqueue_block_assets', 'anima_wp_blocks_register_scripts');
 
 
 //css en mode backend
-add_action('wp_enqueue_scripts', 'bergall_enqueue_front_styles');
-function bergall_enqueue_front_styles() {
+add_action('wp_enqueue_scripts', 'anima_enqueue_front_styles');
+function anima_enqueue_front_styles() {
     wp_enqueue_style(
         'my-custom-blocks-css',
         plugins_url('/build/style-index.css', __FILE__),
@@ -53,8 +53,8 @@ function bergall_enqueue_front_styles() {
 }
 
 // css en mode front
-add_action('enqueue_block_editor_assets', 'bergall_enqueue_editor_styles');
-function bergall_enqueue_editor_styles() {
+add_action('enqueue_block_editor_assets', 'anima_enqueue_editor_styles');
+function anima_enqueue_editor_styles() {
     wp_enqueue_style(
         'my-custom-blocks-index-css',
         plugins_url('/build/index.css', __FILE__),
@@ -67,14 +67,14 @@ function bergall_enqueue_editor_styles() {
 
 // AJOUT D'UNE CATEGORIE DE BLOCS
 
-function bergall_new_category_blocks($cats)
+function anima_new_category_blocks($cats)
 {
 
     // create a new array element with anything as its index
     $new = array(
         'literallyanything' => array(
-            'slug'  => 'bergall',
-            'title' => 'Blocks by Bergall'
+            'slug'  => 'anima',
+            'title' => 'Anima blocks'
         )
     );
     // just decide here at what position your custom category should appear
@@ -84,11 +84,11 @@ function bergall_new_category_blocks($cats)
     $cats = array_values($cats);
     return $cats;
 }
-add_filter('block_categories_all', 'bergall_new_category_blocks');
+add_filter('block_categories_all', 'anima_new_category_blocks');
 
 
 // ENREGISTREMENT DES BLOCS
-function bergallblocks_register_custom_blocks()
+function animablocks_register_custom_blocks()
 {
     // composants animations
     register_block_type(__DIR__ . '/blocks/animated-text');
@@ -115,7 +115,7 @@ function bergallblocks_register_custom_blocks()
     // register_block_type(__DIR__ . '/blocks/change-color-on-scroll'); 
 
 }
-add_action('init', 'bergallblocks_register_custom_blocks');
+add_action('init', 'animablocks_register_custom_blocks');
 
 
 
@@ -125,7 +125,7 @@ add_action('init', 'bergallblocks_register_custom_blocks');
 /********************************/
 
 // // Save
-// function bergall_wp_blocks_update_field_group($group)
+// function anima_wp_blocks_update_field_group($group)
 // {
 //     // list of field groups that should be saved to my-plugin/acf-json
 
@@ -138,7 +138,7 @@ add_action('init', 'bergallblocks_register_custom_blocks');
 //         });
 //     }
 // }
-// add_action('acf/update_field_group', 'bergall_wp_blocks_update_field_group', 1, 1);
+// add_action('acf/update_field_group', 'anima_wp_blocks_update_field_group', 1, 1);
 
 // // Load - includes the /acf-json folder in this plugin to the places to look for ACF Local JSON files
 // add_filter('acf/settings/load_json', function ($paths) {
@@ -149,13 +149,13 @@ add_action('init', 'bergallblocks_register_custom_blocks');
 
 
 // Ajout d'une rubrique de composants
-function bergall_wp_blocks_register_blocks_collections()
+function anima_wp_blocks_register_blocks_collections()
 {
     wp_enqueue_script(
-        'bergall-wp-blocks-categories',
+        'anima-wp-blocks-categories',
         plugins_url('src/utils/blocks-collection.js', __FILE__),
         array('wp-blocks', 'wp-dom-ready', 'wp-edit-post'),
         filemtime(plugin_dir_path(__FILE__) . 'src/utils/blocks-collection.js')
     );
 }
-add_action('enqueue_block_editor_assets', 'bergall_wp_blocks_register_blocks_collections');
+add_action('enqueue_block_editor_assets', 'anima_wp_blocks_register_blocks_collections');

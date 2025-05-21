@@ -4,10 +4,10 @@ import { PanelBody, ToggleControl, SelectControl } from '@wordpress/components';
 import { onScroll, animate, utils } from 'animejs';
 import './style.css';
 
-registerBlockType('bergallblocks/group-extended', {
+registerBlockType('animablocks/group-extended', {
     title: 'Group Extended',
     icon: 'admin-links',
-    category: 'bergall',
+    category: 'anima',
     description: 'Group avec des options supplémentaires',
     attributes: {
         href: { type: 'string', default: '' },
@@ -217,7 +217,7 @@ registerBlockType('bergallblocks/group-extended', {
 document.addEventListener("DOMContentLoaded", function () {
 
 
-    utils.$('.wp-block-bergallblocks-group-extended').forEach(element => {
+    utils.$('.wp-block-animablocks-group-extended').forEach(element => {
         if (!element.classList.contains("animate-fadeIn") && !element.classList.contains("animate-fadeInUp")) return;
         const isFadeUp = element.classList.contains("animate-fadeInUp");
         animate(element, {

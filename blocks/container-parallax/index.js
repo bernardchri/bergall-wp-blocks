@@ -7,11 +7,11 @@ import { onScroll, animate } from 'animejs';
 
 
 
-registerBlockType('bergallblocks/container-parallax', {
+registerBlockType('animablocks/container-parallax', {
     title: 'Parallax Container',
     icon: 'images-alt2',
     description: 'group avec effet parrallax',
-    category: 'bergall',
+    category: 'anima',
     attributes: {
         speed: { type: 'number', default: 50 },
         depth: { type: 'number', default: 0 },

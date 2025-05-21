@@ -1,7 +1,7 @@
 .image-video-hover--editor{
     line-height: 0;
 }
-.wp-block-bergallblocks-image-video-hover.is-selected{
+.wp-block-animablocks-image-video-hover.is-selected{
     outline: 2px dashed #ccc;
     line-height: 0;
 }

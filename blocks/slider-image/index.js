@@ -34,9 +34,9 @@ const sliderImage = () => {
     });
 }
 
-registerBlockType("bergall/slider-image", {
+registerBlockType("anima/slider-image", {
     title: "Slider images",
-    category: "bergall",
+    category: "anima",
     icon: "images-alt",
     description: "Carroussel Un slider d'images simple avec navigation et pagination.",
     supports: {

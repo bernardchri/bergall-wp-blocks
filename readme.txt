@@ -1,4 +1,4 @@
-=== Bergall Wp Blocks ===
+=== anima Wp Blocks ===
 Contributors:      The WordPress Contributors
 Tags:              block
 Tested up to:      6.1
@@ -18,7 +18,7 @@ Cette section décrit comment installer le plugin et le faire fonctionner.
 
 par exemple
 
-1. Téléchargez les fichiers du plugin dans le répertoire `/wp-content/plugins/bergall-wp-blocks`, ou installez le plugin directement via l'écran des plugins de WordPress.
+1. Téléchargez les fichiers du plugin dans le répertoire `/wp-content/plugins/anima-wp-blocks`, ou installez le plugin directement via l'écran des plugins de WordPress.
 2. Activez le plugin via l'écran 'Plugins' dans WordPress.
 
 == Questions Fréquemment Posées ==

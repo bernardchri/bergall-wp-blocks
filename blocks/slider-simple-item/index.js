@@ -2,9 +2,9 @@
 import { registerBlockType } from '@wordpress/blocks';
 import { InnerBlocks, useBlockProps } from '@wordpress/block-editor';
 
-registerBlockType("bergall/slider-simple-item", {
+registerBlockType("anima/slider-simple-item", {
     title: "Slider simple item",
-    category: "bergall",
+    category: "anima",
     icon: "images-alt2",
     description: "Un item de slide",
     supports: {

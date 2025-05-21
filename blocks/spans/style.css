@@ -1,9 +1,9 @@
-.wp-block-bergallblocks-spans span {
+.wp-block-animablocks-spans span {
     display: inline-block;
     margin: 0 5px;
 }
 
-.wp-block-bergallblocks-spans img {
+.wp-block-animablocks-spans img {
     max-width: 100%;
     height: auto;
 }

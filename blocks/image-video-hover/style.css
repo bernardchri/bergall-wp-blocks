@@ -5,13 +5,13 @@
     line-height: 0;
 }
 
-.wp-block-bergallblocks-image-video-hover {
+.wp-block-animablocks-image-video-hover {
     display: block;
     width: 100%;
    
 }
 
-.wp-block-bergallblocks-image-video-hover * {
+.wp-block-animablocks-image-video-hover * {
     width: 100%;
 }
 

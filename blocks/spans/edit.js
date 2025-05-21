@@ -17,19 +17,19 @@ export default function Edit({ attributes, setAttributes }) {
     return (
         <div {...blockProps}>
             <InspectorControls>
-                <PanelBody title={__('Ajouter un Div', 'bergallblocks')}>
+                <PanelBody title={__('Ajouter un Div', 'animablocks')}>
                     <select
                         value={currentSpan.type}
                         onChange={(e) => setCurrentSpan({ ...currentSpan, type: e.target.value })}
                     >
-                        <option value="text">{__('Texte', 'bergallblocks')}</option>
-                        <option value="image">{__('Image', 'bergallblocks')}</option>
+                        <option value="text">{__('Texte', 'animablocks')}</option>
+                        <option value="image">{__('Image', 'animablocks')}</option>
                     </select>
                     {currentSpan.type === 'text' && (
                         <TextControl
                             value={currentSpan.content}
                             onChange={(content) => setCurrentSpan({ ...currentSpan, content })}
-                            placeholder={__('Entrez du texte', 'bergallblocks')}
+                            placeholder={__('Entrez du texte', 'animablocks')}
                         />
                     )}
                     {currentSpan.type === 'image' && (
@@ -40,13 +40,13 @@ export default function Edit({ attributes, setAttributes }) {
                                 value={currentSpan.content}
                                 render={({ open }) => (
                                     <Button onClick={open}>
-                                        {__('Sélectionner une image', 'bergallblocks')}
+                                        {__('Sélectionner une image', 'animablocks')}
                                     </Button>
                                 )}
                             />
                         </MediaUploadCheck>
                     )}
-                    <Button onClick={addSpan}>{__('Ajouter', 'bergallblocks')}</Button>
+                    <Button onClick={addSpan}>{__('Ajouter', 'animablocks')}</Button>
                 </PanelBody>
             </InspectorControls>
             <div style={{ display: 'flex', flexWrap: 'wrap' }}>

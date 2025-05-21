@@ -4,10 +4,10 @@ import { useBlockProps, InnerBlocks, InspectorControls, URLInput } from '@wordpr
 import { useState } from '@wordpress/element';
 import "./style.css";
 
-registerBlockType('bergallblocks/circle-text', {
+registerBlockType('animablocks/circle-text', {
     title: 'Circle Text',
     icon: 'slides',
-    category: 'bergall',
+    category: 'anima',
     supports: {
         color: { background: true, text: true },
         spacing: { padding: true, margin: true },

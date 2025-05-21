@@ -7,7 +7,7 @@ import { Dashicon } from '@wordpress/components';
 registerBlockType('custom/button-block', {
     title: 'Custom Button',
     icon: 'button',
-    category: 'bergall',
+    category: 'anima',
     attributes: {
         text: { type: 'string', default: 'Click me' },
         backgroundColor: { type: 'string', default: '#0073aa' },

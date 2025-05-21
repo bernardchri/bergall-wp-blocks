@@ -1,9 +1,9 @@
-.admin-bar .wp-block-bergallblocks-header-minimalist {
+.admin-bar .wp-block-animablocks-header-minimalist {
     top: 32px;
 }
 
 
-.wp-block-bergallblocks-header-minimalist {
+.wp-block-animablocks-header-minimalist {
     max-width: 100%;
     top: 0;
     left: 0;
@@ -12,12 +12,12 @@
 }
 
 
-body:not(.block-editor-iframe__body) :has(.wp-block-bergallblocks-header-minimalist) {
+body:not(.block-editor-iframe__body) :has(.wp-block-animablocks-header-minimalist) {
     padding-top: 4rem;
 }
 
 
-.wp-block-bergallblocks-header-minimalist .header-minimalist__barre {
+.wp-block-animablocks-header-minimalist .header-minimalist__barre {
     display: flex;
     position: relative;
     justify-content: space-between;
@@ -27,29 +27,29 @@ body:not(.block-editor-iframe__body) :has(.wp-block-bergallblocks-header-minimal
     background-color: inherit;
 }
 
-.wp-block-bergallblocks-header-minimalist .header-minimalist__barre .header-minimalist__logo {
+.wp-block-animablocks-header-minimalist .header-minimalist__barre .header-minimalist__logo {
     text-decoration: none;
 
 }
 
 
-.wp-block-bergallblocks-header-minimalist .header-minimalist__barre .header-minimalist__logo img {
+.wp-block-animablocks-header-minimalist .header-minimalist__barre .header-minimalist__logo img {
     display: flex;
     align-items: center;
     height: 3rem;
     flex-shrink: 0;
 }
 
-.wp-block-bergallblocks-header-minimalist ul,
-.wp-block-bergallblocks-header-minimalist ul li {
+.wp-block-animablocks-header-minimalist ul,
+.wp-block-animablocks-header-minimalist ul li {
     list-style-type: none;
 }
 
-.wp-block-bergallblocks-header-minimalist a:hover {
+.wp-block-animablocks-header-minimalist a:hover {
     cursor: pointer;
 }
 
-.wp-block-bergallblocks-header-minimalist .header-minimalist__menuburger {
+.wp-block-animablocks-header-minimalist .header-minimalist__menuburger {
     width: 100%;
     z-index: -1;
     height: 100vh;
@@ -58,7 +58,7 @@ body:not(.block-editor-iframe__body) :has(.wp-block-bergallblocks-header-minimal
     background-color: inherit;
 }
 
-body:not(.block-editor-iframe__body) .wp-block-bergallblocks-header-minimalist .header-minimalist__menuburger {
+body:not(.block-editor-iframe__body) .wp-block-animablocks-header-minimalist .header-minimalist__menuburger {
     position: absolute;
     left: 0;
     top: 0;
@@ -75,18 +75,18 @@ body:not(.block-editor-iframe__body) .wp-block-bergallblocks-header-minimalist .
 
 }
 
-.wp-block-bergallblocks-header-minimalist .header-minimalist__menuburger[data-open="false"] {
+.wp-block-animablocks-header-minimalist .header-minimalist__menuburger[data-open="false"] {
     opacity: 0;
     transform: translate(0, -100%);
 }
 
-.wp-block-bergallblocks-header-minimalist .header-minimalist__menuburger.admin[data-open="false"] {
+.wp-block-animablocks-header-minimalist .header-minimalist__menuburger.admin[data-open="false"] {
     opacity: 1;
     transform: translate(0, 0);
 }
 
 
-.wp-block-bergallblocks-header-minimalist .header-minimalist__barre .header-minimalist__menu01 ul {
+.wp-block-animablocks-header-minimalist .header-minimalist__barre .header-minimalist__menu01 ul {
     display: flex;
     gap: 1rem;
     font-size: 1rem;
@@ -94,7 +94,7 @@ body:not(.block-editor-iframe__body) .wp-block-bergallblocks-header-minimalist .
 }
 
 
-.wp-block-bergallblocks-header-minimalist .header-minimalist__menuburger .header-minimalist__menu01 ul {
+.wp-block-animablocks-header-minimalist .header-minimalist__menuburger .header-minimalist__menu01 ul {
     font-size: 2rem;
     /* font-size: clamp(2rem, 10vw, 3rem); */
     display: flex;
@@ -104,7 +104,7 @@ body:not(.block-editor-iframe__body) .wp-block-bergallblocks-header-minimalist .
 
 }
 
-.wp-block-bergallblocks-header-minimalist .header-minimalist__menu02 ul {
+.wp-block-animablocks-header-minimalist .header-minimalist__menu02 ul {
     font-size: 1.75rem;
     /* font-size: clamp(1.5rem, 10vw, 2.5rem); */
     display: flex;
@@ -114,7 +114,7 @@ body:not(.block-editor-iframe__body) .wp-block-bergallblocks-header-minimalist .
 
 }
 
-.wp-block-bergallblocks-header-minimalist .header-minimalist__menu03 ul {
+.wp-block-animablocks-header-minimalist .header-minimalist__menu03 ul {
     font-size: 1rem;
     /* font-size: clamp(1.2rem, 10vw, 1.75rem); */
     padding: 1em 0;
@@ -126,11 +126,11 @@ body:not(.block-editor-iframe__body) .wp-block-bergallblocks-header-minimalist .
 }
 
 @media screen and (max-width: 976px) {
-    .wp-block-bergallblocks-header-minimalist .header-minimalist__barre .header-minimalist__menu01 {
+    .wp-block-animablocks-header-minimalist .header-minimalist__barre .header-minimalist__menu01 {
         display: none;
     }
 
-    .wp-block-bergallblocks-header-minimalist .header-minimalist__menu03 ul {
+    .wp-block-animablocks-header-minimalist .header-minimalist__menu03 ul {
         border-top: 1px solid #c6c9cb;
         padding: 2rem 0;
     }
@@ -138,22 +138,22 @@ body:not(.block-editor-iframe__body) .wp-block-bergallblocks-header-minimalist .
 
 
 @media screen and (min-width: 976px) {
-    .wp-block-bergallblocks-header-minimalist .header-minimalist__menuburgerwrapper {
+    .wp-block-animablocks-header-minimalist .header-minimalist__menuburgerwrapper {
         display: flex;
         justify-content: space-between;
     }
 
 
-    .wp-block-bergallblocks-header-minimalist .header-minimalist__menuburger .header-minimalist__menu01 {
+    .wp-block-animablocks-header-minimalist .header-minimalist__menuburger .header-minimalist__menu01 {
         display: none;
     }
 
-    .wp-block-bergallblocks-header-minimalist .header-minimalist__menu02 ul {
+    .wp-block-animablocks-header-minimalist .header-minimalist__menu02 ul {
         font-size: 2r;
     }
 
 
-    .wp-block-bergallblocks-header-minimalist .header-minimalist__menuburgerwrapper>div {
+    .wp-block-animablocks-header-minimalist .header-minimalist__menuburgerwrapper>div {
         width: 100%;
         align-items: center;
 
@@ -229,11 +229,11 @@ body:not(.block-editor-iframe__body) .wp-block-bergallblocks-header-minimalist .
 
 /* animation Liens */
 
-.wp-block-bergallblocks-header-minimalist .header-minimalist__menuburger a {
+.wp-block-animablocks-header-minimalist .header-minimalist__menuburger a {
     display: inline-block;
 }
 
-.wp-block-bergallblocks-header-minimalist li.wp-block-navigation-link a {
+.wp-block-animablocks-header-minimalist li.wp-block-navigation-link a {
     text-decoration: none;
     transition: all 125ms ease;
     padding: 0.20rem;
@@ -241,25 +241,25 @@ body:not(.block-editor-iframe__body) .wp-block-bergallblocks-header-minimalist .
     display: flex;
 }
 
-.wp-block-bergallblocks-header-minimalist li.wp-block-navigation-link {
+.wp-block-animablocks-header-minimalist li.wp-block-navigation-link {
     margin-bottom: 0px
 }
 
-.wp-block-bergallblocks-header-minimalist li.wp-block-navigation-link {
+.wp-block-animablocks-header-minimalist li.wp-block-navigation-link {
     display: flex;
     flex-direction: column;
 }
 
-.wp-block-bergallblocks-header-minimalist .header-minimalist__menuburger li.wp-block-navigation-link a:hover {
+.wp-block-animablocks-header-minimalist .header-minimalist__menuburger li.wp-block-navigation-link a:hover {
     transform: translate(0.25rem, 0);
     opacity: 1;
 }
 
-.wp-block-bergallblocks-header-minimalist li.wp-block-navigation-link a span {
+.wp-block-animablocks-header-minimalist li.wp-block-navigation-link a span {
     display: block;
 }
 
-.wp-block-bergallblocks-header-minimalist li.wp-block-navigation-link a span:after {
+.wp-block-animablocks-header-minimalist li.wp-block-navigation-link a span:after {
     content: " ";
     display: block;
     height: 1px;
@@ -269,6 +269,6 @@ body:not(.block-editor-iframe__body) .wp-block-bergallblocks-header-minimalist .
     transition: all 400ms ease;
 }
 
-.wp-block-bergallblocks-header-minimalist li.wp-block-navigation-link a:hover span:after {
+.wp-block-animablocks-header-minimalist li.wp-block-navigation-link a:hover span:after {
     width: 100%;
 }

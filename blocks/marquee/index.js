@@ -3,10 +3,10 @@ import { useBlockProps, InnerBlocks, InspectorControls, URLInput } from '@wordpr
 import { PanelBody, RangeControl, ToggleControl } from '@wordpress/components';
 import "./style.css";
 
-registerBlockType('bergallblocks/marquee', {
+registerBlockType('animablocks/marquee', {
     title: 'Marquee (Défilement)',
     icon: 'slides',
-    category: 'bergall',
+    category: 'anima',
     supports: {
         color: { background: true, text: true },
         spacing: { padding: true, margin: true },

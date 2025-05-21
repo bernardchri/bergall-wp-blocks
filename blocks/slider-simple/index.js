@@ -7,9 +7,9 @@ import { SliderNavigation } from '../../src/components/navigation-swiper';
 import { useEffect, useRef } from '@wordpress/element';
 
 
-registerBlockType("bergall/slider-simple", {
+registerBlockType("anima/slider-simple", {
     title: "Slider simple",
-    category: "bergall",
+    category: "anima",
     icon: "images-alt",
     description: "Un slider simple avec navigation et pagination.",
     supports: {
@@ -81,9 +81,9 @@ registerBlockType("bergall/slider-simple", {
                         />
                     </PanelBody>
                 </InspectorControls>
-                <div className="bergall-swiper-container" >
+                <div className="anima-swiper-container" >
                     <div className="swiper-wrapper">
-                        <InnerBlocks allowedBlocks={['bergall/slider-simple-item']} />
+                        <InnerBlocks allowedBlocks={['anima/slider-simple-item']} />
                     </div>
                     <SliderNavigation />
                 </div>
@@ -95,7 +95,7 @@ registerBlockType("bergall/slider-simple", {
 
         return (
             <div {...blockProps} data-numberofslides={attributes.numberofslides} data-numberofslidesMobile={attributes.numberofslidesMobile} data-autoplay={attributes.autoplay} data-interval={attributes.interval}>
-                <div className="bergall-swiper-container">
+                <div className="anima-swiper-container">
                     <div className="swiper-wrapper" >
                         <InnerBlocks.Content />
                     </div>
@@ -109,7 +109,7 @@ registerBlockType("bergall/slider-simple", {
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    const sliders = document.querySelectorAll('.wp-block-bergall-slider-simple');
+    const sliders = document.querySelectorAll('.wp-block-anima-slider-simple');
 
     sliders.forEach((slider) => {
         sliderSimple(slider, {
@@ -124,10 +124,10 @@ document.addEventListener('DOMContentLoaded', () => {
 const sliderSimple = (sliders, attributes) => {
 
     // console.log('sliderSimple', sliders, attributes.numberofslides, attributes.numberofslidesMobile);
-    // console.log(sliders.querySelector('.bergall-swiper-container'));
+    // console.log(sliders.querySelector('.anima-swiper-container'));
 
 
-    const sliderswiper = new Swiper(sliders.querySelector('.bergall-swiper-container'), {
+    const sliderswiper = new Swiper(sliders.querySelector('.anima-swiper-container'), {
         slidesPerView: attributes.numberofslides,
         grabCursor: true,
         speed: 500,

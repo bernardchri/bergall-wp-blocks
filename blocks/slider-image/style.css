@@ -1,4 +1,4 @@
-.wp-block-bergall-slider-image {
+.wp-block-anima-slider-image {
     position: relative;
 }
 
@@ -7,12 +7,12 @@
     width: auto;
 }
 
-.wp-block-bergall-slider-image .swiper-slide img {
+.wp-block-anima-slider-image .swiper-slide img {
     width: 100%;
     height: auto;
     object-fit: cover;
 }
 
-.wp-block-bergall-slider-image img {
+.wp-block-anima-slider-image img {
     line-height: 0;
 }
