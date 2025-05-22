@@ -420,34 +420,33 @@ a.wp-block-animablocks-marquee {
   \**********************************************************************************************************************************************************************************/
 
 
-.wp-block-bergallblocks-circle-text {
-    width: -moz-fit-content;
-    width: fit-content;
+.wp-block-animablocks-circle-text {
+    /* min-height: 2px;
+    background-color: green; */
+    
 }
 
+.wp-block-animablocks-circle-text .circle-text-svg:not(:root) {
+	overflow: visible;
+}
 
 
 
 
 .circle-text-wrapper {
-    overflow: hidden;
+    position: relative;
     width: -moz-fit-content;
     width: fit-content;
-
-    /* border: 5px solid goldenrod; */
 }
 
-.circle-text-wrapper svg {
-    height: auto;
-}
-
-
-.circle-text-wrapper svg {
+.circle-text-wrapper .circle-text-svg {
     width: -moz-max-content;
     width: max-content;
     animation: circle-text-keyframe var(--speed, 20s) linear infinite var(--direction, forwards);
 
 }
+
+
 
 @keyframes circle-text-keyframe {
     from {

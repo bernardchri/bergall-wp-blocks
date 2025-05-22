@@ -1,7 +1,7 @@
 import { registerBlockType } from '@wordpress/blocks';
 import { ToolbarGroup, ToolbarButton, PanelBody, PanelRow, TextControl, SelectControl, RangeControl, RadioControl, ToggleControl, } from '@wordpress/components';
 import { useBlockProps, InnerBlocks, InspectorControls, URLInput } from '@wordpress/block-editor';
-import { useState,useEffect } from '@wordpress/element';
+import { useState, useEffect } from '@wordpress/element';
 import './style.css';
 import './editor.css'; // <-- Ajout de la CSS pour l'éditeur
 
@@ -61,19 +61,17 @@ registerBlockType('animablocks/circle-text', {
 
 
     edit: ({ attributes, setAttributes }) => {
+        const { position, top, left, topUnit, leftUnit, width, speed, direction, rotation, texte } = attributes;
+        const blockProps = useBlockProps();
+
         // const { speed, link, gradianttransition, direction, rotation } = attributes;
         // const [text, setText] = useState('YOUR TEXT HERE'); // État local pour le texte
-
         // const blockProps = useBlockProps({
         //     className: 'circle-text-container',
         // });
-
         // const blockProps = useBlockProps({
         //     className: `circle-text-container`,
         // });
-
-        const { position, top, left, topUnit, leftUnit, width, speed, direction, rotation, texte } = attributes;
-        const blockProps = useBlockProps()
         // const blockProps = useBlockProps({
         //     className: 'circle-text-container',
         //     style: {
@@ -84,9 +82,8 @@ registerBlockType('animablocks/circle-text', {
 
         useEffect(() => {
             if (position === 'absolute' || position === 'fixed') {
-                console.log( $('.circle-text-wrapper'));
-                $('.circle-text-wrapper').draggable({
-                    stop: function(event, ui) {
+                $('.drag-handle').draggable({
+                    drag: function (event, ui) {
                         setAttributes({ top: ui.position.top, left: ui.position.left });
                     }
                 });
@@ -195,15 +192,28 @@ registerBlockType('animablocks/circle-text', {
                     </PanelBody>
                 </InspectorControls>
 
-  <div className={`circle-text-wrapper`} style={{ position: position, top: `${top}${topUnit}`, left: `${left}${leftUnit}` }}>
-                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style={{ width: width + 'px', transform: `rotate(${rotation}deg)`, '--speed': (50 / speed) + 's', '--direction': direction ? 'forwards' : 'reverse' }}>
-                       
+
+                {/* <div className={`circle-text-wrapper`} style={{ position: position, top: `${top}${topUnit}`, left: `${left}${leftUnit}` }}> */}
+
+                <div className={`circle-text-wrapper`} style={{}}>
+                    <svg className={`circle-text-svg`} viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style={{ position, top: `${top}${topUnit}`, left: `${left}${leftUnit}`, width: width + 'px', transform: `rotate(${rotation}deg)`, '--speed': (50 / speed) + 's', '--direction': direction ? 'forwards' : 'reverse' }}>
                         <path id="SunCatcherStudio" fill="none" stroke="#000000"
                             d="M 10, 50 A 40,40 0 1,1 90,50 A 40,40 0 1,1 10,50 Z" />
                         <text fontSize="10" fill="#000000" letterSpacing="2" fontFamily="sans-serif" fontWeight="bold">
                             <textPath href="#SunCatcherStudio" side="left" startOffset="5">{texte}</textPath>
                         </text>
                     </svg>
+
+
+                    {position === 'absolute' || position === 'fixed' ? (
+                        <div className="drag-handle" style={{ position, top: `${top}${topUnit}`, left: `${left}${leftUnit}`, cursor: 'move', zIndex: 1000 }}>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 200 200">
+                                <path fill="green" d="M100,200L60,160h19V40H60L100,0l40,40H121V160h19zM0,100L40,60v19H160V60L200,100L160,140V121H40v19z" />
+                            </svg>
+                        </div>
+                    ) : null}
+
+
                 </div>
 
             </div >
@@ -212,7 +222,7 @@ registerBlockType('animablocks/circle-text', {
 
 
     save: ({ attributes }) => {
-        const { width, speed, direction, rotation, texte } = attributes;
+        const { position, top, left, topUnit, leftUnit, width, speed, direction, rotation, texte } = attributes;
 
         const blockProps = useBlockProps.save({
             className: `circle-text-container --view`,
@@ -222,7 +232,7 @@ registerBlockType('animablocks/circle-text', {
             <div {...useBlockProps.save({ className: `circle-text-container --view` })}>
 
                 <div className={`circle-text-wrapper`} style={{}}>
-                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style={{ width: width + 'px', transform: `rotate(${rotation}deg)`, '--speed': (50 / speed) + 's', '--direction': direction ? 'forwards' : 'reverse', }}>
+                    <svg className={`circle-text-svg`} viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style={{ position, top: `${top}${topUnit}`, left: `${left}${leftUnit}`, width: width + 'px', transform: `rotate(${rotation}deg)`, '--speed': (50 / speed) + 's', '--direction': direction ? 'forwards' : 'reverse', }}>
                         <path id="SunCatcherStudio" fill="none" stroke="#000000"
                             d="M 10, 50 A 40,40 0 1,1 90,50 A 40,40 0 1,1 10,50 Z" />
                         <text fontSize="10" fill="#000000" letterSpacing="1" fontFamily="sans-serif" fontWeight="bold">

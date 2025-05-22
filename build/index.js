@@ -396,17 +396,6 @@ __webpack_require__.r(__webpack_exports__);
     attributes,
     setAttributes
   }) => {
-    // const { speed, link, gradianttransition, direction, rotation } = attributes;
-    // const [text, setText] = useState('YOUR TEXT HERE'); // État local pour le texte
-
-    // const blockProps = useBlockProps({
-    //     className: 'circle-text-container',
-    // });
-
-    // const blockProps = useBlockProps({
-    //     className: `circle-text-container`,
-    // });
-
     const {
       position,
       top,
@@ -420,6 +409,15 @@ __webpack_require__.r(__webpack_exports__);
       texte
     } = attributes;
     const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)();
+
+    // const { speed, link, gradianttransition, direction, rotation } = attributes;
+    // const [text, setText] = useState('YOUR TEXT HERE'); // État local pour le texte
+    // const blockProps = useBlockProps({
+    //     className: 'circle-text-container',
+    // });
+    // const blockProps = useBlockProps({
+    //     className: `circle-text-container`,
+    // });
     // const blockProps = useBlockProps({
     //     className: 'circle-text-container',
     //     style: {
@@ -429,9 +427,8 @@ __webpack_require__.r(__webpack_exports__);
 
     (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_3__.useEffect)(() => {
       if (position === 'absolute' || position === 'fixed') {
-        console.log(jquery__WEBPACK_IMPORTED_MODULE_6___default()('.circle-text-wrapper'));
-        jquery__WEBPACK_IMPORTED_MODULE_6___default()('.circle-text-wrapper').draggable({
-          stop: function (event, ui) {
+        jquery__WEBPACK_IMPORTED_MODULE_6___default()('.drag-handle').draggable({
+          drag: function (event, ui) {
             setAttributes({
               top: ui.position.top,
               left: ui.position.left
@@ -578,17 +575,17 @@ __webpack_require__.r(__webpack_exports__);
             })]
           })]
         })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("div", {
         className: `circle-text-wrapper`,
-        style: {
-          position: position,
-          top: `${top}${topUnit}`,
-          left: `${left}${leftUnit}`
-        },
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("svg", {
+        style: {},
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("svg", {
+          className: `circle-text-svg`,
           viewBox: "0 0 100 100",
           xmlns: "http://www.w3.org/2000/svg",
           style: {
+            position,
+            top: `${top}${topUnit}`,
+            left: `${left}${leftUnit}`,
             width: width + 'px',
             transform: `rotate(${rotation}deg)`,
             '--speed': 50 / speed + 's',
@@ -612,7 +609,26 @@ __webpack_require__.r(__webpack_exports__);
               children: texte
             })
           })]
-        })
+        }), position === 'absolute' || position === 'fixed' ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("div", {
+          className: "drag-handle",
+          style: {
+            position,
+            top: `${top}${topUnit}`,
+            left: `${left}${leftUnit}`,
+            cursor: 'move',
+            zIndex: 1000
+          },
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("svg", {
+            xmlns: "http://www.w3.org/2000/svg",
+            width: "50",
+            height: "50",
+            viewBox: "0 0 200 200",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsx)("path", {
+              fill: "green",
+              d: "M100,200L60,160h19V40H60L100,0l40,40H121V160h19zM0,100L40,60v19H160V60L200,100L160,140V121H40v19z"
+            })
+          })
+        }) : null]
       })]
     });
   },
@@ -620,6 +636,11 @@ __webpack_require__.r(__webpack_exports__);
     attributes
   }) => {
     const {
+      position,
+      top,
+      left,
+      topUnit,
+      leftUnit,
       width,
       speed,
       direction,
@@ -637,9 +658,13 @@ __webpack_require__.r(__webpack_exports__);
         className: `circle-text-wrapper`,
         style: {},
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_8__.jsxs)("svg", {
+          className: `circle-text-svg`,
           viewBox: "0 0 100 100",
           xmlns: "http://www.w3.org/2000/svg",
           style: {
+            position,
+            top: `${top}${topUnit}`,
+            left: `${left}${leftUnit}`,
             width: width + 'px',
             transform: `rotate(${rotation}deg)`,
             '--speed': 50 / speed + 's',
