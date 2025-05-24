@@ -18,7 +18,7 @@ import '../blocks/marquee';
 import '../blocks/circle-text';
 import '../blocks/container-parallax'; // Groups étendus
 import '../blocks/group-extended';// Groups étendus
-import '../blocks/scale-on-scroll';// Groups étendus
+import '../blocks/animate-on-scroll';// Groups étendus
 import '../blocks/slider-image'; // Slider
 
 import '../blocks/header-minimalist';  // headers

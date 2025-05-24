@@ -103,7 +103,7 @@ function animablocks_register_custom_blocks()
     // // groups étendus
     register_block_type(__DIR__ . '/blocks/container-parallax');
     register_block_type(__DIR__ . '/blocks/group-extended');
-    register_block_type(__DIR__ . '/blocks/scale-on-scroll');
+    register_block_type(__DIR__ . '/blocks/animate-on-scroll');
 
     // headers
     register_block_type(__DIR__ . '/blocks/header-minimalist');
