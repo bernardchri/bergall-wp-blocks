@@ -35,10 +35,6 @@ __webpack_require__.r(__webpack_exports__);
   // Utilisation de l'icône "expand" des Dashicons
   category: 'anima',
   supports: {
-    color: {
-      background: true,
-      text: true
-    },
     html: false,
     align: true,
     alignWide: true
@@ -87,6 +83,26 @@ __webpack_require__.r(__webpack_exports__);
     endOpacity: {
       type: 'number',
       default: 1
+    },
+    scrollEnterElement: {
+      type: 'string',
+      default: 'bottom'
+    },
+    scrollEnterViewport: {
+      type: 'string',
+      default: 'top'
+    },
+    scrollLeaveElement: {
+      type: 'string',
+      default: 'center'
+    },
+    scrollLeaveViewport: {
+      type: 'string',
+      default: 'center'
+    },
+    debug: {
+      type: 'boolean',
+      default: false
     }
   },
   edit: ({
@@ -104,7 +120,12 @@ __webpack_require__.r(__webpack_exports__);
       startRotate,
       endRotate,
       startOpacity,
-      endOpacity
+      endOpacity,
+      scrollEnterElement,
+      scrollEnterViewport,
+      scrollLeaveElement,
+      scrollLeaveViewport,
+      debug
     } = attributes;
     const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps)();
     const root = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_2__.useRef)(null);
@@ -128,7 +149,7 @@ __webpack_require__.r(__webpack_exports__);
             target: container,
             axis: 'y',
             sync: true,
-            debug: true,
+            debug: debug,
             enter: "bottom top",
             leave: "center center"
           })
@@ -144,6 +165,8 @@ __webpack_require__.r(__webpack_exports__);
           title: "Opacit\xE9",
           initialOpen: true,
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.RangeControl, {
+            __nextHasNoMarginBottom: true,
+            __next40pxDefaultSize: true,
             label: "Opacit\xE9 de d\xE9part (%)",
             value: startOpacity,
             onChange: value => setAttributes({
@@ -153,6 +176,8 @@ __webpack_require__.r(__webpack_exports__);
             max: 1,
             step: .1
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.RangeControl, {
+            __nextHasNoMarginBottom: true,
+            __next40pxDefaultSize: true,
             label: "Opacit\xE9 de fin (%)",
             value: endOpacity,
             onChange: value => setAttributes({
@@ -166,6 +191,8 @@ __webpack_require__.r(__webpack_exports__);
           title: "Position Animation",
           initialOpen: true,
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
+            __nextHasNoMarginBottom: true,
+            __next40pxDefaultSize: true,
             label: "Start X (px)",
             type: "number",
             value: startX,
@@ -173,6 +200,8 @@ __webpack_require__.r(__webpack_exports__);
               startX: Number(value)
             })
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
+            __nextHasNoMarginBottom: true,
+            __next40pxDefaultSize: true,
             label: "Start Y (px)",
             type: "number",
             value: startY,
@@ -187,6 +216,8 @@ __webpack_require__.r(__webpack_exports__);
               endX: Number(value)
             })
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
+            __nextHasNoMarginBottom: true,
+            __next40pxDefaultSize: true,
             label: "End Y (px)",
             type: "number",
             value: endY,
@@ -197,6 +228,8 @@ __webpack_require__.r(__webpack_exports__);
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
           title: "Scale Settings",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.RangeControl, {
+            __nextHasNoMarginBottom: true,
+            __next40pxDefaultSize: true,
             label: "Initial Scale",
             value: initialScale,
             onChange: value => setAttributes({
@@ -206,6 +239,8 @@ __webpack_require__.r(__webpack_exports__);
             max: 10,
             step: 0.1
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.RangeControl, {
+            __nextHasNoMarginBottom: true,
+            __next40pxDefaultSize: true,
             label: "Final Scale",
             value: finalScale,
             onChange: value => setAttributes({
@@ -219,6 +254,8 @@ __webpack_require__.r(__webpack_exports__);
           title: "Rotation Animation",
           initialOpen: false,
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
+            __nextHasNoMarginBottom: true,
+            __next40pxDefaultSize: true,
             label: "Start Rotation (deg)",
             type: "number",
             value: startRotate,
@@ -226,6 +263,8 @@ __webpack_require__.r(__webpack_exports__);
               startRotate: Number(value)
             })
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
+            __nextHasNoMarginBottom: true,
+            __next40pxDefaultSize: true,
             label: "End Rotation (deg)",
             type: "number",
             value: endRotate,
@@ -233,6 +272,63 @@ __webpack_require__.r(__webpack_exports__);
               endRotate: Number(value)
             })
           })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
+          title: "D\xE9clencheurs scroll",
+          initialOpen: false,
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
+            __nextHasNoMarginBottom: true,
+            __next40pxDefaultSize: true,
+            label: "Entr\xE9e (\xE9l\xE9ment)",
+            value: scrollEnterElement,
+            onChange: value => setAttributes({
+              scrollEnterElement: value
+            }),
+            help: "Exemple : \"bottom\""
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
+            __nextHasNoMarginBottom: true,
+            __next40pxDefaultSize: true,
+            label: "Entr\xE9e (viewport)",
+            value: scrollEnterViewport,
+            onChange: value => setAttributes({
+              scrollEnterViewport: value
+            }),
+            help: "Exemple : \"top\""
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
+            __nextHasNoMarginBottom: true,
+            __next40pxDefaultSize: true,
+            label: "Sortie (\xE9l\xE9ment)",
+            value: scrollLeaveElement,
+            onChange: value => setAttributes({
+              scrollLeaveElement: value
+            }),
+            help: "Exemple : \"center\""
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
+            __nextHasNoMarginBottom: true,
+            __next40pxDefaultSize: true,
+            label: "Sortie (viewport)",
+            value: scrollLeaveViewport,
+            onChange: value => setAttributes({
+              scrollLeaveViewport: value
+            }),
+            help: "Exemple : \"center\""
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
+          title: "D\xE9bogage",
+          initialOpen: false,
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.SelectControl, {
+            label: "Afficher le mode debug en front",
+            value: debug ? 'true' : 'false',
+            options: [{
+              label: 'Non',
+              value: 'false'
+            }, {
+              label: 'Oui',
+              value: 'true'
+            }],
+            onChange: value => setAttributes({
+              debug: value === 'true'
+            })
+          })
         })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
         ...blockProps,
@@ -259,7 +355,12 @@ __webpack_require__.r(__webpack_exports__);
       startRotate,
       endRotate,
       startOpacity,
-      endOpacity
+      endOpacity,
+      scrollEnterElement,
+      scrollEnterViewport,
+      scrollLeaveElement,
+      scrollLeaveViewport,
+      debug
     } = attributes;
     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
       className: "animate-on-scroll",
@@ -274,6 +375,11 @@ __webpack_require__.r(__webpack_exports__);
       "data-end-rotate": endRotate,
       "data-start-opacity": startOpacity,
       "data-end-opacity": endOpacity,
+      "data-scroll-enter-element": scrollEnterElement,
+      "data-scroll-enter-viewport": scrollEnterViewport,
+      "data-scroll-leave-element": scrollLeaveElement,
+      "data-scroll-leave-viewport": scrollLeaveViewport,
+      "data-debug": debug ? 'true' : 'false',
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InnerBlocks.Content, {})
     });
   }
@@ -301,6 +407,17 @@ document.addEventListener('DOMContentLoaded', () => {
     // Clamp les valeurs pour éviter NaN ou hors bornes
     startOpacity = isNaN(startOpacity) ? 1 : Math.max(0, Math.min(1, startOpacity));
     endOpacity = isNaN(endOpacity) ? 1 : Math.max(0, Math.min(1, endOpacity));
+
+    // Récupérer les triggers personnalisés ou fallback sur les valeurs par défaut
+    const scrollEnterElement = section.getAttribute('data-scroll-enter-element') || 'bottom';
+    const scrollEnterViewport = section.getAttribute('data-scroll-enter-viewport') || 'top';
+    const scrollLeaveElement = section.getAttribute('data-scroll-leave-element') || 'center';
+    const scrollLeaveViewport = section.getAttribute('data-scroll-leave-viewport') || 'center';
+
+    // Compose les valeurs pour anime.js v4 : "element viewport"
+    const scrollEnter = `${scrollEnterElement} ${scrollEnterViewport}`;
+    const scrollLeave = `${scrollLeaveElement} ${scrollLeaveViewport}`;
+    const debug = section.getAttribute('data-debug') === 'true';
     const sections = Array.isArray(section) ? section : [section];
     sections.forEach(section => {
       if (!section) return;
@@ -315,9 +432,9 @@ document.addEventListener('DOMContentLoaded', () => {
           target: section,
           axis: 'y',
           sync: true,
-          debug: false,
-          enter: "bottom top=-20%",
-          leave: "center center"
+          debug: debug,
+          enter: scrollEnter,
+          leave: scrollLeave
         })
       });
     });

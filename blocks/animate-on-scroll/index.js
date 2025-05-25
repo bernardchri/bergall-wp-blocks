@@ -14,10 +14,6 @@ registerBlockType('animablocks/animate-on-scroll', {
     category: 'anima',
 
     supports: {
-        color: {
-            background: true,
-            text: true
-        },
         html: false,
         align: true,
         alignWide: true,
@@ -68,6 +64,26 @@ registerBlockType('animablocks/animate-on-scroll', {
             type: 'number',
             default: 1,
         },
+        scrollEnterElement: {
+            type: 'string',
+            default: 'bottom',
+        },
+        scrollEnterViewport: {
+            type: 'string',
+            default: 'top',
+        },
+        scrollLeaveElement: {
+            type: 'string',
+            default: 'center',
+        },
+        scrollLeaveViewport: {
+            type: 'string',
+            default: 'center',
+        },
+        debug: {
+            type: 'boolean',
+            default: false,
+        },
     },
     edit: ({ attributes, setAttributes }) => {
         const {
@@ -81,7 +97,12 @@ registerBlockType('animablocks/animate-on-scroll', {
             startRotate,
             endRotate,
             startOpacity,
-            endOpacity
+            endOpacity,
+            scrollEnterElement,
+            scrollEnterViewport,
+            scrollLeaveElement,
+            scrollLeaveViewport,
+            debug,
         } = attributes;
 
         const blockProps = useBlockProps();
@@ -107,7 +128,7 @@ registerBlockType('animablocks/animate-on-scroll', {
                         target: container,
                         axis: 'y',
                         sync: true,
-                        debug: true,
+                        debug: debug,
                         enter: "bottom top",
                         leave: "center center"
                     }),
@@ -136,6 +157,8 @@ registerBlockType('animablocks/animate-on-scroll', {
                 <InspectorControls>
                     <PanelBody title="Opacité" initialOpen={true}>
                         <RangeControl
+                            __nextHasNoMarginBottom
+                            __next40pxDefaultSize
                             label="Opacité de départ (%)"
                             value={startOpacity}
                             onChange={(value) => setAttributes({ startOpacity: Number(value) })}
@@ -144,6 +167,8 @@ registerBlockType('animablocks/animate-on-scroll', {
                             step={.1}
                         />
                         <RangeControl
+                            __nextHasNoMarginBottom
+                            __next40pxDefaultSize
                             label="Opacité de fin (%)"
                             value={endOpacity}
                             onChange={(value) => setAttributes({ endOpacity: Number(value) })}
@@ -154,12 +179,16 @@ registerBlockType('animablocks/animate-on-scroll', {
                     </PanelBody>
                     <PanelBody title="Position Animation" initialOpen={true}>
                         <TextControl
+                            __nextHasNoMarginBottom
+                            __next40pxDefaultSize
                             label="Start X (px)"
                             type="number"
                             value={startX}
                             onChange={(value) => setAttributes({ startX: Number(value) })}
                         />
                         <TextControl
+                            __nextHasNoMarginBottom
+                            __next40pxDefaultSize
                             label="Start Y (px)"
                             type="number"
                             value={startY}
@@ -172,6 +201,8 @@ registerBlockType('animablocks/animate-on-scroll', {
                             onChange={(value) => setAttributes({ endX: Number(value) })}
                         />
                         <TextControl
+                            __nextHasNoMarginBottom
+                            __next40pxDefaultSize
                             label="End Y (px)"
                             type="number"
                             value={endY}
@@ -180,6 +211,9 @@ registerBlockType('animablocks/animate-on-scroll', {
                     </PanelBody>
                     <PanelBody title="Scale Settings">
                         <RangeControl
+                            __nextHasNoMarginBottom
+                            __next40pxDefaultSize
+
                             label="Initial Scale"
                             value={initialScale}
                             onChange={(value) => setAttributes({ initialScale: Number(value) })}
@@ -188,6 +222,8 @@ registerBlockType('animablocks/animate-on-scroll', {
                             step={0.1}
                         />
                         <RangeControl
+                            __nextHasNoMarginBottom
+                            __next40pxDefaultSize
                             label="Final Scale"
                             value={finalScale}
                             onChange={(value) => setAttributes({ finalScale: Number(value) })}
@@ -199,16 +235,65 @@ registerBlockType('animablocks/animate-on-scroll', {
 
                     <PanelBody title="Rotation Animation" initialOpen={false}>
                         <TextControl
+                            __nextHasNoMarginBottom
+                            __next40pxDefaultSize
                             label="Start Rotation (deg)"
                             type="number"
                             value={startRotate}
                             onChange={(value) => setAttributes({ startRotate: Number(value) })}
                         />
                         <TextControl
+                            __nextHasNoMarginBottom
+                            __next40pxDefaultSize
                             label="End Rotation (deg)"
                             type="number"
                             value={endRotate}
                             onChange={(value) => setAttributes({ endRotate: Number(value) })}
+                        />
+                    </PanelBody>
+                    <PanelBody title="Déclencheurs scroll" initialOpen={false}>
+                        <TextControl
+                            __nextHasNoMarginBottom
+                            __next40pxDefaultSize
+                            label="Entrée (élément)"
+                            value={scrollEnterElement}
+                            onChange={(value) => setAttributes({ scrollEnterElement: value })}
+                            help='Exemple : "bottom"'
+                        />
+                        <TextControl
+                            __nextHasNoMarginBottom
+                            __next40pxDefaultSize
+                            label="Entrée (viewport)"
+                            value={scrollEnterViewport}
+                            onChange={(value) => setAttributes({ scrollEnterViewport: value })}
+                            help='Exemple : "top"'
+                        />
+                        <TextControl
+                            __nextHasNoMarginBottom
+                            __next40pxDefaultSize
+                            label="Sortie (élément)"
+                            value={scrollLeaveElement}
+                            onChange={(value) => setAttributes({ scrollLeaveElement: value })}
+                            help='Exemple : "center"'
+                        />
+                        <TextControl
+                            __nextHasNoMarginBottom
+                            __next40pxDefaultSize
+                            label="Sortie (viewport)"
+                            value={scrollLeaveViewport}
+                            onChange={(value) => setAttributes({ scrollLeaveViewport: value })}
+                            help='Exemple : "center"'
+                        />
+                    </PanelBody>
+                    <PanelBody title="Débogage" initialOpen={false}>
+                        <SelectControl
+                            label="Afficher le mode debug en front"
+                            value={debug ? 'true' : 'false'}
+                            options={[
+                                { label: 'Non', value: 'false' },
+                                { label: 'Oui', value: 'true' }
+                            ]}
+                            onChange={value => setAttributes({ debug: value === 'true' })}
                         />
                     </PanelBody>
 
@@ -237,7 +322,12 @@ registerBlockType('animablocks/animate-on-scroll', {
             startRotate,
             endRotate,
             startOpacity,
-            endOpacity
+            endOpacity,
+            scrollEnterElement,
+            scrollEnterViewport,
+            scrollLeaveElement,
+            scrollLeaveViewport,
+            debug,
         } = attributes;
 
         return (
@@ -254,6 +344,11 @@ registerBlockType('animablocks/animate-on-scroll', {
                 data-end-rotate={endRotate}
                 data-start-opacity={startOpacity}
                 data-end-opacity={endOpacity}
+                data-scroll-enter-element={scrollEnterElement}
+                data-scroll-enter-viewport={scrollEnterViewport}
+                data-scroll-leave-element={scrollLeaveElement}
+                data-scroll-leave-viewport={scrollLeaveViewport}
+                data-debug={debug ? 'true' : 'false'}
             >
                 <InnerBlocks.Content />
             </div>
@@ -284,6 +379,18 @@ document.addEventListener('DOMContentLoaded', () => {
         startOpacity = isNaN(startOpacity) ? 1 : Math.max(0, Math.min(1, startOpacity));
         endOpacity = isNaN(endOpacity) ? 1 : Math.max(0, Math.min(1, endOpacity));
 
+        // Récupérer les triggers personnalisés ou fallback sur les valeurs par défaut
+        const scrollEnterElement = section.getAttribute('data-scroll-enter-element') || 'bottom';
+        const scrollEnterViewport = section.getAttribute('data-scroll-enter-viewport') || 'top';
+        const scrollLeaveElement = section.getAttribute('data-scroll-leave-element') || 'center';
+        const scrollLeaveViewport = section.getAttribute('data-scroll-leave-viewport') || 'center';
+
+        // Compose les valeurs pour anime.js v4 : "element viewport"
+        const scrollEnter = `${scrollEnterElement} ${scrollEnterViewport}`;
+        const scrollLeave = `${scrollLeaveElement} ${scrollLeaveViewport}`;
+
+        const debug = section.getAttribute('data-debug') === 'true';
+
         const sections = Array.isArray(section) ? section : [section];
         sections.forEach(section => {
             if (!section) return;
@@ -298,9 +405,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     target: section,
                     axis: 'y',
                     sync: true,
-                    debug: false,
-                    enter: "bottom top=-20%",
-                    leave: "center center"
+                    debug: debug,
+                    enter: scrollEnter,
+                    leave: scrollLeave
                 }),
             });
         });
