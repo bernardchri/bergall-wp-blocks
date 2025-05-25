@@ -1,6 +1,407 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./blocks/animate-on-scroll/AnimateOnScrollControls.js":
+/*!*************************************************************!*\
+  !*** ./blocks/animate-on-scroll/AnimateOnScrollControls.js ***!
+  \*************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   AnimateOnScrollControls: () => (/* binding */ AnimateOnScrollControls)
+/* harmony export */ });
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "react/jsx-runtime");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__);
+
+
+
+function AnimateOnScrollControls({
+  attributes,
+  setAttributes
+}) {
+  const {
+    initialScale,
+    finalScale,
+    zIndex,
+    startX,
+    startY,
+    endX,
+    endY,
+    startRotate,
+    endRotate,
+    startOpacity,
+    endOpacity,
+    scrollEnterElement,
+    scrollEnterViewport,
+    scrollLeaveElement,
+    scrollLeaveViewport,
+    debug,
+    previewState
+  } = attributes;
+
+  // Détermine le style d'aperçu selon previewState
+  let previewStyle = {};
+  if (previewState === 'start') {
+    previewStyle = {
+      transform: `
+                scale(${initialScale})
+                translateX(${startX}px)
+                translateY(${startY}px)
+                rotate(${startRotate}deg)
+            `,
+      opacity: startOpacity,
+      zIndex: zIndex
+    };
+  } else if (previewState === 'end') {
+    previewStyle = {
+      transform: `
+                scale(${finalScale})
+                translateX(${endX}px)
+                translateY(${endY}px)
+                rotate(${endRotate}deg)
+            `,
+      opacity: endOpacity,
+      zIndex: zIndex
+    };
+  }
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.InspectorControls, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelBody, {
+      title: "Aper\xE7u animation",
+      initialOpen: true,
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.SelectControl, {
+        label: "\xC9tat d'aper\xE7u",
+        value: previewState,
+        options: [{
+          label: 'Début animation',
+          value: 'start'
+        }, {
+          label: 'Fin animation',
+          value: 'end'
+        }],
+        onChange: value => setAttributes({
+          previewState: value
+        }),
+        help: "Permet de visualiser l'\xE9tat initial ou final de l'animation dans l'\xE9diteur."
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.SelectControl, {
+        label: "Afficher le mode debug en front",
+        value: debug ? 'true' : 'false',
+        options: [{
+          label: 'Non',
+          value: 'false'
+        }, {
+          label: 'Oui',
+          value: 'true'
+        }],
+        onChange: value => setAttributes({
+          debug: value === 'true'
+        })
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelBody, {
+      title: "Opacit\xE9",
+      initialOpen: true,
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.RangeControl, {
+        __nextHasNoMarginBottom: true,
+        __next40pxDefaultSize: true,
+        label: "Opacit\xE9 de d\xE9part (%)",
+        value: startOpacity,
+        onChange: value => setAttributes({
+          startOpacity: Number(value)
+        }),
+        min: 0,
+        max: 1,
+        step: .1
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.RangeControl, {
+        __nextHasNoMarginBottom: true,
+        __next40pxDefaultSize: true,
+        label: "Opacit\xE9 de fin (%)",
+        value: endOpacity,
+        onChange: value => setAttributes({
+          endOpacity: Number(value)
+        }),
+        min: 0,
+        max: 1,
+        step: .1
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelBody, {
+      title: "Position Animation",
+      initialOpen: true,
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.TextControl, {
+        __nextHasNoMarginBottom: true,
+        __next40pxDefaultSize: true,
+        label: "Start X (px)",
+        type: "number",
+        value: startX,
+        onChange: value => setAttributes({
+          startX: Number(value)
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.TextControl, {
+        __nextHasNoMarginBottom: true,
+        __next40pxDefaultSize: true,
+        label: "Start Y (px)",
+        type: "number",
+        value: startY,
+        onChange: value => setAttributes({
+          startY: Number(value)
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.TextControl, {
+        label: "End X (px)",
+        type: "number",
+        value: endX,
+        onChange: value => setAttributes({
+          endX: Number(value)
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.TextControl, {
+        __nextHasNoMarginBottom: true,
+        __next40pxDefaultSize: true,
+        label: "End Y (px)",
+        type: "number",
+        value: endY,
+        onChange: value => setAttributes({
+          endY: Number(value)
+        })
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelBody, {
+      title: "Scale Settings",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.RangeControl, {
+        __nextHasNoMarginBottom: true,
+        __next40pxDefaultSize: true,
+        label: "Initial Scale",
+        value: initialScale,
+        onChange: value => setAttributes({
+          initialScale: Number(value)
+        }),
+        min: 0,
+        max: 10,
+        step: 0.1
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.RangeControl, {
+        __nextHasNoMarginBottom: true,
+        __next40pxDefaultSize: true,
+        label: "Final Scale",
+        value: finalScale,
+        onChange: value => setAttributes({
+          finalScale: Number(value)
+        }),
+        min: 0,
+        max: 10,
+        step: 0.1
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelBody, {
+      title: "Rotation Animation",
+      initialOpen: false,
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.TextControl, {
+        __nextHasNoMarginBottom: true,
+        __next40pxDefaultSize: true,
+        label: "Start Rotation (deg)",
+        type: "number",
+        value: startRotate,
+        onChange: value => setAttributes({
+          startRotate: Number(value)
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.TextControl, {
+        __nextHasNoMarginBottom: true,
+        __next40pxDefaultSize: true,
+        label: "End Rotation (deg)",
+        type: "number",
+        value: endRotate,
+        onChange: value => setAttributes({
+          endRotate: Number(value)
+        })
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelBody, {
+      title: "D\xE9clencheurs scroll",
+      initialOpen: false,
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.TextControl, {
+        __nextHasNoMarginBottom: true,
+        __next40pxDefaultSize: true,
+        label: "Entr\xE9e (\xE9l\xE9ment)",
+        value: scrollEnterElement,
+        onChange: value => setAttributes({
+          scrollEnterElement: value
+        }),
+        help: "Exemple : \"bottom\""
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.TextControl, {
+        __nextHasNoMarginBottom: true,
+        __next40pxDefaultSize: true,
+        label: "Entr\xE9e (viewport)",
+        value: scrollEnterViewport,
+        onChange: value => setAttributes({
+          scrollEnterViewport: value
+        }),
+        help: "Exemple : \"top\""
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.TextControl, {
+        __nextHasNoMarginBottom: true,
+        __next40pxDefaultSize: true,
+        label: "Sortie (\xE9l\xE9ment)",
+        value: scrollLeaveElement,
+        onChange: value => setAttributes({
+          scrollLeaveElement: value
+        }),
+        help: "Exemple : \"center\""
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.TextControl, {
+        __nextHasNoMarginBottom: true,
+        __next40pxDefaultSize: true,
+        label: "Sortie (viewport)",
+        value: scrollLeaveViewport,
+        onChange: value => setAttributes({
+          scrollLeaveViewport: value
+        }),
+        help: "Exemple : \"center\""
+      })]
+    })]
+  });
+}
+
+/***/ }),
+
+/***/ "./blocks/animate-on-scroll/AnimateOnScrollPreview.js":
+/*!************************************************************!*\
+  !*** ./blocks/animate-on-scroll/AnimateOnScrollPreview.js ***!
+  \************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   AnimateOnScrollPreview: () => (/* binding */ AnimateOnScrollPreview)
+/* harmony export */ });
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "react/jsx-runtime");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__);
+
+
+function AnimateOnScrollPreview({
+  attributes,
+  blockProps,
+  root
+}) {
+  const {
+    initialScale,
+    finalScale,
+    zIndex,
+    startX,
+    startY,
+    endX,
+    endY,
+    startRotate,
+    endRotate,
+    startOpacity,
+    endOpacity,
+    previewState
+  } = attributes;
+
+  // Détermine le style d'aperçu selon previewState
+  let previewStyle = {};
+  if (previewState === 'start') {
+    previewStyle = {
+      transform: `
+                scale(${initialScale})
+                translateX(${startX}px)
+                translateY(${startY}px)
+                rotate(${startRotate}deg)
+            `,
+      opacity: startOpacity,
+      zIndex: zIndex
+    };
+  } else if (previewState === 'end') {
+    previewStyle = {
+      transform: `
+                scale(${finalScale})
+                translateX(${endX}px)
+                translateY(${endY}px)
+                rotate(${endRotate}deg)
+            `,
+      opacity: endOpacity,
+      zIndex: zIndex
+    };
+  }
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+    ...blockProps,
+    ref: root,
+    className: "animate-on-scroll",
+    style: previewState === 'none' ? undefined : previewStyle,
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+      className: "int",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.InnerBlocks, {})
+    })
+  });
+}
+
+/***/ }),
+
+/***/ "./blocks/animate-on-scroll/frontend.js":
+/*!**********************************************!*\
+  !*** ./blocks/animate-on-scroll/frontend.js ***!
+  \**********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var animejs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! animejs */ "./node_modules/animejs/lib/anime.esm.js");
+
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.animate-on-scroll').forEach(section => {
+    const initialScale = parseFloat(section.getAttribute('data-initial-scale')) || 0.8;
+    const finalScale = parseFloat(section.getAttribute('data-final-scale')) || 1;
+    const zIndex = parseInt(section.getAttribute('data-z-index'), 10) || 10;
+    const startX = parseFloat(section.getAttribute('data-start-x')) || 0;
+    const startY = parseFloat(section.getAttribute('data-start-y')) || 0;
+    const endX = parseFloat(section.getAttribute('data-end-x')) || 0;
+    const endY = parseFloat(section.getAttribute('data-end-y')) || 0;
+    const startRotate = parseFloat(section.getAttribute('data-start-rotate')) || 0;
+    const endRotate = parseFloat(section.getAttribute('data-end-rotate')) || 0;
+
+    // Correction : startOpacity et endOpacity doivent être >= 0 et <= 1
+    let startOpacity = section.getAttribute('data-start-opacity');
+    let endOpacity = section.getAttribute('data-end-opacity');
+    startOpacity = startOpacity !== null ? parseFloat(startOpacity) : 1;
+    endOpacity = endOpacity !== null ? parseFloat(endOpacity) : 1;
+
+    // Clamp les valeurs pour éviter NaN ou hors bornes
+    startOpacity = isNaN(startOpacity) ? 1 : Math.max(0, Math.min(1, startOpacity));
+    endOpacity = isNaN(endOpacity) ? 1 : Math.max(0, Math.min(1, endOpacity));
+
+    // Récupérer les triggers personnalisés ou fallback sur les valeurs par défaut
+    const scrollEnterElement = section.getAttribute('data-scroll-enter-element') || 'bottom';
+    const scrollEnterViewport = section.getAttribute('data-scroll-enter-viewport') || 'top';
+    const scrollLeaveElement = section.getAttribute('data-scroll-leave-element') || 'center';
+    const scrollLeaveViewport = section.getAttribute('data-scroll-leave-viewport') || 'center';
+
+    // Compose les valeurs pour anime.js v4 : "element viewport"
+    const scrollEnter = `${scrollEnterElement} ${scrollEnterViewport}`;
+    const scrollLeave = `${scrollLeaveElement} ${scrollLeaveViewport}`;
+    const debug = section.getAttribute('data-debug') === 'true';
+    const sections = Array.isArray(section) ? section : [section];
+    sections.forEach(section => {
+      if (!section) return;
+      (0,animejs__WEBPACK_IMPORTED_MODULE_0__.animate)(section, {
+        scale: [initialScale, finalScale],
+        zIndex: zIndex,
+        translateX: [startX, endX],
+        translateY: [startY, endY],
+        rotate: [startRotate, endRotate],
+        opacity: [startOpacity, endOpacity],
+        autoplay: (0,animejs__WEBPACK_IMPORTED_MODULE_0__.onScroll)({
+          target: section,
+          axis: 'y',
+          sync: true,
+          debug: debug,
+          enter: scrollEnter,
+          leave: scrollLeave
+        })
+      });
+    });
+  });
+});
+
+/***/ }),
+
 /***/ "./blocks/animate-on-scroll/index.js":
 /*!*******************************************!*\
   !*** ./blocks/animate-on-scroll/index.js ***!
@@ -9,26 +410,25 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");
-/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");
+/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
 /* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./style.css */ "./blocks/animate-on-scroll/style.css");
-/* harmony import */ var animejs__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! animejs */ "./node_modules/animejs/lib/anime.esm.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "react/jsx-runtime");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var _AnimateOnScrollControls__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./AnimateOnScrollControls */ "./blocks/animate-on-scroll/AnimateOnScrollControls.js");
+/* harmony import */ var _AnimateOnScrollPreview__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./AnimateOnScrollPreview */ "./blocks/animate-on-scroll/AnimateOnScrollPreview.js");
+/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./style.css */ "./blocks/animate-on-scroll/style.css");
+/* harmony import */ var _frontend_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./frontend.js */ "./blocks/animate-on-scroll/frontend.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "react/jsx-runtime");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__);
 
 
 
 
 
 
-
-(0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__.registerBlockType)('animablocks/animate-on-scroll', {
+(0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__.registerBlockType)('animablocks/animate-on-scroll', {
   title: 'Animation au scroll',
   description: 'composant qui crée une animation d’effet d’agrandissement au scroll dans la page',
   icon: 'editor-expand',
@@ -103,241 +503,22 @@ __webpack_require__.r(__webpack_exports__);
     debug: {
       type: 'boolean',
       default: false
+    },
+    previewState: {
+      type: 'string',
+      default: 'start' // 'none', 'start', 'end'
     }
   },
-  edit: ({
-    attributes,
-    setAttributes
-  }) => {
-    const {
-      initialScale,
-      finalScale,
-      zIndex,
-      startX,
-      startY,
-      endX,
-      endY,
-      startRotate,
-      endRotate,
-      startOpacity,
-      endOpacity,
-      scrollEnterElement,
-      scrollEnterViewport,
-      scrollLeaveElement,
-      scrollLeaveViewport,
-      debug
-    } = attributes;
-    const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps)();
+  edit: props => {
+    const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.useBlockProps)();
     const root = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_2__.useRef)(null);
-    const scope = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_2__.useRef)(null);
-    const [container] = animejs__WEBPACK_IMPORTED_MODULE_6__.utils.$('.editor-styles-wrapper.block-editor-writing-flow ');
-
-    // Animation live dans l'éditeur (backoffice) sur le bloc courant
-    // TODO: correction du contexte dans le backoffice
-    (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_2__.useEffect)(() => {
-      scope.current = (0,animejs__WEBPACK_IMPORTED_MODULE_6__.createScope)({
-        root
-      }).add(self => {
-        (0,animejs__WEBPACK_IMPORTED_MODULE_6__.animate)('.int', {
-          scale: [initialScale, finalScale],
-          zIndex: zIndex,
-          translateX: [startX, endX],
-          translateY: [startY, endY],
-          rotate: [startRotate, endRotate],
-          opacity: [startOpacity, endOpacity],
-          autoplay: (0,animejs__WEBPACK_IMPORTED_MODULE_6__.onScroll)({
-            target: container,
-            axis: 'y',
-            sync: true,
-            debug: debug,
-            enter: "bottom top",
-            leave: "center center"
-          })
-        });
-      });
-
-      // Properly cleanup all anime.js instances declared inside the scope
-      return () => scope.current.revert();
-    }, [initialScale, finalScale, zIndex, startX, startY, endX, endY, startRotate, endRotate, startOpacity, endOpacity]);
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.Fragment, {
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
-          title: "Opacit\xE9",
-          initialOpen: true,
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.RangeControl, {
-            __nextHasNoMarginBottom: true,
-            __next40pxDefaultSize: true,
-            label: "Opacit\xE9 de d\xE9part (%)",
-            value: startOpacity,
-            onChange: value => setAttributes({
-              startOpacity: Number(value)
-            }),
-            min: 0,
-            max: 1,
-            step: .1
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.RangeControl, {
-            __nextHasNoMarginBottom: true,
-            __next40pxDefaultSize: true,
-            label: "Opacit\xE9 de fin (%)",
-            value: endOpacity,
-            onChange: value => setAttributes({
-              endOpacity: Number(value)
-            }),
-            min: 0,
-            max: 1,
-            step: .1
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
-          title: "Position Animation",
-          initialOpen: true,
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
-            __nextHasNoMarginBottom: true,
-            __next40pxDefaultSize: true,
-            label: "Start X (px)",
-            type: "number",
-            value: startX,
-            onChange: value => setAttributes({
-              startX: Number(value)
-            })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
-            __nextHasNoMarginBottom: true,
-            __next40pxDefaultSize: true,
-            label: "Start Y (px)",
-            type: "number",
-            value: startY,
-            onChange: value => setAttributes({
-              startY: Number(value)
-            })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
-            label: "End X (px)",
-            type: "number",
-            value: endX,
-            onChange: value => setAttributes({
-              endX: Number(value)
-            })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
-            __nextHasNoMarginBottom: true,
-            __next40pxDefaultSize: true,
-            label: "End Y (px)",
-            type: "number",
-            value: endY,
-            onChange: value => setAttributes({
-              endY: Number(value)
-            })
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
-          title: "Scale Settings",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.RangeControl, {
-            __nextHasNoMarginBottom: true,
-            __next40pxDefaultSize: true,
-            label: "Initial Scale",
-            value: initialScale,
-            onChange: value => setAttributes({
-              initialScale: Number(value)
-            }),
-            min: 0,
-            max: 10,
-            step: 0.1
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.RangeControl, {
-            __nextHasNoMarginBottom: true,
-            __next40pxDefaultSize: true,
-            label: "Final Scale",
-            value: finalScale,
-            onChange: value => setAttributes({
-              finalScale: Number(value)
-            }),
-            min: 0,
-            max: 10,
-            step: 0.1
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
-          title: "Rotation Animation",
-          initialOpen: false,
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
-            __nextHasNoMarginBottom: true,
-            __next40pxDefaultSize: true,
-            label: "Start Rotation (deg)",
-            type: "number",
-            value: startRotate,
-            onChange: value => setAttributes({
-              startRotate: Number(value)
-            })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
-            __nextHasNoMarginBottom: true,
-            __next40pxDefaultSize: true,
-            label: "End Rotation (deg)",
-            type: "number",
-            value: endRotate,
-            onChange: value => setAttributes({
-              endRotate: Number(value)
-            })
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
-          title: "D\xE9clencheurs scroll",
-          initialOpen: false,
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
-            __nextHasNoMarginBottom: true,
-            __next40pxDefaultSize: true,
-            label: "Entr\xE9e (\xE9l\xE9ment)",
-            value: scrollEnterElement,
-            onChange: value => setAttributes({
-              scrollEnterElement: value
-            }),
-            help: "Exemple : \"bottom\""
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
-            __nextHasNoMarginBottom: true,
-            __next40pxDefaultSize: true,
-            label: "Entr\xE9e (viewport)",
-            value: scrollEnterViewport,
-            onChange: value => setAttributes({
-              scrollEnterViewport: value
-            }),
-            help: "Exemple : \"top\""
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
-            __nextHasNoMarginBottom: true,
-            __next40pxDefaultSize: true,
-            label: "Sortie (\xE9l\xE9ment)",
-            value: scrollLeaveElement,
-            onChange: value => setAttributes({
-              scrollLeaveElement: value
-            }),
-            help: "Exemple : \"center\""
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.TextControl, {
-            __nextHasNoMarginBottom: true,
-            __next40pxDefaultSize: true,
-            label: "Sortie (viewport)",
-            value: scrollLeaveViewport,
-            onChange: value => setAttributes({
-              scrollLeaveViewport: value
-            }),
-            help: "Exemple : \"center\""
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
-          title: "D\xE9bogage",
-          initialOpen: false,
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.SelectControl, {
-            label: "Afficher le mode debug en front",
-            value: debug ? 'true' : 'false',
-            options: [{
-              label: 'Non',
-              value: 'false'
-            }, {
-              label: 'Oui',
-              value: 'true'
-            }],
-            onChange: value => setAttributes({
-              debug: value === 'true'
-            })
-          })
-        })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-        ...blockProps,
-        ref: root,
-        className: "animate-on-scroll",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-          className: "int",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InnerBlocks, {})
-        })
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.Fragment, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_AnimateOnScrollControls__WEBPACK_IMPORTED_MODULE_3__.AnimateOnScrollControls, {
+        ...props
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_AnimateOnScrollPreview__WEBPACK_IMPORTED_MODULE_4__.AnimateOnScrollPreview, {
+        ...props,
+        blockProps: blockProps,
+        root: root
       })]
     });
   },
@@ -362,7 +543,7 @@ __webpack_require__.r(__webpack_exports__);
       scrollLeaveViewport,
       debug
     } = attributes;
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
       className: "animate-on-scroll",
       "data-initial-scale": initialScale,
       "data-final-scale": finalScale,
@@ -380,66 +561,12 @@ __webpack_require__.r(__webpack_exports__);
       "data-scroll-leave-element": scrollLeaveElement,
       "data-scroll-leave-viewport": scrollLeaveViewport,
       "data-debug": debug ? 'true' : 'false',
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InnerBlocks.Content, {})
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.InnerBlocks.Content, {})
     });
   }
 });
 
-// Apply the scroll animation on the front-end
-document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('.animate-on-scroll').forEach(section => {
-    const initialScale = parseFloat(section.getAttribute('data-initial-scale')) || 0.8;
-    const finalScale = parseFloat(section.getAttribute('data-final-scale')) || 1;
-    const zIndex = parseInt(section.getAttribute('data-z-index'), 10) || 10;
-    const startX = parseFloat(section.getAttribute('data-start-x')) || 0;
-    const startY = parseFloat(section.getAttribute('data-start-y')) || 0;
-    const endX = parseFloat(section.getAttribute('data-end-x')) || 0;
-    const endY = parseFloat(section.getAttribute('data-end-y')) || 0;
-    const startRotate = parseFloat(section.getAttribute('data-start-rotate')) || 0;
-    const endRotate = parseFloat(section.getAttribute('data-end-rotate')) || 0;
 
-    // Correction : startOpacity et endOpacity doivent être >= 0 et <= 1
-    let startOpacity = section.getAttribute('data-start-opacity');
-    let endOpacity = section.getAttribute('data-end-opacity');
-    startOpacity = startOpacity !== null ? parseFloat(startOpacity) : 1;
-    endOpacity = endOpacity !== null ? parseFloat(endOpacity) : 1;
-
-    // Clamp les valeurs pour éviter NaN ou hors bornes
-    startOpacity = isNaN(startOpacity) ? 1 : Math.max(0, Math.min(1, startOpacity));
-    endOpacity = isNaN(endOpacity) ? 1 : Math.max(0, Math.min(1, endOpacity));
-
-    // Récupérer les triggers personnalisés ou fallback sur les valeurs par défaut
-    const scrollEnterElement = section.getAttribute('data-scroll-enter-element') || 'bottom';
-    const scrollEnterViewport = section.getAttribute('data-scroll-enter-viewport') || 'top';
-    const scrollLeaveElement = section.getAttribute('data-scroll-leave-element') || 'center';
-    const scrollLeaveViewport = section.getAttribute('data-scroll-leave-viewport') || 'center';
-
-    // Compose les valeurs pour anime.js v4 : "element viewport"
-    const scrollEnter = `${scrollEnterElement} ${scrollEnterViewport}`;
-    const scrollLeave = `${scrollLeaveElement} ${scrollLeaveViewport}`;
-    const debug = section.getAttribute('data-debug') === 'true';
-    const sections = Array.isArray(section) ? section : [section];
-    sections.forEach(section => {
-      if (!section) return;
-      (0,animejs__WEBPACK_IMPORTED_MODULE_6__.animate)(section, {
-        scale: [initialScale, finalScale],
-        zIndex: zIndex,
-        translateX: [startX, endX],
-        translateY: [startY, endY],
-        rotate: [startRotate, endRotate],
-        opacity: [startOpacity, endOpacity],
-        autoplay: (0,animejs__WEBPACK_IMPORTED_MODULE_6__.onScroll)({
-          target: section,
-          axis: 'y',
-          sync: true,
-          debug: debug,
-          enter: scrollEnter,
-          leave: scrollLeave
-        })
-      });
-    });
-  });
-});
 
 /***/ }),
 
@@ -1360,10 +1487,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");
-/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");
+/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var animejs__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! animejs */ "./node_modules/animejs/lib/anime.esm.js");
@@ -1376,7 +1503,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-(0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__.registerBlockType)('animablocks/group-extended', {
+(0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__.registerBlockType)('animablocks/group-extended', {
   title: 'Group Extended',
   icon: 'admin-links',
   category: 'anima',
@@ -1432,6 +1559,10 @@ __webpack_require__.r(__webpack_exports__);
     width: {
       type: 'string',
       default: ''
+    },
+    overflow: {
+      type: 'string',
+      default: ''
     }
   },
   example: {
@@ -1481,13 +1612,14 @@ __webpack_require__.r(__webpack_exports__);
       bottom,
       height,
       width,
-      zIndex
+      zIndex,
+      overflow
     } = attributes;
     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.InspectorControls, {
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
           title: "Link Settings",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.URLInput, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.URLInput, {
             label: "URL",
             value: href,
             onChange: value => setAttributes({
@@ -1616,6 +1748,46 @@ __webpack_require__.r(__webpack_exports__);
                 width: '40%'
               }
             })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
+              children: "Overflow"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("select", {
+              value: overflow,
+              onChange: e => setAttributes({
+                overflow: e.target.value
+              }),
+              style: {
+                width: '60%'
+              },
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
+                value: "",
+                children: "auto"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
+                value: "visible",
+                children: "visible"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
+                value: "hidden",
+                children: "hidden"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
+                value: "scroll",
+                children: "scroll"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
+                value: "auto",
+                children: "auto"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
+                value: "clip",
+                children: "clip"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
+                value: "overlay",
+                children: "overlay"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
+                value: "x",
+                children: "overflow-x: auto"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("option", {
+                value: "y",
+                children: "overflow-y: auto"
+              })]
+            })]
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
           title: "Animation Settings",
@@ -1638,10 +1810,12 @@ __webpack_require__.r(__webpack_exports__);
           })
         })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-        ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps)({
+        ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.useBlockProps)({
           style: {
             position: positionAbsolute ? "absolute" : "relative",
-            overflow: positionAbsolute ? "hidden" : "",
+            overflow: overflow === "x" ? undefined : overflow === "y" ? undefined : overflow || undefined,
+            overflowX: overflow === "x" ? "auto" : undefined,
+            overflowY: overflow === "y" ? "auto" : undefined,
             width: width ? width : "",
             height: height ? height : "",
             zIndex: positionAbsolute && zIndex ? zIndex : undefined,
@@ -1651,7 +1825,7 @@ __webpack_require__.r(__webpack_exports__);
             bottom: positionAbsolute && bottom ? bottom : undefined
           }
         }),
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InnerBlocks, {})
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.InnerBlocks, {})
       })]
     });
   },
@@ -1669,14 +1843,17 @@ __webpack_require__.r(__webpack_exports__);
       bottom,
       width,
       height,
-      zIndex
+      zIndex,
+      overflow
     } = attributes;
-    const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps.save({
+    const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.useBlockProps.save({
       className: `animate-${animation} ${href ? 'has-link' : ''}`
     });
     const wrapperStyle = {
       position: positionAbsolute ? "absolute" : "relative",
-      overflow: positionAbsolute ? "hidden" : "",
+      overflow: overflow === "x" ? undefined : overflow === "y" ? undefined : overflow || undefined,
+      overflowX: overflow === "x" ? "auto" : undefined,
+      overflowY: overflow === "y" ? "auto" : undefined,
       top: positionAbsolute && top ? top : undefined,
       left: positionAbsolute && left ? left : undefined,
       right: positionAbsolute && right ? right : undefined,
@@ -1685,7 +1862,7 @@ __webpack_require__.r(__webpack_exports__);
       height: height ? height : undefined,
       zIndex: positionAbsolute && zIndex ? zIndex : undefined
     };
-    const content = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InnerBlocks.Content, {});
+    const content = /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.InnerBlocks.Content, {});
     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
       ...blockProps,
       style: wrapperStyle,

@@ -1,7 +1,7 @@
+import { InnerBlocks, InspectorControls, URLInput, useBlockProps } from '@wordpress/block-editor';
 import { registerBlockType } from '@wordpress/blocks';
-import { useBlockProps, InnerBlocks, InspectorControls, URLInput } from '@wordpress/block-editor';
-import { PanelBody, ToggleControl, SelectControl } from '@wordpress/components';
-import { onScroll, animate, utils } from 'animejs';
+import { PanelBody, SelectControl, ToggleControl } from '@wordpress/components';
+import { animate, onScroll, utils } from 'animejs';
 import './style.css';
 
 registerBlockType('animablocks/group-extended', {
@@ -22,6 +22,7 @@ registerBlockType('animablocks/group-extended', {
         bottom: { type: 'string', default: '' },
         height: { type: 'string', default: '' },
         width: { type: 'string', default: '' },
+        overflow: { type: 'string', default: '' },
     },
     example: {
         attributes: {
@@ -45,7 +46,7 @@ registerBlockType('animablocks/group-extended', {
         html: false,
     },
     edit: ({ attributes, setAttributes }) => {
-        const { href, newTab, animation, positionAbsolute, top, left, right, bottom, height, width, zIndex } = attributes;
+        const { href, newTab, animation, positionAbsolute, top, left, right, bottom, height, width, zIndex, overflow } = attributes;
 
         return (
             <div >
@@ -125,25 +126,43 @@ registerBlockType('animablocks/group-extended', {
                             </div>
                         )}
                         <div>
-                                    <label>height</label>
-                                    <input
-                                        type="text"
-                                        value={height}
-                                        placeholder="ex: 10px ou 5%"
-                                        onChange={e => setAttributes({ height: e.target.value })}
-                                        style={{ width: '40%' }}
-                                    />
-                                </div>
-                                <div>
-                                    <label>width</label>
-                                    <input
-                                        type="text"
-                                        value={width}
-                                        placeholder="ex: 10px ou 5%"
-                                        onChange={e => setAttributes({ width: e.target.value })}
-                                        style={{ width: '40%' }}
-                                    />
-                                </div>
+                            <label>height</label>
+                            <input
+                                type="text"
+                                value={height}
+                                placeholder="ex: 10px ou 5%"
+                                onChange={e => setAttributes({ height: e.target.value })}
+                                style={{ width: '40%' }}
+                            />
+                        </div>
+                        <div>
+                            <label>width</label>
+                            <input
+                                type="text"
+                                value={width}
+                                placeholder="ex: 10px ou 5%"
+                                onChange={e => setAttributes({ width: e.target.value })}
+                                style={{ width: '40%' }}
+                            />
+                        </div>
+                        <div>
+                            <label>Overflow</label>
+                            <select
+                                value={overflow}
+                                onChange={e => setAttributes({ overflow: e.target.value })}
+                                style={{ width: '60%' }}
+                            >
+                                <option value="">auto</option>
+                                <option value="visible">visible</option>
+                                <option value="hidden">hidden</option>
+                                <option value="scroll">scroll</option>
+                                <option value="auto">auto</option>
+                                <option value="clip">clip</option>
+                                <option value="overlay">overlay</option>
+                                <option value="x">overflow-x: auto</option>
+                                <option value="y">overflow-y: auto</option>
+                            </select>
+                        </div>
                     </PanelBody>
                     <PanelBody title="Animation Settings">
                         <SelectControl
@@ -162,7 +181,9 @@ registerBlockType('animablocks/group-extended', {
                     {...useBlockProps({
                         style: {
                             position: positionAbsolute ? "absolute" : "relative",
-                            overflow: positionAbsolute ? "hidden" : "",
+                            overflow: overflow === "x" ? undefined : overflow === "y" ? undefined : overflow || undefined,
+                            overflowX: overflow === "x" ? "auto" : undefined,
+                            overflowY: overflow === "y" ? "auto" : undefined,
                             width:  width ? width : "",
                             height:  height ? height : "",
                             zIndex: positionAbsolute && zIndex ? zIndex : undefined,
@@ -178,7 +199,7 @@ registerBlockType('animablocks/group-extended', {
         );
     },
     save: ({ attributes }) => {
-        const { href, newTab, animation, positionAbsolute, top, left, right, bottom, width, height, zIndex } = attributes;
+        const { href, newTab, animation, positionAbsolute, top, left, right, bottom, width, height, zIndex, overflow } = attributes;
 
         const blockProps = useBlockProps.save({
             className: `animate-${animation} ${href ? 'has-link' : ''}`
@@ -186,7 +207,9 @@ registerBlockType('animablocks/group-extended', {
 
         const wrapperStyle = {
             position: positionAbsolute ? "absolute" : "relative",
-            overflow: positionAbsolute ? "hidden" : "",
+            overflow: overflow === "x" ? undefined : overflow === "y" ? undefined : overflow || undefined,
+            overflowX: overflow === "x" ? "auto" : undefined,
+            overflowY: overflow === "y" ? "auto" : undefined,
             top: positionAbsolute && top ? top : undefined,
             left: positionAbsolute && left ? left : undefined,
             right: positionAbsolute && right ? right : undefined,
