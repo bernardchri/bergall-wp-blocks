@@ -770,5 +770,12 @@ body:not(.block-editor-iframe__body) .wp-block-animablocks-header-minimalist .he
 .wp-block-animablocks-header-minimalist li.wp-block-navigation-link a:hover span:after {
     width: 100%;
 }
+/*!**************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[2].use[2]!./blocks/anima-separator/style.css ***!
+  \**************************************************************************************************************************************************************************************/
+.anima-separator {
+  width: 100%;
+  height: 96px;
+}
 
 /*# sourceMappingURL=style-index.css.map*/

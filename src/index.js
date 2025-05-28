@@ -23,6 +23,8 @@ import '../blocks/slider-image'; // Slider
 
 import '../blocks/header-minimalist';  // headers
 
+import '../blocks/anima-separator/';  // headers
+
 
 // TODO
 // import '../blocks/button-block';

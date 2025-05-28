@@ -1,8 +1,8 @@
 <?php
 
 /**
- * Plugin Name:       anima – Blocks
- * Description:       Blocks étendus pour thèmes FSE
+ * Plugin Name:       Anima – Blocks
+ * Description:       Blocks étendus pour thèmes FSE avec animations et effets.
  * Requires at least: 6.1
  * Requires PHP:      7.0
  * Version:           0.1.1
@@ -99,6 +99,9 @@ function animablocks_register_custom_blocks()
     register_block_type(__DIR__ . '/blocks/marquee');
     register_block_type(__DIR__ . '/blocks/circle-text');
     register_block_type(__DIR__ . '/blocks/number-increment-animation');
+
+    // composants de mise en forme
+    register_block_type(__DIR__ . '/blocks/anima-separator');
 
     // // groups étendus
     register_block_type(__DIR__ . '/blocks/container-parallax');

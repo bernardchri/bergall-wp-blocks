@@ -1,6 +1,207 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./blocks/anima-separator/index.js":
+/*!*****************************************!*\
+  !*** ./blocks/anima-separator/index.js ***!
+  \*****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");
+/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./style.css */ "./blocks/anima-separator/style.css");
+/* harmony import */ var _svgShapes__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./svgShapes */ "./blocks/anima-separator/svgShapes.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "react/jsx-runtime");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__);
+
+
+
+
+
+
+
+
+(0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__.registerBlockType)('anima/separator', {
+  title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Anima Separator', 'anima'),
+  category: 'design',
+  icon: 'minus',
+  supports: {
+    html: false,
+    color: {
+      text: false,
+      background: true
+    }
+  },
+  attributes: {
+    shape: {
+      type: 'string',
+      default: 'wave'
+    },
+    shapeColor: {
+      type: 'string',
+      default: '#1248F4'
+    },
+    flipX: {
+      type: 'boolean',
+      default: false
+    },
+    flipY: {
+      type: 'boolean',
+      default: false
+    }
+  },
+  edit: ({
+    attributes,
+    setAttributes
+  }) => {
+    const {
+      shape,
+      shapeColor,
+      flipX,
+      flipY
+    } = attributes;
+    const svgCode = _svgShapes__WEBPACK_IMPORTED_MODULE_5__.shapes[shape].svg.replace('{{color}}', shapeColor);
+    const encodedSvg = `url("data:image/svg+xml;base64,${btoa(svgCode)}")`;
+    const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps)({
+      style: {
+        backgroundImage: encodedSvg,
+        backgroundSize: 'contain',
+        backgroundRepeat: 'repeat-x',
+        backgroundPosition: 'center bottom',
+        transform: `scaleX(${flipX ? -1 : 1}) scaleY(${flipY ? -1 : 1})`
+      },
+      className: 'anima-separator'
+    });
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.Fragment, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
+          title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Separator Settings', 'anima'),
+          initialOpen: true,
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.SelectControl, {
+            label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Shape', 'anima'),
+            value: shape,
+            options: Object.entries(_svgShapes__WEBPACK_IMPORTED_MODULE_5__.shapes).map(([key, val]) => ({
+              label: val.name,
+              value: key
+            })),
+            onChange: value => setAttributes({
+              shape: value
+            })
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ToggleControl, {
+            label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Flip Horizontally', 'anima'),
+            checked: flipX,
+            onChange: value => setAttributes({
+              flipX: value
+            })
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ToggleControl, {
+            label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Flip Vertically', 'anima'),
+            checked: flipY,
+            onChange: value => setAttributes({
+              flipY: value
+            })
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("p", {
+            children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Shape Color', 'anima')
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ColorPicker, {
+            color: shapeColor,
+            onChangeComplete: value => setAttributes({
+              shapeColor: value.hex
+            }),
+            disableAlpha: true
+          })]
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+        ...blockProps,
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("p", {
+          style: {
+            textAlign: 'center',
+            padding: '2rem 0',
+            color: '#888'
+          },
+          children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_3__.__)('Separator Preview', 'anima')
+        })
+      })]
+    });
+  },
+  save: ({
+    attributes
+  }) => {
+    const {
+      shape,
+      shapeColor,
+      flipX,
+      flipY
+    } = attributes;
+    const svgCode = _svgShapes__WEBPACK_IMPORTED_MODULE_5__.shapes[shape].svg.replace('{{color}}', shapeColor);
+    const encodedSvg = `url("data:image/svg+xml;base64,${btoa(svgCode)}")`;
+    const style = {
+      backgroundImage: encodedSvg,
+      backgroundSize: 'contain',
+      backgroundRepeat: 'repeat-x',
+      backgroundPosition: 'bottom center',
+      transform: `scaleX(${flipX ? -1 : 1}) scaleY(${flipY ? -1 : 1})`
+    };
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+      className: "anima-separator",
+      style: style
+    });
+  }
+});
+
+/***/ }),
+
+/***/ "./blocks/anima-separator/style.css":
+/*!******************************************!*\
+  !*** ./blocks/anima-separator/style.css ***!
+  \******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
+/***/ "./blocks/anima-separator/svgShapes.js":
+/*!*********************************************!*\
+  !*** ./blocks/anima-separator/svgShapes.js ***!
+  \*********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   shapes: () => (/* binding */ shapes)
+/* harmony export */ });
+const shapes = {
+  wave: {
+    name: 'Wave',
+    svg: `<?xml version="1.0" encoding="UTF-8"?><svg id="uuid-dc98a4c1-30d5-4038-8d54-c2a919b94e40" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 66"><path fill="{{color}}" d="M0,16S72.57,0,246.61,0s395.2,34.02,516.15,33.66c217.1-.66,317.21-20.37,448.25-20.37s228.99,2.72,228.99,2.72v50H0V16Z"/></svg>`
+  },
+  brush2: {
+    name: 'Brush 2',
+    svg: `<?xml version="1.0" encoding="UTF-8"?><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 59"><path fill="{{color}}" d="M558.58,21.39c-1.15-1.24-2.25-2.49-3.32-3.74h-.01c-5.34.77-3.13,3.05,1.72,3.49-2.06.39-4.1.78-6.15,1.18,2.58-.31,5.17-.62,7.75-.92ZM445.57,18.56c-.81-.52-1.54-1.05-2.27-1.57-.73.35-.29.84,2.27,1.57ZM1406.72,14.04c-2.07-.26-11.92.93-12.75-1.74-.05-.16,7-3.06-2.17-1.9-.35.04.27,1.6-.53,1.58-6.06-.19-6.48-1.59-11.26,1.11-12.03-8.31-6.11-2.06-15-1.72-5.17.2.16-2.88-5.92-3.42-2.3-.2-34.15-2.71-34.67-.88-.03.13,7.72-.21,6.46,1.26-1.26,1.47-15.08,1.67-15.89,4.15-2.97-.48-5.67-1.05-8.55-1.54,13.06-1.78,1.9-2.83-5.91-2.97,4.42-.59,8.79-1.21,13.16-1.85-17.9-.75-35.93-1.48-53.8-1.89-6.12,1.53,7.13,8.33-8.45,5.84-7.98-1.27,2.88-6.49-20.08-7.14-22.29-.64-43.54-.92-66.27-1.62-4.67-.15-8.53,1.84-14.94,1.22-2.35-.22-1.78-1.9-10.14-2.02-68.1-1-142.36-.23-210.19-.1-22.48.05-14.22,1.15-28.5,5.65-.62.2-8.04,1.42-5.48,3.3-12.62-3.19,2.09-4.73,3.12-5.32,7.11-4.06-27.1-3.73-31.63-3.75-45.94-.21-72.83.62-123.96,1.88-28.23.7-149.23,3.3-170.01,7.97-20.77,4.67,13.49,2.7,6.52,6.21-7.09-2.5-7.91-1.84-13.88-1.19-4.13.45-4.12-2.93-7.82-.38-2.81-6.57-24.73-2.49-18.83.45.92.45,10.78-1.79,10.34,1.92,3.27-3.79,4.36-.6,7.69-.35,15.14,1.11,13.23-1.78,13.95,5.47,3.14-.31,6.37-.47,9.53-.82-21.61-3.51,2.46-3.77,7.69-2.02,2.7.89,2.81,4.94,11.63,2.82.4.91.6,1.58,1.07,2.37,1.24-4.86,6.94.45,9.73-3.51,2.6-3.69-7.53-2.92-7-6.39,21.81,2.22,10.95-.54,11.74,3.28.13.59,6.73.28,7.35.44,1.9.5-2.69,1.96-.35,2.22.37.04,1.42.13,2.74.21-1.41,1.62,2.72,5.86,5.39,3.4.3-.28-.16-2.55-.52-3.29,1.89-.05,3.5-.25,3.94-.75,2.35-2.62,6.67-3.35,17.38-2.39-8.9,3.39.93,2.96,3.69,6.32,1.85-.05,3.7-.11,5.55-.16-1.95-1.52-3.76-3.02-5.77-4.55,15.43,3.26,6.41,2.32,13.29-.22,1.85-.69,6.78,1.28,3.75-1.98,4.24,2.98,3.9.45,11.09,1.26,1.47.17,6.1,5.04,8.87,5.76.72-.9,1.32-2.18,1.64-3.16,11.31-.38,3.01.69,2.74,1.56-1.1,3.74,7.09,5.38-8.07,5.65-18.11.31,1.69-2-6.24-2.84-14.24-1.51-.8,3.21-12.46,1.49-.97-.15-6.62-3.38-14.36-1.51-6.37,1.54,5.39,5.16.27,7.42-11.76-10.04-12.57-3.24-3.7,1.25.58.3,5.02-.48,6.06.02.12.06-.07.44-.07.82h-27.07c-3.68-.65-5.8-1.5-5.15-2.6,6.96,1.94,22.58-.16,15.96-3.81-3.62-2.01-6.96.16-9.37.54-2.41.37-2.44-1.24-5.14-.88-1.43.19-1.69,1.59-2.42,1.63-26.63,1.39-9.35-1.27-19.02-5.08-.77-.31-9.51.27-9.67.5-.83,1.19,6.36,1.11,7.28,1.87,3.86,3.22-7.71,2.61-9.88,3.18-8.87,2.31-1.13,2.57-16.78,0,.53,1.15.77,2.27,1.28,3.41,10.4-.81,15.13-1.83,17.85,1.25h-19.97c-.13,0-.27,0-.41,0h-5.96c3.73-3.15,2.28-3.57-3.41-4.76-2.99-.63-3.25-1.89-3.56-1.96-5.89-1.07-2.01,2.46-1.82,3.3-4.2-2.01-5.29-3.18-12.96-2.86-1.07,1.13-2.17,2.34-3.22,3.42.41-1.55-2.15-4.2-3.04-5.42-1.79-2.43,3.34-2.25,3.73-2.69,2.73-3.02-1.34-5.61-.84-8.53-.64,1.27-13.11.41-13.75.19-4.85-1.8,1.16-3.43-8.16-3.16-11.26.32-13.53,4.4-5.69,7.35-28.42,3.03,2.99,4.64,13.89,3.38.24,1.83-4.29.67-6.51,2.07-.33.22,5.46,3.1,1.98,3.52-1.35.16-9.64-1.26-12.51-1.14-2.28.09-1.71,1.56-4.31,1.45-.16,0,1.02-1.01-.88-1.08-4.34-.18-9.6,1.06-13.16-.99-1.36-.78,1.07-4.48-.45-5.74,3.13-.17,6.22-.14,9.33-.25-25.85-1.39,5.03-2.21-8.27-4.71,2.19-.61,4.38-1.22,6.56-1.84-7.87.04-11.48,3.5-16.17.06-5.45.57.83,2.27-.19,2.64-2.12.76-6.24-1.88-5.97.53,2.54.13,4.9.43,7.69.56-18.15,2.65-5.51.14-13.18-3.02-10.58-4.37-22.11,6.57-18.32,9.77,2.9.08,6.48.01,9.35.08-.08,1.84-15.46,1.52-16.94.46-1.35-.97,3.32-2.06-.1-3.09,3.2.4,3.85-2.94,2.8-3.4-2.12-.92-6.89.33-9.45-.32-2.55-.65-5.76-3.44-.13-2.85.52.35,1,.7,1.49,1.05,2.76-1.34,22.44-.63,9.7-2.56-1.12-.17-19.82-.24-22.38-.33-3.89-.12-3.26,1.11-3.86,1.15-3.44.24-1-1.56-5.56-1.28-1.55.1-10.72,1.45-12.88,2.25-1.12-6.53-4.9-.46-9.51.59-4.61,1.05-7.69-1.96-10.07,1.17-1.31-2.86-5.39-2.63-7.69-4.95-6.99,4.19-2.33,1.13-8.14-.05-2.01-.41-2.66,1.67-6.33,1.5-2.22-.1-13.21-1.41-15.34-1.52-3.53-.17-9.67,1.68-10.42,1.68-5.1-.04-4.23-2.19-7.73-2.34-12.91-.55-26.09,1-38.47.83-6.62-.09-11.54-2.3-16.75-2.26-2.28.02-2.24,2.16-3.75,2.39-4.48.69-7.19-1.53-9.3-1.55-8.31-.06-9.75,1.21-16.9-1.11,5.44,2.9-6.35,1.22-9.16,1.17-2.81-.05-3.32,1.33-4.9,1.25-6.54-.31-10.96-3.4-15.88-3.54-1.99-.06,1.61,1.87-.23,2.19-5.04.88-4.02-1.97-9.22-1.59-1.34.1-6.48,2.61-7.19-.68-.17,2.63-23.32,3.34-26.48,2.03-3.27-1.35,3.19-3.32-8.9-1.47-.23.05,2.23,1.56.45,1.67-14.49.86-31.56.18-46.26-.12-3.04-.06,1.87-1.35-2.58-1.25-1.23.02-7.96,1.52-11.07,1.45-3.11-.08-6.06-1.9-8.52-1.82-3.49.12-5.46,2.17-8.7,2.62-6.91.96-13.69-.73-18.16-1.03-4.45-.3-12.83,2.33-13.85,2.36-7.04.18-26.82-1.95-22.39.99-6.81,2.54-6.7.2-11.69.09-4.99-.11-5.52,1.62-9.34,1.7-5.07.11-9.31-.37-13.84-.4v42.75h1440V17.78c-10.62-1-21.2-2.26-33.28-3.74ZM376.67,19.52c-.54-.29,3.73-4.03,5.9-2.82,3.01,1.67-1.82,5-5.9,2.82ZM522.46,35c.47-.17,1.3-.26,2.68-.22h-.01c.04.07.07.15.1.22h-2.76ZM548.6,35c-.19-.31-.06-.68.53-1.12,1.6-1.22,13.29.22,16.24.61.02.17.02.34.04.52h-16.81ZM623.77,35h-13.89c-.19-.59-.38-1.18-.56-1.77,7.29,1.83,6.8-2.18,12.28.06,0,0,.01,0,.02,0,1.72.7,2.25,1.24,2.14,1.71ZM662.18,35c.08-.89-3.79-2.2-2.5-3.25,5.66-4.6,5.43,2.49,5.9,3.05.07.08.21.14.4.2h-3.81ZM728.14,26.91c-5.68,2.37-11.94-.61-7.19,4.15-4.9-1.95-6.72-3.54-14.44-3.65,2.5-.85,4.98-1.7,7.48-2.55-10.13.06-5.68-.32-5.55-2.76-.02-.17-7-.1-4.12-1.04,1.9-.63,5.6-.93-.03-3.5,6.25-.12,10.93-.15,16.01,1.62h-.02c2.6.9,10.69,6.56,7.86,7.75ZM957.79,18.76c4.65-.56.59,2.81,3.84,2.95,3.25.14,6-.54,3.08,2.87-4.98.08-12.89-5.11-6.92-5.83ZM893.53,13.16c4.58.3-.6,4.81,2.42,5.97-4.95-.42-10.49-6.5-2.42-5.97ZM858.93,32.87h0c-.11,0-1.3-1.95-3.4-.42.88.83,1.79,1.69,2.71,2.55h-2.33c-.28-1.19-6.07-2.75-6.19-3.52-.18-1.18,7.23.44,9.4-.12,2.17-.56.61-2.46,3.06-2.33,5.52.3.67,3.69-3.25,3.84ZM868.9,26.5c-.24-.11,2.63-.95,2.27-1.2-4.16-2.73-4.93-2.69-.8-5.76-14.48-5.5,19.08,1.57,9.99-5.12,1.05-.14,2.08-.3,3.13-.44h0c4.2,1.51,6.67,4.27,6.34,6.31-.16.9-4.1.27-4.49.59-1.03.86,1.79,1.17.56,2.15-2.7,2.18-9.67,3.91-5.28,6.48-1.05.15-2.04.28-3.09.42-.03-2.74-4.72-1.94-8.62-3.44ZM900.43,35h-3.44c.16-.52.39-.99.72-1.35-1.37.53-2.59.98-3.71,1.35h-10.78c-1.25-.95-2.35-2.34-3.84-3.97,7.55.52,5.09-.37,9.15-2.17.97.72,1.95,1.45,2.93,2.17,1.29-.25,2.57-.5,3.86-.75-.4-3.31-7.18-1.8-10.63-4.15,4.72-.39,9.48-.86,14.17-1.22,1.54.9-1.7,2.82-1.47,3.49.51,1.38,3.92,1.36,4.34,2.35.67,1.59-.78,2.81-1.3,4.25ZM903.13,24.52c-2.23.79-12.15-2.28-12.95-3.24,4.32-.93,19.45.94,12.95,3.24ZM938.79,35h-2.7c-5.52-3.75-30.88-2.47-5.04-3.54-3.08-1.43-16.52-2.93-4.69-2.66,6.46.15,5.81,2.46,11.19,2.81.17,0-.89-1.41,2.03-1.07,5.82.69,2.45,2.94-.79,4.46ZM945.09,27.01c-6.38,8.47-6.71-1.99-7.63-2.39-5.92-2.52-2.42,2.32-2.76,2.49-2.33,1.2-18.51,1.27-18.41-.46.14-2.69,16.21,1.71,9.14-4.78-1.23.44-2.93.91-4.35,1.36-1.77-.69-3.53-1.37-5.3-2.06-.81,1.25-1.63,2.5-2.44,3.75-1.53.22-3.08.43-4.61.65v-6.97c6.81,2.34,10.37,2.5,19.06,1.1h0c.6-.09-.19-1.14,1.85-.92.22.73.38,1.52.58,2.28,1.55-.09,3.1-.18,4.64-.27,1.42-.98,2.76-2.14,4.23-3,3.73,1.51,6.91,8.01,6,9.21ZM962.5,28.2c-1.16.63-2.38,1.27-3.55,1.9-8.93-3.13-19.37-8.35-5.1-11.35h.01c-2.68,7.8,14.27,4.5,13.01,11.6-.07.22-9.65,1.26,1.79,2.16-20.9,3.37-11.51-.45-6.15-4.31ZM990.23,20.27c-.88,1.27-6.88,3.3-8.38,3.25-6.68-.22-4.16-3.62-12.96-2.06,3.78-1.66-1.93-6.7,4.1-7.23,1.72-.15,2.08,6.93,10.07,5.87h-.01c-2.9-3.46.2-3.42,3.36-6.38,1.63,1.48,4.69,5.28,3.82,6.54ZM1030.75,22.56c-1.18,3.76,14.37,2.09,14.91,2.28,6.03,2.06-30.07,5.5-14.91-2.28ZM1055.55,34.99h0s-.01,0-.01.01h-5.08c2.58-1.52,5.65-3.55,5.1-.01ZM1211.22,13.94c1.23-.58,10.34-.19,11.57.27h-.02c1.25.47-2.35,3.15-2.82,3.26-4.18,1.03-11.28-2.32-8.73-3.54ZM1158.55,9.05c-.73-.01-4.19.3-4.5.15-5.52-2.86,1.47-5.94,4.5-.15ZM1078.36,28.54c-2.05.06-3.99.12-6,.19-.59-.73-1.2-1.45-1.79-2.18,11.92-1.81,5.72-2.87,4.17-6.56,5.5,2.05,6.33.74,12.9.04.01,0,.01,0,.02,0-4.71,2.28.06,1.34.84,2.18,7.17,7.73-4.02-4.57-10.14,6.33ZM1129.91,24.65c-3.4,1.52-18.26-3.68-12.23-5.89,2.05-.74,19.33,2.71,12.23,5.89ZM1144.96,35h-7.04c-.49-1.43,1.23-3.66,2.49-4.08,9.99-3.27,8.83,1.66,4.55,4.08ZM1151.82,21.59c-.61-.24-5.31,1.29-6-.22-.68-1.51-.23-5.71,6.56-5.58.35.02-.32,1.55.48,1.6,2.39.16,4.16-.6,6.87-.16,2.72.44,2.4,2.66,6.02,2.47,1.2-.07,8.31-4.19,6.56-.26-.82,1.84-4.63.04-7.44,1.34-.86.4,3.54,3.86.53,4.86-.55.18-12.38-1.32-13.23-1.67-2.57-1.08,1.63-1.6-.35-2.39ZM1171.76,35c0-.3-.05-.53-.35-.59-3.58-.7-5.16-.12-6.71.59h-5.92c-.17-.69-.34-1.39-.51-2.08,7.41,1.41,6.45.17,12.5-.98.98,1,1.97,2.05,2.97,3.06h-1.97ZM1182.23,34.79c-1.29.03-10.95-5.89-5.04-7.04-.34,1.87,16.34,6.73,5.04,7.04ZM1199.87,35c-3.34-.26-7.02-.95-3.17-3.26,6.63,2.24,6.11-1.68,13.34.2.91,1.02,1.77,2.04,2.63,3.07h-12.8ZM1224.59,34.92c-.08.03-.19.06-.29.08h-4.93c-1.68-.24-3.04-.65-2.89-1.12.31-.99,3.53.14,4.95-.18,1.42-.32.73-1.93,1.17-2,4.04-.62,3.97,2.48,1.99,3.21ZM1232.51,22.58c-1.1.52-15.62,1.02-16.53.93-11.92-1.17,8.83-3.99,10.11-3.94,3.32.15,8.64,1.94,6.42,3ZM1251.7,23.26c-9.71-.76-3.3-5.54,3.71-4.41,4.27.69,1.03,4.78-3.71,4.41ZM1291.5,24.85h0c-.47.36-12.82-.49-11.8-2.2-.94,1.29-1.15,2.57-1.68,3.88,5.17,1.04,12.67-3.02,13.77,3.18.5,2.89-4.96,3.31-8.33,5.29h-11.58c-.69-.3-.67-.75,1.03-1.45-1.69.53-2.99,1.01-3.97,1.45h-15.54c.36-.48,5.25-.46,5.9-.53,11.44-1.17,7.02-3.1,11.79-5.18,1.77-.77,14.89-.23,9.15-2.11-.23-.07-3.4.87-5.2-.07-.96-.5-.39-2.64-4.17-2.54-.74.02-5.32,2.74-10.07,1.48-.29-.08-4.92-2.16-4.6-2.36,2.48-1.5,9.94.62,13.25-.53,1.88-.65.67-2.21,1.82-2.88,1.15-.67,5.79-.55,6.05-.65,2.5-.94-5.96-2.47-4.82-2.67,13.1-2.33,25.6,3.07,19,7.88Z"/></svg>`
+  },
+  tiles: {
+    name: 'Tiles',
+    svg: `<?xml version="1.0" encoding="UTF-8"?><svg id="uuid-99b365d2-0966-4803-baf4-0680203dd17d" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 66"><path fill="{{color}}" d="M0,16.61S72.57,0,246.61,0s395.2,34.02,516.15,33.66c217.1-.66,317.21-20.37,448.25-20.37s228.99,19.72,228.99,19.72v33H0V16.61Z"/></svg>`
+  },
+  brush: {
+    name: 'Brush',
+    svg: `<?xml version="1.0" encoding="UTF-8"?><svg id="uuid-062700cf-5065-445f-a851-9c00fc450671" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 66"><path fill="{{color}}" d="M1379.74,22.08c-29.01,4.95-107.95,1.51-134.16-2.52-25.73-4.03-43.88-5.65-73.19-2.89-29.68,2.75-31.84-9.64-52.55-5.54-21.04,4.1-67.47-2.72-114.37-.48-46.58,2.24-52.79-7.73-93.64-10.39-40.72-2.66-67.19,16.15-100.61,11.89-33.5-4.26-33.55-11.87-74.99-8.38-41.43,3.49-144.15,1.54-194.76,3.67-50.51,2.13-115.38-3.77-146.3-2.52-31.08,1.26-75.95,2.6-157.83,7.84-81.86,5.24-81.6-1.56-97.74-2.89-16.28-1.33-29.01,10.21-56.78,5.13-27.96-5.08-36.71-1.73-58.87,6.99-6.28,2.44-14.33,3-23.95,3.46v40.55h1440V24.64c-18.25-2.9-40.29-6-60.26-2.56h0Z"/></svg>`
+  }
+};
+
+/***/ }),
+
 /***/ "./blocks/animate-on-scroll/AnimateOnScrollControls.js":
 /*!*************************************************************!*\
   !*** ./blocks/animate-on-scroll/AnimateOnScrollControls.js ***!
@@ -41393,6 +41594,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _blocks_animate_on_scroll__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../blocks/animate-on-scroll */ "./blocks/animate-on-scroll/index.js");
 /* harmony import */ var _blocks_slider_image__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../blocks/slider-image */ "./blocks/slider-image/index.js");
 /* harmony import */ var _blocks_header_minimalist__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../blocks/header-minimalist */ "./blocks/header-minimalist/index.js");
+/* harmony import */ var _blocks_anima_separator___WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../blocks/anima-separator/ */ "./blocks/anima-separator/index.js");
 // Import CSS Librairies générales 
 // import "swiper/css";
 
@@ -41411,6 +41613,8 @@ __webpack_require__.r(__webpack_exports__);
  // Groups étendus
  // Groups étendus
  // Slider
+
+ // headers
 
  // headers
 
@@ -41498,6 +41702,17 @@ module.exports = window["wp"]["components"];
 
 "use strict";
 module.exports = window["wp"]["element"];
+
+/***/ }),
+
+/***/ "@wordpress/i18n":
+/*!******************************!*\
+  !*** external ["wp","i18n"] ***!
+  \******************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = window["wp"]["i18n"];
 
 /***/ }),
 
