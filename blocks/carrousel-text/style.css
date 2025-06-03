@@ -1,0 +1,16 @@
+.texte-carrousel {
+    overflow: hidden;
+    position: relative;
+    height: auto; /* Peut être fixe ou ajusté en JS si nécessaire */
+}
+
+.texte-slide-wrapper {
+    display: flex;
+    flex-direction: column;
+    will-change: transform;
+}
+
+.texte-slide {
+    padding: 1em 0;
+    text-align: center;
+}

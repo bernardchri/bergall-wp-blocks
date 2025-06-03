@@ -1014,7 +1014,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
       // Animation par ligne, mot ou caractère
       splitResult[0][animationType].forEach((element, index) => {
-        console.log(element);
         (0,animejs__WEBPACK_IMPORTED_MODULE_7__.animate)(element, {
           opacity: [0, 1],
           translateY: [30, 0],
@@ -1035,6 +1034,443 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 }, {
   passive: true
+});
+
+/***/ }),
+
+/***/ "./blocks/button-block/index.js":
+/*!**************************************!*\
+  !*** ./blocks/button-block/index.js ***!
+  \**************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");
+/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "react/jsx-runtime");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__);
+
+
+
+
+
+
+(0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__.registerBlockType)('anima/button-block', {
+  title: 'Custom Button',
+  icon: 'button',
+  category: 'anima',
+  attributes: {
+    text: {
+      type: 'string',
+      default: 'Click me'
+    },
+    backgroundColor: {
+      type: 'string',
+      default: '#0073aa'
+    },
+    hoverColor: {
+      type: 'string',
+      default: '#005177'
+    },
+    textColor: {
+      type: 'string',
+      default: '#ffffff'
+    },
+    icon: {
+      type: 'string',
+      default: 'heart'
+    }
+  },
+  edit: ({
+    attributes,
+    setAttributes
+  }) => {
+    const {
+      text,
+      backgroundColor,
+      hoverColor,
+      textColor,
+      icon
+    } = attributes;
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(_wordpress_element__WEBPACK_IMPORTED_MODULE_3__.Fragment, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
+          title: "Button Settings",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
+            children: "Background Color"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ColorPalette, {
+            value: backgroundColor,
+            onChange: color => setAttributes({
+              backgroundColor: color
+            })
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
+            children: "Hover Color"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ColorPalette, {
+            value: hoverColor,
+            onChange: color => setAttributes({
+              hoverColor: color
+            })
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
+            children: "Text Color"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ColorPalette, {
+            value: textColor,
+            onChange: color => setAttributes({
+              textColor: color
+            })
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
+            children: "Icon"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.SelectControl, {
+            value: icon,
+            options: [{
+              label: 'Heart',
+              value: 'heart'
+            }, {
+              label: 'Star',
+              value: 'star-filled'
+            }, {
+              label: 'Check',
+              value: 'yes'
+            }, {
+              label: 'Arrow',
+              value: 'arrow-right'
+            }],
+            onChange: value => setAttributes({
+              icon: value
+            })
+          })]
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+        ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps)(),
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("button", {
+          style: {
+            backgroundColor,
+            color: textColor,
+            padding: '10px 20px',
+            border: 'none',
+            cursor: 'pointer',
+            fontSize: '16px',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '8px',
+            transition: 'background-color 0.3s ease-in-out'
+          },
+          onMouseEnter: e => e.target.style.backgroundColor = hoverColor,
+          onMouseLeave: e => e.target.style.backgroundColor = backgroundColor,
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Dashicon, {
+            icon: icon
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
+            value: text,
+            onChange: newText => setAttributes({
+              text: newText
+            })
+          })]
+        })
+      })]
+    });
+  },
+  save: ({
+    attributes
+  }) => {
+    const {
+      text,
+      backgroundColor,
+      hoverColor,
+      textColor,
+      icon
+    } = attributes;
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("button", {
+      className: "custom-button",
+      style: {
+        backgroundColor,
+        color: textColor,
+        padding: '10px 20px',
+        border: 'none',
+        cursor: 'pointer',
+        fontSize: '16px',
+        display: 'flex',
+        alignItems: 'center',
+        gap: '8px',
+        transition: 'background-color 0.3s ease-in-out'
+      },
+      onMouseEnter: e => e.target.style.backgroundColor = hoverColor,
+      onMouseLeave: e => e.target.style.backgroundColor = backgroundColor,
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Dashicon, {
+        icon: icon
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText.Content, {
+        value: text
+      })]
+    });
+  }
+});
+
+/***/ }),
+
+/***/ "./blocks/carrousel-text/block.json":
+/*!******************************************!*\
+  !*** ./blocks/carrousel-text/block.json ***!
+  \******************************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = /*#__PURE__*/JSON.parse('{"apiVersion":2,"name":"anima/carrousel-texte","icon":"slides","category":"anima","description":"Un bloc avec animation de texte façon carroussel","keywords":["bloc","personnalisé","addon"],"version":"1.0.0","textdomain":"anima","editorStyle":"file:./style.css","style":"file:./style.css"}');
+
+/***/ }),
+
+/***/ "./blocks/carrousel-text/index.js":
+/*!****************************************!*\
+  !*** ./blocks/carrousel-text/index.js ***!
+  \****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");
+/* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/i18n */ "@wordpress/i18n");
+/* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @wordpress/element */ "@wordpress/element");
+/* harmony import */ var _wordpress_element__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_wordpress_element__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var animejs__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! animejs */ "./node_modules/animejs/lib/anime.esm.js");
+/* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./block.json */ "./blocks/carrousel-text/block.json");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "react/jsx-runtime");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__);
+
+
+
+
+
+
+
+
+(0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__.registerBlockType)(_block_json__WEBPACK_IMPORTED_MODULE_5__.name, {
+  title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Carrousel de texte', 'anima'),
+  supports: {
+    typography: {
+      fontSize: true,
+      lineHeight: true,
+      __experimentalFontWeight: true,
+      __experimentalFontStyle: true,
+      __experimentalTextTransform: true
+    },
+    textAlign: true,
+    color: {
+      text: true,
+      background: true
+    },
+    spacing: {
+      padding: true
+    }
+  },
+  attributes: {
+    messages: {
+      type: 'array',
+      default: []
+    },
+    duration: {
+      type: 'number',
+      default: 3000
+    }
+  },
+  edit({
+    attributes,
+    setAttributes,
+    isSelected
+  }) {
+    const {
+      messages,
+      duration
+    } = attributes;
+    const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)({
+      className: 'texte-carrousel',
+      'data-duration': duration
+    });
+    const wrapperRef = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_4__.useRef)(null);
+    const [isPlaying, setIsPlaying] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_4__.useState)(false);
+    const [currentIndex, setCurrentIndex] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_4__.useState)(0);
+    const intervalRef = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_4__.useRef)(null);
+    const updateMessage = (value, index) => {
+      const newMessages = [...messages];
+      newMessages[index] = value;
+      setAttributes({
+        messages: newMessages
+      });
+    };
+    const addMessage = () => {
+      setAttributes({
+        messages: [...messages, 'Nouveau texte']
+      });
+    };
+    const removeMessage = index => {
+      const newMessages = [...messages];
+      newMessages.splice(index, 1);
+      setAttributes({
+        messages: newMessages
+      });
+    };
+    (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_4__.useEffect)(() => {
+      if (!wrapperRef.current || messages.length < 2) return;
+      const wrapper = wrapperRef.current;
+      const slideCount = messages.length;
+      const singleSlide = wrapper.firstChild;
+      const slideHeight = singleSlide.offsetHeight;
+      clearInterval(intervalRef.current);
+      let index = 0;
+      if (isPlaying) {
+        intervalRef.current = setInterval(() => {
+          index++;
+          (0,animejs__WEBPACK_IMPORTED_MODULE_7__.animate)(wrapper, {
+            translateY: -index * slideHeight,
+            duration: 500,
+            easing: 'easeInOutQuad',
+            complete: () => {
+              // Reset instantly if at the duplicated slide
+              if (index === slideCount) {
+                wrapper.style.transform = 'translateY(0px)';
+                index = 0;
+              }
+            }
+          });
+          setCurrentIndex(index % slideCount);
+        }, duration);
+      }
+      return () => clearInterval(intervalRef.current);
+    }, [isPlaying, messages, duration]);
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.Fragment, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
+          title: "Param\xE8tres",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.RangeControl, {
+            label: "Dur\xE9e entre chaque message (ms)",
+            value: duration,
+            onChange: value => setAttributes({
+              duration: value
+            }),
+            min: 250,
+            max: 10000,
+            step: 500
+          })
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+        ...blockProps,
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+          className: "texte-slide-wrapper",
+          ref: wrapperRef,
+          children: messages.map((msg, index) => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+            className: "texte-slide",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
+              tagName: "div",
+              value: msg,
+              onChange: value => updateMessage(value, index),
+              placeholder: "Entrez un message\u2026",
+              allowedFormats: ['core/bold', 'core/italic']
+            })
+          }, index))
+        }), isSelected && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+          style: {
+            marginTop: '1em'
+          },
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Button, {
+            variant: "primary",
+            onClick: addMessage,
+            style: {
+              marginRight: '1em'
+            },
+            children: "Ajouter un message"
+          }), messages.map((_, i) => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.Button, {
+            isDestructive: true,
+            onClick: () => removeMessage(i),
+            style: {
+              display: 'block',
+              marginTop: '0.5em'
+            },
+            children: ["Supprimer le message ", i + 1]
+          }, i))]
+        })]
+      })]
+    });
+  },
+  save({
+    attributes
+  }) {
+    const {
+      messages,
+      duration
+    } = attributes;
+    const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps.save({
+      className: 'texte-carrousel',
+      'data-duration': duration
+    });
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+      ...blockProps,
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+        className: "texte-slide-wrapper",
+        children: messages.map((msg, i) => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+          className: "texte-slide",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText.Content, {
+            tagName: "div",
+            value: msg
+          })
+        }, i))
+      })
+    });
+  }
+});
+
+// Animation front
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.texte-carrousel').forEach(carrousel => {
+    const wrapper = carrousel.querySelector('.texte-slide-wrapper');
+    const slides = wrapper.querySelectorAll('.texte-slide');
+    const duration = parseInt(carrousel.dataset.duration || 3000, 10);
+    let slideCount = slides.length - 1; // last one is duplicate
+    const slideHeight = slides[0].offsetHeight;
+    let index = 0;
+    if (slides.length > 1) {
+      const firstSlideClone = slides[0].cloneNode(true);
+      wrapper.appendChild(firstSlideClone);
+      wrapper.style.height = `${slideHeight}px`; // Set initial height
+      slideCount += 1; // Adjust slideCount to include the duplicate
+      index = -1; // Reset index to 0
+    }
+    wrapper.style.height = `${slideHeight}px`; // Set initial height
+    wrapper.style.transition = 'none'; // Smooth transition for transform
+
+    setInterval(() => {
+      console.log('index', index, 'slideCount', slideCount);
+      index++;
+      (0,animejs__WEBPACK_IMPORTED_MODULE_7__.animate)(wrapper, {
+        translateY: index * slideHeight * -1,
+        duration: 200,
+        easing: 'easeInOutQuad',
+        complete: () => {
+          if (index === slideCount + 1) {
+            // +1 because of the duplicate slide
+            console.log('Resetting index to 0');
+            (0,animejs__WEBPACK_IMPORTED_MODULE_7__.animate)(wrapper, {
+              translateY: 0,
+              duration: 0,
+              // Pas d'animation pour le reset
+              easing: 'linear',
+              complete: () => {
+                index = -1; // Reset index
+              }
+            });
+          }
+        }
+      });
+    }, duration);
+  });
 });
 
 /***/ }),
@@ -41595,6 +42031,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _blocks_slider_image__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../blocks/slider-image */ "./blocks/slider-image/index.js");
 /* harmony import */ var _blocks_header_minimalist__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../blocks/header-minimalist */ "./blocks/header-minimalist/index.js");
 /* harmony import */ var _blocks_anima_separator___WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../blocks/anima-separator/ */ "./blocks/anima-separator/index.js");
+/* harmony import */ var _blocks_button_block__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../blocks/button-block */ "./blocks/button-block/index.js");
+/* harmony import */ var _blocks_carrousel_text__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ../blocks/carrousel-text */ "./blocks/carrousel-text/index.js");
 // Import CSS Librairies générales 
 // import "swiper/css";
 
@@ -41618,8 +42056,10 @@ __webpack_require__.r(__webpack_exports__);
 
  // headers
 
+
+ // Carrousel de texte
+
 // TODO
-// import '../blocks/button-block';
 // import '../blocks/hero-3D-object';
 
 /***/ }),

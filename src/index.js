@@ -6,7 +6,6 @@ import './style.css'; // CSS général
 
 
 
-
 //  # Point d'entrée pour le plugin (enregistrement des blocs)
 
 import '../blocks/number-increment-animation/'; // Composants
@@ -25,8 +24,10 @@ import '../blocks/header-minimalist';  // headers
 
 import '../blocks/anima-separator/';  // headers
 
+import '../blocks/button-block';
+
+import '../blocks/carrousel-text'; // Carrousel de texte
 
 // TODO
-// import '../blocks/button-block';
 // import '../blocks/hero-3D-object';
 

@@ -4,7 +4,7 @@ import { PanelBody, ColorPalette, SelectControl } from '@wordpress/components';
 import { Fragment } from '@wordpress/element';
 import { Dashicon } from '@wordpress/components';
 
-registerBlockType('custom/button-block', {
+registerBlockType('anima/button-block', {
     title: 'Custom Button',
     icon: 'button',
     category: 'anima',

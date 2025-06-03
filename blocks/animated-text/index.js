@@ -153,7 +153,6 @@ document.addEventListener('DOMContentLoaded', function () {
             // Animation par ligne, mot ou caractère
             splitResult[0][animationType].forEach((element, index) => {
                
-                console.log(element)
                 animate(element, {
                     opacity: [0, 1],
                     translateY: [30, 0],

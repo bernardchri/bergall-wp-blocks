@@ -99,6 +99,7 @@ function animablocks_register_custom_blocks()
     register_block_type(__DIR__ . '/blocks/marquee');
     register_block_type(__DIR__ . '/blocks/circle-text');
     register_block_type(__DIR__ . '/blocks/number-increment-animation');
+    register_block_type(__DIR__ . '/blocks/carrousel-text');
 
     // composants de mise en forme
     register_block_type(__DIR__ . '/blocks/anima-separator');
@@ -110,10 +111,11 @@ function animablocks_register_custom_blocks()
 
     // headers
     register_block_type(__DIR__ . '/blocks/header-minimalist');
+    
 
     // TODO en cours
     // register_block_type(__DIR__ . '/blocks/hero-3D-object');
-    // register_block_type(__DIR__ . '/blocks/button-block');
+    register_block_type(__DIR__ . '/blocks/button-block');
     // register_block_type(__DIR__ . '/blocks/spans');
     // register_block_type(__DIR__ . '/blocks/change-color-on-scroll'); 
 
