@@ -1,38 +1,15 @@
 // blocks FSE
 import { registerBlockType } from '@wordpress/blocks';
 import { InspectorControls, MediaPlaceholder, useBlockProps } from '@wordpress/block-editor';
-import Swiper from "swiper";
 import { PanelBody } from '@wordpress/components';
+import Swiper from "swiper";
 import { Navigation, Pagination, EffectFade } from 'swiper/modules';
 import { SliderNavigation } from '../../src/components/navigation-swiper';
 import "./style.css";
 import { useEffect } from '@wordpress/element';
 
 
-const sliderImage = () => {
-    const sliders = document.querySelectorAll('.bb-slider-image');
-    sliders.forEach((slider) => {
-        const swiper = new Swiper(slider, {
-            slidesPerView: 1,
-            spaceBetween: 10,
-            loop: true,
-            effect: "fade",
-            autoHeight: true,
-            modules: [Navigation, Pagination, EffectFade],
-            fadeEffect: {
-                crossFade: true
-            },
-            pagination: {
-                el: slider.querySelector('.swiper-pagination')
-            },
-            navigation: {
-                nextEl: slider.querySelector('.button-next'),
-                prevEl: slider.querySelector('.button-prev'),
-            },
 
-        });
-    });
-}
 
 registerBlockType("anima/slider-image", {
     title: "Slider images",
@@ -53,7 +30,6 @@ registerBlockType("anima/slider-image", {
         }
     },
     edit({ attributes, setAttributes }) {
-
         const { slides } = attributes;
         const blockProps = useBlockProps();
 
@@ -67,10 +43,6 @@ registerBlockType("anima/slider-image", {
         };
 
 
-        useEffect(() => {
-            sliderImage();
-        }
-            , [slides]);
 
         return (
             <div {...blockProps}>
@@ -85,7 +57,7 @@ registerBlockType("anima/slider-image", {
                         />
                     </PanelBody>
                 </InspectorControls>
-                <div className='bb-slider-image'>
+                <div className='anima-slider-image'>
                     {slides.length > 0 ? (
                         <div className='swiper-wrapper'>
                             {slides.map((slide) => (
@@ -110,7 +82,7 @@ registerBlockType("anima/slider-image", {
         return (
             <div {...blockProps}>
                 {slides.length > 0 ? (
-                    <div className='bb-slider-image'>
+                    <div className='anima-slider-image'>
                         <div className='swiper-wrapper'>
                             {slides.map((slide) => (
                                 <div className='swiper-slide' key={slide.id}>
@@ -130,7 +102,46 @@ registerBlockType("anima/slider-image", {
 
 
 document.addEventListener("DOMContentLoaded", function () {
-    sliderImage();
+
+    try {
+        const sliders = document.querySelectorAll('.wp-block-anima-slider-image');
+        sliders.forEach((slider) => {
+            sliderImage(slider, {
+                numberofslides: slider.dataset.numberofslid || 1,
+                numberofslidesMobile: slider.dataset.numberofslidesmobile || 1
+            });
+        })
+    } catch (error) { console.error("Erreur lors de l'initialisation des sliders :", error); }
 }
 );
-//
+
+
+const sliderImage = (slider, attributes) => {
+
+    // console.log('sliderSimple', sliders, attributes.numberofslides, attributes.numberofslidesMobile);
+    // console.log(sliders.querySelector('.anima-swiper-container'));
+
+
+    const sliderswiper = new Swiper(slider.querySelector('.anima-slider-image'), {
+        slidesPerView: attributes.numberofslides,
+        grabCursor: true,
+        speed: 500,
+        modules: [Navigation, Pagination],
+        pagination: {
+            el: slider.querySelector('.swiper-pagination')
+        },
+        navigation: {
+            nextEl: slider.querySelector('.button-next'),
+            prevEl: slider.querySelector('.button-prev'),
+        },
+        breakpoints: {
+            0: {
+                slidesPerView: attributes.numberofslidesMobile,
+            },
+            768: {
+                slidesPerView: attributes.numberofslides,
+            },
+        },
+    });
+
+}

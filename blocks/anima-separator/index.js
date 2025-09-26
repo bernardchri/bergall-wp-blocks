@@ -13,14 +13,14 @@ import { shapes } from './svgShapes';
 
 registerBlockType('anima/separator', {
 	title: __('Anima Separator', 'anima'),
-	category: 'design',
+	category: 'anima',
 	icon: 'minus',
 	supports: {
 		html: false,
-        color: {
-            text: false,
-            background: true,
-        }
+		color: {
+			text: false,
+			background: true,
+		}
 	},
 
 	attributes: {

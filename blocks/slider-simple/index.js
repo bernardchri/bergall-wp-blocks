@@ -151,6 +151,5 @@ const sliderSimple = (sliders, attributes) => {
         },
     });
 
-
 }
 

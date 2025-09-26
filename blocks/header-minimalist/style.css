@@ -29,7 +29,6 @@ body:not(.block-editor-iframe__body) :has(.wp-block-animablocks-header-minimalis
 
 .wp-block-animablocks-header-minimalist .header-minimalist__barre .header-minimalist__logo {
     text-decoration: none;
-
 }
 
 
@@ -96,7 +95,6 @@ body:not(.block-editor-iframe__body) .wp-block-animablocks-header-minimalist .he
 
 .wp-block-animablocks-header-minimalist .header-minimalist__menuburger .header-minimalist__menu01 ul {
     font-size: 2rem;
-    /* font-size: clamp(2rem, 10vw, 3rem); */
     display: flex;
     gap: 1.5rem;
     flex-direction: column;
@@ -104,19 +102,35 @@ body:not(.block-editor-iframe__body) .wp-block-animablocks-header-minimalist .he
 
 }
 
-.wp-block-animablocks-header-minimalist .header-minimalist__menu02 ul {
-    font-size: 1.75rem;
-    /* font-size: clamp(1.5rem, 10vw, 2.5rem); */
+.wp-block-animablocks-header-minimalist .header-minimalist__menu02 ul,
+.wp-block-animablocks-header-minimalist .header-minimalist__menu03 ul {
+    line-height: 1em;
     display: flex;
     flex-direction: column;
     gap: 1em;
-    line-height: 1em;
 
 }
 
+.wp-block-animablocks-header-minimalist .header-minimalist__menu01 ul * {
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
+    line-height: 1.2em;
+}
+
+
+.wp-block-animablocks-header-minimalist .header-minimalist__menu02 ul * {
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
+    line-height: 1.2em;
+}
+
+.wp-block-animablocks-header-minimalist .header-minimalist__menu03 ul * {
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
+    line-height: 1.2em;
+}
+
+
+
 .wp-block-animablocks-header-minimalist .header-minimalist__menu03 ul {
     font-size: 1rem;
-    /* font-size: clamp(1.2rem, 10vw, 1.75rem); */
     padding: 1em 0;
     flex-wrap: wrap;
     align-items: center;
@@ -129,6 +143,8 @@ body:not(.block-editor-iframe__body) .wp-block-animablocks-header-minimalist .he
     .wp-block-animablocks-header-minimalist .header-minimalist__barre .header-minimalist__menu01 {
         display: none;
     }
+
+
 
     .wp-block-animablocks-header-minimalist .header-minimalist__menu03 ul {
         border-top: 1px solid #c6c9cb;
@@ -146,6 +162,10 @@ body:not(.block-editor-iframe__body) .wp-block-animablocks-header-minimalist .he
 
     .wp-block-animablocks-header-minimalist .header-minimalist__menuburger .header-minimalist__menu01 {
         display: none;
+    }
+
+    .wp-block-animablocks-header-minimalist .header-minimalist__menu01 ul * {
+        font-size: clamp(1rem, 1.5rem, 1rem);
     }
 
     .wp-block-animablocks-header-minimalist .header-minimalist__menu02 ul {
@@ -172,6 +192,9 @@ body:not(.block-editor-iframe__body) .wp-block-animablocks-header-minimalist .he
     }
 
 }
+
+
+
 
 /* button menu */
 .header-minimalist__button {
@@ -219,7 +242,7 @@ body:not(.block-editor-iframe__body) .wp-block-animablocks-header-minimalist .he
 
 .ButtonMenu__icon span {
     margin: 2px 0;
-    background-color: #000000;
+    background-color: inherit;
     display: flex;
     width: 1rem;
     height: 2px;

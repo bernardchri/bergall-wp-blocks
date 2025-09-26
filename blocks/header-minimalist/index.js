@@ -4,7 +4,7 @@ import { Button, PanelBody, SelectControl } from '@wordpress/components';
 import { useEffect, useState } from '@wordpress/element';
 import { createTimeline, stagger } from "animejs"
 import './style.css';
-import './editor.css'; // <-- Ajout de la CSS pour l'éditeur
+import editor from './editor.css'; // <-- Ajout de la CSS pour l'éditeur
 
 const findMenuToDisplay = (data, id) => {
     let menu = data.find(menu => menu.id === parseFloat(id))
@@ -24,6 +24,7 @@ registerBlockType('animablocks/header-minimalist', {
     category: 'anima',
     description: "un header minimaliste pour portfolio",
     apiVersion: 3,
+    editorStyle: editor,
     supports:
     {
 

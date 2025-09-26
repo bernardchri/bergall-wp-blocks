@@ -6,7 +6,6 @@ body {
 }
 
 
-
 /**
  * Swiper 11.2.6
  * Most modern mobile touch slider and framework with hardware accelerated transitions
@@ -235,125 +234,20 @@ body {
 }
 /* Slide styles end */
 
-/*!*************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[2].use[2]!./blocks/number-increment-animation/style.css ***!
-  \*************************************************************************************************************************************************************************************************/
-.number-animation-block{
-    text-align: center;
-}
 /*!****************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[2].use[2]!./blocks/image-video-hover/style.css ***!
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[2].use[2]!./blocks/animate-on-scroll/style.css ***!
   \****************************************************************************************************************************************************************************************/
-
-.image-video-hover:not(.image-video-hover--editor) {
-    position: relative;
-    display: block;
-    line-height: 0;
-}
-
-.wp-block-animablocks-image-video-hover {
-    display: block;
-    width: 100%;
-   
-}
-
-.wp-block-animablocks-image-video-hover * {
+.animate-on-scroll{
     width: 100%;
 }
 
-:not(.image-video-hover--editor) .image-video-hover__video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    -o-object-fit: cover;
-       object-fit: cover;
-    opacity: 0;
+.is-selected .animate-on-scroll {
+    border: 1px solid #0073aa;
 }
+/*!*************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[2].use[2]!./blocks/group-extended/style.css ***!
+  \*************************************************************************************************************************************************************************************/
 
-:not(.image-video-hover--editor) .image-video-hover__video.is-visible {
-    opacity: 1;
-}
-
-
-@media (hover: hover) {
-    :not(.image-video-hover--editor).image-video-hover:hover .image-video-hover__video {
-        opacity: 1;
-        transition: all 0.3s ease;
-        
-    }
-}
-
-@media (hover: none) {
-    :not(.image-video-hover--editor).image-video-hover {
-        cursor: pointer;
-    }
-
-    :not(.image-video-hover--editor).image-video-hover__video {
-        opacity: 1;
-    }
-
-}
-/*!************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[2].use[2]!./src/components/navigation-swiper/style.css ***!
-  \************************************************************************************************************************************************************************************************/
-.slidernav.slidernav-bottom {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.5rem 0 ;
-}
-
-/*  */
-.slidernav .navigation {
-    display: flex;
-    gap: 0.5rem;
-    font-size: 1rem;
-    justify-content: end;
-}
-
-.slidernav .navigation > div {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    height: 2rem;
-    width: 2rem;
-    border: 1px solid var(--wp--preset--color--contrast);
-    border-radius: 50%;
-    transition: all 0.125s ease-in-out;
-}
-
-.slidernav .navigation>div:hover {
-    background: var(--wp--preset--color--contrast);
-    color: #fff;
-}
-
-
-/*  pagination */
-.slidernav .swiper-pagination {
-    display: inline-flex;
-    gap: 0.25rem;
-}
-
-.slidernav .swiper-pagination-bullet {
-    gap: 1rem;
-    display: inline-flex;
-    background: var(--wp--preset--color--contrast);
-    ;
-    opacity: 1;
-    width: 0.5rem;
-    height: 0.5rem;
-    border-radius: 50%;
-}
-
-.slidernav .swiper-pagination-bullet-active {
-    background: #fff;
-    opacity: 1;
-    border-radius: 50%;
-}
 /*!******************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[2].use[2]!./blocks/marquee/style.css ***!
   \******************************************************************************************************************************************************************************/
@@ -415,61 +309,70 @@ a.wp-block-animablocks-marquee {
         transform: translateX(-50%);
     }
 }
-/*!**********************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[2].use[2]!./blocks/circle-text/style.css ***!
-  \**********************************************************************************************************************************************************************************/
-
-
-.wp-block-animablocks-circle-text {
-    /* min-height: 2px;
-    background-color: green; */
-    
+/*!*************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[2].use[2]!./blocks/number-increment-animation/style.css ***!
+  \*************************************************************************************************************************************************************************************************/
+.number-animation-block{
+    text-align: center;
+}
+/*!************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[2].use[2]!./src/components/navigation-swiper/style.css ***!
+  \************************************************************************************************************************************************************************************************/
+.slidernav.slidernav-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0 ;
 }
 
-.wp-block-animablocks-circle-text .circle-text-svg:not(:root) {
-	overflow: visible;
+/*  */
+.slidernav .navigation {
+    display: flex;
+    gap: 0.5rem;
+    font-size: 1rem;
+    justify-content: end;
+}
+
+.slidernav .navigation > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    height: 2rem;
+    width: 2rem;
+    border: 1px solid var(--wp--preset--color--contrast);
+    border-radius: 50%;
+    transition: all 0.125s ease-in-out;
+}
+
+.slidernav .navigation>div:hover {
+    background: var(--wp--preset--color--contrast);
+    color: #fff;
 }
 
 
-
-
-.circle-text-wrapper {
-    position: relative;
-    width: -moz-fit-content;
-    width: fit-content;
+/*  pagination */
+.slidernav .swiper-pagination {
+    display: inline-flex;
+    gap: 0.25rem;
 }
 
-.circle-text-wrapper .circle-text-svg {
-    width: -moz-max-content;
-    width: max-content;
-    animation: circle-text-keyframe var(--speed, 20s) linear infinite var(--direction, forwards);
-
+.slidernav .swiper-pagination-bullet {
+    gap: 1rem;
+    display: inline-flex;
+    background: var(--wp--preset--color--contrast);
+    ;
+    opacity: 1;
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
 }
 
-
-
-@keyframes circle-text-keyframe {
-    from {
-        transform: rotate(0);
-    }
-
-    to {
-        transform: rotate(360deg);
-    }
-}
-/*!*************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[2].use[2]!./blocks/group-extended/style.css ***!
-  \*************************************************************************************************************************************************************************************/
-
-/*!****************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[2].use[2]!./blocks/animate-on-scroll/style.css ***!
-  \****************************************************************************************************************************************************************************************/
-.animate-on-scroll{
-    width: 100%;
-}
-
-.is-selected .animate-on-scroll {
-    border: 1px solid #0073aa;
+.slidernav .swiper-pagination-bullet-active {
+    background: #fff;
+    opacity: 1;
+    border-radius: 50%;
 }
 /*!***********************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[2].use[2]!./blocks/slider-image/style.css ***!
@@ -478,7 +381,7 @@ a.wp-block-animablocks-marquee {
     position: relative;
 }
 
-.bb-slider-image {
+.wp-block-anima-slider-image {
     overflow: hidden;
     width: auto;
 }
@@ -492,6 +395,13 @@ a.wp-block-animablocks-marquee {
 
 .wp-block-anima-slider-image img {
     line-height: 0;
+}
+/*!**************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[2].use[2]!./blocks/anima-separator/style.css ***!
+  \**************************************************************************************************************************************************************************************/
+.anima-separator {
+  width: 100%;
+  height: 96px;
 }
 /*!****************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[2].use[2]!./blocks/header-minimalist/style.css ***!
@@ -527,7 +437,6 @@ body:not(.block-editor-iframe__body) :has(.wp-block-animablocks-header-minimalis
 
 .wp-block-animablocks-header-minimalist .header-minimalist__barre .header-minimalist__logo {
     text-decoration: none;
-
 }
 
 
@@ -594,7 +503,6 @@ body:not(.block-editor-iframe__body) .wp-block-animablocks-header-minimalist .he
 
 .wp-block-animablocks-header-minimalist .header-minimalist__menuburger .header-minimalist__menu01 ul {
     font-size: 2rem;
-    /* font-size: clamp(2rem, 10vw, 3rem); */
     display: flex;
     gap: 1.5rem;
     flex-direction: column;
@@ -602,19 +510,35 @@ body:not(.block-editor-iframe__body) .wp-block-animablocks-header-minimalist .he
 
 }
 
-.wp-block-animablocks-header-minimalist .header-minimalist__menu02 ul {
-    font-size: 1.75rem;
-    /* font-size: clamp(1.5rem, 10vw, 2.5rem); */
+.wp-block-animablocks-header-minimalist .header-minimalist__menu02 ul,
+.wp-block-animablocks-header-minimalist .header-minimalist__menu03 ul {
+    line-height: 1em;
     display: flex;
     flex-direction: column;
     gap: 1em;
-    line-height: 1em;
 
 }
 
+.wp-block-animablocks-header-minimalist .header-minimalist__menu01 ul * {
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
+    line-height: 1.2em;
+}
+
+
+.wp-block-animablocks-header-minimalist .header-minimalist__menu02 ul * {
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
+    line-height: 1.2em;
+}
+
+.wp-block-animablocks-header-minimalist .header-minimalist__menu03 ul * {
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
+    line-height: 1.2em;
+}
+
+
+
 .wp-block-animablocks-header-minimalist .header-minimalist__menu03 ul {
     font-size: 1rem;
-    /* font-size: clamp(1.2rem, 10vw, 1.75rem); */
     padding: 1em 0;
     flex-wrap: wrap;
     align-items: center;
@@ -627,6 +551,8 @@ body:not(.block-editor-iframe__body) .wp-block-animablocks-header-minimalist .he
     .wp-block-animablocks-header-minimalist .header-minimalist__barre .header-minimalist__menu01 {
         display: none;
     }
+
+
 
     .wp-block-animablocks-header-minimalist .header-minimalist__menu03 ul {
         border-top: 1px solid #c6c9cb;
@@ -644,6 +570,10 @@ body:not(.block-editor-iframe__body) .wp-block-animablocks-header-minimalist .he
 
     .wp-block-animablocks-header-minimalist .header-minimalist__menuburger .header-minimalist__menu01 {
         display: none;
+    }
+
+    .wp-block-animablocks-header-minimalist .header-minimalist__menu01 ul * {
+        font-size: clamp(1rem, 1.5rem, 1rem);
     }
 
     .wp-block-animablocks-header-minimalist .header-minimalist__menu02 ul {
@@ -670,6 +600,9 @@ body:not(.block-editor-iframe__body) .wp-block-animablocks-header-minimalist .he
     }
 
 }
+
+
+
 
 /* button menu */
 .header-minimalist__button {
@@ -717,7 +650,7 @@ body:not(.block-editor-iframe__body) .wp-block-animablocks-header-minimalist .he
 
 .ButtonMenu__icon span {
     margin: 2px 0;
-    background-color: #000000;
+    background-color: inherit;
     display: flex;
     width: 1rem;
     height: 2px;
@@ -769,13 +702,6 @@ body:not(.block-editor-iframe__body) .wp-block-animablocks-header-minimalist .he
 
 .wp-block-animablocks-header-minimalist li.wp-block-navigation-link a:hover span:after {
     width: 100%;
-}
-/*!**************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[2].use[2]!./blocks/anima-separator/style.css ***!
-  \**************************************************************************************************************************************************************************************/
-.anima-separator {
-  width: 100%;
-  height: 96px;
 }
 
 /*# sourceMappingURL=style-index.css.map*/

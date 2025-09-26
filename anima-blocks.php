@@ -92,32 +92,37 @@ function animablocks_register_custom_blocks()
 {
     // composants animations
     register_block_type(__DIR__ . '/blocks/animated-text');
-    register_block_type(__DIR__ . '/blocks/image-video-hover');
-    register_block_type(__DIR__ . '/blocks/slider-image');
-    register_block_type(__DIR__ . '/blocks/slider-simple');
-    register_block_type(__DIR__ . '/blocks/slider-simple-item');
-    register_block_type(__DIR__ . '/blocks/marquee');
-    register_block_type(__DIR__ . '/blocks/circle-text');
+    register_block_type(__DIR__ . '/blocks/anima-lottie');
+    register_block_type(__DIR__ . '/blocks/animate-on-scroll');
+
+    
     register_block_type(__DIR__ . '/blocks/number-increment-animation');
-    register_block_type(__DIR__ . '/blocks/carrousel-text');
+    register_block_type(__DIR__ . '/blocks/marquee');
+    register_block_type(__DIR__ . '/blocks/container-parallax');
+
 
     // composants de mise en forme
     register_block_type(__DIR__ . '/blocks/anima-separator');
+    // register_block_type(__DIR__ . '/blocks/circle-text');
+    // register_block_type(__DIR__ . '/blocks/image-video-hover');
+    register_block_type(__DIR__ . '/blocks/group-extended'); 
 
-    // // groups étendus
-    register_block_type(__DIR__ . '/blocks/container-parallax');
-    register_block_type(__DIR__ . '/blocks/group-extended');
-    register_block_type(__DIR__ . '/blocks/animate-on-scroll');
+    
+    // sliders
+    register_block_type(__DIR__ . '/blocks/slider-image');
+    register_block_type(__DIR__ . '/blocks/slider-simple');
+    register_block_type(__DIR__ . '/blocks/slider-simple-item');
 
     // headers
     register_block_type(__DIR__ . '/blocks/header-minimalist');
     
 
     // TODO en cours
+    // register_block_type(__DIR__ . '/blocks/button-block');
     // register_block_type(__DIR__ . '/blocks/hero-3D-object');
-    register_block_type(__DIR__ . '/blocks/button-block');
     // register_block_type(__DIR__ . '/blocks/spans');
     // register_block_type(__DIR__ . '/blocks/change-color-on-scroll'); 
+    // register_block_type(__DIR__ . '/blocks/carrousel-text'); // effet de texte qui defile verticalement
 
 }
 add_action('init', 'animablocks_register_custom_blocks');
@@ -164,3 +169,10 @@ function anima_wp_blocks_register_blocks_collections()
     );
 }
 add_action('enqueue_block_editor_assets', 'anima_wp_blocks_register_blocks_collections');
+
+
+// Ajout du support pour les fichiers JSON dans les médias ( lottie, etc. )
+add_filter('upload_mimes', function ($mimes) {
+    $mimes['json'] = 'application/json';
+    return $mimes;
+});
