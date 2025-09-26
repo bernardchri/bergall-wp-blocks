@@ -17,14 +17,12 @@ export default function Edit({ attributes, setAttributes }) {
   // ref vers le container DOM du slider
   const sliderContainerRef = useRef(null);
   // ref vers l’instance Swiper
-  const swiperRef = useRef(null);
 
   useEffect(() => {
-    if (slides.length > 0 && sliderContainerRef.current && !swiperRef.current) {
-      swiperRef.current = new Swiper(sliderContainerRef.current, {
+    if (slides.length > 0 && sliderContainerRef.current ) {
+      new Swiper(sliderContainerRef.current, {
         modules: [Navigation, Pagination],
         simulateTouch: false,
-        spaceBetween: 10,
         slidesPerView: 1,
         navigation: {
           nextEl: sliderContainerRef.current.querySelector('.button-next'),

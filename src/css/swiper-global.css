@@ -4,6 +4,3 @@
 @import '../../node_modules/swiper/modules/effect-fade-element.css';
 @import '../../node_modules/swiper/modules/pagination.css';
 
-.swiper-wrapper{
-    line-height: 0;
-}

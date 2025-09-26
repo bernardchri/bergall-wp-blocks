@@ -1,3 +1,7 @@
+.anima-slider-image .swiper-wrapper{
+    line-height: 0;
+}
+
 .anima-slider-image {
     position: relative;
 }

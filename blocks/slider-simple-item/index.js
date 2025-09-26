@@ -1,39 +1,10 @@
-// new FSE wp-blocks
 import { registerBlockType } from '@wordpress/blocks';
-import { InnerBlocks, useBlockProps } from '@wordpress/block-editor';
+import edit from './edit';
+import save from './save';
+import metadata from './block.json';
 
-registerBlockType("anima/slider-simple-item", {
-    title: "Slider simple item",
-    category: "anima",
-    icon: "images-alt2",
-    description: "Un item de slide",
-    supports: {
-        align: true,
-        spacing: {
-            padding: true,
-            margin: true
-        },
-        color: {
-            text: true,
-            background: true,
-            gradients: true,
-            link: true
-        }
-    },
-    edit() {
-        const blockProps = useBlockProps();
-        return (
-            <div {...blockProps} className="swiper-slide" style={{ outline: "1px dotted grey" }}>
-                <InnerBlocks />
-            </div>
-        );
-    },
-    save({ attributes }) {
-        const blockProps = useBlockProps.save();
-        return (
-            <div {...blockProps} className="swiper-slide">
-                <InnerBlocks.Content />
-            </div>
-        );
-    },
+registerBlockType(metadata.name, {
+    ...metadata,
+    edit,
+    save,
 });
