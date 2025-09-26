@@ -1,5 +1,6 @@
 .admin-bar .wp-block-animablocks-header-minimalist {
     top: 32px;
+
 }
 
 
@@ -9,6 +10,8 @@
     left: 0;
     right: 0;
     z-index: 9999;
+    background-color: white;
+    box-shadow: 0 2px 4px rgb(0 0 0 / 0.1);
 }
 
 
@@ -215,7 +218,7 @@ body:not(.block-editor-iframe__body) .wp-block-animablocks-header-minimalist .he
 }
 
 .ButtonMenu:hover, .ButtonMenu:focus {
-    /* background-color: rgb(0, 0, 0, 0.2); */
+    background-color: rgb(0, 0, 0, 0.2);
     outline: 2px solid;
 }
 
@@ -230,6 +233,7 @@ body:not(.block-editor-iframe__body) .wp-block-animablocks-header-minimalist .he
 
 .ButtonMenu[data-open="true"] .ButtonMenu__icon span:nth-child(2) {
     opacity: 0;
+    
 }
 
 .ButtonMenu[data-open="true"] .ButtonMenu__icon span:nth-child(1) {
@@ -242,11 +246,12 @@ body:not(.block-editor-iframe__body) .wp-block-animablocks-header-minimalist .he
 
 .ButtonMenu__icon span {
     margin: 2px 0;
-    background-color: inherit;
     display: flex;
     width: 1rem;
     height: 2px;
     transition: all 150ms ease;
+    background: #000000;
+
 }
 
 

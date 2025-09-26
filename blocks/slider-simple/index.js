@@ -3,7 +3,7 @@ import { useBlockProps, InspectorControls, InnerBlocks } from '@wordpress/block-
 import { PanelBody, RangeControl } from '@wordpress/components';
 import Swiper from 'swiper';
 import { Navigation, Pagination } from "swiper/modules";
-import { SliderNavigation } from '../../src/components/navigation-swiper';
+import  SliderNavigation  from '../../src/components/navigation-swiper';
 import { useEffect, useRef } from '@wordpress/element';
 
 
