@@ -1,56 +1,100 @@
-.slidernav.slidernav-bottom {
+/* Container */
+.slidernav {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 0.5rem 0 ;
+    justify-content: space-between;
+    padding: .5rem .1rem;
+    height: 100%;
 }
 
-/*  */
+/* Navigation */
 .slidernav .navigation {
     display: flex;
-    gap: 0.5rem;
+    gap: 0.25rem;
     font-size: 1rem;
     justify-content: end;
 }
 
-.slidernav .navigation > div {
+.slidernav .navigation button {
     display: flex;
-    align-items: center;
     justify-content: center;
     align-items: center;
-    cursor: pointer;
-    height: 2rem;
-    width: 2rem;
-    border: 1px solid var(--wp--preset--color--contrast);
+    width: 2.2rem;
+    height: 2.2rem;
     border-radius: 50%;
+    background: transparent;
+    border: 0;
+    outline: 1px solid rgba(0, 0, 0, 0.4);
+    overflow: hidden;
     transition: all 0.125s ease-in-out;
 }
 
-.slidernav .navigation>div:hover {
+.slidernav .navigation button:not(.swiper-button-disabled):hover {
     background: var(--wp--preset--color--contrast);
     color: #fff;
+    cursor: pointer;
 }
 
-
-/*  pagination */
-.slidernav .swiper-pagination {
-    display: inline-flex;
-    gap: 0.25rem;
+.slidernav .navigation button:not(.swiper-button-disabled):active {
+    background-color: rgba(0, 0, 0, 0.8);
+    transform: scale(0.95);
 }
 
+.slidernav .navigation button:not(.swiper-button-disabled):hover span {
+    transition: all 0.3s ease-in-out;
+}
+
+.slidernav .swiper-button-disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Arrow wrappers */
+.slidernav .navigation .anima-arrow-wrapper {
+    display: flex;
+    align-items: flex-start;
+}
+
+.slidernav .navigation .anima-arrow-wrapper .anima-arrow {
+    width: 2rem;
+}
+
+.slidernav .navigation .anima-arrow-wrapper.anima-arrow-right .anima-arrow {
+    transform: translate(-50%, 0);
+}
+
+.slidernav .navigation .anima-arrow-wrapper.anima-arrow-left .anima-arrow {
+    transform: translate(50%, 0);
+}
+
+.slidernav .navigation button:not(.swiper-button-disabled):hover .anima-arrow-left .anima-arrow {
+    transform: translate(-50%, 0);
+}
+
+.slidernav .navigation button:not(.swiper-button-disabled):hover .anima-arrow-right .anima-arrow {
+    transform: translate(50%, 0);
+}
+
+/* Pagination */
+.slidernav .pagination {
+    display: flex;
+    gap: .25rem;
+}
+
+.slidernav .pagination-bullet,
 .slidernav .swiper-pagination-bullet {
-    gap: 1rem;
     display: inline-flex;
-    background: var(--wp--preset--color--contrast);
-    ;
-    opacity: 1;
-    width: 0.5rem;
-    height: 0.5rem;
+    width: 1rem;
+    height: 1rem;
     border-radius: 50%;
+    background: var(--wp--preset--color--contrast);
+    opacity: 1;
+    margin: 0 !important;
+    gap: 1rem;
 }
 
 .slidernav .swiper-pagination-bullet-active {
-    background: #fff;
+    background: black;
     opacity: 1;
     border-radius: 50%;
 }

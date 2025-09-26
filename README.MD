@@ -14,9 +14,35 @@ Apporter des nouveaux blocs aux thèmes FSE pour les rendre plus interactifs et 
 - 
 
 
+## Structure valide
+[X] header minimalis
+[] animate-on-scroll
+[] animate-text
+[] container-parallax
+[] group-extended
+[] image-video-hover
+[] marquee
+[] number-increment-animations
+[] slider-image
+[] slider-simple
+[] slider-simple-item
+[] anima-separator
+
+
+
+
 ## Idées de blocs à faire
 
 [] 3D viewer - import d'un gltf pour afficher dans le bloc. Possibilité de le faire tourner , agrandir? 
 [] Bloc FAQs - optimisé pour les IA ( génération d'un json ? ou laisser Yoast s'en charger ?)
     [] Bloc question réponse
-[] 
+[] carroussel-text
+[] icon lucide ? afficher / importer des icones "lucide" 
+[] change-color-on-scroll
+[] span 
+[] FAQ
+[] anima-lottie-embed ? 
+[] button-block 
+
+
+

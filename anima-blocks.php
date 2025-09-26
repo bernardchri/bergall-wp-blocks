@@ -87,6 +87,24 @@ function anima_new_category_blocks($cats)
 add_filter('block_categories_all', 'anima_new_category_blocks');
 
 
+
+// Enqueue Swiper CSS globally for all blocks + Pagination + Navigation
+function anima_blocks_enqueue_assets() {
+    wp_enqueue_style(
+        'swiper-global',
+        plugin_dir_url(__FILE__) . 'src/css/swiper-global.css',
+        [],
+        '10.0.0'
+    );
+    wp_enqueue_style(
+        'swiper-navigation',
+        plugin_dir_url(__FILE__) . 'src/components/navigation-swiper/style.css',
+        [],
+        '10.0.0'
+    );
+}
+add_action('enqueue_block_assets', 'anima_blocks_enqueue_assets');
+
 // ENREGISTREMENT DES BLOCS
 function animablocks_register_custom_blocks()
 {
@@ -95,11 +113,9 @@ function animablocks_register_custom_blocks()
     register_block_type(__DIR__ . '/blocks/anima-lottie');
     register_block_type(__DIR__ . '/blocks/animate-on-scroll');
 
-    
     register_block_type(__DIR__ . '/blocks/number-increment-animation');
     register_block_type(__DIR__ . '/blocks/marquee');
     register_block_type(__DIR__ . '/blocks/container-parallax');
-
 
     // composants de mise en forme
     register_block_type(__DIR__ . '/blocks/anima-separator');
