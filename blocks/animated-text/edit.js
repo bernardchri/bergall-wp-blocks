@@ -43,18 +43,15 @@ export default function Edit({ attributes, setAttributes, clientId }) {
         const splitResult = Splitting({ target: paragraph, by: animationType });
 
         // 3️⃣ Animation
-        setTimeout(() => {
             splitResult[0][animationType].forEach((element, index) => {
-                animate(element, {
-                    opacity: [0, 1],
-                    translateY: [30, 0],
-                    duration: duration * 1000,
-                    delay: delay * 1000 + stagger * 1000 * index,
-                    easing: 'easeOutBack',
-                });
+            animate(element, {
+                opacity: [0, 1],
+                translateY: [30, 0],
+                duration: duration * 1000,
+                delay: delay * 1000 + stagger * 1000 * index,
+                easing: 'easeOutBack',
             });
-        }, 50); // Petit délai pour s'assurer que le DOM est mis à jour
-
+        });
     };
 
     return (
@@ -133,7 +130,7 @@ export default function Edit({ attributes, setAttributes, clientId }) {
                     <div style={{}}>
                         <p>{_i18n('Options de débogage en front')}</p>
                         <SelectControl
-                            __nextHasNoMarginBottom
+                           __nextHasNoMarginBottom
                             __next40pxDefaultSize
                             label={_i18n('Debug')}
                             value={debug ? 'true' : 'false'}
