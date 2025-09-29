@@ -1,0 +1,11 @@
+/* style par défaut */
+.animate-on-scroll-editor {
+    border: 2px dashed #bbb;
+    padding: 1rem;
+    border-radius: 6px;
+}
+
+/* quand le bloc est sélectionné */
+.is-selected.animate-on-scroll-editor {
+    border-color:  blue;
+}
