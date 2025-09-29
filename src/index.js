@@ -18,7 +18,7 @@ import '../blocks/slider-simple-item'; // Slider item dans la page
 import '../blocks/slider-image'; // carroussel d'images
 // import '../blocks/image-video-hover/'; // Composants
 // import '../blocks/circle-text';
-import '../blocks/anima-separator/';  // headers
+import '../blocks/separator';  // headers
 
 // HEADERS
 import '../blocks/header-minimalist';  // headers

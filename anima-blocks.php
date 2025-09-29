@@ -110,7 +110,7 @@ function animablocks_register_custom_blocks()
 {
     // composants animations
     register_block_type(__DIR__ . '/blocks/animated-text');
-    register_block_type(__DIR__ . '/blocks/anima-lottie');
+    register_block_type(__DIR__ . '/blocks/lottie-player');
     register_block_type(__DIR__ . '/blocks/animate-on-scroll');
 
     register_block_type(__DIR__ . '/blocks/number-increment-animation');
@@ -118,9 +118,9 @@ function animablocks_register_custom_blocks()
     register_block_type(__DIR__ . '/blocks/container-parallax');
 
     // composants de mise en forme
-    register_block_type(__DIR__ . '/blocks/anima-separator');
     // register_block_type(__DIR__ . '/blocks/circle-text');
     // register_block_type(__DIR__ . '/blocks/image-video-hover');
+    register_block_type(__DIR__ . '/blocks/separator');
     register_block_type(__DIR__ . '/blocks/group-extended'); 
 
     

@@ -18,15 +18,16 @@ Apporter des nouveaux blocs aux thèmes FSE pour les rendre plus interactifs et 
 [X] header minimalis
 [] animate-on-scroll
 [] animate-text
+[] lottie-player
 [] container-parallax
-[] group-extended
+[X] group-extended
 [] image-video-hover
 [] marquee
 [] number-increment-animations
-[] slider-image
-[] slider-simple
-[] slider-simple-item
-[] anima-separator
+[X] slider-image
+[X] slider-simple
+[X] slider-simple-item
+[X] separator
 
 
 
