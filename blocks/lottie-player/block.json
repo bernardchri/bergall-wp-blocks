@@ -1,0 +1,17 @@
+{
+  "apiVersion": 2,
+  "name": "anima/lottie-player",
+  "title": "Lecteur Lottie",
+  "category": "anima",
+  "icon": "format-video",
+  "description": "Lecteur Lottie animé",
+  "supports": {
+    "html": false
+  },
+  "attributes": {
+    "src": { "type": "string" },
+    "autoplay": { "type": "boolean", "default": true },
+    "loop": { "type": "boolean", "default": true },
+    "speed": { "type": "number", "default": 1 }
+  }
+}

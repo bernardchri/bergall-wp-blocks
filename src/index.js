@@ -23,7 +23,7 @@ import '../blocks/anima-separator/';  // headers
 // HEADERS
 import '../blocks/header-minimalist';  // headers
 import '../blocks/button-block';
-import '../blocks/anima-lottie/'; // Lottie animations
+import '../blocks/lottie-player'; // Lottie animations
 import '../blocks/button-block';
 
 // import '../blocks/carrousel-text'; // Carrousel de texte
