@@ -8,7 +8,7 @@ import metadata from './block.json';
 import { __ as _i18n } from '@wordpress/i18n';
 
 export default function Edit({ attributes, setAttributes, clientId }) {
-    const { duration, stagger, delay, animationType } = attributes;
+    const { duration, stagger, delay, animationType, debug } = attributes;
     const blockProps = useBlockProps({
         className: 'animated-text animated-text-editor'
     });
@@ -43,15 +43,18 @@ export default function Edit({ attributes, setAttributes, clientId }) {
         const splitResult = Splitting({ target: paragraph, by: animationType });
 
         // 3️⃣ Animation
-        splitResult[0][animationType].forEach((element, index) => {
-            animate(element, {
-                opacity: [0, 1],
-                translateY: [30, 0],
-                duration: duration * 1000,
-                delay: delay * 1000 + stagger * 1000 * index,
-                easing: 'easeOutBack',
+        setTimeout(() => {
+            splitResult[0][animationType].forEach((element, index) => {
+                animate(element, {
+                    opacity: [0, 1],
+                    translateY: [30, 0],
+                    duration: duration * 1000,
+                    delay: delay * 1000 + stagger * 1000 * index,
+                    easing: 'easeOutBack',
+                });
             });
-        });
+        }, 50); // Petit délai pour s'assurer que le DOM est mis à jour
+
     };
 
     return (
@@ -66,7 +69,22 @@ export default function Edit({ attributes, setAttributes, clientId }) {
                             ▶ Lecture
                         </Button>
                     </div>
-                    <div style={{ paddingBottom: '30px' }}>
+                    <div style={{ padding: '.5rem 0' }}>
+                        <SelectControl
+                            __next40pxDefaultSize
+                            __nextHasNoMarginBottom
+                            label={_i18n('Type d’animation')}
+                            value={animationType}
+                            options={[
+                                { label: _i18n('Lignes'), value: 'lines' },
+                                { label: _i18n('Mots'), value: 'words' },
+                                { label: _i18n('Caractères'), value: 'chars' },
+                            ]}
+                            onChange={(value) => setAttributes({ animationType: value })}
+                        />
+                    </div>
+
+                    <div style={{ padding: '.5rem 0' }}>
                         <RangeControl
                             label={_i18n('Durée (secondes)')}
                             value={duration}
@@ -81,7 +99,7 @@ export default function Edit({ attributes, setAttributes, clientId }) {
                             Reset
                         </Button>
                     </div>
-                    <div style={{ paddingBottom: '30px' }}>
+                    <div style={{ padding: '.5rem 0' }}>
                         <RangeControl
                             __nextHasNoMarginBottom
                             __next40pxDefaultSize
@@ -96,7 +114,7 @@ export default function Edit({ attributes, setAttributes, clientId }) {
                             Reset
                         </Button>
                     </div>
-                    <div style={{ paddingBottom: '30px' }}>
+                    <div style={{ padding: '.5rem 0' }}>
                         <RangeControl
                             __nextHasNoMarginBottom
                             __next40pxDefaultSize
@@ -111,18 +129,19 @@ export default function Edit({ attributes, setAttributes, clientId }) {
                             Reset
                         </Button>
                     </div>
-                    <div style={{ paddingBottom: '30px' }}>
+
+                    <div style={{}}>
+                        <p>{_i18n('Options de débogage en front')}</p>
                         <SelectControl
-                            __next40pxDefaultSize
                             __nextHasNoMarginBottom
-                            label={_i18n('Type d’animation')}
-                            value={animationType}
+                            __next40pxDefaultSize
+                            label={_i18n('Debug')}
+                            value={debug ? 'true' : 'false'}
                             options={[
-                                { label: _i18n('Lignes'), value: 'lines' },
-                                { label: _i18n('Mots'), value: 'words' },
-                                { label: _i18n('Caractères'), value: 'chars' },
+                                { label: _i18n('Off'), value: 'false' },
+                                { label: _i18n('On'), value: 'true' },
                             ]}
-                            onChange={(value) => setAttributes({ animationType: value })}
+                            onChange={(value) => setAttributes({ debug: value === 'true' })}
                         />
                     </div>
 

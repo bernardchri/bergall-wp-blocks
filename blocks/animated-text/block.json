@@ -21,7 +21,20 @@
     "animationType": {
       "type": "string",
       "default": "lines"
+    },
+    "debug": {
+      "type": "boolean",
+      "default": false
+    },
+    "startTranslateY": {
+      "type": "number",
+      "default": 30
+    },
+    "startOpacity": {
+      "type": "number",
+      "default": 0
     }
+
   },
   "supports": {
     "html": false
@@ -42,5 +55,6 @@
       }
     ]
   },
-  "editorStyle": "file:./editor.css"
+  "editorStyle": "file:./editor.css",
+  "style": "file:./style.css"
 }

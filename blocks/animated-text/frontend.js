@@ -9,9 +9,9 @@ document.addEventListener(
   function () {
     if (utils.$('.animated-text')) {
       utils.$('.animated-text').forEach((paragraph) => {
-        const animationType = paragraph.getAttribute('data-animation-type') || 'lines';
+        const animationType = paragraph.getAttribute('data-animation-type') || metadata.attributes.animationType.default;
         const splitResult = Splitting({ target: paragraph, by: animationType });
-
+        const debug = (paragraph.getAttribute('data-debug') || metadata.attributes.debug.default) === 'true';
         const duration = parseFloat(paragraph.getAttribute('data-duration')) || metadata.attributes.duration.default;
         const stagger = parseFloat(paragraph.getAttribute('data-stagger')) || metadata.attributes.stagger.default;
         const delay = parseFloat(paragraph.getAttribute('data-delay')) || metadata.attributes.delay.default;
@@ -25,7 +25,7 @@ document.addEventListener(
             easing: 'easeOutBack',
             autoplay: onScroll({
               target: element,
-              debug: false,
+              debug: debug,
               axis: 'y',
               enter: 'bottom 10%',
             }),

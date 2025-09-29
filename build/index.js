@@ -566,7 +566,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ ((module) => {
 
 "use strict";
-module.exports = /*#__PURE__*/JSON.parse('{"apiVersion":2,"name":"animablocks/animated-text","title":"Texte animé","category":"anima","description":"Effets d\'entrée dynamiques pour vos titres et paragraphes.","icon":"editor-textcolor","attributes":{"duration":{"type":"number","default":0.3},"stagger":{"type":"number","default":0.08},"delay":{"type":"number","default":0.3},"animationType":{"type":"string","default":"lines"}},"supports":{"html":false},"example":{"attributes":{"duration":1,"stagger":0.1,"delay":0.1,"animationType":"chars"},"innerBlocks":[{"name":"core/paragraph","attributes":{"content":"Ceci est un aperçu du texte animé."}}]},"editorStyle":"file:./editor.css"}');
+module.exports = /*#__PURE__*/JSON.parse('{"apiVersion":2,"name":"animablocks/animated-text","title":"Texte animé","category":"anima","description":"Effets d\'entrée dynamiques pour vos titres et paragraphes.","icon":"editor-textcolor","attributes":{"duration":{"type":"number","default":0.3},"stagger":{"type":"number","default":0.08},"delay":{"type":"number","default":0.3},"animationType":{"type":"string","default":"lines"},"debug":{"type":"boolean","default":false},"startTranslateY":{"type":"number","default":30},"startOpacity":{"type":"number","default":0}},"supports":{"html":false},"example":{"attributes":{"duration":1,"stagger":0.1,"delay":0.1,"animationType":"chars"},"innerBlocks":[{"name":"core/paragraph","attributes":{"content":"Ceci est un aperçu du texte animé."}}]},"editorStyle":"file:./editor.css","style":"file:./style.css"}');
 
 /***/ }),
 
@@ -614,7 +614,8 @@ function Edit({
     duration,
     stagger,
     delay,
-    animationType
+    animationType,
+    debug
   } = attributes;
   const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.useBlockProps)({
     className: 'animated-text animated-text-editor'
@@ -654,15 +655,17 @@ function Edit({
     });
 
     // 3️⃣ Animation
-    splitResult[0][animationType].forEach((element, index) => {
-      (0,animejs__WEBPACK_IMPORTED_MODULE_8__.animate)(element, {
-        opacity: [0, 1],
-        translateY: [30, 0],
-        duration: duration * 1000,
-        delay: delay * 1000 + stagger * 1000 * index,
-        easing: 'easeOutBack'
+    setTimeout(() => {
+      splitResult[0][animationType].forEach((element, index) => {
+        (0,animejs__WEBPACK_IMPORTED_MODULE_8__.animate)(element, {
+          opacity: [0, 1],
+          translateY: [30, 0],
+          duration: duration * 1000,
+          delay: delay * 1000 + stagger * 1000 * index,
+          easing: 'easeOutBack'
+        });
       });
-    });
+    }, 50); // Petit délai pour s'assurer que le DOM est mis à jour
   };
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
     ...blockProps,
@@ -685,9 +688,32 @@ function Edit({
             },
             children: "\u25B6 Lecture"
           })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+          style: {
+            padding: '.5rem 0'
+          },
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.SelectControl, {
+            __next40pxDefaultSize: true,
+            __nextHasNoMarginBottom: true,
+            label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__.__)('Type d’animation'),
+            value: animationType,
+            options: [{
+              label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__.__)('Lignes'),
+              value: 'lines'
+            }, {
+              label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__.__)('Mots'),
+              value: 'words'
+            }, {
+              label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__.__)('Caractères'),
+              value: 'chars'
+            }],
+            onChange: value => setAttributes({
+              animationType: value
+            })
+          })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
           style: {
-            paddingBottom: '30px'
+            padding: '.5rem 0'
           },
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.RangeControl, {
             label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__.__)('Durée (secondes)'),
@@ -712,7 +738,7 @@ function Edit({
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
           style: {
-            paddingBottom: '30px'
+            padding: '.5rem 0'
           },
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.RangeControl, {
             __nextHasNoMarginBottom: true,
@@ -737,7 +763,7 @@ function Edit({
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
           style: {
-            paddingBottom: '30px'
+            padding: '.5rem 0'
           },
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.RangeControl, {
             __nextHasNoMarginBottom: true,
@@ -760,29 +786,26 @@ function Edit({
             },
             children: "Reset"
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
-          style: {
-            paddingBottom: '30px'
-          },
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.SelectControl, {
-            __next40pxDefaultSize: true,
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+          style: {},
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("p", {
+            children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__.__)('Options de débogage en front')
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.SelectControl, {
             __nextHasNoMarginBottom: true,
-            label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__.__)('Type d’animation'),
-            value: animationType,
+            __next40pxDefaultSize: true,
+            label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__.__)('Debug'),
+            value: debug ? 'true' : 'false',
             options: [{
-              label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__.__)('Lignes'),
-              value: 'lines'
+              label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__.__)('Off'),
+              value: 'false'
             }, {
-              label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__.__)('Mots'),
-              value: 'words'
-            }, {
-              label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__.__)('Caractères'),
-              value: 'chars'
+              label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_6__.__)('On'),
+              value: 'true'
             }],
             onChange: value => setAttributes({
-              animationType: value
+              debug: value === 'true'
             })
-          })
+          })]
         })]
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
@@ -832,11 +855,12 @@ __webpack_require__.r(__webpack_exports__);
 document.addEventListener('DOMContentLoaded', function () {
   if (animejs__WEBPACK_IMPORTED_MODULE_3__.utils.$('.animated-text')) {
     animejs__WEBPACK_IMPORTED_MODULE_3__.utils.$('.animated-text').forEach(paragraph => {
-      const animationType = paragraph.getAttribute('data-animation-type') || 'lines';
+      const animationType = paragraph.getAttribute('data-animation-type') || _block_json__WEBPACK_IMPORTED_MODULE_2__.attributes.animationType.default;
       const splitResult = splitting__WEBPACK_IMPORTED_MODULE_0___default()({
         target: paragraph,
         by: animationType
       });
+      const debug = (paragraph.getAttribute('data-debug') || _block_json__WEBPACK_IMPORTED_MODULE_2__.attributes.debug.default) === 'true';
       const duration = parseFloat(paragraph.getAttribute('data-duration')) || _block_json__WEBPACK_IMPORTED_MODULE_2__.attributes.duration.default;
       const stagger = parseFloat(paragraph.getAttribute('data-stagger')) || _block_json__WEBPACK_IMPORTED_MODULE_2__.attributes.stagger.default;
       const delay = parseFloat(paragraph.getAttribute('data-delay')) || _block_json__WEBPACK_IMPORTED_MODULE_2__.attributes.delay.default;
@@ -849,7 +873,7 @@ document.addEventListener('DOMContentLoaded', function () {
           easing: 'easeOutBack',
           autoplay: (0,animejs__WEBPACK_IMPORTED_MODULE_3__.onScroll)({
             target: element,
-            debug: false,
+            debug: debug,
             axis: 'y',
             enter: 'bottom 10%'
           })
@@ -918,7 +942,8 @@ function Save({
     duration,
     stagger,
     delay,
-    animationType
+    animationType,
+    debug
   } = attributes;
   const blockProps = _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.useBlockProps.save({
     className: 'animated-text'
@@ -929,6 +954,7 @@ function Save({
     "data-stagger": stagger,
     "data-delay": delay,
     "data-animation-type": animationType,
+    "data-debug": debug,
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.InnerBlocks.Content, {})
   });
 }
