@@ -1,0 +1,32 @@
+{
+  "apiVersion": 2,
+  "name": "animablocks/container-parallax",
+  "title": "Parallax Container",
+  "icon": "images-alt2",
+  "category": "anima",
+  "description": "Groupe avec effet parallax - idéal pour apporter de l’énergie à vos pages. Ajouter des blocs à l’intérieur.",
+  "supports": {
+    "html": false,
+    "anchor": true,
+    "align": ["wide", "full"],
+    "customClassName": true,
+    "className": true
+  },
+  "attributes": {
+    "speed": {
+      "type": "number",
+      "default": 50,
+      "minimum": -100,
+      "maximum": 100
+    },
+    "depth": {
+      "type": "number",
+      "default": 0
+    },
+    "alignment": {
+      "type": "string",
+      "default": "none"
+    }
+  },
+  "editorStyle": "file:./editor.css"
+}

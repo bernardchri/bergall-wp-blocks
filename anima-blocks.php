@@ -110,16 +110,14 @@ function animablocks_register_custom_blocks()
 {
     // composants animations
     register_block_type(__DIR__ . '/blocks/animated-text');
-    register_block_type(__DIR__ . '/blocks/lottie-player');
     register_block_type(__DIR__ . '/blocks/animate-on-scroll');
-
+    register_block_type(__DIR__ . '/blocks/container-parallax');
+    register_block_type(__DIR__ . '/blocks/lottie-player');
     register_block_type(__DIR__ . '/blocks/number-increment-animation');
     register_block_type(__DIR__ . '/blocks/marquee');
-    register_block_type(__DIR__ . '/blocks/container-parallax');
 
     // composants de mise en forme
-    // register_block_type(__DIR__ . '/blocks/circle-text');
-    // register_block_type(__DIR__ . '/blocks/image-video-hover');
+  
     register_block_type(__DIR__ . '/blocks/separator');
     register_block_type(__DIR__ . '/blocks/group-extended'); 
 
@@ -134,6 +132,8 @@ function animablocks_register_custom_blocks()
     
 
     // TODO en cours
+      // register_block_type(__DIR__ . '/blocks/circle-text');
+    // register_block_type(__DIR__ . '/blocks/image-video-hover');
     // register_block_type(__DIR__ . '/blocks/button-block');
     // register_block_type(__DIR__ . '/blocks/hero-3D-object');
     // register_block_type(__DIR__ . '/blocks/spans');

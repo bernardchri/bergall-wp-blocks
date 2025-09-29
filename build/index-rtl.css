@@ -76,7 +76,7 @@
 .animated-text {
     border: 2px dashed #dedede;
     border-radius: 1rem;
-    /* padding: 1rem; */
+    padding: .5rem;
     line-height: auto;
     background: transparent;
 }
@@ -88,3 +88,19 @@
 .animated-text span {
   display: inline-block;
 }
+
+.animated-text::before{
+    content: "Anima - Animated Text Block";
+    position: absolute;
+    top: 0;
+    right: 50%;
+    font-size: .75rem;
+    transform: translate(50%, 0);
+    color: white;
+    background-color: #999;
+    padding: .1rem .25rem;
+    font-family: 'Courier New', Courier, monospace;
+    pointer-events: none;
+    border-radius:  0 0 .25rem .25rem;
+}
+

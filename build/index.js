@@ -618,7 +618,7 @@ function Edit({
     debug
   } = attributes;
   const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.useBlockProps)({
-    className: 'animated-text animated-text-editor'
+    className: 'animated-text '
   });
   const resetDuration = () => setAttributes({
     duration: _block_json__WEBPACK_IMPORTED_MODULE_5__.attributes.duration.default
@@ -1133,6 +1133,140 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./blocks/container-parallax/block.json":
+/*!**********************************************!*\
+  !*** ./blocks/container-parallax/block.json ***!
+  \**********************************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = /*#__PURE__*/JSON.parse('{"apiVersion":2,"name":"animablocks/container-parallax","title":"Parallax Container","icon":"images-alt2","category":"anima","description":"Groupe avec effet parallax - idéal pour apporter de l’énergie à vos pages. Ajouter des blocs à l’intérieur.","supports":{"html":false,"anchor":true,"align":["wide","full"],"customClassName":true,"className":true},"attributes":{"speed":{"type":"number","default":50,"minimum":-100,"maximum":100},"depth":{"type":"number","default":0},"alignment":{"type":"string","default":"none"}},"editorStyle":"file:./editor.css"}');
+
+/***/ }),
+
+/***/ "./blocks/container-parallax/edit.js":
+/*!*******************************************!*\
+  !*** ./blocks/container-parallax/edit.js ***!
+  \*******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ Edit)
+/* harmony export */ });
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./block.json */ "./blocks/container-parallax/block.json");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "react/jsx-runtime");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__);
+
+
+
+
+function Edit({
+  attributes,
+  setAttributes
+}) {
+  const {
+    speed,
+    depth,
+    alignment
+  } = attributes;
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+    ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.useBlockProps)({
+      style: {
+        position: 'relative',
+        zIndex: depth
+      }
+    }),
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.BlockControls, {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.AlignmentToolbar, {
+        value: alignment,
+        onChange: newAlign => setAttributes({
+          alignment: newAlign
+        })
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.InspectorControls, {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.PanelBody, {
+        title: "Parallax Settings",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.RangeControl, {
+          __nextHasNoMarginBottom: true,
+          __next40pxDefaultSize: true,
+          label: "Parallax Speed",
+          value: speed,
+          onChange: value => setAttributes({
+            speed: value
+          }),
+          min: _block_json__WEBPACK_IMPORTED_MODULE_2__.attributes.speed.minimum,
+          max: _block_json__WEBPACK_IMPORTED_MODULE_2__.attributes.speed.maximum
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_1__.RangeControl, {
+          __nextHasNoMarginBottom: true,
+          __next40pxDefaultSize: true,
+          label: "Depth (Z-Index)",
+          value: depth,
+          onChange: value => setAttributes({
+            depth: value
+          }),
+          min: -10,
+          max: 10
+        })]
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+      className: `parallax-content`,
+      style: {
+        willChange: 'transform',
+        transformStyle: 'preserve-3d',
+        transformPerspective: 1000,
+        textAlign: alignment
+      },
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.InnerBlocks, {})
+    })]
+  });
+}
+
+/***/ }),
+
+/***/ "./blocks/container-parallax/frontend.js":
+/*!***********************************************!*\
+  !*** ./blocks/container-parallax/frontend.js ***!
+  \***********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var animejs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! animejs */ "./node_modules/animejs/lib/anime.esm.js");
+/* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./block.json */ "./blocks/container-parallax/block.json");
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  const parallaxContainers = document.querySelectorAll(".parallax-container");
+  if (parallaxContainers.length === 0) return;
+  parallaxContainers.forEach(container => {
+    const speed = (container.getAttribute("data-speed") || _block_json__WEBPACK_IMPORTED_MODULE_0__.attributes.speed.default) * 10;
+    const depth = container.getAttribute("data-depth") || _block_json__WEBPACK_IMPORTED_MODULE_0__.attributes.depth.default;
+    const content = container.querySelector(".parallax-content");
+    if (!content) return;
+    container.style.zIndex = depth;
+    (0,animejs__WEBPACK_IMPORTED_MODULE_1__.animate)(content, {
+      translateY: [speed, -speed],
+      autoplay: (0,animejs__WEBPACK_IMPORTED_MODULE_1__.onScroll)({
+        axis: 'y',
+        sync: true,
+        debug: false,
+        onUpdate: value => {
+          // Optionnel : progression du scroll
+          // console.log(value);
+        }
+      })
+    });
+  });
+});
+
+/***/ }),
+
 /***/ "./blocks/container-parallax/index.js":
 /*!********************************************!*\
   !*** ./blocks/container-parallax/index.js ***!
@@ -1143,164 +1277,70 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");
 /* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var animejs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! animejs */ "./node_modules/animejs/lib/anime.esm.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "react/jsx-runtime");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./edit */ "./blocks/container-parallax/edit.js");
+/* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./save */ "./blocks/container-parallax/save.js");
+/* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./block.json */ "./blocks/container-parallax/block.json");
+/* harmony import */ var _frontend_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./frontend.js */ "./blocks/container-parallax/frontend.js");
 
 
 
 
-// Parallax effect script for frontend
+
+(0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__.registerBlockType)(_block_json__WEBPACK_IMPORTED_MODULE_3__.name, {
+  ..._block_json__WEBPACK_IMPORTED_MODULE_3__,
+  edit: _edit__WEBPACK_IMPORTED_MODULE_1__["default"],
+  save: _save__WEBPACK_IMPORTED_MODULE_2__["default"]
+});
+
+/***/ }),
+
+/***/ "./blocks/container-parallax/save.js":
+/*!*******************************************!*\
+  !*** ./blocks/container-parallax/save.js ***!
+  \*******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ Save)
+/* harmony export */ });
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
+/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "react/jsx-runtime");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__);
 
 
-(0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__.registerBlockType)('animablocks/container-parallax', {
-  title: 'Parallax Container',
-  icon: 'images-alt2',
-  description: 'group avec effet parrallax',
-  category: 'anima',
-  attributes: {
-    speed: {
-      type: 'number',
-      default: 50
-    },
-    depth: {
-      type: 'number',
-      default: 0
-    },
-    alignment: {
-      type: 'string',
-      default: 'none'
-    },
-    fullWidth: {
-      type: 'boolean',
-      default: false
-    }
-  },
-  edit: ({
-    attributes,
-    setAttributes
-  }) => {
-    const {
-      speed,
-      depth,
-      alignment,
-      fullWidth
-    } = attributes;
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-      ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps)({
-        style: {
-          position: 'relative',
-          zIndex: depth,
-          width: fullWidth ? '100%' : 'auto'
-        }
-      }),
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.BlockControls, {
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.AlignmentToolbar, {
-          value: alignment,
-          onChange: newAlign => setAttributes({
-            alignment: newAlign
-          })
-        })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, {
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
-          title: "Parallax Settings",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.RangeControl, {
-            label: "Parallax Speed",
-            value: speed,
-            onChange: value => setAttributes({
-              speed: value
-            }),
-            min: 0,
-            max: 100
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.RangeControl, {
-            label: "Depth (Z-Index)",
-            value: depth,
-            onChange: value => setAttributes({
-              depth: value
-            }),
-            min: -10,
-            max: 10
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ToggleControl, {
-            label: "Full Width",
-            checked: fullWidth,
-            onChange: value => setAttributes({
-              fullWidth: value
-            })
-          })]
-        })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-        className: "parallax-content",
-        style: {
-          willChange: 'transform',
-          transformStyle: 'preserve-3d',
-          transformPerspective: 1000,
-          textAlign: alignment
-        },
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InnerBlocks, {})
-      })]
-    });
-  },
-  save: ({
-    attributes
-  }) => {
-    const {
-      speed,
-      depth,
-      alignment,
-      fullWidth
-    } = attributes;
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+function Save({
+  attributes
+}) {
+  const {
+    speed,
+    depth,
+    alignment
+  } = attributes;
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+    ..._wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.useBlockProps.save({
       className: "parallax-container",
-      "data-speed": speed,
-      "data-depth": depth,
+      'data-speed': speed,
+      'data-depth': depth,
       style: {
         position: 'relative',
         zIndex: depth,
-        maxWidth: fullWidth ? '100%' : 'auto',
         textAlign: alignment
+      }
+    }),
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+      className: "parallax-content",
+      style: {
+        willChange: 'transform',
+        transformStyle: 'preserve-3d',
+        transformPerspective: 1000
       },
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-        className: "parallax-content",
-        style: {
-          willChange: 'transform',
-          transformStyle: 'preserve-3d',
-          transformPerspective: 1000
-        },
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InnerBlocks.Content, {})
-      })
-    });
-  }
-});
-document.addEventListener("DOMContentLoaded", function () {
-  document.querySelectorAll(".parallax-container").forEach(container => {
-    const speed = (container.getAttribute("data-speed") || 50) * 10;
-    const depth = container.getAttribute("data-depth") || 0;
-    const content = container.querySelector(".parallax-content");
-    container.style.zIndex = depth;
-    (0,animejs__WEBPACK_IMPORTED_MODULE_4__.animate)(content, {
-      translateY: [speed,
-      // Position initiale
-      -speed // Position finale
-      ],
-      autoplay: (0,animejs__WEBPACK_IMPORTED_MODULE_4__.onScroll)({
-        target: content,
-        container: document.window,
-        axis: 'y',
-        sync: true,
-        // synchronisation avec le scroll
-        debug: false,
-        onUpdate: value => {
-          // optionnel : value est une valeur entre 0 et 1 représentant la progression
-          // console.log(value);
-        }
-      })
-    });
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.InnerBlocks.Content, {})
+    })
   });
-});
+}
 
 /***/ }),
 

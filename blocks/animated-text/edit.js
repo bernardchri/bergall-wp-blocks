@@ -10,7 +10,7 @@ import { __ as _i18n } from '@wordpress/i18n';
 export default function Edit({ attributes, setAttributes, clientId }) {
     const { duration, stagger, delay, animationType, debug } = attributes;
     const blockProps = useBlockProps({
-        className: 'animated-text animated-text-editor'
+        className: 'animated-text '
     });
 
     const resetDuration = () => setAttributes({ duration: metadata.attributes.duration.default });

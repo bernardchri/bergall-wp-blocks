@@ -21,7 +21,7 @@ block.json, index.js, edit.js, save.js … 
 [X] animate-on-scroll
 [X] animate-text
 [] lottie-player
-[] container-parallax
+[X] container-parallax
 [X] group-extended
 [] image-video-hover
 [] marquee
@@ -34,7 +34,13 @@ block.json, index.js, edit.js, save.js … 
 ## i18n
 [X] animate-text
 
+## Bugs
+[] animate-text : au premier chargememnt ( ou ajout de nouveau élément) et lecture 
+[] animate-text : déclancher l'animation sur le contenaire et pas dans chaque span crées 
 
+[] group-parallax : voir fullwidth dans l'editeur
+[] group-parallax : rajouter le debug dans les options attributes
+[] group-parallax : avoir la possibilité de voir le rendu dans l'édition 
 
 
 ## Idées de blocs à faire
