@@ -48,7 +48,5 @@
       "type": "number",
       "default": 5000
     }
-  },
-  "editorScript": "file: ./index.js",
-  "script": "file: ./slider.js"
+  }
 }

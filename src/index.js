@@ -8,7 +8,7 @@ import './style.css'; // CSS général
 import '../blocks/animated-text'; // Composants
 import '../blocks/animate-on-scroll';// Groups étendus
 import '../blocks/container-parallax'; // Groups étendus
-import '../blocks/group-extended';// Groups étendus
+import '../blocks/group-extended/index_old';// Groups étendus
 import '../blocks/marquee';
 import '../blocks/number-increment-animation/'; // Composants
 
@@ -24,7 +24,7 @@ import '../blocks/anima-separator/';  // headers
 import '../blocks/header-minimalist';  // headers
 import '../blocks/button-block';
 import '../blocks/anima-lottie/'; // Lottie animations
-// import '../blocks/button-block';
+import '../blocks/button-block';
 
 // import '../blocks/carrousel-text'; // Carrousel de texte
 

@@ -4,7 +4,6 @@ import Swiper from 'swiper';
 import { Navigation, Pagination } from 'swiper/modules';
 
 
-
 export default function Save({ attributes }) {
     const { numberofslides, numberofslidesMobile, autoplay, interval } = attributes;
 
@@ -26,7 +25,6 @@ export default function Save({ attributes }) {
         </div>
     );
 }
-
 
 
 const sliderSimple = (slider, attributes) => {
