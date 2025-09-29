@@ -1,0 +1,10 @@
+.animated-text {
+    border: 2px dashed #dedede;
+    border-radius: 1rem;
+    padding: 1rem;
+    background: transparent;
+}
+
+.block-editor-block-list__block.is-selected .animated-text {
+    border: 2px dashed blue;
+}

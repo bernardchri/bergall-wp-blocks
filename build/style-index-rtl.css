@@ -1,6 +1,97 @@
-body{overflow-x:hidden}
-.animate-on-scroll{width:100%}.is-selected .animate-on-scroll{border:1px solid #0073aa}
+/*!*******************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[2].use[2]!./src/style.css ***!
+  \*******************************************************************************************************************************************************************/
 
-a.wp-block-animablocks-marquee{display:block;text-decoration:none}.marquee-wrapper{overflow:clip;width:100%}.marquee-wrapper.fadeout-horizontal{-webkit-mask-image:linear-gradient(90deg,transparent,#000 5rem,#000 calc(100% - 5rem),transparent);mask-image:linear-gradient(90deg,transparent,#000 5rem,#000 calc(100% - 5rem),transparent)}.marquee-content,.marquee-content .block-editor-block-list__layout{align-items:baseline;display:flex;gap:1rem;line-height:1rem;padding-right:1rem}.marquee-content p{color:green}.marquee-content{animation:marquee-scroll var(--speed,10s) linear infinite var(--direction,forwards);width:-moz-max-content;width:max-content}@keyframes marquee-scroll{0%{transform:translateX(0)}to{transform:translateX(50%)}}
-.number-animation-block{text-align:center}
-.anima-separator{height:96px;width:100%}
+body {
+  overflow-x: hidden;
+}
+
+
+/*!****************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[2].use[2]!./blocks/animate-on-scroll/style.css ***!
+  \****************************************************************************************************************************************************************************************/
+.animate-on-scroll{
+    width: 100%;
+}
+
+.is-selected .animate-on-scroll {
+    border: 1px solid #0073aa;
+}
+/*!*************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[2].use[2]!./blocks/group-extended/style.css ***!
+  \*************************************************************************************************************************************************************************************/
+
+/*!******************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[2].use[2]!./blocks/marquee/style.css ***!
+  \******************************************************************************************************************************************************************************/
+a.wp-block-animablocks-marquee {
+    display: block;
+    text-decoration: none;
+}
+
+
+.marquee-wrapper {
+    overflow: clip;
+    width: 100%;
+}
+
+.marquee-wrapper.fadeout-horizontal {
+    -webkit-mask-image: linear-gradient(to right,
+            transparent,
+            black 5rem,
+            black calc(100% - 5rem),
+            transparent);
+            mask-image: linear-gradient(to right,
+            transparent,
+            black 5rem,
+            black calc(100% - 5rem),
+            transparent);
+
+}
+
+.marquee-content,
+.marquee-content .block-editor-block-list__layout {
+    display: flex;
+    align-items: baseline;
+    line-height: 1rem;
+    padding-right: 1rem;
+    gap: 1rem;
+}
+
+
+.marquee-content p{
+    color: green;
+}
+
+.marquee-content {
+    width: -moz-max-content;
+    width: max-content;
+    animation: marquee-scroll var(--speed, 10s) linear infinite var(--direction,
+            forwards);
+}
+
+
+
+/* Animation */
+@keyframes marquee-scroll {
+    from {
+        transform: translateX(0%);
+    }
+
+    to {
+        transform: translateX(50%);
+    }
+}
+/*!*************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[2].use[2]!./blocks/number-increment-animation/style.css ***!
+  \*************************************************************************************************************************************************************************************************/
+.number-animation-block{
+    text-align: center;
+}
+/*!********************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[2].use[2]!./blocks/separator/style.css ***!
+  \********************************************************************************************************************************************************************************/
+.anima-separator {
+  width: 100%;
+  height: 96px;
+}

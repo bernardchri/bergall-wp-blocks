@@ -16,7 +16,7 @@ Apporter des nouveaux blocs aux thèmes FSE pour les rendre plus interactifs et 
 
 ## Structure valide
 [X] header minimalis
-[] animate-on-scroll
+[X] animate-on-scroll
 [] animate-text
 [] lottie-player
 [] container-parallax
