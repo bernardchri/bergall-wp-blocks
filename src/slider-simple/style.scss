@@ -1,0 +1,22 @@
+// body :has(.wp-block-anima-slider-simple) {
+//     overflow-x: hidden !important;
+// }
+.wp-block-anima-slider-simple {
+    & .swiper-container {
+        position: relative;
+    }
+
+    & .swiper-wrapper {
+        gap: 1rem;
+    }
+
+    & .swiper-slide img {
+        width: 100%;
+        height: auto;
+    }
+
+    & .swiper-wrapper{
+        display: flex;
+    }
+
+}

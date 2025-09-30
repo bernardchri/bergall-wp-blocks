@@ -619,7 +619,7 @@ return array(
 	'slider-image' => array(
 		'$schema' => 'https://schemas.wp.org/trunk/block.json',
 		'apiVersion' => 3,
-		'name' => 'anima/slider-image',
+		'name' => 'animablocks/slider-image',
 		'title' => 'Slider images',
 		'category' => 'anima',
 		'icon' => 'images-alt',
@@ -646,13 +646,41 @@ return array(
 				'default' => 1
 			)
 		),
-		'editorStyle' => 'file: ./editor.css',
-		'style' => 'file:./style.css'
+		'editorScript' => 'file:./index.js',
+		'editorStyle' => 'file: ./index.css',
+		'style' => 'file:./style-index.css'
+	),
+	'slider-navigation' => array(
+		'$schema' => 'https://schemas.wp.org/trunk/block.json',
+		'apiVersion' => 3,
+		'name' => 'animablocks/slider-navigation',
+		'title' => 'Naviguation pour slider',
+		'category' => 'anima',
+		'icon' => 'images-alt',
+		'description' => 'Un slider simple avec navigation et pagination.',
+		'supports' => array(
+			'spacing' => array(
+				'padding' => true,
+				'margin' => true
+			),
+			'color' => array(
+				'text' => true,
+				'background' => true,
+				'gradients' => true,
+				'link' => true
+			)
+		),
+		'attributes' => array(
+			
+		),
+		'editorScript' => 'file:./index.js',
+		'viewScript' => 'file:./view.js',
+		'style' => 'file:./style-index.css'
 	),
 	'slider-simple' => array(
 		'$schema' => 'https://schemas.wp.org/trunk/block.json',
 		'apiVersion' => 3,
-		'name' => 'anima/slider-simple',
+		'name' => 'animablocks/slider-simple',
 		'title' => 'Slider simple',
 		'category' => 'anima',
 		'icon' => 'images-alt',
@@ -701,12 +729,15 @@ return array(
 				'type' => 'number',
 				'default' => 5000
 			)
-		)
+		),
+		'editorScript' => 'file:./index.js',
+		'editorStyle' => 'file: ./index.css',
+		'style' => 'file:./style-index.css'
 	),
 	'slider-simple-item' => array(
 		'$schema' => 'https://schemas.wp.org/trunk/block.json',
 		'apiVersion' => 3,
-		'name' => 'anima/slider-simple-item',
+		'name' => 'animablocks/slider-simple-item',
 		'title' => 'Slider simple item',
 		'category' => 'anima',
 		'icon' => 'images-alt2',
@@ -724,12 +755,12 @@ return array(
 				'link' => true
 			)
 		),
-		'editorScript' => 'file: ./build/index.js'
+		'editorScript' => 'file:./index.js'
 	),
 	'test' => array(
 		'$schema' => 'https://schemas.wp.org/trunk/block.json',
 		'apiVersion' => 3,
-		'name' => 'anima/test',
+		'name' => 'animablocks/test',
 		'version' => '0.1.0',
 		'title' => 'Test',
 		'category' => 'widgets',

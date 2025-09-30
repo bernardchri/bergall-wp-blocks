@@ -8,10 +8,7 @@
 	"supports": {
 		"anchor": true,
 		"html": false,
-		"align": [
-			"wide",
-			"full"
-		],
+		"align": [ "wide", "full" ],
 		"color": {
 			"text": true,
 			"background": true

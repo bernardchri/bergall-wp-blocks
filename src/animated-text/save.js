@@ -1,5 +1,5 @@
 import { InnerBlocks, useBlockProps } from '@wordpress/block-editor';
-import './style.scss'
+import './style.scss';
 
 export default function Save( { attributes } ) {
 	const { duration, stagger, delay, animationType, debug } = attributes;

@@ -1,13 +1,12 @@
 {
   "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 3,
-  "name": "animablocks/slider-simple-item",
-  "title": "Slider simple item",
+  "name": "animablocks/slider-navigation",
+  "title": "Naviguation pour slider",
   "category": "anima",
-  "icon": "images-alt2",
-  "description": "Un item de slide",
+  "icon": "images-alt",
+  "description": "Un slider simple avec navigation et pagination.",
   "supports": {
-    "align": true,
     "spacing": {
       "padding": true,
       "margin": true
@@ -19,5 +18,8 @@
       "link": true
     }
   },
-  "editorScript": "file:./index.js"
+  "attributes": {},
+  "editorScript": "file:./index.js",
+  "viewScript": "file:./view.js",
+  "style": "file:./style-index.css"
 }

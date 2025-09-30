@@ -5,10 +5,9 @@ import {
 	useBlockProps,
 } from '@wordpress/block-editor';
 import { PanelBody, SelectControl, ToggleControl } from '@wordpress/components';
-import './editor.css'
+import './editor.css';
 
-
-export default function Edit({ attributes, setAttributes }) {
+export default function Edit( { attributes, setAttributes } ) {
 	const {
 		href,
 		newTab,
@@ -24,16 +23,14 @@ export default function Edit({ attributes, setAttributes }) {
 		overflow,
 	} = attributes;
 
-
-
 	const wrapperStyle = {
 		position: positionAbsolute ? 'absolute' : 'relative',
 		overflow:
 			overflow === 'x'
 				? undefined
 				: overflow === 'y'
-					? undefined
-					: overflow || undefined,
+				? undefined
+				: overflow || undefined,
 		overflowX: overflow === 'x' ? 'auto' : undefined,
 		overflowY: overflow === 'y' ? 'auto' : undefined,
 		top: positionAbsolute && top ? top : undefined,
@@ -45,29 +42,28 @@ export default function Edit({ attributes, setAttributes }) {
 		zIndex: positionAbsolute && zIndex ? zIndex : undefined,
 	};
 
-
-	const blockProps = useBlockProps({
+	const blockProps = useBlockProps( {
 		className: 'group-extended-editor',
-		style : wrapperStyle
-	});
+		style: wrapperStyle,
+	} );
 
 	return (
-		<div {...blockProps}>
+		<div { ...blockProps }>
 			<InspectorControls>
 				<PanelBody title="Link Settings">
 					<URLInput
 						label="URL"
-						value={href}
-						onChange={(value) =>
-							setAttributes({ href: value })
+						value={ href }
+						onChange={ ( value ) =>
+							setAttributes( { href: value } )
 						}
 						placeholder="https://example.com"
 					/>
 					<ToggleControl
 						label="Open in new tab"
-						checked={newTab}
-						onChange={(value) =>
-							setAttributes({ newTab: value })
+						checked={ newTab }
+						onChange={ ( value ) =>
+							setAttributes( { newTab: value } )
 						}
 					/>
 				</PanelBody>
@@ -75,77 +71,77 @@ export default function Edit({ attributes, setAttributes }) {
 				<PanelBody title="Position">
 					<ToggleControl
 						label="Absolute"
-						checked={positionAbsolute}
-						onChange={(value) =>
-							setAttributes({ positionAbsolute: value })
+						checked={ positionAbsolute }
+						onChange={ ( value ) =>
+							setAttributes( { positionAbsolute: value } )
 						}
 					/>
-					{positionAbsolute && (
+					{ positionAbsolute && (
 						<>
-							{['top', 'left', 'right', 'bottom'].map(
-								(pos) => (
-									<div key={pos}>
+							{ [ 'top', 'left', 'right', 'bottom' ].map(
+								( pos ) => (
+									<div key={ pos }>
 										<label>
-											{pos.charAt(0).toUpperCase() +
-												pos.slice(1)}
+											{ pos.charAt( 0 ).toUpperCase() +
+												pos.slice( 1 ) }
 										</label>
 										<input
 											type="text"
-											value={attributes[pos]}
+											value={ attributes[ pos ] }
 											placeholder="ex: 10px ou 5%"
-											onChange={(e) =>
-												setAttributes({
-													[pos]: e.target.value,
-												})
+											onChange={ ( e ) =>
+												setAttributes( {
+													[ pos ]: e.target.value,
+												} )
 											}
-											style={{ width: '100%' }}
+											style={ { width: '100%' } }
 										/>
 									</div>
 								)
-							)}
+							) }
 							<div>
 								<label>zIndex</label>
 								<input
 									type="number"
-									value={zIndex}
-									onChange={(e) =>
-										setAttributes({
+									value={ zIndex }
+									onChange={ ( e ) =>
+										setAttributes( {
 											zIndex:
-												parseInt(e.target.value) || 0,
-										})
+												parseInt( e.target.value ) || 0,
+										} )
 									}
-									style={{ width: '100%' }}
+									style={ { width: '100%' } }
 								/>
 							</div>
 						</>
-					)}
-					{['width', 'height'].map((size) => (
-						<div key={size}>
+					) }
+					{ [ 'width', 'height' ].map( ( size ) => (
+						<div key={ size }>
 							<label>
-								{size.charAt(0).toUpperCase() +
-									size.slice(1)}
+								{ size.charAt( 0 ).toUpperCase() +
+									size.slice( 1 ) }
 							</label>
 							<input
 								type="text"
-								value={attributes[size]}
+								value={ attributes[ size ] }
 								placeholder="ex: 10px ou 5%"
-								onChange={(e) =>
-									setAttributes({
-										[size]: e.target.value,
-									})
+								onChange={ ( e ) =>
+									setAttributes( {
+										[ size ]: e.target.value,
+									} )
 								}
-								style={{ width: '40%' }}
+								style={ { width: '40%' } }
 							/>
 						</div>
-					))}
+					) ) }
 					<div>
 						<label>Overflow</label>
 						<select
-							value={overflow}
-							onChange={(e) =>
-								setAttributes({ overflow: e.target.value })
+							value={ overflow }
+							onChange={ ( e ) =>
+								setAttributes( { overflow: e.target.value } )
 							}
-							style={{ width: '60%' }}
+							style={ { width: '60%' } }
 						>
 							<option value="">auto</option>
 							<option value="visible">visible</option>
@@ -163,14 +159,14 @@ export default function Edit({ attributes, setAttributes }) {
 				<PanelBody title="Animation Settings">
 					<SelectControl
 						label="Entrance Animation"
-						value={animation}
-						options={[
+						value={ animation }
+						options={ [
 							{ label: 'None', value: 'none' },
 							{ label: 'Fade In', value: 'fadeIn' },
 							{ label: 'Fade In from Bottom', value: 'fadeInUp' },
-						]}
-						onChange={(value) =>
-							setAttributes({ animation: value })
+						] }
+						onChange={ ( value ) =>
+							setAttributes( { animation: value } )
 						}
 					/>
 				</PanelBody>

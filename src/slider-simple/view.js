@@ -1,33 +1,8 @@
-import { InnerBlocks, useBlockProps } from '@wordpress/block-editor';
-import NavigationSwiper from '../slider-navigation';
 import Swiper from 'swiper';
 import { Navigation, Pagination } from 'swiper/modules';
-
-export default function Save( { attributes } ) {
-	const { numberofslides, numberofslidesMobile, autoplay, interval } =
-		attributes;
-
-	const blockProps = useBlockProps.save( {
-		'data-numberofslides': numberofslides,
-		'data-numberofslidesmobile': numberofslidesMobile,
-		'data-autoplay': autoplay,
-		'data-interval': interval,
-	} );
-
-	return (
-		<div { ...blockProps }>
-			<div className="anima-swiper-container">
-				<div className="swiper-wrapper">
-					<InnerBlocks.Content />
-				</div>
-				<NavigationSwiper
-					paginationDisplay={ true }
-					navigationDisplay={ true }
-				/>
-			</div>
-		</div>
-	);
-}
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 
 const sliderSimple = ( slider, attributes ) => {
 	const container = slider.querySelector( '.anima-swiper-container' );

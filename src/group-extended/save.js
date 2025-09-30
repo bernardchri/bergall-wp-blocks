@@ -1,8 +1,6 @@
 import { InnerBlocks, useBlockProps } from '@wordpress/block-editor';
 
 export default function Save( { attributes } ) {
-	
-
 	const {
 		href,
 		newTab,
@@ -15,7 +13,7 @@ export default function Save( { attributes } ) {
 		width,
 		height,
 		zIndex,
-		overflow
+		overflow,
 	} = attributes;
 
 	const wrapperStyle = {
@@ -39,10 +37,10 @@ export default function Save( { attributes } ) {
 
 	const blockProps = useBlockProps.save( {
 		className: `animate-${ animation } ${ href ? 'has-link' : '' }`,
-		style : {
+		style: {
 			...wrapperStyle,
-			...useBlockProps.save().style
-		}
+			...useBlockProps.save().style,
+		},
 	} );
 
 	const content = <InnerBlocks.Content />;

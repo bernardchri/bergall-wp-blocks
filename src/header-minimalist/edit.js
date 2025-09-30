@@ -7,7 +7,6 @@ import {
 import { PanelBody, Button, SelectControl } from '@wordpress/components';
 import './editor.scss';
 
-
 const findMenuToDisplay = ( menus, id ) => {
 	const menu = menus.find( ( menu ) => menu.id === parseFloat( id ) );
 	return menu?.content?.rendered || '';

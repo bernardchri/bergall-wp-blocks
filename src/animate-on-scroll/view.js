@@ -1,7 +1,7 @@
 import { animate, onScroll } from 'animejs';
 import metadata from './block.json';
 
-const BLOCK_CLASS = ".wp-block-animablocks-animate-on-scroll"
+const BLOCK_CLASS = '.wp-block-animablocks-animate-on-scroll';
 
 document.addEventListener( 'DOMContentLoaded', () => {
 	document.querySelectorAll( BLOCK_CLASS ).forEach( ( section ) => {

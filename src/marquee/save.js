@@ -1,5 +1,5 @@
 import { useBlockProps, InnerBlocks } from '@wordpress/block-editor';
-import './style.scss'
+import './style.scss';
 
 export default function save( { attributes } ) {
 	const { speed, link, direction, gradianttransition, rotation } = attributes;

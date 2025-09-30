@@ -1,7 +1,6 @@
 import { useBlockProps, InnerBlocks } from '@wordpress/block-editor';
 import './style.css';
 
-
 export default function Save( { attributes } ) {
 	const { speed, depth, alignment } = attributes;
 

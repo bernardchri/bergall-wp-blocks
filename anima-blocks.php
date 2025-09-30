@@ -111,18 +111,18 @@ add_filter('block_categories_all', 'anima_new_category_blocks');
 // ENREGISTREMENT DES BLOCS
 function animablocks_register_custom_blocks()
 {
-    register_block_type(__DIR__ . '/blocks/animate-on-scroll');
-    register_block_type(__DIR__ . '/blocks/animated-text');
-    register_block_type(__DIR__ . '/blocks/container-parallax');
+    // register_block_type(__DIR__ . '/blocks/animate-on-scroll');
+    // register_block_type(__DIR__ . '/blocks/animated-text');
+    // register_block_type(__DIR__ . '/blocks/container-parallax');
     // register_block_type(__DIR__ . '/blocks/number-increment-animation');
-    register_block_type(__DIR__ . '/blocks/marquee');
+    // register_block_type(__DIR__ . '/blocks/marquee');
     // register_block_type(__DIR__ . '/blocks/separator');
     // register_block_type(__DIR__ . '/blocks/group-extended'); 
     // register_block_type(__DIR__ . '/blocks/slider-image');
     // register_block_type(__DIR__ . '/blocks/slider-simple');
     // register_block_type(__DIR__ . '/blocks/slider-simple-item');
     // register_block_type(__DIR__ . '/blocks/lottie-player');
-    register_block_type(__DIR__ . '/blocks/header-minimalist');
+    // register_block_type(__DIR__ . '/blocks/header-minimalist');
     
     // register_block_type(__DIR__ . '/blocks/test');
     

@@ -1,79 +1,108 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const blocks = document.querySelectorAll(
-        '.wp-block-animablocks-number-increment-animation > .number-animation-block'
-    );
+document.addEventListener( 'DOMContentLoaded', () => {
+	const blocks = document.querySelectorAll(
+		'.wp-block-animablocks-number-increment-animation > .number-animation-block'
+	);
 
-    const observer = new IntersectionObserver((entries, observer) => {
-        entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-                const block = entry.target;
-                const startChar = block.getAttribute('data-start-char') || '';
-                const endChar = block.getAttribute('data-end-char') || '';
-                const startNumber = parseFloat(block.getAttribute('data-start-number')) || 0;
-                const endNumber = parseFloat(block.getAttribute('data-end-number')) || 100;
-                const delay = parseInt(block.getAttribute('data-delay'), 10) || 0;
-                const speed = parseFloat(block.getAttribute('data-speed')) || 1; // seconds
-                const locale = block.getAttribute('data-locale') || 'en-US';
+	const observer = new IntersectionObserver( ( entries, observer ) => {
+		entries.forEach( ( entry ) => {
+			if ( entry.isIntersecting ) {
+				const block = entry.target;
+				const startChar = block.getAttribute( 'data-start-char' ) || '';
+				const endChar = block.getAttribute( 'data-end-char' ) || '';
+				const startNumber =
+					parseFloat( block.getAttribute( 'data-start-number' ) ) ||
+					0;
+				const endNumber =
+					parseFloat( block.getAttribute( 'data-end-number' ) ) ||
+					100;
+				const delay =
+					parseInt( block.getAttribute( 'data-delay' ), 10 ) || 0;
+				const speed =
+					parseFloat( block.getAttribute( 'data-speed' ) ) || 1; // seconds
+				const locale = block.getAttribute( 'data-locale' ) || 'en-US';
 
-                let currentNumber = startNumber;
+				let currentNumber = startNumber;
 
-                animationtext({ block: block, startChar: startChar, endChar: endChar, startNumber: startNumber, endNumber: endNumber, delay: delay, speed: speed, locale, currentNumber: currentNumber });
+				animationtext( {
+					block: block,
+					startChar: startChar,
+					endChar: endChar,
+					startNumber: startNumber,
+					endNumber: endNumber,
+					delay: delay,
+					speed: speed,
+					locale,
+					currentNumber: currentNumber,
+				} );
 
-                // const easeOutQuad = (t) => t * (2 - t);
+				// const easeOutQuad = (t) => t * (2 - t);
 
-                // setTimeout(() => {
-                //     const startTime = performance.now();
+				// setTimeout(() => {
+				//     const startTime = performance.now();
 
-                //     const frame = () => {
-                //         const now = performance.now();
-                //         const elapsed = now - startTime;
+				//     const frame = () => {
+				//         const now = performance.now();
+				//         const elapsed = now - startTime;
 
-                //         if (elapsed < speed * 1000) {
-                //             const progress = elapsed / (speed * 1000);
-                //             currentNumber = startNumber + (endNumber - startNumber) * easeOutQuad(progress);
-                //             const roundedNumber = Math.round(currentNumber);
-                //             block.textContent = `${startChar}${roundedNumber.toLocaleString(locale)}${endChar}`;
-                //             requestAnimationFrame(frame);
-                //         } else {
-                //             block.textContent = `${startChar}${endNumber.toLocaleString(locale)}${endChar}`;
-                //         }
-                //     };
+				//         if (elapsed < speed * 1000) {
+				//             const progress = elapsed / (speed * 1000);
+				//             currentNumber = startNumber + (endNumber - startNumber) * easeOutQuad(progress);
+				//             const roundedNumber = Math.round(currentNumber);
+				//             block.textContent = `${startChar}${roundedNumber.toLocaleString(locale)}${endChar}`;
+				//             requestAnimationFrame(frame);
+				//         } else {
+				//             block.textContent = `${startChar}${endNumber.toLocaleString(locale)}${endChar}`;
+				//         }
+				//     };
 
-                //     requestAnimationFrame(frame);
-                // }, delay);
+				//     requestAnimationFrame(frame);
+				// }, delay);
 
-                observer.unobserve(block);
-            }
-        });
-    });
+				observer.unobserve( block );
+			}
+		} );
+	} );
 
-    blocks.forEach((block) => observer.observe(block));
-});
+	blocks.forEach( ( block ) => observer.observe( block ) );
+} );
 
+export const animationtext = function ( {
+	block,
+	startChar,
+	endChar,
+	startNumber,
+	endNumber,
+	delay,
+	speed,
+	locale,
+	currentNumber,
+} ) {
+	const easeOutQuad = ( t ) => t * ( 2 - t );
 
-export const animationtext = function ({ block, startChar, endChar, startNumber, endNumber, delay, speed, locale, currentNumber }) {
+	setTimeout( () => {
+		const startTime = performance.now();
 
-    const easeOutQuad = (t) => t * (2 - t);
+		const frame = () => {
+			const now = performance.now();
+			const elapsed = now - startTime;
 
-    setTimeout(() => {
-        const startTime = performance.now();
+			if ( elapsed < speed * 1000 ) {
+				const progress = elapsed / ( speed * 1000 );
+				currentNumber =
+					startNumber +
+					( endNumber - startNumber ) * easeOutQuad( progress );
+				const roundedNumber = Math.round( currentNumber );
+				block.textContent = `${ startChar }${ roundedNumber.toLocaleString(
+					locale
+				) }${ endChar }`;
+				requestAnimationFrame( frame );
+			} else {
+				block.textContent = `${ startChar }${ endNumber.toLocaleString(
+					locale
+				) }${ endChar }`;
+			}
+		};
 
-        const frame = () => {
-            const now = performance.now();
-            const elapsed = now - startTime;
-
-            if (elapsed < speed * 1000) {
-                const progress = elapsed / (speed * 1000);
-                currentNumber = startNumber + (endNumber - startNumber) * easeOutQuad(progress);
-                const roundedNumber = Math.round(currentNumber);
-                block.textContent = `${startChar}${roundedNumber.toLocaleString(locale)}${endChar}`;
-                requestAnimationFrame(frame);
-            } else {
-                block.textContent = `${startChar}${endNumber.toLocaleString(locale)}${endChar}`;
-            }
-        };
-
-        requestAnimationFrame(frame);
-    }, delay);
-
-}
+		requestAnimationFrame( frame );
+	}, delay );
+};

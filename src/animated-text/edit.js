@@ -15,7 +15,7 @@ import Splitting from 'splitting';
 import 'splitting/dist/splitting.css';
 import metadata from './block.json';
 import { __ as _i18n } from '@wordpress/i18n';
-import './editor.scss'
+import './editor.scss';
 
 export default function Edit( { attributes, setAttributes, clientId } ) {
 	const { duration, stagger, delay, animationType, debug } = attributes;

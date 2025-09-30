@@ -1,22 +1,22 @@
 import { createTimeline, stagger } from 'animejs';
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener( 'DOMContentLoaded', () => {
 	const headers = document.querySelectorAll(
 		'.wp-block-animablocks-header-minimalist.header-minimalist'
 	);
-	
-	if (!headers) return
 
-	headers.forEach((header) => {
-		const menuButton = header.querySelector('.header-minimalist__button');
-		const menu = header.querySelector('.header-minimalist__menuburger');
+	if ( ! headers ) return;
 
-		menuButton?.addEventListener('click', () => {
+	headers.forEach( ( header ) => {
+		const menuButton = header.querySelector( '.header-minimalist__button' );
+		const menu = header.querySelector( '.header-minimalist__menuburger' );
+
+		menuButton?.addEventListener( 'click', () => {
 			const isOpen = menu.dataset.open === 'true';
-			menu.dataset.open = !isOpen;
-			menuButton.dataset.open = !isOpen;
+			menu.dataset.open = ! isOpen;
+			menuButton.dataset.open = ! isOpen;
 
-			const tl = createTimeline({ autoplay: false });
+			const tl = createTimeline( { autoplay: false } );
 			tl.set(
 				'.header-minimalist .header-minimalist__menuburger ul li a',
 				{ overflow: 'hidden' }
@@ -25,13 +25,13 @@ document.addEventListener('DOMContentLoaded', () => {
 				{ opacity: 0 }
 			);
 
-			if (!isOpen) {
+			if ( ! isOpen ) {
 				tl.add(
 					'.header-minimalist .header-minimalist__menuburger ul li a span',
 					{
-						opacity: [0, 1],
-						y: [40, 0],
-						delay: stagger(50, { start: 150 }),
+						opacity: [ 0, 1 ],
+						y: [ 40, 0 ],
+						delay: stagger( 50, { start: 150 } ),
 						duration: 400,
 					}
 				);
@@ -39,6 +39,6 @@ document.addEventListener('DOMContentLoaded', () => {
 			} else {
 				tl.restart().pause();
 			}
-		});
-	});
-});
+		} );
+	} );
+} );

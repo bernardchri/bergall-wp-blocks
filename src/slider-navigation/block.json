@@ -1,0 +1,25 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "animablocks/slider-navigation",
+	"title": "Naviguation pour slider",
+	"category": "anima",
+	"icon": "images-alt",
+	"description": "Un slider simple avec navigation et pagination.",
+	"supports": {
+		"spacing": {
+			"padding": true,
+			"margin": true
+		},
+		"color": {
+			"text": true,
+			"background": true,
+			"gradients": true,
+			"link": true
+		}
+	},
+	"attributes": {},
+	"editorScript": "file:./index.js",
+	"viewScript": "file:./view.js",
+	"style": "file:./style-index.css"
+}

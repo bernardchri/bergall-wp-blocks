@@ -1,5 +1,5 @@
 import { useBlockProps } from '@wordpress/block-editor';
-import NavigationSwiper from '../../src/components/navigation-swiper';
+import NavigationSwiper from '../slider-navigation/';
 import Swiper from 'swiper';
 import { EffectFade, Navigation, Pagination } from 'swiper/modules';
 

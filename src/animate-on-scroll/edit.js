@@ -4,19 +4,16 @@ import { AnimateOnScrollControls } from './AnimateOnScrollControls';
 import { AnimateOnScrollPreview } from './AnimateOnScrollPreview';
 import './editor.scss';
 
-export default function Edit(props) {
-	const blockProps = useBlockProps({
+export default function Edit( props ) {
+	const blockProps = useBlockProps( {
 		className: 'animate-on-scroll animate-on-scroll-editor',
-	});
-	const root = useRef(null);
+	} );
+	const root = useRef( null );
 
 	return (
-		<div {...blockProps}>
-			<AnimateOnScrollControls {...props} />
-			<AnimateOnScrollPreview
-				{...props}
-				root={root}
-			/>
+		<div { ...blockProps }>
+			<AnimateOnScrollControls { ...props } />
+			<AnimateOnScrollPreview { ...props } root={ root } />
 		</div>
 	);
 }

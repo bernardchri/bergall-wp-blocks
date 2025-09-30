@@ -7,7 +7,7 @@ import { PanelBody } from '@wordpress/components';
 import { useEffect, useRef } from '@wordpress/element';
 import Swiper from 'swiper';
 import { Navigation, Pagination } from 'swiper/modules';
-import NavigationSwiper from '../../src/components/navigation-swiper';
+import NavigationSwiper from '../slider-navigation';
 
 export default function Edit( { attributes, setAttributes } ) {
 	const { slides, slidesPerView, slidesPerViewMobile } = attributes;

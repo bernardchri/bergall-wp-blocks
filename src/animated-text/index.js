@@ -4,8 +4,8 @@ import save from './save';
 import metadata from './block.json';
 import { customIcon } from './icon';
 
-registerBlockType(metadata, {
+registerBlockType( metadata, {
 	icon: customIcon,
 	edit,
 	save,
-});
+} );

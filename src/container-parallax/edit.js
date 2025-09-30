@@ -9,7 +9,6 @@ import { PanelBody, RangeControl, ToggleControl } from '@wordpress/components';
 import metadata from './block.json';
 import './editor.css';
 
-
 export default function Edit( { attributes, setAttributes } ) {
 	const { speed, depth, alignment } = attributes;
 

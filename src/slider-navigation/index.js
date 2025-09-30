@@ -1,3 +1,5 @@
+import './style.scss';
+
 export default function NavigationSwiper( {
 	paginationDisplay,
 	navigationDisplay,

@@ -1,7 +1,7 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
-	"name": "anima/slider-simple-item",
+	"name": "animablocks/slider-simple-item",
 	"title": "Slider simple item",
 	"category": "anima",
 	"icon": "images-alt2",
@@ -19,5 +19,5 @@
 			"link": true
 		}
 	},
-	"editorScript": "file: ./build/index.js"
+	"editorScript": "file:./index.js"
 }

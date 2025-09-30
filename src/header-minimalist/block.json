@@ -6,12 +6,7 @@
 	"version": "0.2.0",
 	"category": "anima",
 	"icon": "menu",
-	"keywords": [
-		"header",
-		"navigation",
-		"menu",
-		"burger"
-	],
+	"keywords": [ "header", "navigation", "menu", "burger" ],
 	"supports": {
 		"html": false,
 		"color": {
