@@ -1,43 +1,50 @@
-a.wp-block-animablocks-marquee {
+.marquee-container a {
     display: block;
     text-decoration: none;
 }
 
-
-.marquee-wrapper {
-    overflow: clip;
-    width: 100%;
+.marquee-container:hover :is(a) {
+    opacity: 0.9;
 }
 
-.marquee-wrapper.fadeout-horizontal {
+.marquee-container .marquee-wrapper {
+    overflow: clip;
+    width: 100%;
+
+}
+
+.marquee-container .marquee-wrapper.fadeout-horizontal {
     mask-image: linear-gradient(to right,
             transparent,
             black 5rem,
             black calc(100% - 5rem),
             transparent);
-
 }
 
-.marquee-content,
-.marquee-content .block-editor-block-list__layout {
+
+.marquee-container .marquee-content:is(.--preview) .block-editor-block-list__layout {
+    border: 1px dashed #dedede;
     display: flex;
-    align-items: baseline;
-    line-height: 1rem;
-    padding-left: 1rem;
+    width: 100%;
+    flex-direction: column;
     gap: 1rem;
 }
 
 
-.marquee-content p{
-    color: green;
-}
-
-.marquee-content {
+.marquee-wrapper .marquee-content:not(.--preview) {
     width: max-content;
     animation: marquee-scroll var(--speed, 10s) linear infinite var(--direction,
             forwards);
 }
 
+.marquee-content:not(.--preview),
+.marquee-container .marquee-content:not(.--preview) .block-editor-block-list__layout,
+.marquee-container .marquee-content:not(.--preview)>* {
+    display: flex;
+    align-items: baseline;
+    height: auto;
+    gap: 1rem;
+}
 
 
 /* Animation */
@@ -49,4 +56,31 @@ a.wp-block-animablocks-marquee {
     to {
         transform: translateX(-50%);
     }
+}
+
+/* EDITOR */
+
+.marquee-container-editor {
+    padding: .5rem;
+    border: 2px dashed #dedede;
+    border-radius: 1rem;
+}
+
+.marquee-container-editor .marquee-wrapper {
+    overflow: hidden !important;
+}
+
+.marquee-container-editor::before {
+    content: "Anima - bandeau défilant";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    font-size: .75rem;
+    transform: translate(-50%, 0);
+    color: white;
+    background-color: #999;
+    padding: .1rem .25rem;
+    font-family: 'Courier New', Courier, monospace;
+    pointer-events: none;
+    border-radius: 0 0 .25rem .25rem;
 }
