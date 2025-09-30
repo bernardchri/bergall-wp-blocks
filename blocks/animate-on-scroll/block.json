@@ -24,8 +24,8 @@
     "endOpacity": { "type": "number", "default": 1 },
     "scrollEnterElement": { "type": "string", "default": "bottom" },
     "scrollEnterViewport": { "type": "string", "default": "top" },
-    "scrollLeaveElement": { "type": "string", "default": "center" },
-    "scrollLeaveViewport": { "type": "string", "default": "center" },
+    "scrollLeaveElement": { "type": "string", "default": "center-=20%" },
+    "scrollLeaveViewport": { "type": "string", "default": "top" },
     "debug": { "type": "boolean", "default": false },
     "previewState": { "type": "string", "default": "start" }
   },

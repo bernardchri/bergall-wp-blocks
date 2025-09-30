@@ -1,5 +1,6 @@
 import { InspectorControls } from '@wordpress/block-editor';
-import { PanelBody, RangeControl, SelectControl, TextControl } from '@wordpress/components';
+import { Button, PanelBody, RangeControl, SelectControl, TextControl } from '@wordpress/components';
+import metadata from './block.json';
 
 export function AnimateOnScrollControls({ attributes, setAttributes }) {
     const {
@@ -21,6 +22,16 @@ export function AnimateOnScrollControls({ attributes, setAttributes }) {
         debug,
         previewState,
     } = attributes;
+
+
+    const resetValuesForScrollTriggers = () => {
+        setAttributes({
+            scrollEnterElement: metadata.attributes.scrollEnterElement.default,
+            scrollEnterViewport: metadata.attributes.scrollEnterViewport.default,
+            scrollLeaveElement: metadata.attributes.scrollLeaveElement.default,
+            scrollLeaveViewport: metadata.attributes.scrollLeaveViewport.default
+        });
+    }
 
     // Détermine le style d'aperçu selon previewState
     let previewStyle = {};
@@ -61,17 +72,9 @@ export function AnimateOnScrollControls({ attributes, setAttributes }) {
                     onChange={value => setAttributes({ previewState: value })}
                     help="Permet de visualiser l'état initial ou final de l'animation dans l'éditeur."
                 />
-                 <SelectControl
-                    label="Afficher le mode debug en front"
-                    value={debug ? 'true' : 'false'}
-                    options={[
-                        { label: 'Non', value: 'false' },
-                        { label: 'Oui', value: 'true' }
-                    ]}
-                    onChange={value => setAttributes({ debug: value === 'true' })}
-                />
+
             </PanelBody>
-           
+
 
             <PanelBody title="Opacité" initialOpen={true}>
                 <RangeControl
@@ -100,9 +103,9 @@ export function AnimateOnScrollControls({ attributes, setAttributes }) {
                     __nextHasNoMarginBottom
                     __next40pxDefaultSize
                     label="Start X (px)"
-                    type="number"
                     value={startX}
-                    onChange={(value) => setAttributes({ startX: Number(value) })}
+                    type='number'
+                    onChange={(value) => setAttributes({ startX: value })}
                 />
                 <TextControl
                     __nextHasNoMarginBottom
@@ -110,13 +113,13 @@ export function AnimateOnScrollControls({ attributes, setAttributes }) {
                     label="Start Y (px)"
                     type="number"
                     value={startY}
-                    onChange={(value) => setAttributes({ startY: Number(value) })}
+                    onChange={(value) => setAttributes({ startY: value })}
                 />
                 <TextControl
                     label="End X (px)"
                     type="number"
                     value={endX}
-                    onChange={(value) => setAttributes({ endX: Number(value) })}
+                    onChange={(value) => setAttributes({ endX: value })}
                 />
                 <TextControl
                     __nextHasNoMarginBottom
@@ -124,7 +127,7 @@ export function AnimateOnScrollControls({ attributes, setAttributes }) {
                     label="End Y (px)"
                     type="number"
                     value={endY}
-                    onChange={(value) => setAttributes({ endY: Number(value) })}
+                    onChange={(value) => setAttributes({ endY: value })}
                 />
             </PanelBody>
             <PanelBody title="Scale Settings">
@@ -170,6 +173,15 @@ export function AnimateOnScrollControls({ attributes, setAttributes }) {
                 />
             </PanelBody>
             <PanelBody title="Déclencheurs scroll" initialOpen={false}>
+                <SelectControl
+                    label="Afficher le mode debug en front"
+                    value={debug ? 'true' : 'false'}
+                    options={[
+                        { label: 'Non', value: 'false' },
+                        { label: 'Oui', value: 'true' }
+                    ]}
+                    onChange={value => setAttributes({ debug: value === 'true' })}
+                />
                 <TextControl
                     __nextHasNoMarginBottom
                     __next40pxDefaultSize
@@ -202,6 +214,11 @@ export function AnimateOnScrollControls({ attributes, setAttributes }) {
                     onChange={(value) => setAttributes({ scrollLeaveViewport: value })}
                     help='Exemple : "center"'
                 />
+
+                <Button
+                    variant="secondary"
+                    onClick={resetValuesForScrollTriggers}>reset</Button>
+
             </PanelBody>
 
 

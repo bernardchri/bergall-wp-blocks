@@ -1,16 +1,18 @@
 import { animate, onScroll } from 'animejs';
+import metadata from './block.json';
+
 
 document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.animate-on-scroll').forEach((section) => {
-        const initialScale = parseFloat(section.getAttribute('data-initial-scale')) || 0.8;
-        const finalScale = parseFloat(section.getAttribute('data-final-scale')) || 1;
-        const zIndex = parseInt(section.getAttribute('data-z-index'), 10) || 10;
-        const startX = parseFloat(section.getAttribute('data-start-x')) || 0;
-        const startY = parseFloat(section.getAttribute('data-start-y')) || 0;
-        const endX = parseFloat(section.getAttribute('data-end-x')) || 0;
-        const endY = parseFloat(section.getAttribute('data-end-y')) || 0;
-        const startRotate = parseFloat(section.getAttribute('data-start-rotate')) || 0;
-        const endRotate = parseFloat(section.getAttribute('data-end-rotate')) || 0;
+        const initialScale = parseFloat(section.getAttribute('data-initial-scale')) || metadata.attributes.initialScale.default ;
+        const finalScale = parseFloat(section.getAttribute('data-final-scale')) || metadata.attributes.finalScale.default ;
+        const zIndex = parseInt(section.getAttribute('data-z-index'), 10) || metadata.attributes.zIndex.default ;
+        const startX = parseFloat(section.getAttribute('data-start-x')) || metadata.attributes.startX.default ;
+        const startY = parseFloat(section.getAttribute('data-start-y')) || metadata.attributes.startY.default ;
+        const endX = parseFloat(section.getAttribute('data-end-x')) || metadata.attributes.endX.default ;
+        const endY = parseFloat(section.getAttribute('data-end-y')) || metadata.attributes.endY.default ;
+        const startRotate = parseFloat(section.getAttribute('data-start-rotate')) || metadata.attributes.startRotate.default ;
+        const endRotate = parseFloat(section.getAttribute('data-end-rotate')) || metadata.attributes.endRotate.default ;
 
         // Correction : startOpacity et endOpacity doivent être >= 0 et <= 1
         let startOpacity = section.getAttribute('data-start-opacity');
@@ -23,10 +25,10 @@ document.addEventListener('DOMContentLoaded', () => {
         endOpacity = isNaN(endOpacity) ? 1 : Math.max(0, Math.min(1, endOpacity));
 
         // Récupérer les triggers personnalisés ou fallback sur les valeurs par défaut
-        const scrollEnterElement = section.getAttribute('data-scroll-enter-element') || 'bottom';
-        const scrollEnterViewport = section.getAttribute('data-scroll-enter-viewport') || 'top';
-        const scrollLeaveElement = section.getAttribute('data-scroll-leave-element') || 'center';
-        const scrollLeaveViewport = section.getAttribute('data-scroll-leave-viewport') || 'center';
+        const scrollEnterElement = section.getAttribute('data-scroll-enter-element') || metadata.attributes.scrollEnterElement.default ;
+        const scrollEnterViewport = section.getAttribute('data-scroll-enter-viewport') || metadata.attributes.scrollEnterViewport.default ;
+        const scrollLeaveElement = section.getAttribute('data-scroll-leave-element') || metadata.attributes.scrollLeaveElement.default ;
+        const scrollLeaveViewport = section.getAttribute('data-scroll-leave-viewport') || metadata.attributes.scrollLeaveViewport.default ;
 
         // Compose les valeurs pour anime.js v4 : "element viewport"
         const scrollEnter = `${scrollEnterElement} ${scrollEnterViewport}`;
