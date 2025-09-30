@@ -1,0 +1,98 @@
+{
+	"apiVersion": 2,
+	"name": "animablocks/group-extended",
+	"title": "Group Etendus",
+	"category": "anima",
+	"icon": "admin-links",
+	"description": "Groupe avec des options supplémentaires",
+	"supports": {
+		"anchor": true,
+		"html": false,
+		"align": [
+			"wide",
+			"full"
+		],
+		"color": {
+			"text": true,
+			"background": true
+		},
+		"spacing": {
+			"margin": true,
+			"padding": true
+		},
+		"border": {
+			"radius": true,
+			"color": true,
+			"style": true,
+			"width": true
+		}
+	},
+	"attributes": {
+		"href": {
+			"type": "string",
+			"default": ""
+		},
+		"newTab": {
+			"type": "boolean",
+			"default": false
+		},
+		"animation": {
+			"type": "string",
+			"default": "none"
+		},
+		"positionAbsolute": {
+			"type": "boolean",
+			"default": false
+		},
+		"zIndex": {
+			"type": "number",
+			"default": 0
+		},
+		"top": {
+			"type": "string",
+			"default": ""
+		},
+		"left": {
+			"type": "string",
+			"default": ""
+		},
+		"right": {
+			"type": "string",
+			"default": ""
+		},
+		"bottom": {
+			"type": "string",
+			"default": ""
+		},
+		"height": {
+			"type": "string",
+			"default": ""
+		},
+		"width": {
+			"type": "string",
+			"default": ""
+		},
+		"overflow": {
+			"type": "string",
+			"default": ""
+		}
+	},
+	"example": {
+		"attributes": {
+			"href": "https://example.com",
+			"newTab": true,
+			"animation": "fadeInUp"
+		},
+		"innerBlocks": [
+			{
+				"name": "core/paragraph",
+				"attributes": {
+					"content": "Ceci est un aperçu du bloc Group Extended."
+				}
+			}
+		]
+	},
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css"
+}

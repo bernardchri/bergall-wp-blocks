@@ -25,48 +25,52 @@ define('anima_WP_BLOCKS_PATH', plugin_dir_path(__FILE__));
 define('anima_WP_BLCOKS_URL', plugin_dir_url(__FILE__));
 
 
-// require_once ( anima_WP_BLOCKS_PATH . "/inc/acf-general-options.php");
-// require_once ( anima_WP_BLOCKS_PATH . "/inc/acf-blocks-gutemberg.php");
 
+/**
+ * Registers the block using a `blocks-manifest.php` file, which improves the performance of block type registration.
+ * Behind the scenes, it also registers all assets so they can be enqueued
+ * through the block editor in the corresponding context.
+ *
+ * @see https://make.wordpress.org/core/2025/03/13/more-efficient-block-type-registration-in-6-8/
+ * @see https://make.wordpress.org/core/2024/10/17/new-block-type-registration-apis-to-improve-performance-in-wordpress-6-7/
+ */
+function anima_test_block_init() {
+	/**
+	 * Registers the block(s) metadata from the `blocks-manifest.php` and registers the block type(s)
+	 * based on the registered block metadata.
+	 * Added in WordPress 6.8 to simplify the block metadata registration process added in WordPress 6.7.
+	 *
+	 * @see https://make.wordpress.org/core/2025/03/13/more-efficient-block-type-registration-in-6-8/
+	 */
+	if ( function_exists( 'wp_register_block_types_from_metadata_collection' ) ) {
+		wp_register_block_types_from_metadata_collection( __DIR__ . '/build', __DIR__ . '/build/blocks-manifest.php' );
+		return;
+	}
 
-function anima_wp_blocks_register_scripts()
-{
-    wp_enqueue_script(
-        'my-custom-blocks-js',
-        plugins_url('/build/index.js', __FILE__),
-        array('wp-blocks', 'wp-element', 'wp-editor'),
-        filemtime(plugin_dir_path(__FILE__) . 'build/index.js')
-    );
+	/**
+	 * Registers the block(s) metadata from the `blocks-manifest.php` file.
+	 * Added to WordPress 6.7 to improve the performance of block type registration.
+	 *
+	 * @see https://make.wordpress.org/core/2024/10/17/new-block-type-registration-apis-to-improve-performance-in-wordpress-6-7/
+	 */
+	if ( function_exists( 'wp_register_block_metadata_collection' ) ) {
+		wp_register_block_metadata_collection( __DIR__ . '/build', __DIR__ . '/build/blocks-manifest.php' );
+	}
+	/**
+	 * Registers the block type(s) in the `blocks-manifest.php` file.
+	 *
+	 * @see https://developer.wordpress.org/reference/functions/register_block_type/
+	 */
+	$manifest_data = require __DIR__ . '/build/blocks-manifest.php';
+	foreach ( array_keys( $manifest_data ) as $block_type ) {
+		register_block_type( __DIR__ . "/build/{$block_type}" );
+	}
 }
-add_action('enqueue_block_assets', 'anima_wp_blocks_register_scripts');
-
-
-//css en mode backend
-add_action('wp_enqueue_scripts', 'anima_enqueue_front_styles');
-function anima_enqueue_front_styles() {
-    wp_enqueue_style(
-        'my-custom-blocks-css',
-        plugins_url('/build/style-index.css', __FILE__),
-        array(),
-        filemtime(plugin_dir_path(__FILE__) . 'build/style-index.css')
-    );
-}
-
-// css en mode front
-add_action('enqueue_block_editor_assets', 'anima_enqueue_editor_styles');
-function anima_enqueue_editor_styles() {
-    wp_enqueue_style(
-        'my-custom-blocks-index-css',
-        plugins_url('/build/index.css', __FILE__),
-        array('wp-edit-blocks'),
-        filemtime(plugin_dir_path(__FILE__) . 'build/index.css')
-    );
-}
+add_action( 'init', 'anima_test_block_init' );
 
 
 
 // AJOUT D'UNE CATEGORIE DE BLOCS
-
 function anima_new_category_blocks($cats)
 {
 
@@ -87,50 +91,41 @@ function anima_new_category_blocks($cats)
 add_filter('block_categories_all', 'anima_new_category_blocks');
 
 
-
 // Enqueue Swiper CSS globally for all blocks + Pagination + Navigation
-function anima_blocks_enqueue_assets() {
-    wp_enqueue_style(
-        'swiper-global',
-        plugin_dir_url(__FILE__) . 'src/css/swiper-global.css',
-        [],
-        '10.0.0'
-    );
-    wp_enqueue_style(
-        'swiper-navigation',
-        plugin_dir_url(__FILE__) . 'src/components/navigation-swiper/style.css',
-        [],
-        '10.0.0'
-    );
-}
-add_action('enqueue_block_assets', 'anima_blocks_enqueue_assets');
+// function anima_blocks_enqueue_assets() {
+//     wp_enqueue_style(
+//         'swiper-global',
+//         plugin_dir_url(__FILE__) . 'src/css/swiper-global.css',
+//         [],
+//         '10.0.0'
+//     );
+//     wp_enqueue_style(
+//         'swiper-navigation',
+//         plugin_dir_url(__FILE__) . 'src/components/navigation-swiper/style.css',
+//         [],
+//         '10.0.0'
+//     );
+// }
+// add_action('enqueue_block_assets', 'anima_blocks_enqueue_assets');
 
 // ENREGISTREMENT DES BLOCS
 function animablocks_register_custom_blocks()
 {
-    // composants animations
-    register_block_type(__DIR__ . '/blocks/animated-text');
     register_block_type(__DIR__ . '/blocks/animate-on-scroll');
+    register_block_type(__DIR__ . '/blocks/animated-text');
     register_block_type(__DIR__ . '/blocks/container-parallax');
-    register_block_type(__DIR__ . '/blocks/lottie-player');
-    register_block_type(__DIR__ . '/blocks/number-increment-animation');
+    // register_block_type(__DIR__ . '/blocks/number-increment-animation');
     register_block_type(__DIR__ . '/blocks/marquee');
-
-    // composants de mise en forme
-  
-    register_block_type(__DIR__ . '/blocks/separator');
-    register_block_type(__DIR__ . '/blocks/group-extended'); 
-
-    
-    // sliders
-    register_block_type(__DIR__ . '/blocks/slider-image');
-    register_block_type(__DIR__ . '/blocks/slider-simple');
-    register_block_type(__DIR__ . '/blocks/slider-simple-item');
-
-    // headers
+    // register_block_type(__DIR__ . '/blocks/separator');
+    // register_block_type(__DIR__ . '/blocks/group-extended'); 
+    // register_block_type(__DIR__ . '/blocks/slider-image');
+    // register_block_type(__DIR__ . '/blocks/slider-simple');
+    // register_block_type(__DIR__ . '/blocks/slider-simple-item');
+    // register_block_type(__DIR__ . '/blocks/lottie-player');
     register_block_type(__DIR__ . '/blocks/header-minimalist');
     
-
+    // register_block_type(__DIR__ . '/blocks/test');
+    
     // TODO en cours
       // register_block_type(__DIR__ . '/blocks/circle-text');
     // register_block_type(__DIR__ . '/blocks/image-video-hover');
@@ -141,37 +136,7 @@ function animablocks_register_custom_blocks()
     // register_block_type(__DIR__ . '/blocks/carrousel-text'); // effet de texte qui defile verticalement
 
 }
-add_action('init', 'animablocks_register_custom_blocks');
-
-
-
-
-/********************************/
-// Save and load plugin specific ACF field groups via the /acf-json folder.
-/********************************/
-
-// // Save
-// function anima_wp_blocks_update_field_group($group)
-// {
-//     // list of field groups that should be saved to my-plugin/acf-json
-
-//     // ICI : ajouter les noms des champs dans du dossier acf-json
-//     $groups = array('group_6671a2757c269');
-
-//     if (in_array($group['key'], $groups)) {
-//         add_filter('acf/settings/save_json', function () {
-//             return dirname(__FILE__) . '/acf-json';
-//         });
-//     }
-// }
-// add_action('acf/update_field_group', 'anima_wp_blocks_update_field_group', 1, 1);
-
-// // Load - includes the /acf-json folder in this plugin to the places to look for ACF Local JSON files
-// add_filter('acf/settings/load_json', function ($paths) {
-//     $paths[] = dirname(__FILE__) . '/acf-json';
-//     return $paths;
-// });
-
+// add_action('init', 'animablocks_register_custom_blocks');
 
 
 // Ajout d'une rubrique de composants
@@ -179,9 +144,9 @@ function anima_wp_blocks_register_blocks_collections()
 {
     wp_enqueue_script(
         'anima-wp-blocks-categories',
-        plugins_url('src/utils/blocks-collection.js', __FILE__),
+        plugins_url('scripts/blocks-collection.js', __FILE__),
         array('wp-blocks', 'wp-dom-ready', 'wp-edit-post'),
-        filemtime(plugin_dir_path(__FILE__) . 'src/utils/blocks-collection.js')
+        filemtime(plugin_dir_path(__FILE__) . 'scripts/blocks-collection.js')
     );
 }
 add_action('enqueue_block_editor_assets', 'anima_wp_blocks_register_blocks_collections');

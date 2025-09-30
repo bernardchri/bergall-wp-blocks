@@ -1,20 +1,24 @@
 {
-  "devDependencies": {
-    "@wordpress/scripts": "^30.10.0"
-  },
-  "scripts": {
-    "build": "wp-scripts build",
-    "start": "wp-scripts start",
-    "zip": "npm run build && cd .. && zip -r anima-wp-blocks.zip anima-wp-blocks -x \"anima-wp-blocks/node_modules/*\" \"anima-wp-blocks/src/*\" \"anima-wp-blocks/*.git*\" \"anima-wp-blocks/*.zip\" \"anima-wp-blocks/package.json\" \"anima-wp-blocks/package-lock.json\" \"anima-wp-blocks/blocks/*\" \"anima-wp-blocks/webpack.config.js\" \"anima-wp-blocks/.babelrc\" \"anima-wp-blocks/.gitignore\" \"anima-wp-blocks/.editorconfig\" \"anima-wp-blocks/.eslintrc.json\" \"anima-wp-blocks/.stylelintignore\" \"anima-wp-blocks/.stylelintrc.json\" \"anima-wp-blocks/README.md\"",
-    "plugin-zip": "wp-scripts plugin-zip"
-  },
-  "dependencies": {
-    "@wordpress/api-fetch": "^7.20.0",
-    "animejs": "^4.0.1",
-    "jquery-ui-dist": "^1.13.3",
-    "lottie-web": "^5.13.0",
-    "react-draggable": "^4.4.6",
-    "splitting": "^1.1.0",
-    "swiper": "^11.2.4"
-  }
+	"name": "test",
+	"version": "0.1.0",
+	"description": "Example block scaffolded with Create Block tool.",
+	"author": "The WordPress Contributors",
+	"license": "GPL-2.0-or-later",
+	"main": "build/index.js",
+	"scripts": {
+		"build": "wp-scripts build --blocks-manifest",
+		"format": "wp-scripts format",
+		"lint:css": "wp-scripts lint-style",
+		"lint:js": "wp-scripts lint-js",
+		"packages-update": "wp-scripts packages-update",
+		"plugin-zip": "wp-scripts plugin-zip",
+		"start": "wp-scripts start --blocks-manifest"
+	},
+	"devDependencies": {
+		"@wordpress/scripts": "^30.24.0"
+	},
+	"dependencies": {
+		"animejs": "^4.2.0",
+		"splitting": "^1.1.0"
+	}
 }

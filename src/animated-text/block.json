@@ -1,0 +1,61 @@
+{
+	"apiVersion": 2,
+	"name": "animablocks/animated-text",
+	"title": "Texte animé",
+	"category": "anima",
+	"description": "Effets d'entrée dynamiques pour vos titres et paragraphes.",
+	"icon": "editor-textcolor",
+	"attributes": {
+		"duration": {
+			"type": "number",
+			"default": 0.3
+		},
+		"stagger": {
+			"type": "number",
+			"default": 0.08
+		},
+		"delay": {
+			"type": "number",
+			"default": 0.3
+		},
+		"animationType": {
+			"type": "string",
+			"default": "lines"
+		},
+		"debug": {
+			"type": "boolean",
+			"default": false
+		},
+		"startTranslateY": {
+			"type": "number",
+			"default": 30
+		},
+		"startOpacity": {
+			"type": "number",
+			"default": 0
+		}
+	},
+	"supports": {
+		"html": false
+	},
+	"example": {
+		"attributes": {
+			"duration": 1,
+			"stagger": 0.1,
+			"delay": 0.1,
+			"animationType": "chars"
+		},
+		"innerBlocks": [
+			{
+				"name": "core/paragraph",
+				"attributes": {
+					"content": "Ceci est un aperçu du texte animé."
+				}
+			}
+		]
+	},
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"viewScript": "file:./view.js",
+	"style": "file:./style-index.css"
+}

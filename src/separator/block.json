@@ -1,0 +1,33 @@
+{
+	"apiVersion": 2,
+	"name": "anima/separator",
+	"title": "Anima Separator",
+	"category": "anima",
+	"icon": "minus",
+	"description": "Bloc séparateur avec formes SVG personnalisables",
+	"supports": {
+		"html": false,
+		"color": {
+			"text": false,
+			"background": true
+		}
+	},
+	"attributes": {
+		"shape": {
+			"type": "string",
+			"default": "wave"
+		},
+		"shapeColor": {
+			"type": "string",
+			"default": "#1248F4"
+		},
+		"flipX": {
+			"type": "boolean",
+			"default": false
+		},
+		"flipY": {
+			"type": "boolean",
+			"default": false
+		}
+	}
+}

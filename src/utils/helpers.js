@@ -1,1 +1,0 @@
-// # Fonctions utilitaires partagées

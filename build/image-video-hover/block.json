@@ -1,0 +1,32 @@
+{
+  "apiVersion": 2,
+  "name": "animablocks/image-video-hover",
+  "title": "Image Video Hover",
+  "category": "anima",
+  "icon": "format-video",
+  "attributes": {
+    "imageUrl": {
+      "type": "string",
+      "source": "attribute",
+      "selector": "img.image-video-hover__image",
+      "attribute": "src"
+    },
+    "videoUrl": {
+      "type": "string",
+      "source": "attribute",
+      "selector": "video.image-video-hover__video source",
+      "attribute": "src"
+    },
+    "autoPlayVideo": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "supports": {
+    "html": false
+  },
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./editor.css",
+  "style": "file:./style.css",
+  "renderScript": "file:./render.js"
+}

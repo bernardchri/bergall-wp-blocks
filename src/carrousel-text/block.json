@@ -1,0 +1,14 @@
+{
+	"apiVersion": 2,
+	"name": "anima/carrousel-texte",
+	"icon": "slides",
+	"category": "anima",
+	"description": "Un bloc avec animation de texte façon carroussel",
+	"keywords": [ "bloc", "personnalisé", "addon" ],
+	"version": "1.0.0",
+	"textdomain": "anima",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"viewScript": "file:./view.js",
+	"style": "file:./style-index.css"
+}

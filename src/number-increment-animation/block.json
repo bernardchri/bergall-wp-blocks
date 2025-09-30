@@ -1,0 +1,61 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "animablocks/number-increment-animation",
+    "description": "animation d'un texte à l'arrivée dans la vue ",
+    "title": "Animation d'un nombre",
+    "category": "anima",
+    "icon": "chart-line",
+    "supports": {
+        "color": {
+            "gradients": true,
+            "text": true
+        },
+        "spacing": {
+            "padding": true,
+            "margin": true
+        },
+        "typography": {
+            "fontSize": true,
+            "lineHeight": true
+        }
+    },
+    "attributes": {
+        "startChar": {
+            "type": "string",
+            "default": ""
+        },
+        "endChar": {
+            "type": "string",
+            "default": ""
+        },
+        "startNumber": {
+            "type": "number",
+            "default": 0
+        },
+        "endNumber": {
+            "type": "number",
+            "default": 100
+        },
+        "delay": {
+            "type": "number",
+            "default": 0
+        },
+        "increment": {
+            "type": "number",
+            "default": 1
+        },
+        "speed": {
+            "type": "number",
+            "default": 2
+        },
+        "locale": {
+            "type": "string",
+            "default": "en-US"
+        }
+    },
+    "editorScript": "file:./index.js",
+    "viewScript": "file:./view.js",
+    "editorStyle": "file:./index.css",
+    "style": "file:./style-index.css"
+}

@@ -1,0 +1,52 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "anima/slider-simple",
+	"title": "Slider simple",
+	"category": "anima",
+	"icon": "images-alt",
+	"description": "Un slider simple avec navigation et pagination.",
+	"supports": {
+		"align": true,
+		"spacing": {
+			"padding": true,
+			"margin": true
+		},
+		"color": {
+			"text": true,
+			"background": true,
+			"gradients": true,
+			"link": true
+		}
+	},
+	"attributes": {
+		"slides": {
+			"type": "array",
+			"default": []
+		},
+		"numberofslides": {
+			"type": "number",
+			"default": 1
+		},
+		"numberofslidesMobile": {
+			"type": "number",
+			"default": 1
+		},
+		"paginationDisplay": {
+			"type": "boolean",
+			"default": true
+		},
+		"navigationDisplay": {
+			"type": "boolean",
+			"default": true
+		},
+		"autoplay": {
+			"type": "boolean",
+			"default": false
+		},
+		"interval": {
+			"type": "number",
+			"default": 5000
+		}
+	}
+}

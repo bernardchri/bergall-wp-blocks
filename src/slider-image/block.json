@@ -1,0 +1,31 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "anima/slider-image",
+	"title": "Slider images",
+	"category": "anima",
+	"icon": "images-alt",
+	"description": "Carroussel d'images avec navigation et pagination.",
+	"supports": {
+		"align": true,
+		"spacing": {
+			"margin": true
+		}
+	},
+	"attributes": {
+		"slides": {
+			"type": "array",
+			"default": []
+		},
+		"slidesPerView": {
+			"type": "number",
+			"default": 1
+		},
+		"slidesPerViewMobile": {
+			"type": "number",
+			"default": 1
+		}
+	},
+	"editorStyle": "file: ./editor.css",
+	"style": "file:./style.css"
+}

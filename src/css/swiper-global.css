@@ -1,6 +1,0 @@
-/* CSS Swiper globale pour tous les blocs */
-@import '../../node_modules/swiper/swiper-bundle.min.css';
-@import '../../node_modules/swiper/modules/navigation.css';
-@import '../../node_modules/swiper/modules/effect-fade-element.css';
-@import '../../node_modules/swiper/modules/pagination.css';
-

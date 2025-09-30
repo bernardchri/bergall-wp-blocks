@@ -1,0 +1,79 @@
+/**
+ * The following styles get applied inside the editor only.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+
+.header-minimalist {
+    &__barre {
+        border: 1px dashed #bbb;
+        padding: 1em;
+        margin-bottom: 1em;
+        display: flex;
+        /* max-height: 100px !important;
+    overflow: hidden; */
+
+        .header-minimalist__menu01 {
+            ul {
+                padding: 0;
+                margin: 0;
+                list-style: none;
+            }
+        }
+
+        @media screen and (min-width: 976px) {
+            .header-minimalist__menu01 {
+                ul {
+                    display: flex;
+                    gap: 1em;
+                }
+            }
+        }
+    }
+
+    &__logo {
+        img {
+            max-height: 60px;
+            max-width: 100%;
+            display: block;
+        }
+    }
+
+    &__menu01 {
+        margin-left: 2em;
+    }
+
+    &__button {
+        margin-left: auto;
+        background: #eee;
+        border: 1px solid #ccc;
+    }
+
+    &__menuburger {
+        &.admin {
+            /* background: #fffbe7; */
+            /* border: 1px solid #ffe082; */
+            margin-top: 1em;
+            padding: 1em;
+        }
+    }
+
+    &__menuburgerwrapper {
+        display: flex;
+        gap: 2em;
+
+        >* {
+            outline: 1px dashed #bbb;
+            display: flex;
+        }
+    }
+
+    &__menu02,
+    &__menu03 {
+        ul {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+    }
+}

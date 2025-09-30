@@ -1,0 +1,308 @@
+.admin-bar .wp-block-animablocks-header-minimalist.header-minimalist {
+    top: 32px;
+}
+
+
+.wp-block-animablocks-header-minimalist.header-minimalist {
+    max-width: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    background-color: white;
+    box-shadow: 0 2px 4px rgb(0 0 0 / 0.1);
+}
+
+
+body:not(.block-editor-iframe__body) :has(.header-minimalist) {
+    padding-top: 4rem;
+}
+
+
+.wp-block-animablocks-header-minimalist.header-minimalist .header-minimalist__barre {
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    z-index: 10;
+    background-color: inherit;
+}
+
+.wp-block-animablocks-header-minimalist.header-minimalist .header-minimalist__barre .header-minimalist__logo {
+    text-decoration: none;
+}
+
+
+.wp-block-animablocks-header-minimalist.header-minimalist .header-minimalist__barre .header-minimalist__logo img {
+    display: flex;
+    align-items: center;
+    height: 3rem;
+    flex-shrink: 0;
+}
+
+.wp-block-animablocks-header-minimalist.header-minimalist ul,
+.wp-block-animablocks-header-minimalist.header-minimalist ul li {
+    list-style-type: none;
+}
+
+.wp-block-animablocks-header-minimalist.header-minimalist a:hover {
+    cursor: pointer;
+}
+
+.wp-block-animablocks-header-minimalist.header-minimalist .header-minimalist__menuburger {
+    width: 100%;
+    z-index: -1;
+    height: 100vh;
+    overflow: auto;
+    background-color: #fff;
+    background-color: inherit;
+}
+
+body:not(.block-editor-iframe__body) .wp-block-animablocks-header-minimalist.header-minimalist .header-minimalist__menuburger {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    transition: all 250ms ease-in-out;
+}
+
+.header-minimalist__menuburgerwrapper {
+    position: relative;
+    z-index: 9999;
+    margin: 6rem 2rem 2rem;
+    min-height: 80%;
+
+}
+
+.wp-block-animablocks-header-minimalist.header-minimalist .header-minimalist__menuburger[data-open="false"] {
+    opacity: 0;
+    transform: translate(0, -100%);
+}
+
+.wp-block-animablocks-header-minimalist.header-minimalist.header-minimalist__menuburger.admin[data-open="false"] {
+    opacity: 1;
+    transform: translate(0, 0);
+}
+
+
+.wp-block-animablocks-header-minimalist.header-minimalist .header-minimalist__barre .header-minimalist__menu01 ul {
+    display: flex;
+    gap: 1rem;
+    font-size: 1rem;
+    margin: 0;
+}
+
+
+.wp-block-animablocks-header-minimalist.header-minimalist .header-minimalist__menuburger .header-minimalist__menu01 ul {
+    font-size: 2rem;
+    display: flex;
+    gap: 1.5rem;
+    flex-direction: column;
+    line-height: 1em;
+
+}
+
+.wp-block-animablocks-header-minimalist.header-minimalist .header-minimalist__menu02 ul,
+.wp-block-animablocks-header-minimalist.header-minimalist .header-minimalist__menu03 ul {
+    line-height: 1em;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+
+}
+
+.wp-block-animablocks-header-minimalist.header-minimalist .header-minimalist__menu01 ul * {
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
+    line-height: 1.2em;
+}
+
+
+.wp-block-animablocks-header-minimalist.header-minimalist .header-minimalist__menu02 ul * {
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
+    line-height: 1.2em;
+}
+
+.wp-block-animablocks-header-minimalist.header-minimalist .header-minimalist__menu03 ul * {
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
+    line-height: 1.2em;
+}
+
+
+
+.wp-block-animablocks-header-minimalist.header-minimalist .header-minimalist__menu03 ul {
+    font-size: 1rem;
+    padding: 1em 0;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 1em;
+    line-height: clamp(1.7rem, 10vw, 1.2rem);
+}
+
+@media screen and (max-width: 976px) {
+    .wp-block-animablocks-header-minimalist.header-minimalist .header-minimalist__barre .header-minimalist__menu01 {
+        display: none;
+    }
+
+
+
+    .wp-block-animablocks-header-minimalist.header-minimalist .header-minimalist__menu03 ul {
+        border-top: 1px solid #c6c9cb;
+        padding: 2rem 0;
+    }
+}
+
+
+@media screen and (min-width: 976px) {
+    .wp-block-animablocks-header-minimalist.header-minimalist .header-minimalist__menuburgerwrapper {
+        display: flex;
+        justify-content: space-between;
+    }
+
+
+    .wp-block-animablocks-header-minimalist.header-minimalist .header-minimalist__menuburger .header-minimalist__menu01 {
+        display: none;
+    }
+
+    .wp-block-animablocks-header-minimalist.header-minimalist .header-minimalist__menu01 ul * {
+        font-size: clamp(1rem, 1.5rem, 1rem);
+    }
+
+    .wp-block-animablocks-header-minimalist.header-minimalist .header-minimalist__menu02 ul {
+        font-size: 2r;
+    }
+
+
+    .wp-block-animablocks-header-minimalist.header-minimalist .header-minimalist__menuburgerwrapper>div {
+        width: 100%;
+        align-items: center;
+
+    }
+
+    .header-minimalist__menuburgerwrapper .header-minimalist__menu02 {
+        display: flex;
+        justify-content: center;
+    }
+
+    .header-minimalist__menuburgerwrapper .header-minimalist__menu03 {
+        display: flex;
+        justify-content: center;
+        border-top: none;
+        align-content: center;
+    }
+
+}
+
+
+
+
+/* button menu */
+.wp-block-animablocks-header-minimalist.header-minimalist {
+    .header-minimalist__button {
+        background-color: inherit;
+        color: inherit;
+        border-radius: 30px;
+        padding: 0.25rem 1rem;
+        border: none;
+    }
+
+    .ButtonMenu {
+        display: flex;
+        font-size: 1rem;
+        gap: 0.5rem;
+        align-items: center;
+        transition: all 150ms ease;
+        cursor: pointer;
+    }
+
+    .ButtonMenu:hover,
+    .ButtonMenu:focus {
+        background-color: rgb(0, 0, 0, 0.2);
+        outline: 2px solid;
+    }
+
+    .ButtonMenu__icon {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 2rem;
+        width: 2rem;
+    }
+
+    .ButtonMenu[data-open="true"] .ButtonMenu__icon span:nth-child(2) {
+        opacity: 0;
+
+    }
+
+    .ButtonMenu[data-open="true"] .ButtonMenu__icon span:nth-child(1) {
+        transform: rotate(45deg) translate(0.26rem, 0.26rem);
+    }
+
+    .ButtonMenu[data-open="true"] .ButtonMenu__icon span:nth-child(3) {
+        transform: rotate(-45deg) translate(0.26rem, -0.27rem);
+    }
+
+    .ButtonMenu__icon span {
+        margin: 2px 0;
+        display: flex;
+        width: 1rem;
+        height: 2px;
+        transition: all 150ms ease;
+        background: #000000;
+
+    }
+
+}
+
+
+
+
+/* animation Liens */
+.wp-block-animablocks-header-minimalist.header-minimalist {
+    & .header-minimalist__menuburger a {
+        display: inline-block;
+    }
+
+    & li.wp-block-navigation-link a {
+        text-decoration: none;
+        transition: all 125ms ease;
+        padding: 0.20rem;
+        position: relative;
+        display: flex;
+    }
+
+    & li.wp-block-navigation-link {
+        margin-bottom: 0px
+    }
+
+    .wp-block-animablocks-header-minimalist.header-minimalistli.wp-block-navigation-link {
+        display: flex;
+        flex-direction: column;
+    }
+
+    & .header-minimalist__menuburger li.wp-block-navigation-link a:hover {
+        transform: translate(0.25rem, 0);
+        opacity: 1;
+    }
+
+    & li.wp-block-navigation-link a span {
+        display: block;
+    }
+
+    & li.wp-block-navigation-link a span:after {
+        content: " ";
+        display: block;
+        height: 1px;
+        background-color: #000000;
+        width: 0%;
+        position: relative;
+        transition: all 400ms ease;
+    }
+
+    & li.wp-block-navigation-link a:hover span:after {
+        width: 100%;
+    }
+}

@@ -1,0 +1,1 @@
+document.addEventListener("DOMContentLoaded",()=>{const e=document.querySelectorAll(".wp-block-animablocks-marquee.marquee-container");e&&e.forEach(e=>{const n=e.querySelector(".marquee-content");if(n){const e=n.cloneNode(!0);e.querySelectorAll("p").forEach(e=>{e.setAttribute("aria-hidden","true")}),n.innerHTML+=e.innerHTML+e.innerHTML}})});

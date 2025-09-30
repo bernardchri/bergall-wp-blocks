@@ -17,19 +17,23 @@ Apporter des nouveaux blocs aux thèmes FSE pour les rendre plus interactifs et 
 ## Structure valide
 block.json, index.js, edit.js, save.js … 
 
-[X] header minimalis
 [X] animate-on-scroll
 [X] animate-text
-[] lottie-player
+[] carroussel-text
+[] circle-text
 [X] container-parallax
 [X] group-extended
+[X] header **minimalist**
+[] hero-3D-object
 [] image-video-hover
-[] marquee
-[] number-increment-animations
-[X] slider-image
-[X] slider-simple
-[X] slider-simple-item
-[X] separator
+[] lottie-player
+[X] marquee
+[X] number-increment-animation
+[] separator
+[] slider-image
+[] slider-simple
+[] slider-simple-item
+
 
 ## i18n
 [X] animate-text

@@ -1,0 +1,23 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "anima/slider-simple-item",
+	"title": "Slider simple item",
+	"category": "anima",
+	"icon": "images-alt2",
+	"description": "Un item de slide",
+	"supports": {
+		"align": true,
+		"spacing": {
+			"padding": true,
+			"margin": true
+		},
+		"color": {
+			"text": true,
+			"background": true,
+			"gradients": true,
+			"link": true
+		}
+	},
+	"editorScript": "file: ./build/index.js"
+}
