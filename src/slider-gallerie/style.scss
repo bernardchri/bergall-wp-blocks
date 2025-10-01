@@ -1,3 +1,10 @@
+
+@use '../slider-navigation/style.scss'; //navigation
+@use 'swiper/swiper-bundle.css';
+// @use 'swiper/css/navigation';
+// @use 'swiper/css/pagination';
+// @use "swiper/modules/effect-fade.css";
+
 .anima-slider-image .swiper-wrapper{
     line-height: 0;
 }

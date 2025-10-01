@@ -1,8 +1,5 @@
 import Swiper from 'swiper';
 import { Navigation, Pagination } from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
 
 const SLIDER_CLASS = '.wp-block-animablocks-slider-simple';
 
@@ -10,7 +7,6 @@ const sliderSimple = ( slider, attributes ) => {
 	const container = slider.querySelector( '.swiper-container' );
 
 	if ( ! container ) return;
-	console.log( 'slider', container );
 	new Swiper( container, {
 		slidesPerView: attributes.numberofslides,
 		grabCursor: true,

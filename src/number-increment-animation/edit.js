@@ -41,27 +41,27 @@ export default function Edit( { attributes, setAttributes } ) {
 							animationtext( {
 								block: refBloc.current,
 								currentNumber:
-									isNaN( startNumber ) || startNumber == null
+									isNaN( startNumber ) || startNumber === null
 										? 0
 										: startNumber,
 								startChar,
 								endChar,
 								startNumber:
-									isNaN( startNumber ) || startNumber == null
+									isNaN( startNumber ) || startNumber === null
 										? 0
 										: startNumber,
 								endNumber:
-									isNaN( endNumber ) || endNumber == null
+									isNaN( endNumber ) || endNumber === null
 										? 0
 										: endNumber,
 								delay:
-									isNaN( delay ) || delay == null ? 0 : delay,
+									isNaN( delay ) || delay === null ? 0 : delay,
 								increment:
-									isNaN( increment ) || increment == null
+									isNaN( increment ) || increment === null
 										? 0
 										: increment,
 								speed:
-									isNaN( speed ) || speed == null ? 0 : speed,
+									isNaN( speed ) || speed === null ? 0 : speed,
 								locale,
 							} )
 						}
@@ -89,14 +89,14 @@ export default function Edit( { attributes, setAttributes } ) {
 					<TextControl
 						label="Start Number"
 						value={
-							isNaN( startNumber ) || startNumber == null
+							isNaN( startNumber ) || startNumber === null
 								? 0
 								: startNumber
 						}
 						onChange={ ( val ) =>
 							setAttributes( {
 								startNumber:
-									isNaN( parseFloat( val ) ) || val == null
+									isNaN( parseFloat( val ) ) || val === null
 										? 0
 										: parseFloat( val ),
 							} )
@@ -106,14 +106,14 @@ export default function Edit( { attributes, setAttributes } ) {
 					<TextControl
 						label="End Number"
 						value={
-							isNaN( endNumber ) || endNumber == null
+							isNaN( endNumber ) || endNumber === null
 								? 0
 								: endNumber
 						}
 						onChange={ ( val ) =>
 							setAttributes( {
 								endNumber:
-									isNaN( parseFloat( val ) ) || val == null
+									isNaN( parseFloat( val ) ) || val === null
 										? 0
 										: parseFloat( val ),
 							} )
@@ -124,14 +124,14 @@ export default function Edit( { attributes, setAttributes } ) {
 						label="Delay (ms)"
 						value={
 							isNaN( delay ) ||
-							delay == null ||
-							delay == undefined
+							delay === null ||
+							delay === undefined
 								? 0
 								: delay
 						}
 						onChange={ ( val ) =>
 							setAttributes( {
-								delay: isNaN( val ) || val == null ? 0 : val,
+								delay: isNaN( val ) || val === null ? 0 : val,
 							} )
 						}
 						min={ 0 }
@@ -141,14 +141,14 @@ export default function Edit( { attributes, setAttributes } ) {
 					<RangeControl
 						label="Increment"
 						value={
-							isNaN( increment ) || increment == null
+							isNaN( increment ) || increment === null
 								? 0
 								: increment
 						}
 						onChange={ ( val ) =>
 							setAttributes( {
 								increment:
-									isNaN( val ) || val == null ? 0 : val,
+									isNaN( val ) || val === null ? 0 : val,
 							} )
 						}
 						min={ 1 }
@@ -157,10 +157,10 @@ export default function Edit( { attributes, setAttributes } ) {
 					/>
 					<RangeControl
 						label="Duree (s)"
-						value={ isNaN( speed ) || speed == null ? 0 : speed }
+						value={ isNaN( speed ) || speed === null ? 0 : speed }
 						onChange={ ( val ) =>
 							setAttributes( {
-								speed: isNaN( val ) || val == null ? 0 : val,
+								speed: isNaN( val ) || val === null ? 0 : val,
 							} )
 						}
 						step={ 0.15 }

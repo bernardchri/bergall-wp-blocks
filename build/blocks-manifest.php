@@ -570,7 +570,7 @@ return array(
 		'$schema' => 'https://schemas.wp.org/trunk/block.json',
 		'apiVersion' => 3,
 		'name' => 'animablocks/slider-gallerie',
-		'title' => 'Slider images simple fade',
+		'title' => 'Slider gallerie d\'images',
 		'keywords' => array(
 			'gallerie',
 			'slider',

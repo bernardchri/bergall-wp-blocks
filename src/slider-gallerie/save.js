@@ -1,34 +1,39 @@
 import { useBlockProps } from '@wordpress/block-editor';
-import './style.css';
+import './style.scss';
+import NavigationSwiper from '../slider-navigation/navigationSwiper.js';
 
-export default function save( { attributes } ) {
+export default function save({ attributes }) {
 	const { slides, slidesPerView, slidesPerViewMobile } = attributes;
 	const blockProps = useBlockProps.save();
 
 	return (
 		<div
-			{ ...blockProps }
+			{...blockProps}
 			className="anima-slider-image"
-			data-slides={ slidesPerView }
-			data-slides-mobile={ slidesPerViewMobile }
+			data-slides={slidesPerView}
+			data-slides-mobile={slidesPerViewMobile}
 		>
-			{ slides.length > 0 ? (
+			{slides.length > 0 ? (
 				<>
 					<div className="swiper-wrapper">
-						{ slides.map( ( slide ) => (
-							<div className="swiper-slide" key={ slide.id }>
-								<img src={ slide.url } alt={ slide.alt } />
+						{slides.map((slide) => (
+							<div className="swiper-slide" key={slide.id}>
+								<img src={slide.url} alt={slide.alt} onLoad={""} />
 							</div>
-						) ) }
+						))}
 					</div>
-					{ /* <NavigationSwiper
-						navigationDisplay={ true }
-						paginationDisplay={ true }
-					/> */ }
+					{
+						slides.length > 1 ? <NavigationSwiper
+							navigationDisplay={true}
+							paginationDisplay={true}
+						/> :
+							null
+					}
+
 				</>
 			) : (
-				<p>Aucune image sélectionnée.</p>
-			) }
+				<p></p>
+			)}
 		</div>
 	);
 }
