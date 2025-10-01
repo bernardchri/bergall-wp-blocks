@@ -384,66 +384,6 @@ return array(
 		'viewScript' => 'file:./view.js',
 		'style' => 'file:./style-index.css'
 	),
-	'image-video-hover' => array(
-		'apiVersion' => 2,
-		'name' => 'animablocks/image-video-hover',
-		'title' => 'Image Video Hover',
-		'category' => 'anima',
-		'icon' => 'format-video',
-		'attributes' => array(
-			'imageUrl' => array(
-				'type' => 'string',
-				'source' => 'attribute',
-				'selector' => 'img.image-video-hover__image',
-				'attribute' => 'src'
-			),
-			'videoUrl' => array(
-				'type' => 'string',
-				'source' => 'attribute',
-				'selector' => 'video.image-video-hover__video source',
-				'attribute' => 'src'
-			),
-			'autoPlayVideo' => array(
-				'type' => 'boolean',
-				'default' => false
-			)
-		),
-		'supports' => array(
-			'html' => false
-		),
-		'editorScript' => 'file:./index.js',
-		'editorStyle' => 'file:./editor.css',
-		'style' => 'file:./style.css',
-		'renderScript' => 'file:./render.js'
-	),
-	'lottie-player' => array(
-		'apiVersion' => 2,
-		'name' => 'anima/lottie-player',
-		'title' => 'Lecteur Lottie',
-		'category' => 'anima',
-		'icon' => 'format-video',
-		'description' => 'Lecteur Lottie animé',
-		'supports' => array(
-			'html' => false
-		),
-		'attributes' => array(
-			'src' => array(
-				'type' => 'string'
-			),
-			'autoplay' => array(
-				'type' => 'boolean',
-				'default' => true
-			),
-			'loop' => array(
-				'type' => 'boolean',
-				'default' => true
-			),
-			'speed' => array(
-				'type' => 'number',
-				'default' => 1
-			)
-		)
-	),
 	'marquee' => array(
 		'apiVersion' => 2,
 		'name' => 'animablocks/marquee',
@@ -625,6 +565,46 @@ return array(
 		'editorScript' => 'file:./index.js',
 		'editorStyle' => 'file:./index.css',
 		'style' => 'file:./style-index.css'
+	),
+	'slider-gallerie' => array(
+		'$schema' => 'https://schemas.wp.org/trunk/block.json',
+		'apiVersion' => 3,
+		'name' => 'animablocks/slider-gallerie',
+		'title' => 'Slider images simple fade',
+		'keywords' => array(
+			'gallerie',
+			'slider',
+			'images'
+		),
+		'category' => 'widgets',
+		'icon' => 'images-alt',
+		'description' => 'Carroussel d\'images avec navigation et pagination.',
+		'supports' => array(
+			'align' => true,
+			'spacing' => array(
+				'margin' => true
+			)
+		),
+		'attributes' => array(
+			'slides' => array(
+				'type' => 'array',
+				'default' => array(
+					
+				)
+			),
+			'slidesPerView' => array(
+				'type' => 'number',
+				'default' => 1
+			),
+			'slidesPerViewMobile' => array(
+				'type' => 'number',
+				'default' => 1
+			)
+		),
+		'editorScript' => 'file:./index.js',
+		'editorStyle' => 'file:./index.css',
+		'style' => 'file:./style-index.css',
+		'viewScript' => 'file:./view.js'
 	),
 	'slider-navigation' => array(
 		'$schema' => 'https://schemas.wp.org/trunk/block.json',

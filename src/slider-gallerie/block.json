@@ -1,9 +1,10 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
-	"name": "animablocks/slider-image",
+	"name": "animablocks/slider-gallerie",
 	"title": "Slider images simple fade",
-	"category": "anima",
+	"keywords": ["gallerie", "slider","images"],
+	"category": "widgets",
 	"icon": "images-alt",
 	"description": "Carroussel d'images avec navigation et pagination.",
 	"supports": {
