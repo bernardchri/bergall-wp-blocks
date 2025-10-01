@@ -4,52 +4,18 @@ import {
 	InnerBlocks,
 } from '@wordpress/block-editor';
 import { PanelBody, RangeControl } from '@wordpress/components';
-import { useEffect, useRef } from '@wordpress/element';
-import Swiper from 'swiper';
-import { Navigation, Pagination } from 'swiper/modules';
-import NavigationSwiper from '../slider-navigation';
+import { useRef } from '@wordpress/element';
+import NavigationSwiper from '../slider-navigation/navigationSwiper';
+
+import './editor.scss';
 
 export default function Edit( { attributes, setAttributes } ) {
 	// ref vers le container DOM du slider
 	const sliderContainerRef = useRef( null );
-	const refContainer = useRef( null );
 	const { numberofslides, numberofslidesMobile } = attributes;
-	const blockProps = useBlockProps( {
-		style: { outline: '1px dotted grey', padding: '0.5rem' },
-	} );
-
-	useEffect( () => {
-		if ( sliderContainerRef.current ) {
-			// Détruire l'instance précédente si elle existe
-			if ( sliderContainerRef.current.swiper ) {
-				sliderContainerRef.current.swiper.destroy( true, true );
-			}
-
-			// Créer une nouvelle instance Swiper
-			new Swiper( sliderContainerRef.current, {
-				slidesPerView: numberofslides,
-				modules: [ Navigation, Pagination ],
-				navigation: {
-					nextEl: sliderContainerRef.current.querySelector(
-						'.button-next'
-					),
-					prevEl: sliderContainerRef.current.querySelector(
-						'.button-prev'
-					),
-				},
-				pagination: {
-					el: sliderContainerRef.current.querySelector(
-						'.pagination'
-					),
-					clickable: true,
-				},
-				// Ajoutez d'autres options Swiper si besoin
-			} );
-		}
-	}, [ numberofslides, numberofslidesMobile ] );
 
 	return (
-		<div { ...blockProps } ref={ refContainer }>
+		<div { ...useBlockProps( { className: '--editor' } ) }>
 			<InspectorControls>
 				<PanelBody title="Paramètres du slider">
 					<RangeControl
@@ -74,15 +40,16 @@ export default function Edit( { attributes, setAttributes } ) {
 					/>
 				</PanelBody>
 			</InspectorControls>
-			<div className="anima-swiper-container" ref={ sliderContainerRef }>
+
+			<div className="swiper-container" ref={ sliderContainerRef }>
 				<div className="swiper-wrapper">
 					<InnerBlocks
-						allowedBlocks={ [ 'anima/slider-simple-item' ] }
+						allowedBlocks={ [ 'animablocks/slider-simple-item' ] }
 					/>
 				</div>
 				<NavigationSwiper
-					paginationDisplay={ true }
 					navigationDisplay={ true }
+					paginationDisplay={ true }
 				/>
 			</div>
 		</div>

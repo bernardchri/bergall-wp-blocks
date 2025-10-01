@@ -1,13 +1,17 @@
-// body :has(.wp-block-anima-slider-simple) {
-//     overflow-x: hidden !important;
-// }
-.wp-block-anima-slider-simple {
+
+@use '../slider-navigation/style.scss'; //navigation
+@use 'swiper/css';
+@use 'swiper/css/navigation';
+@use 'swiper/css/pagination';
+
+
+body:not(.wp-admin) :has(.wp-block-animablocks-slider-simple) {
+    overflow: hidden  !important;
+}
+.wp-block-animablocks-slider-simple {
+
     & .swiper-container {
         position: relative;
-    }
-
-    & .swiper-wrapper {
-        gap: 1rem;
     }
 
     & .swiper-slide img {
@@ -15,8 +19,8 @@
         height: auto;
     }
 
-    & .swiper-wrapper{
-        display: flex;
-    }
+    // & .swiper-wrapper{
+    //     display: flex;
+    // }
 
 }

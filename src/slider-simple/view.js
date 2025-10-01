@@ -4,11 +4,13 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
+const SLIDER_CLASS = '.wp-block-animablocks-slider-simple';
+
 const sliderSimple = ( slider, attributes ) => {
-	const container = slider.querySelector( '.anima-swiper-container' );
+	const container = slider.querySelector( '.swiper-container' );
 
 	if ( ! container ) return;
-
+	console.log( 'slider', container );
 	new Swiper( container, {
 		slidesPerView: attributes.numberofslides,
 		grabCursor: true,
@@ -30,9 +32,7 @@ const sliderSimple = ( slider, attributes ) => {
 };
 
 document.addEventListener( 'DOMContentLoaded', () => {
-	const sliders = document.querySelectorAll(
-		'.wp-block-anima-slider-simple'
-	);
+	const sliders = document.querySelectorAll( SLIDER_CLASS );
 	sliders.forEach( ( slider ) => {
 		sliderSimple( slider, {
 			numberofslides: slider.dataset.numberofslides,

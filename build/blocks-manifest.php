@@ -584,13 +584,20 @@ return array(
 		'style' => 'file:./style-index.css'
 	),
 	'separator' => array(
-		'apiVersion' => 2,
-		'name' => 'anima/separator',
+		'$schema' => 'https://schemas.wp.org/trunk/block.json',
+		'apiVersion' => 3,
+		'name' => 'animablocks/separator',
 		'title' => 'Anima Separator',
 		'category' => 'anima',
 		'icon' => 'minus',
 		'description' => 'Bloc séparateur avec formes SVG personnalisables',
 		'supports' => array(
+			'alignWide' => true,
+			'align' => array(
+				'full',
+				'center',
+				'wide'
+			),
 			'html' => false,
 			'color' => array(
 				'text' => false,
@@ -614,67 +621,35 @@ return array(
 				'type' => 'boolean',
 				'default' => false
 			)
-		)
-	),
-	'slider-image' => array(
-		'$schema' => 'https://schemas.wp.org/trunk/block.json',
-		'apiVersion' => 3,
-		'name' => 'animablocks/slider-image',
-		'title' => 'Slider images',
-		'category' => 'anima',
-		'icon' => 'images-alt',
-		'description' => 'Carroussel d\'images avec navigation et pagination.',
-		'supports' => array(
-			'align' => true,
-			'spacing' => array(
-				'margin' => true
-			)
-		),
-		'attributes' => array(
-			'slides' => array(
-				'type' => 'array',
-				'default' => array(
-					
-				)
-			),
-			'slidesPerView' => array(
-				'type' => 'number',
-				'default' => 1
-			),
-			'slidesPerViewMobile' => array(
-				'type' => 'number',
-				'default' => 1
-			)
 		),
 		'editorScript' => 'file:./index.js',
-		'editorStyle' => 'file: ./index.css',
+		'editorStyle' => 'file:./index.css',
 		'style' => 'file:./style-index.css'
 	),
 	'slider-navigation' => array(
 		'$schema' => 'https://schemas.wp.org/trunk/block.json',
 		'apiVersion' => 3,
-		'name' => 'animablocks/slider-navigation',
-		'title' => 'Naviguation pour slider',
+		'name' => 'animablocks/navigation-swiper',
+		'title' => 'Navigation Swiper',
 		'category' => 'anima',
-		'icon' => 'images-alt',
-		'description' => 'Un slider simple avec navigation et pagination.',
+		'icon' => 'controls-forward',
+		'description' => 'Navigation (flèches + pagination) pour slider.',
 		'supports' => array(
-			'spacing' => array(
-				'padding' => true,
-				'margin' => true
-			),
-			'color' => array(
-				'text' => true,
-				'background' => true,
-				'gradients' => true,
-				'link' => true
-			)
+			'html' => false
 		),
 		'attributes' => array(
-			
+			'paginationDisplay' => array(
+				'type' => 'boolean',
+				'default' => true
+			),
+			'navigationDisplay' => array(
+				'type' => 'boolean',
+				'default' => true
+			)
 		),
 		'editorScript' => 'file:./index.js',
 		'viewScript' => 'file:./view.js',
+		'editorStyle' => 'file: ./index.css',
 		'style' => 'file:./style-index.css'
 	),
 	'slider-simple' => array(
@@ -732,7 +707,8 @@ return array(
 		),
 		'editorScript' => 'file:./index.js',
 		'editorStyle' => 'file: ./index.css',
-		'style' => 'file:./style-index.css'
+		'style' => 'file:./style-index.css',
+		'viewScript' => 'file:./view.js'
 	),
 	'slider-simple-item' => array(
 		'$schema' => 'https://schemas.wp.org/trunk/block.json',
@@ -755,7 +731,9 @@ return array(
 				'link' => true
 			)
 		),
-		'editorScript' => 'file:./index.js'
+		'editorScript' => 'file:./index.js',
+		'editorStyle' => 'file:./index.css',
+		'style' => 'file:./style-index.css'
 	),
 	'test' => array(
 		'$schema' => 'https://schemas.wp.org/trunk/block.json',

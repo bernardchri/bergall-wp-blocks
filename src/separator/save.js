@@ -1,5 +1,6 @@
 import { useBlockProps } from '@wordpress/block-editor';
 import { shapes } from './svgShapes';
+import './style.css';
 
 export default function Save( { attributes } ) {
 	const { shape, shapeColor, flipX, flipY } = attributes;

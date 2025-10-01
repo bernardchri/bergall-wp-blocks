@@ -1,25 +1,26 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
-	"name": "animablocks/slider-navigation",
-	"title": "Naviguation pour slider",
+	"name": "animablocks/navigation-swiper",
+	"title": "Navigation Swiper",
 	"category": "anima",
-	"icon": "images-alt",
-	"description": "Un slider simple avec navigation et pagination.",
+	"icon": "controls-forward",
+	"description": "Navigation (flèches + pagination) pour slider.",
 	"supports": {
-		"spacing": {
-			"padding": true,
-			"margin": true
+		"html": false
+	},
+	"attributes": {
+		"paginationDisplay": {
+			"type": "boolean",
+			"default": true
 		},
-		"color": {
-			"text": true,
-			"background": true,
-			"gradients": true,
-			"link": true
+		"navigationDisplay": {
+			"type": "boolean",
+			"default": true
 		}
 	},
-	"attributes": {},
 	"editorScript": "file:./index.js",
 	"viewScript": "file:./view.js",
+	"editorStyle": "file: ./index.css",
 	"style": "file:./style-index.css"
 }

@@ -7,7 +7,7 @@ import { PanelBody } from '@wordpress/components';
 import { useEffect, useRef } from '@wordpress/element';
 import Swiper from 'swiper';
 import { Navigation, Pagination } from 'swiper/modules';
-import NavigationSwiper from '../slider-navigation';
+import './editor.css';
 
 export default function Edit( { attributes, setAttributes } ) {
 	const { slides, slidesPerView, slidesPerViewMobile } = attributes;
@@ -81,10 +81,10 @@ export default function Edit( { attributes, setAttributes } ) {
 							) ) }
 						</div>
 						{ /* Boutons pour tester la navigation dans l'éditeur */ }
-						<NavigationSwiper
+						{ /* <NavigationSwiper
 							paginationDisplay={ true }
 							navigationDisplay={ true }
-						/>
+						/> */ }
 					</>
 				) : (
 					<p>Aucune image sélectionnée.</p>

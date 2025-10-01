@@ -2,7 +2,7 @@
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
 	"name": "animablocks/slider-image",
-	"title": "Slider images",
+	"title": "Slider images simple fade",
 	"category": "anima",
 	"icon": "images-alt",
 	"description": "Carroussel d'images avec navigation et pagination.",
@@ -27,6 +27,7 @@
 		}
 	},
 	"editorScript": "file:./index.js",
-	"editorStyle": "file: ./index.css",
-	"style": "file:./style-index.css"
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css",
+	"viewScript": "file:./view.js"
 }

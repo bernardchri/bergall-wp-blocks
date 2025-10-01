@@ -23,7 +23,7 @@ block.json, index.js, edit.js, save.js … 
 [] circle-text
 [X] container-parallax
 [X] group-extended
-[X] header **minimalist**
+[X] header - minimalist
 [] hero-3D-object
 [] image-video-hover
 [] lottie-player
@@ -31,8 +31,9 @@ block.json, index.js, edit.js, save.js … 
 [X] number-increment-animation
 [] separator
 [] slider-image
-[] slider-simple
-[] slider-simple-item
+[X] slider-simple
+[X] slider-simple-item
+[X] slider-navigation
 
 
 ## i18n

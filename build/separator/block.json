@@ -1,11 +1,18 @@
 {
-  "apiVersion": 2,
-  "name": "anima/separator",
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "animablocks/separator",
   "title": "Anima Separator",
   "category": "anima",
   "icon": "minus",
   "description": "Bloc séparateur avec formes SVG personnalisables",
   "supports": {
+    "alignWide": true,
+    "align": [
+      "full",
+      "center",
+      "wide"
+    ],
     "html": false,
     "color": {
       "text": false,
@@ -29,5 +36,8 @@
       "type": "boolean",
       "default": false
     }
-  }
+  },
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css"
 }
